@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Intenções & Diagnóstico | Studio Esoteric Ink</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta e Variáveis Oficiais ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1d0d35;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        /* --- RESET BÁSICO --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--preto);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            background-image: radial-gradient(circle at top right, var(--roxo-escuro) 0%, transparent 40%);
+            -webkit-font-smoothing: antialiased;
+            padding: 80px 5%;
+        }
+
+        /* ================= Estrutura Principal (DNA Visual) ================= */
+        .portal-container {
+            background-color: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--borda-ouro);
+            padding: 80px 60px;
+            max-width: 850px;
+            margin: 0 auto;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+        }
+
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--ouro);
+            padding: 5px 15px;
+            font-family: var(--fonte-ui);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--ouro);
+            background: rgba(0,0,0,0.3);
+            margin-bottom: 25px;
+        }
+
+        .portal-header {
+            text-align: center;
+            margin-bottom: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .portal-header h1 {
+            font-family: var(--fonte-titulo);
+            color: var(--branco-off);
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .portal-header p {
+            font-family: var(--fonte-corpo);
+            font-size: 1.2rem;
+            color: var(--ouro-claro);
+            font-style: italic;
+        }
+
+        /* Títulos H2 com Linhas Douradas */
+        .section-title {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.4rem;
+            margin: 60px 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .section-title::before, .section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--ouro), transparent);
+        }
+
+        /* ================= Campos do Formulário ================= */
+        .input-group { 
+            margin-bottom: 35px; 
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            color: var(--ouro-claro);
+            font-family: var(--fonte-ui);
+            margin-bottom: 12px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        input[type="text"], input[type="tel"], input[type="date"], select, textarea {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--borda-ouro);
+            color: var(--branco-off);
+            padding: 15px;
+            font-family: var(--fonte-corpo);
+            font-size: 1.05rem;
+            outline: none;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        input:focus, textarea:focus { 
+            border-color: var(--ouro); 
+            box-shadow: 0 0 15px rgba(197, 160, 89, 0.1);
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: rgba(204, 204, 204, 0.4);
+            font-family: var(--fonte-ui);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        /* Radios e Checkboxes */
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background: rgba(0,0,0,0.2);
+            padding: 25px;
+            border: 1px solid rgba(197, 160, 89, 0.1);
+        }
+
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            color: var(--cinza-texto);
+            transition: color 0.3s;
+        }
+
+        .check-item:hover {
+            color: var(--branco-off);
+        }
+
+        .check-item input {
+            margin-top: 5px;
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--ouro); /* Colore o check/radio nativo */
+            cursor: pointer;
+        }
+
+        .check-item span strong {
+            color: var(--ouro-claro);
+            font-family: var(--fonte-ui);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* ================= Caixas de Instrução (Info-Cards) ================= */
+        .instruction-box {
+            font-size: 0.95rem;
+            background: rgba(197, 160, 89, 0.05);
+            border-left: 2px solid var(--ouro);
+            border-right: 1px solid var(--borda-ouro);
+            border-top: 1px solid var(--borda-ouro);
+            border-bottom: 1px solid var(--borda-ouro);
+            padding: 25px;
+            margin: 15px 0 20px;
+            font-style: italic;
+            color: var(--cinza-texto);
+        }
+
+        .instruction-box ul {
+            margin-left: 20px; 
+            margin-top: 15px; 
+            list-style-type: square; 
+            font-style: normal;
+            color: var(--cinza-texto);
+        }
+
+        .instruction-box li {
+            margin-bottom: 10px;
+        }
+
+        .instruction-box strong {
+            color: var(--ouro-claro);
+            font-family: var(--fonte-ui);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .investment-note {
+            text-align: center;
+            background: rgba(197, 160, 89, 0.05);
+            border: 1px dashed var(--ouro);
+            padding: 35px 25px;
+            margin: 40px 0;
+        }
+
+        /* ================= Input de Arquivo ================= */
+        input[type="file"] {
+            font-family: var(--fonte-ui);
+            font-size: 0.8rem;
+            color: var(--ouro-claro);
+            padding: 10px 0;
+            cursor: pointer;
+        }
+        input[type="file"]::file-selector-button {
+            background: rgba(5, 1, 8, 0.8);
+            border: 1px solid var(--ouro);
+            color: var(--ouro);
+            padding: 8px 15px;
+            font-family: var(--fonte-ui);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            margin-right: 15px;
+            transition: 0.3s;
+        }
+        input[type="file"]::file-selector-button:hover {
+            background: var(--ouro);
+            color: var(--preto);
+        }
+
+        /* ================= Botão de Envio ================= */
+        .btn-enviar {
+            width: 100%;
+            display: inline-block;
+            padding: 20px;
+            background: rgba(5, 1, 8, 0.8);
+            color: var(--ouro);
+            border: 1px solid var(--ouro);
+            font-family: var(--fonte-ui);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: 0.4s;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            margin-top: 20px;
+        }
+
+        .btn-enviar:hover {
+            background: var(--ouro);
+            color: var(--preto);
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+        }
+
+        /* ================= Área do Botão e Balão Flutuante ================= */
+        .wrapper-calculadora {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .balao-auxilio {
+            background: rgba(5, 1, 8, 0.9);
+            border: 1px solid var(--borda-ouro);
+            color: var(--ouro-claro);
+            font-size: 0.7rem;
+            text-align: center;
+            padding: 10px 15px;
+            max-width: 180px;
+            margin-bottom: 10px;
+            font-family: var(--fonte-ui);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.4;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        /* Setinha do balão apontando para baixo */
+        .balao-auxilio::after {
+            content: "";
+            position: absolute;
+            bottom: -6px;
+            right: 35px; /* Alinha com o botão abaixo */
+            width: 10px;
+            height: 10px;
+            background: rgba(5, 1, 8, 0.9);
+            border-bottom: 1px solid var(--borda-ouro);
+            border-right: 1px solid var(--borda-ouro);
+            transform: rotate(45deg);
+        }
+
+        .btn-calculadora-flutuante {
+            width: 85px;
+            height: 85px;
+            background-color: rgba(5, 1, 8, 0.9);
+            color: var(--ouro);
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            border: 1px solid var(--ouro);
+            padding: 5px;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-calculadora-flutuante:hover {
+            background-color: var(--ouro);
+            color: var(--preto);
+            transform: scale(1.05);
+        }
+
+        .btn-calculadora-flutuante svg {
+            width: 28px;
+            height: 28px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            margin-bottom: 5px;
+        }
+
+        .btn-calculadora-flutuante span {
+            font-family: var(--fonte-ui);
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* ================= Responsividade ================= */
+        @media (max-width: 768px) {
+            body { padding: 40px 5%; }
+            .portal-container { padding: 40px 25px; }
+            .portal-header h1 { font-size: 2.2rem; }
+            .section-title { font-size: 1.1rem; }
+            .wrapper-calculadora { bottom: 20px; right: 20px; }
+            .balao-auxilio { right: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="portal-container">
+        <div class="portal-header">
+            <div class="badge">Triagem & Agendamento</div>
+            <h1>Portal de Intenções</h1>
+            <p>"Sua pele é uma tela única. Deixe aqui sua história e intenção."</p>
+        </div>
+
+        <form name="formulario-intencoes" method="POST" data-netlify="true" enctype="multipart/form-data">
+            
+            <div class="section-title">I. Identidade & Conexão</div>
+            <div class="input-group">
+                <label>Como gostaria que te chamasse? (Nome e Pronomes)</label>
+                <input type="text" name="Identidade" required placeholder="Ex: Ana (ela/dela)">
+            </div>
+            
+            <div class="input-group">
+                <label>Qual sua data de Nascimento?</label>
+                <input type="text" name="Idade" required placeholder="Ex: 07-06-1993">
+                <p style="font-size: 0.75rem; color: var(--ouro-claro); margin-top: 8px; font-style: italic; font-family: var(--fonte-corpo);">
+                    *Atendimento exclusivo para maiores de 18 anos, em estrita conformidade com a legislação vigente e normas da Vigilância Sanitária.
+                </p>
+            </div>
+            
+            <div class="input-group">
+                <label>WhatsApp</label>
+                <input type="tel" name="WhatsApp" required placeholder="(00) 00000-0000">
+            </div>
+
+            <div class="input-group">
+                <label>Você faz parte do nosso público prioritário? (Mulheres e LGBTQIA+)</label>
+                <div class="radio-group">
+                    <label class="check-item"><input type="radio" name="Publico_Prioritario" value="Sim" required> Sim, faço parte.</label>
+                    <label class="check-item"><input type="radio" name="Publico_Prioritario" value="Não"> Não faço parte.</label>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Caso não faça parte do público prioritário, como conheceu ou quem indicou o Studio?</label>
+                <input type="text" name="Indicacao" placeholder="Nome de quem indicou ou como nos conheceu">
+                <p style="font-size: 0.75rem; color: var(--ouro-claro); margin-top: 8px; font-style: italic; font-family: var(--fonte-corpo);">
+                    * O Studio prioriza um ambiente seguro e exclusivo. Indicações ajudam em nossa curadoria.
+                </p>
+            </div>
+
+            <div class="section-title">II. A Intenção & Arte</div>
+            
+            <div class="input-group">
+                <label>Descreva sua ideia e o significado ritual (se houver)</label>
+                <textarea name="Conceito" rows="4" placeholder="Conte-me o conceito, significado ou arquétipo..."></textarea>
+            </div>
+        
+            <div class="input-group">
+                <label>Qual o Local da Tatuagem e o Tamanho em Centímetros</label>
+                <input type="text" name="Local_Tamanho" required placeholder="Ex: 10cm no Antebraço">
+            </div>
+
+            <div class="section-title">III. Estilo, Técnica & Cromatismo</div>
+            
+            <div class="input-group">
+                <label>Guia de Referência para sua Intenção</label>
+                <div class="instruction-box">
+                    Explore as linguagens que nossa agulha domina para materializar seu amuleto:
+                    <ul>
+                        <li> <strong>Fine Line/ Minimalismo:</strong> Traços finos, delicados e precisos.</li>
+                        <li> <strong>Bold Line / Old School:</strong> Contornos sólidos e marcantes.</li>
+                        <li> <strong>Sketch/ Esboço:</strong> Estilo rascunhado, com linhas expressivas e artísticas.</li>
+                        <li> <strong>Blackwork/ Blackout:</strong> Uso intenso de tinta preta e contrastes profundos.</li>
+                        <li> <strong>Coloridas / Sem Contorno:</strong> Pinturas vibrantes ou transições suaves de cor.</li>
+                        <li> <strong>Neo Tradicional:</strong> Com traços de espessuras variadas, cores mais complexas e maior nível de detalhamento e profundidade.</li>
+                        <li> <strong>Oriental (Irezumi):</strong> O estilo tradicional japonês, caracterizado por composições de grande escala que respeitam o fluxo da anatomia.</li>
+                        <li> <strong>Semi-Realismo:</strong> Técnicas de luz e sombra para profundidade.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Descreva sua preferência de Traço e Cores</label>
+                <input type="text" name="Estilo_Tecnica" required placeholder="Ex: Traços finos (fine line) com detalhes em vermelho vibrante">
+                <p style="font-size: 0.75rem; color: var(--ouro-claro); margin-top: 8px; font-style: italic; font-family: var(--fonte-corpo);">
+                    * Sinta-se livre para usar suas próprias palavras se não tiver certeza sobre os termos técnicos. A alma da arte importa mais que o nome.
+                </p>
+            </div>
+
+            <div class="section-title">IV. Diagnóstico do Fototipo</div>
+            
+            <div class="input-group">
+                <label>Para a precisão do projeto, como sua pele se comporta sob a luz solar?</label>
+                <div class="radio-group">
+                    <label class="check-item">
+                        <input type="radio" name="Sol" value="Fitzpatrick_I_II"> 
+                        <span><strong>Peles Claríssimas:</strong> Alta fotossensibilidade. Apresenta vermelhidão imediata e não desenvolvem pigmentação protetora ao sol (não bronzeia).</span>
+                    </label>
+
+                    <label class="check-item">
+                        <input type="radio" name="Sol" value="Fitzpatrick_III_IV"> 
+                        <span><strong>Peles Médias a Melânicas:</strong> Resposta equilibrada ao sol. Bronzeiam-se com facilidade, adquirindo tons dourados ou amendoados.</span>
+                    </label>
+
+                    <label class="check-item">
+                        <input type="radio" name="Sol" value="Oliva"> 
+                        <span><strong>Subtons Oliva:</strong> Peles com nuances esverdeadas ou levemente acinzentadas, comuns em descendências mediterrâneas ou árabes, por exemplo, mas não necessariamente.</span>
+                    </label>
+
+                    <label class="check-item">
+                        <input type="radio" name="Sol" value="Negra_Retinta"> 
+                        <span><strong>Peles Negras retintas e Preciosas:</strong> Ricas em melanina protetora. Sob o sol, intensificam sua profundidade com brilho natural. Exigem domínio técnico em pigmentologia para exaltar o contraste.</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Histórico de Saúde & Cicatrização</label>
+                <div class="radio-group">
+                    <label class="check-item"><input type="checkbox" name="Saude_Diabetes" value="Sim"> Diabetes</label>
+                    <label class="check-item"><input type="checkbox" name="Saude_Queloides" value="Sim"> Queloides / Cicatriz escura</label>
+                    <label class="check-item"><input type="checkbox" name="Saude_Alergias" value="Sim"> Alergia a metais/tintas</label>
+                    <label class="check-item"><input type="checkbox" name="Saude_Medicamentos" value="Sim"> Medicamentos de uso continuo ou anticoagulantes.</label>
+                    <label class="check-item"><input type="checkbox" name="Saude_Sensivel" value="Sim"> Psoríase / Dermatites</label>
+                    <label class="check-item"><input type="checkbox" name="Saude_Gestante" value="Sim"> Gestante / Amamentando</label>
+                    <label class="check-item"><input type="checkbox" name="Saude_OK" value="Sim"> Nenhuma das opções</label>
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <label>Registro da Área (Foto)</label>
+                <div class="instruction-box">
+                    "Anexe uma foto da área a ser tatuada em luz natural (perto de uma janela), sem flash ou filtros. Essencial para leitura de subtom."
+                </div>
+                <input type="file" name="Foto_Pele" accept="image/*">
+            </div>
+            
+            <div class="input-group">
+                <label>Imagem de Referência da arte</label>
+                <div class="instruction-box">
+                    Se houver, anexe uma foto de referência de uma tatuagem ou desenho que deseja usar como exemplo para o seu projeto.
+                </div>
+                <input type="file" name="Foto_Tattoo" accept="image/*">
+            </div>
+
+            <div class="section-title">V. O Protocolo para Teste de Cores E AGENDAMENTO</div>
+            
+            <div class="investment-note">
+                <p style="color:var(--ouro); font-family: var(--fonte-ui); font-size: 1rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;">
+                    Consultoria Técnico e Patch Test
+                </p>
+                <p style="font-size: 0.95rem; margin-top: 15px; color: var(--cinza-texto);">
+                    Após a aprovação do Orçamento, o valor de R$ 150,00 é solicitado. Este valor garante a execução do seu projeto e a  reserva do seu agendamento.  </p>
+                    </p> <strong style="color: var(--branco-off);">Será descontado integralmente do valor final da tatuagem.</strong><br><br> </p>
+                    A decisão de aguardar o período de teste da cor é uma decisão mútua sua junto ao Studio Esoteric Ink, de acordo com o resultado da triagem, após a consultoria com a tatuadora e aprovação final do projeto.
+                </p>
+            </div>
+            
+            <div class="input-group">
+                <label>Campo para Informações Adicionais e dúvidas, se necessário.</label>
+                <input type="text" name="Observacoes" placeholder="Ex: Gestante ou Amamentando, Dúvidas sobre teste de cor, etc.">
+            </div>
+
+            <label class="check-item" style="margin-bottom: 40px;">
+                <input type="checkbox" name="Aceite_Termos" required> 
+                <span style="font-family: var(--fonte-ui); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--ouro-claro); padding-top: 3px;">
+                    Compreendo a importância do diagnóstico técnico e desejo prosseguir.
+                </span>
+            </label>
+
+            <button type="submit" class="btn-enviar">Entregar Intenção ao Estúdio</button>
+            
+            <p style="text-align: center; font-family: var(--fonte-ui); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; margin-top: 30px; color: #666;">
+                Privacidade Garantida. Seus dados são usados apenas para fins técnicos de tatuagem.
+            </p>
+        </form>
+    </div>
+
+    <div class="wrapper-calculadora">
+        <div class="balao-auxilio">
+            Calcule sua base de preço antes de preencher o portal.
+        </div>
+        <a href="calculadora.html" class="btn-calculadora-flutuante" title="Calculadora de Orçamento">
+            <svg viewBox="0 0 24 24">
+                <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+                <line x1="8" y1="6" x2="16" y2="6"></line>
+                <line x1="16" y1="14" x2="16" y2="18"></line>
+                <path d="M8 10h.01"></path>
+                <path d="M12 10h.01"></path>
+                <path d="M16 10h.01"></path>
+                <path d="M8 14h.01"></path>
+                <path d="M12 14h.01"></path>
+                <path d="M8 18h.01"></path>
+                <path d="M12 18h.01"></path>
+            </svg>
+            <span>Orçamento<br>Automático</span>
+        </a>
+    </div>
+
+    <script>
+        document.querySelector('form[name="formulario-intencoes"]').addEventListener('submit', function(e) {
+            // Nota: Se quiser manter o envio nativo do Netlify rodando em paralelo no background, 
+            // você pode remover o e.preventDefault(), mas para o comportamento fluido de redirecionamento 
+            // imediato do WhatsApp, o preventDefault() garante a execução estável do link.
+            e.preventDefault();
+
+            // Número do Estúdio (Substitua pelos dígitos do seu WhatsApp se necessário. Ex: 5511999999999)
+            const numeroWhatsapp = "5511994998057"; 
+
+            const form = e.target;
+            
+            // Coleta de dados simples
+            const identidade = form.elements['Identidade'].value;
+            const idade = form.elements['Idade'].value;
+            const whatsappCliente = form.elements['WhatsApp'].value;
+            const publicoPrioritario = form.elements['Publico_Prioritario'].value;
+            const indicacao = form.elements['Indicacao'].value || "Não informado";
+            const conceito = form.elements['Conceito'].value || "Não informado";
+            const localTamanho = form.elements['Local_Tamanho'].value;
+            const estiloTecnica = form.elements['Estilo_Tecnica'].value;
+            const observacoes = form.elements['Observacoes'].value || "Nenhuma";
+
+            // Coleta do Radio do Fototipo (Sol)
+            const solRadio = form.querySelector('input[name="Sol"]:checked');
+            const fototipo = solRadio ? solRadio.value : "Não selecionado";
+
+            // Coleta dos Checkboxes do Histórico de Saúde
+            let saude = [];
+            if(form.elements['Saude_Diabetes'].checked) saude.push("Diabetes");
+            if(form.elements['Saude_Queloides'].checked) saude.push("Queloides/Cicatriz Escura");
+            if(form.elements['Saude_Alergias'].checked) saude.push("Alergia a metais/tintas");
+            if(form.elements['Saude_Medicamentos'].checked) saude.push("Medicamentos contínuos/anticoagulantes");
+            if(form.elements['Saude_Sensivel'].checked) saude.push("Psoríase/Dermatites");
+            if(form.elements['Saude_Gestante'].checked) saude.push("Gestante/Amamentando");
+            if(form.elements['Saude_OK'].checked) saude.push("Nenhuma das condições");
+            const historicoSaude = saude.length > 0 ? saude.join(", ") : "Não informado";
+
+            // Formatação estilizada da mensagem para o WhatsApp
+            let textoMensagem = `✨ *NOVA INTENÇÃO DE ARTE - ESOTERIC INK* ✨\n\n`;
+            textoMensagem += `👤 *I. IDENTIDADE & CONEXÃO*\n`;
+            textoMensagem += `• *Nome/Pronomes:* ${identidade}\n`;
+            textoMensagem += `• *Data de Nasc.:* ${idade}\n`;
+            textoMensagem += `• *WhatsApp Cliente:* ${whatsappCliente}\n`;
+            textoMensagem += `• *Público Prioritário:* ${publicoPrioritario}\n`;
+            textoMensagem += `• *Indicação/Contato:* ${indicacao}\n\n`;
+            
+            textoMensagem += `🔮 *II. A INTENÇÃO & ARTE*\n`;
+            textoMensagem += `• *Conceito/Ritual:* ${conceito}\n`;
+            textoMensagem += `• *Local & Tamanho:* ${localTamanho}\n\n`;
+            
+            textoMensagem += `✍️ *III. ESTILO & CROMATISMO*\n`;
+            textoMensagem += `• *Preferência:* ${estiloTecnica}\n\n`;
+            
+            textoMensagem += `🧪 *IV. ALQUIMIA & DIAGNÓSTICO*\n`;
+            textoMensagem += `• *Comportamento ao Sol:* ${fototipo}\n`;
+            textoMensagem += `• *Histórico de Saúde:* ${historicoSaude}\n\n`;
+            
+            textoMensagem += `👁️‍🗨️ *V. OBSERVAÇÕES & DÚVIDAS*\n`;
+            textoMensagem += `• ${observacoes}\n\n`;
+            textoMensagem += `--- _*Nota:* Arquivos de imagens/referências anexados diretamente pelo portal._`;
+
+            // Codifica o texto para URL válida
+            const textoUrl = encodeURIComponent(textoMensagem);
+            
+            // Monta o link final da API do WhatsApp
+            const urlWhatsapp = `https://api.whatsapp.com/send?phone=${5511994998057}&text=${textoUrl}`;
+            
+            // Redireciona para o WhatsApp aberto
+            window.open(urlWhatsapp, '_blank');
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gara: Fine Line Botânico e Tatuagem Coreana Ilustrativa | Biblioteca Esoteric Ink</title>
+    
+    <meta name="description" content="Conheça Gara, a mestra do Fine Line sul-coreano. Descubra como ela revolucionou a tatuagem botânica com traços ultrafinos e uma estética de luxo e sofisticação.">
+    <meta name="keywords" content="Gara Tattoo, Fine Line Botânico, Tatuagem Coreana, Micro Realismo, Tatuagem Ilustrativa Feminina, Fine Line de Luxo, Arte Botânica na Pele, Studio Esoteric Ink">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta Oficial Esoteric Ink ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1d0d35;
+            --preto-absolute: #050108;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        /* ================= Reset & Setup ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--preto-absolute);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            
+            /* Imagem configurada como plano de fundo fixo em toda a página */
+            background-image: linear-gradient(to bottom, rgba(5, 1, 8, 0.5), rgba(5, 1, 8, 0.85)), url('../imagem/dharma-chakra-biblioteca.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* --- NAVEGAÇÃO SUPERIOR --- */
+        .top-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 25px 40px;
+            background: linear-gradient(to bottom, rgba(5,1,8,0.9), transparent);
+            z-index: 100;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .back-link {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid var(--borda-ouro);
+            padding: 10px 20px;
+            background: rgba(5,1,8,0.5);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: var(--ouro);
+            color: var(--preto-absolute);
+            border-color: var(--ouro);
+        }
+
+        /*Container de Layout para centralizar a aba sobreposta */
+        .main-wrapper {
+            padding: 140px 20px 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Película flutuante sobreposta com tom roxo, fade suave e desfoque de fundo */
+        .article-container {
+            max-width: 900px;
+            width: 100%;
+            background: linear-gradient(180deg, rgba(29, 13, 53, 0.75) 0%, rgba(5, 1, 8, 0.92) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--borda-ouro);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            padding: 60px 8%;
+            border-radius: 4px;
+        }
+
+        /* ================= Cabeçalho do Artigo ================= */
+        .article-header {
+            text-align: center;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+            margin-bottom: 40px;
+        }
+
+        .article-category {
+            font-family: var(--fonte-ui);
+            color: var(--ouro);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .article-header h1 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+            font-weight: 400;
+            margin-bottom: 25px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+
+        .article-subtitle {
+            font-size: 1.2rem;
+            font-style: italic;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--cinza-texto);
+            opacity: 0.95;
+        }
+
+        /* ================= Corpo do Texto ================= */
+        .article-content {
+            font-size: 1.15rem;
+            text-align: justify;
+        }
+
+        /* Letra Capitular */
+        .article-content > p:first-of-type::first-letter {
+            font-family: var(--fonte-titulo);
+            float: left;
+            font-size: 5rem;
+            line-height: 0.8;
+            margin-right: 15px;
+            margin-top: 5px;
+            color: var(--ouro);
+        }
+
+        .article-content p { margin-bottom: 30px; }
+
+        /* Links internos/externos estilizados para SEO */
+        .article-content a {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--ouro);
+            transition: color 0.3s;
+        }
+        
+        .article-content a:hover {
+            color: var(--ouro);
+            border-bottom-style: solid;
+        }
+
+        .article-content h2 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: 1.8rem;
+            margin: 60px 0 30px;
+            border-bottom: 1px solid var(--borda-ouro);
+            padding-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .article-content h3 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.3rem;
+            margin: 45px 0 20px;
+            letter-spacing: 1px;
+        }
+
+        /* Citação / Destaque Místico */
+        blockquote {
+            margin: 50px auto;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(29, 13, 53, 0.5), rgba(5, 1, 8, 0.8));
+            border: 1px solid var(--borda-ouro);
+            border-left: 4px solid var(--ouro);
+            font-family: var(--fonte-titulo);
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--ouro-claro);
+            text-align: center;
+            position: relative;
+        }
+
+        /* Listas Estilizadas */
+        .rite-list {
+            list-style: none;
+            margin-bottom: 30px;
+            padding-left: 10px;
+        }
+
+        .rite-list li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .rite-list li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--ouro);
+        }
+
+        /* Estilização específica para as referências acadêmicas */
+        .refs-list {
+            list-style: none;
+            padding-left: 0;
+            font-size: 1rem;
+            opacity: 0.85;
+        }
+        
+        .refs-list li {
+            margin-bottom: 10px;
+            border-left: 2px solid var(--ouro);
+            padding-left: 15px;
+        }
+
+        /* Botão de Call to Action (CTA) */
+        .cta-container {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px dashed var(--borda-ouro);
+        }
+
+        .cta-button {
+            display: inline-block;
+            font-family: var(--fonte-ui);
+            color: var(--preto-absolute);
+            background-color: var(--ouro-claro);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            padding: 15px 35px;
+            border: 1px solid var(--ouro);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            border-bottom: 1px solid var(--ouro) !important; /* Sobrescrever estilo de link padrão */
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--ouro-claro);
+            box-shadow: 0 4px 20px rgba(197, 160, 89, 0.2);
+        }
+
+        /* ================= Rodapé ================= */
+        footer {
+            text-align: center;
+            padding: 80px 20px;
+            border-top: 1px solid var(--borda-ouro);
+            background-color: #030105;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-logo {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        .footer-text {
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--ouro-claro);
+            opacity: 0.7;
+        }
+
+        /* ================= Responsividade ================= */
+        @media (max-width: 768px) {
+            .main-wrapper { padding-top: 100px; padding-left: 10px; padding-right: 10px; }
+            .article-container { padding: 40px 5%; }
+            .article-header h1 { font-size: 2.4rem; }
+            .article-content { font-size: 1.05rem; }
+            .top-nav { padding: 15px 20px; }
+            blockquote { font-size: 1.2rem; padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="../acervo-feminino/acervo-feminino.html" class="back-link">← Acervo</a>
+    </nav>
+
+    <div class="main-wrapper">
+        <article class="article-container">
+            
+            <header class="article-header">
+                <span class="article-category">Contemporâneo • Delicadeza e Precisão</span>
+                <h1>Gara: A Poesia das Linhas Finas no Cenário Coreano</h1>
+                <p class="article-subtitle">A Poesia das Linhas Finas e o Minimalismo de Alta Precisão</p>
+            </header>
+
+            <main class="article-content">
+
+                <p>Dando continuidade à nossa Biblioteca de Histórias Ancestrais, viajamos agora para a Coreia do Sul para conhecer o trabalho etéreo de Gara. Se Nissaco nos trouxe a força do preto sólido e da geometria, Gara nos apresenta o ápice da delicadeza: o Fine Line botânico e ilustrativo. </p>
+               </p> Seu trabalho é uma revolução na forma como enxergamos a tatuagem, transformando a pele em uma tela de seda onde flores e pássaros parecem flutuar com uma leveza quase impossível para uma agulha.</p>
+
+                <p>Na vanguarda de um movimento que prioriza a sutileza e a precisão microscópica, a sul-coreana Gara consolidou-se como uma das maiores referências mundiais em Fine Line. Seu estilo é a representação máxima da sofisticação contemporânea, onde a tatuagem deixa de ser uma marca ostensiva para se tornar um detalhe de joalheria orgânica.</p> 
+               </p> Com uma habilidade técnica que desafia os limites do visível, Gara cria composições botânicas e animais que capturam a fragilidade da natureza com uma perfeição estonteante. Neste artigo, analisaremos como Gara transformou o traço fino em uma ferramenta de empoderamento discreto e elegância atemporal para a mulher moderna.</p>
+
+                <h2>A Técnica da Agulha Única: O Minimalismo de Alta Precisão</h2>
+                
+                <p>O grande diferencial técnico de Gara é o domínio do Single Needle (agulha única), uma técnica que exige um controle de mão e respiração absoluto. Diferente das tatuagens tradicionais, o trabalho de Gara foca na variação mínima de pressão para criar sombras que parecem fumaça e linhas que se assemelham a fios de cabelo.</p>
+
+                <p>Suas composições botânicas não utilizam contornos pretos pesados; em vez disso, ela constrói as formas através de texturas e pontos minúsculos que dão tridimensionalidade à peça. A durabilidade do Fine Line de Gara é o resultado de uma aplicação profunda o suficiente para permanecer, mas delicada o bastante para não expandir na derme. Se você deseja explorar como outras correntes artísticas dialogam com a precisão técnica e o impacto sutil na pele, leia o nosso artigo sobre <a href="../revista-mistica/tatuagem-ritualistica.html">Tatuagem Ritualística e a simbologia dos traços</a>.</p>
+
+                <p>Nos inspiramos nessa busca pela "beleza nos detalhes", onde a qualidade técnica é medida pela sutileza e pela harmonia entre a arte e a pele. Gara provou que o impacto de uma tatuagem não vem do seu tamanho ou cor vibrante, mas da precisão emocional que cada linha carrega consigo.</p>
+
+                <blockquote>
+                    "Seu trabalho é uma revolução na forma como enxergamos a tatuagem, transformando a pele em uma tela de seda onde flores e pássaros parecem flutuar com uma leveza quase impossível para uma agulha."
+                </blockquote>
+
+                <h2>Botânica de Luxo: A Natureza como Adorno Orgânico</h2>
+                
+                <p>A estética de Gara é uma celebração da flora e fauna asiática, reinterpretada através de uma lente ilustrativa que beira o realismo botânico de livros antigos. Seus desenhos de peônias, cerejeiras e pássaros são projetados para "abraçar" partes delicadas do corpo, como as clavículas, as costelas e os pulsos.</p>
+
+                <p>Consistente com um perfil de público que valoriza a elegância sutil, essa escolha estética ressoa com mulheres que buscam uma tatuagem que complemente sua elegância natural sem dominar visualmente sua imagem. As peças de Gara são frequentemente descritas como "tatuagens invisíveis até que se olhe de perto", criando um senso de intimidade e segredo compartilhado.</p>
+
+                <p>Ela elevou o status da tatuagem botânica ao tratá-la como uma extensão da moda de luxo, onde a exclusividade está no detalhe que apenas os olhos atentos percebem. Sua influência na Coreia e no mundo abreu portas para uma nova geração de mulheres que veem a tatuagem como um amuleto de autoconfiança e sofisticação.</p>
+
+                <h2>O Legado de Gara e o Estilo Coreano Contemporâneo</h2>
+                
+                <p>Gara é uma das protagonistas do "K-Tattoo style", um movimento que desafiou as leis restritivas da Coreia do Sul para brilhar globalmente através das redes sociais. Ela ensinou ao mercado que existe uma demanda crescente por artes que priorizam a estética "clean" e a curadoria artística refinada.</p>
+
+                <p>Gara representa a evolução da tatuadora como uma ilustradora de elite, onde o portfólio é uma galeria de sensibilidade e técnica apurada. Acreditamos que, ao escolher um estilo Fine Line, a mulher está optando por uma marca que envelhece com a mesma graça de um clássico. Ao observar uma obra de Gara, somos lembrados de que a força mais poderosa pode residir na mais absoluta delicadeza do traço. Sua contribuição para a tatuagem feminina é a garantia de que a nossa pele pode ser o suporte para uma arte que é, ao mesmo tempo, moderna, luxuosa e profundamente poética.</p>
+
+                <h2>Referências Bibliográficas</h2>
+                <ul class="refs-list">
+                    <li><b>JUNG, Hyunsun.</b> <i>The K-Tattoo Movement: From Underground to Global Phenomenon.</i> Seoul Art Press, 2022.</li>
+                    <li><b>HEILMANN, Maria.</b> <i>Modern Illustrative Tattoos: The New Fine Line.</i> Schiffer, 2020.</li>
+                    <li><b>KOPP, J. C.</b> <i>Single Needle Mastery: Techniques of the Masters.</i> Fine Arts Press, 2021.</li>
+                    <li><b>ZAMPIERI, Michela.</b> <i>Botany and Art: The Influence of Nature in Contemporary Tattooing.</i> International Design Journal, 2024.</li>
+                </ul>
+
+                <div class="cta-container">
+                    <h3>Celebre sua Essência com a Leveza do Fine Line</h3>
+                    <p style="margin-top: 15px; margin-bottom: 30px; font-size: 1.1rem;">
+                        Inspiradas pela sofisticação botânica e pela precisão técnica de Gara, convidamos você a descobrir como o traço fino pode exaltar a sua beleza natural. Somos especialistas em transformar elementos da natureza em joias permanentes em sua pele, com toda a delicadeza que sua história pede. Venha viver a experiência de uma tatuagem que é pura poesia visual.
+                    </p>
+                    <a href="../portal-esoteric.html" class="cta-button">Agende seu Projeto Fine Line Botânico</a>
+                </div>
+
+            </main>
+        </article>
+    </div>
+
+    <footer>
+        <div class="footer-logo">Studio Esoteric Ink</div>
+        <div class="footer-text">A pele é o pergaminho • O símbolo é a chave</div>
+    </footer>
+
+</body>
+</html>

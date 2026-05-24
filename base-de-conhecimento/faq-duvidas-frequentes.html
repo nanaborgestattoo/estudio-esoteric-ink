@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Oráculo da Tattoo | Studio Esoteric Ink</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1a0b2e;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--preto);
+            color: var(--branco-off);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            background-image: radial-gradient(circle at top right, #1d0d35 0%, transparent 40%);
+            overflow-x: hidden;
+        }
+
+        nav {
+            padding: 20px;
+            border-bottom: 1px solid var(--borda-ouro);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 1, 8, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: var(--ouro);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .ritual-hero {
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(5, 1, 8, 0.6), var(--preto)), 
+                        url('../imagem/faq_duvidas-frequentes.webp') center/cover;
+            padding: 20px;
+            border-bottom: 1px solid var(--ouro);
+        }
+
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--ouro);
+            padding: 5px 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--ouro);
+            margin-bottom: 20px;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .ritual-hero h1 {
+            font-family: var(--fonte-titulo);
+            font-size: clamp(1.8rem, 5vw, 3.2rem);
+            color: var(--branco-off);
+            max-width: 1000px;
+            line-height: 1.1;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+        }
+
+        .content-wrap {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .intro-text {
+            text-align: center;
+            margin-bottom: 60px;
+            font-style: italic;
+            color: var(--cinza-texto);
+        }
+
+        h2.eixo-titulo {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.4rem;
+            margin: 50px 0 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-left: 3px solid var(--ouro);
+            padding-left: 15px;
+        }
+
+        /* Estrutura do Acordeão */
+        details {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--borda-ouro);
+            margin-bottom: 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        details[open] {
+            border-color: var(--ouro);
+            background: rgba(42, 8, 69, 0.15);
+        }
+
+        summary {
+            padding: 20px 25px;
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        summary::-webkit-details-marker { display: none; }
+
+        summary::after {
+            content: '✦';
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        details[open] summary::after {
+            transform: rotate(45deg);
+            color: var(--branco-off);
+        }
+
+        .answer-content {
+            padding: 0 25px 25px 25px;
+            color: var(--branco-off);
+            font-size: 1.05rem;
+            border-top: 1px solid rgba(197, 160, 89, 0.1);
+            padding-top: 20px;
+        }
+
+        .answer-content ul {
+            margin-top: 15px;
+            list-style: none;
+        }
+
+        .answer-content li {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .answer-content li::before {
+            content: "•";
+            color: var(--ouro);
+            position: absolute;
+            left: 0;
+        }
+
+        .nota-tecnica {
+            margin-top: 80px;
+            padding: 30px;
+            border: 1px dashed var(--borda-ouro);
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--cinza-texto);
+        }
+
+        footer {
+            padding: 60px 20px;
+            font-family: 'Montserrat', sans-serif;
+            border-top: 1px solid rgba(197, 160, 89, 0.1);
+            background: var(--preto);
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: #666;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            summary { font-size: 1rem; padding: 15px; }
+            .ritual-hero h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="./pag-guia-de-cuidados-e-biosseguranca.html">← Retornar</a>
+        <div style="font-family: 'Cinzel'; color: var(--ouro); letter-spacing: 3px; font-size: 0.9rem;">Studio Esoteric Ink</div>
+    </nav>
+
+    <header class="ritual-hero">
+        <div class="badge">Conhecimento & Transparência</div>
+        <h1>O Oráculo da Tattoo</h1>
+    </header>
+
+    <div class="content-wrap">
+        
+        <div class="intro-text">
+            <p>Este FAQ foi reorganizado estrategicamente para guiar o cliente desde a curiosidade inicial até a preservação vitalícia da arte. A estrutura segue uma ordem cronológica e de interesse biológico, utilizando uma linguagem que une acolhimento e autoridade técnica.</p>
+        </div>
+
+        <h2 class="eixo-titulo">Eixo 1: A Biologia da Dor e o Estado Emocional</h2>
+        
+        <details>
+            <summary>Quais fatores influenciam na percepção da dor?</summary>
+            <div class="answer-content">
+                <p>A dor é uma experiência multifatorial. Os principais influenciadores são:</p>
+                <ul>
+                    <li><strong>Topografia Corporal:</strong> Áreas com menos tecido adiposo e maior densidade nervosa (costelas, pés, esterno) tendem a ser mais sensíveis.</li>
+                    <li><strong>Estado Emocional:</strong> O cortisol (hormônio do estresse) pode baixar o limiar de dor. Estar descansada e relaxada é técnico, não apenas psicológico.</li>
+                    <li><strong>Tipo de Agulha:</strong> Agulhas de traço (Liner) concentram a pressão em um ponto menor, sendo sentidas como um "arranhão preciso", enquanto agulhas de preenchimento (Magnum) distribuem a pressão, gerando uma sensação de vibração ou ardor.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Com o que a dor da tatuagem se parece?</summary>
+            <div class="answer-content">
+                <p>As sensações variam: alguns descrevem como um arranhão constante, outros como uma picada de vespa ou um choque leve. Curiosamente, em áreas com menos terminações nervosas, há quem sinta apenas uma vibração ou até cócegas.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Menstruação aumenta a dor?</summary>
+            <div class="answer-content">
+                <p>Sim. Durante o período menstrual, a queda de estrogênio deixa as terminações nervosas mais aguçadas. Se você tem baixa tolerância, evite a semana do ciclo.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Quem tem Fibromialgia pode se tatuar?</summary>
+            <div class="answer-content">
+                <p>Sim, desde que esteja em um período de estabilidade. Nosso pilar de atendimento inclui o mapeamento de pontos de gatilho para evitar áreas de dor crônica. Recomendamos sessões curtas para não sobrecarregar o sistema nervoso central, respeitando o limite biológico do cliente.</p>
+            </div>
+        </details>
+
+        <h2 class="eixo-titulo">Eixo 2: Preparação, Decisão e Segurança Médica</h2>
+
+        <details>
+            <summary>Posso tomar analgésico ou usar pomada anestésica por conta própria?</summary>
+            <div class="answer-content">
+                <p>Não recomendamos. Analgésicos como a Aspirina ou Ibuprofeno têm efeitos anticoagulantes, facilitando sangramentos que "lavam" o pigmento para fora da pele. Já anestésicos tópicos sem supervisão podem causar isquemia tecidual ou deixar a pele com aspecto de "couro", prejudicando a precisão do traço e a cicatrização.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Quem toma remédio controlado pode tatuar?</summary>
+            <div class="answer-content">
+                <p>Na maioria dos casos, sim. No entanto, substâncias que afetam a coagulação ou imunossupressores exigem atenção. Medicações para acne severa (como a Isotretinoína/Roacutan) impedem a tatuagem, pois alteram radicalmente a regeneração da derme. O ideal é aguardar 6 meses após o fim do tratamento.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>A tinta pode entrar no sangue?</summary>
+            <div class="answer-content">
+                <p>O pigmento é depositado na derme, uma camada estável. Embora partículas ínfimas possam ser transportadas pelo sistema linfático para os linfonodos (onde ficam retidas), a tinta não "corre" livremente pela corrente sanguínea. Usamos pigmentos regulamentados e biocompatíveis para garantir a segurança desse processo.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Qual o melhor anti-inflamatório para o pós-tattoo?</summary>
+            <div class="answer-content">
+                <p>A tatuagem exige uma "inflamação controlada" para cicatrizar. O uso de anti-inflamatórios sistêmicos (comprimidos) só deve ocorrer sob prescrição médica se houver complicações. Para o cuidado padrão, o "anti-inflamatório" é a alimentação correta e o uso de ativos tópicos como o Pantenol.</p>
+            </div>
+        </details>
+
+        <h2 class="eixo-titulo">Eixo 3: O Processo Técnico e a Execução no Estúdio</h2>
+
+        <details>
+            <summary>Posso tatuar sobre cicatrizes ou estrias?</summary>
+            <div class="answer-content">
+                <p>Sim, desde que o tecido esteja "maduro" (esbranquiçado ou de cor clara). Cicatrizes avermelhadas ou roxas indicam vascularização ativa; tatuar sobre elas pode causar queloides ou má fixação da tinta.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>O que acontece se eu me mexer, tossir ou espirrar?</summary>
+            <div class="answer-content">
+                <p>A comunicação verbal é constante. Ao sinal de qualquer espasmo, o afastamento da máquina é instantâneo. A precisão do traço é garantida pelo controle de ritmo da artista.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>É normal sentir tremores ou frio durante a sessão?</summary>
+            <div class="answer-content">
+                <p>Sim, é uma resposta neuroendócrina: descarga de adrenalina seguida de queda de glicose. Por isso, exigimos que o cliente não venha em jejum e traga um lanche (carboidratos/chocolate) para estabilizar o índice glicêmico.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Tatuagem aumenta a imunidade?</summary>
+            <div class="answer-content">
+                <p>Estudos da University of Alabama sugerem que o corpo, ao responder ao "estresse" da tatuagem, pode fortalecer a resposta imunológica (imunoglobulina A), agindo como um "treinamento" para o sistema de defesa, desde que o indivíduo esteja saudável.</p>
+            </div>
+        </details>
+
+        <h2 class="eixo-titulo">Eixo 4: Cicatrização, Estética e Longevidade</h2>
+
+        <details>
+            <summary>Por que a Vaselina foi substituída por hidratantes ativos?</summary>
+            <div class="answer-content">
+                <p>A ciência evoluiu. A vaselina é oclusiva (abafa a pele). Hoje usamos o conceito de Cicatrização em Meio Úmido Controlado com produtos como Cicaplast ou Pantenol, que permitem a troca gasosa da pele enquanto recuperam a barreira cutânea.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Como funciona a tatuagem colorida em pele negra e retinta?</summary>
+            <div class="answer-content">
+                <p>Usamos a Colorimetria Avançada. A pele age como um filtro (Efeito Vitral). Em peles retintas, trabalhamos com saturação máxima e tons "joia" (magenta, azul profundo, ocre) que contrastam harmonicamente com a melanina, desmistificando a ideia de que cor não aparece nesses tons de pele.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Quais os sinais de reação alérgica à tinta?</summary>
+            <div class="answer-content">
+                <p>Embora raras com nossas tintas premium, os sinais são: coceira excessiva após 30 dias, relevo persistente apenas em uma cor específica (comumente o vermelho) ou pequenas bolhas localizadas. Nesses casos, oferecemos suporte total para o manejo dermatológico.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Por que a tattoo parece borrada ou "prateada" após alguns dias?</summary>
+            <div class="answer-content">
+                <p>É a Silver Skin (Pele de Prata). É uma camada fina de pele nova que reflete a luz de forma diferente. A nitidez e o contraste real só retornam após 30 a 60 dias, quando a derme termina de processar o pigmento.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>A tinta pode "estourar" (Blowout)?</summary>
+            <div class="answer-content">
+                <p>O blowout ocorre por erro técnico ao atingir a hipoderme (gordura). No Studio Esoteric Ink, a profundidade é controlada eletronicamente para que o pigmento fique restrito à derme, garantindo traços nítidos.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Posso doar sangue?</summary>
+            <div class="answer-content">
+                <p>No Brasil, o intervalo obrigatório é de 12 meses, por normas de segurança sorológica do Ministério da Saúde, independentemente da qualidade da biossegurança do estúdio.</p>
+            </div>
+        </details>
+
+        <div class="nota-tecnica">
+            <p><strong>Nota Técnica:</strong> Este FAQ é atualizado conforme os novos estudos da dermatologia estética e diretrizes de biossegurança. O Studio Esoteric Ink se compromete com a transparência e a autoridade científica em cada etapa da sua jornada.</p>
+        </div>
+
+    </div>
+
+    <footer> 
+        <p>BIOSSEGURANÇA E ÉTICA • STUDIO ESOTERIC INK • 2026</p>
+        <p style="opacity: 0.5;">ARTE COM RESPONSABILIDADE BIOLÓGICA.</p>
+    </footer>
+
+</body>
+</html>

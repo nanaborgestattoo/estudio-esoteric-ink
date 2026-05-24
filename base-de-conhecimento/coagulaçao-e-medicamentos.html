@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemofilia e Anticoagulantes na Tatuagem | Studio Esoteric Ink</title>
+    <meta name="description" content="Guia de segurança e cuidados especializados para tatuagem em clientes com hemofilia ou em uso de anticoagulantes. Curadoria técnica: Nana Borges.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1a0b2e;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--preto);
+            color: var(--branco-off);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            background-image: radial-gradient(circle at top right, #1d0d35 0%, transparent 40%);
+            overflow-x: hidden;
+        }
+
+        nav {
+            padding: 20px;
+            border-bottom: 1px solid var(--borda-ouro);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 1, 8, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: var(--ouro);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--branco-off); }
+
+        .hero-section {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(5, 1, 8, 0.7), var(--preto)), 
+                        url('../imagem/coagulaçao_medicamentosa_nana_borges_tattoo_studio_esoteric_ink.webp') center/cover;
+            padding: 20px;
+            border-bottom: 1px solid var(--ouro);
+        }
+
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--ouro);
+            padding: 5px 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--ouro);
+            margin-bottom: 20px;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .hero-section h1 {
+            font-family: var(--fonte-titulo);
+            font-size: clamp(1.5rem, 4vw, 2.8rem);
+            color: var(--branco-off);
+            max-width: 1100px;
+            line-height: 1.2;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+        }
+
+        .content-wrap {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 80px 30px;
+        }
+
+        .dropcap::first-letter {
+            font-family: var(--fonte-titulo);
+            font-size: 5rem;
+            float: left;
+            line-height: 0.8;
+            padding-right: 15px;
+            color: var(--ouro);
+        }
+
+        h2 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.6rem;
+            margin: 60px 0 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, var(--ouro), transparent);
+        }
+
+        h3 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: 1.1rem;
+            margin: 0 0 20px 0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        p { margin-bottom: 25px; font-size: 1.1rem; color: var(--branco-off); opacity: 0.95; text-align: justify; }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--borda-ouro);
+            padding: 35px;
+            margin: 40px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            background: rgba(197, 160, 89, 0.05);
+            border-color: var(--ouro);
+        }
+
+        .info-card ul { list-style: none; }
+
+        .info-card li {
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 30px;
+            color: var(--branco-off);
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        .info-card li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--ouro);
+            font-size: 1rem;
+        }
+
+        .info-card li strong {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: var(--ouro);
+            margin-bottom: 5px;
+        }
+
+        .cta-section {
+            background: var(--roxo-escuro);
+            border-top: 2px solid var(--ouro);
+            padding: 80px 30px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .btn-whatsapp {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 20px 45px;
+            background: transparent;
+            color: var(--ouro);
+            border: 1px solid var(--ouro);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: 0.4s;
+        }
+
+        .btn-whatsapp:hover {
+            background: var(--ouro);
+            color: var(--preto);
+            box-shadow: 0 0 30px rgba(197, 160, 89, 0.4);
+        }
+
+        .references {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(197, 160, 89, 0.2);
+        }
+
+        .references h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--ouro);
+            margin-bottom: 15px;
+        }
+
+        .references p {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        footer {
+            padding: 60px 20px;
+            font-family: 'Montserrat', sans-serif;
+            border-top: 1px solid rgba(197, 160, 89, 0.1);
+            background: var(--preto);
+            text-align: center;
+        }
+
+        footer p {
+            text-align: center;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrap { padding: 50px 20px; }
+            .hero-section h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="./pag-guia-de-cuidados-e-biosseguranca.html">← Retornar</a>
+        <div style="font-family: 'Cinzel'; color: var(--ouro); letter-spacing: 3px; font-size: 0.9rem;">Studio Esoteric Ink</div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="badge">Biossegurança & Cuidados Especiais</div>
+        <h1>Tatuagem, Hemofilia e Anticoagulantes:<br>Guia de Segurança e Cuidados Especializados</h1>
+    </header>
+
+    <div class="content-wrap">
+        
+        <p class="dropcap">No <strong>Studio Esoteric Ink</strong>, a arte caminha lado a lado com a responsabilidade biológica. Entendemos que cada corpo possui uma fisiologia única e, por isso, estamos preparados para oferecer um atendimento técnico, seguro e acolhedor para clientes que possuem condições específicas de saúde. Se você possui hemofilia ou utiliza medicamentos anticoagulantes, a decisão de tatuar exige planejamento e acompanhamento médico rigoroso sob a curadoria de <strong>Nana Borges</strong>.</p>
+
+        <p>A fluidez do sangue impacta diretamente não apenas a segurança do procedimento, mas também a fixação do pigmento e a cicatrização final. Nossa missão é garantir que seu desejo estético seja realizado sem comprometer sua integridade sistêmica.</p>
+
+        <h2>1. Riscos Fisiológicos e Estéticos</h2>
+        <p>A tatuagem gera microlesões na derme, rompendo vasos capilares. Em um organismo com coagulação padrão, o estancamento é imediato. Em casos específicos, monitoramos os seguintes riscos:</p>
+
+        <div class="info-card">
+            <ul>
+                <li><strong>Sangramento Prolongado:</strong> O excesso de sangue durante a sessão pode "expulsar" o pigmento das células, resultando em uma tatuagem com cores falhadas ou traços pouco definidos.</li>
+                <li><strong>Hematomas (Equimoses):</strong> A formação de manchas roxas ao redor da tatuagem é mais comum devido ao extravasamento sanguíneo, o que pode retardar a regeneração natural do tecido.</li>
+                <li><strong>Risco de Infecção:</strong> Uma cicatrização mais lenta e um ferimento que permanece "aberto" por mais tempo aumentam a janela de exposição a patógenos externos.</li>
+            </ul>
+        </div>
+
+        <h2>2. Protocolo Esoteric de Segurança</h2>
+        <p>Para garantir um resultado premium e seguro, estabelecemos diretrizes fundamentadas em normas internacionais de saúde:</p>
+
+        <div class="info-card">
+            <h3>A. Consulta Hematológica (Obrigatório)</h3>
+            <p style="font-size: 0.95rem;">Antes de agendar sua sessão, consulte seu hematologista. No caso de hemofílicos, pode ser necessária a infusão profilática de fator de coagulação. Para usuários de anticoagulantes, o médico avaliará ajustes na dose — <strong>nunca interrompa a medicação por conta própria.</strong></p>
+
+            <h3>B. Escolha da Técnica</h3>
+            <p style="font-size: 0.95rem;">Priorizamos técnicas menos invasivas, como o <strong>Fine Line</strong> ou <strong>Dotwork</strong> (pontilhismo), que geram menos trauma tecidual do que preenchimentos sólidos (blackwork).</p>
+
+            <h3>C. Teste de Coagulação</h3>
+            <p style="font-size: 0.95rem;">Em casos específicos, solicitamos o exame de <strong>RNI</strong> (Relação Normalizada Internacional) para verificar se os níveis estão seguros para procedimentos invasivos.</p>
+        </div>
+
+        <h2>3. Cuidados Pós-Tatuagem (Aftercare)</h2>
+        <p>O acompanhamento após a sessão deve ser rigoroso para garantir a integridade da arte e a saúde da pele:</p>
+
+        <div class="info-card">
+            <ul>
+                <li><strong>Compressão Local:</strong> O uso de curativo compressivo é mantido pelo tempo indicado para auxiliar na hemostasia inicial (estancamento).</li>
+                <li><strong>Dexpantenol e Hidratação:</strong> Recomendamos produtos como Cicaplast Baume B5, que auxiliam na regeneração sem obstruir os poros, reduzindo o risco de inflamação.</li>
+                <li><strong>Monitoramento 24h:</strong> Caso observe sangramento persistente ou hematomas que se expandem rapidamente, oferecemos suporte direto para orientação de busca médica.</li>
+                <li><strong>Transparência na Anamnese:</strong> Ajustamos a pressão da máquina e o tempo de sessão especificamente para sua condição cutânea.</li>
+            </ul>
+        </div>
+
+        <p style="text-align: center; font-style: italic; color: var(--ouro-claro); margin-top: 40px;">"Sua saúde é nossa prioridade absoluta. A agulha deve ser precisa, mas o cuidado deve ser infinito."</p>
+
+        <section class="references">
+            <h4>Referências Técnicas e Bases de Pesquisa:</h4>
+            <p>• World Federation of Hemophilia (WFH) - Diretrizes para procedimentos invasivos.</p>
+            <p>• National Hemophilia Foundation (NHF) - Protocolos para pacientes com distúrbios de sangramento.</p>
+            <p>• ANVISA - Normas de biossegurança e exigência de anamnese detalhada.</p>
+            <p>• Journal of Clinical Medicine - Estabilidade da anticoagulação em procedimentos dermatológicos.</p>
+        </section>
+
+        <section class="cta-section">
+            <div class="badge" style="border-color: var(--branco-off); color: var(--branco-off);">Consultoria Técnica</div>
+            <h2 style="border: none; justify-content: center;">Vamos planejar sua tatuagem juntos?</h2>
+            <p>Fale diretamente com nossa especialista para alinhar os protocolos médicos ao seu projeto artístico.</p>
+            <a href="../portal-esoteric.html" class="btn-whatsapp">Agendar Avaliação com Nana Borges</a>
+        </section>
+
+    </div>
+
+    <footer> 
+        <p>BIOSSEGURANÇA E ÉTICA • STUDIO ESOTERIC INK • 2026</p>
+        <p style="opacity: 0.5;">ARTE COM RESPONSABILIDADE BIOLÓGICA E RIGOR CIENTÍFICO.</p>
+    </footer>
+
+</body>
+</html>

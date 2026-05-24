@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tatuagem de Dragão Chinês: Ancestralidade e Magia | Studio Esoteric Ink</title>
+    
+    <!-- Pré-conexão e Fontes do DNA Esoteric Ink -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta e Variáveis Oficiais ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1d0d35;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        /* ================= Reset & Setup ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--preto);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            /* Brilho sutil do roxo escuro no fundo preto ritual */
+            background-image: radial-gradient(circle at top right, var(--roxo-escuro) 0%, transparent 40%);
+        }
+
+        /* --- NAVEGAÇÃO DE TOPO --- */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 25px 5%;
+            display: flex;
+            justify-content: flex-end; /* Mantido na direita para os dois botões */
+            align-items: center;
+            gap: 15px;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(5,1,8,0.9), transparent);
+        }
+
+        .btn-voltar {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            border: 1px solid var(--borda-ouro);
+            padding: 10px 20px;
+            background: rgba(5,1,8,0.5);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-voltar:hover { 
+            color: var(--preto); 
+            background: var(--ouro);
+            border-color: var(--ouro);
+        }
+
+        /* ================= LAYOUT SPLIT-SCREEN ================= */
+        .about-container { display: flex; min-height: 100vh; }
+
+        /* Lado Esquerdo (Imagem Fixa) */
+        .about-image-side {
+            width: 40%;
+            position: fixed;
+            height: 100vh;
+            /* Caminho original preservado */
+            background-image: url('../imagem/tattoo_dragão_chines_panturrilha_nana_borges_tattoo_studio_esoteric_ink (copiar 1a).webp');
+            background-size: cover;
+            background-position: center;
+            border-right: 1px solid var(--borda-ouro);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            /* Gradiente escuro mesclando a imagem com a parte de texto */
+            background: linear-gradient(to right, rgba(5,1,8,0.1), var(--preto));
+        }
+
+        /* Lado Direito (Texto) */
+        .about-text-side {
+            width: 60%;
+            margin-left: 40%;
+            padding: 120px 5% 80px 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .text-wrapper {
+            max-width: 850px;
+            width: 100%;
+        }
+
+        /* --- COMPONENTES DO DNA VISUAL --- */
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--ouro);
+            padding: 5px 15px;
+            font-family: var(--fonte-ui);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--ouro);
+            background: rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .title {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            line-height: 1.2;
+            margin-bottom: 40px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+        }
+
+        /* H2 com linhas douradas */
+        .section-header {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: 2rem;
+            margin: 60px 0 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            text-align: center;
+        }
+        
+        .section-header::before, .section-header::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--ouro), transparent);
+        }
+
+        /* Letra Capitular (Dropcap) */
+        .dropcap::first-letter {
+            font-family: var(--fonte-titulo);
+            font-size: 5rem;
+            color: var(--ouro);
+            float: left;
+            line-height: 0.8;
+            padding-right: 15px;
+            padding-top: 5px;
+            text-shadow: 0 2px 10px rgba(197, 160, 89, 0.2);
+        }
+
+        .text-content p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .text-content strong {
+            color: var(--branco-off);
+            font-family: var(--fonte-ui);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* Estilização de Links no texto */
+        .text-content a {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            border-bottom: 1px solid var(--borda-ouro);
+            transition: 0.3s;
+        }
+
+        .text-content a:hover {
+            color: var(--ouro);
+            border-bottom-color: var(--ouro);
+        }
+
+        /* Estilização das listas principais */
+        .text-content ul {
+            margin-bottom: 30px;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .text-content > ul > li {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .text-content > ul > li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--ouro);
+            font-size: 0.9rem;
+            top: 2px;
+        }
+
+        /* Info-Card / Highlight Box */
+        .highlight-box {
+            background-color: rgba(197, 160, 89, 0.03);
+            border: 1px solid var(--borda-ouro);
+            border-left: 3px solid var(--ouro);
+            padding: 40px;
+            margin: 50px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+        
+        .highlight-box p {
+            font-style: italic;
+            color: var(--ouro-claro);
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        /* ================= Seção de Referências Adaptada ================= */
+        .ref-section {
+            margin: 60px 0;
+            padding: 40px 30px;
+            background-color: rgba(29, 13, 53, 0.3); /* Mistura do roxo escuro */
+            border: 1px solid var(--borda-ouro);
+            backdrop-filter: blur(5px);
+        }
+
+        .ref-group { margin-bottom: 35px; }
+        .ref-group:last-child { margin-bottom: 0; }
+
+        .ref-group-title {
+            font-family: var(--fonte-ui);
+            color: var(--ouro-claro);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            border-left: 2px solid var(--ouro);
+            padding-left: 15px;
+        }
+
+        .ref-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .ref-list li {
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .ref-list li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--ouro);
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .signature {
+            margin-top: 60px;
+            font-family: var(--fonte-titulo);
+            font-size: 2rem;
+            color: var(--ouro);
+            text-align: right;
+            border-top: 1px solid var(--borda-ouro);
+            padding-top: 20px;
+        }
+
+        /* ================= RESPONSIVIDADE ================= */
+        @media (max-width: 992px) {
+            .about-container { flex-direction: column; }
+            .about-image-side { 
+                position: relative; 
+                width: 100%; 
+                height: 50vh; 
+                border-right: none;
+                border-bottom: 1px solid var(--borda-ouro);
+            }
+            .image-overlay {
+                background: linear-gradient(to bottom, rgba(5,1,8,0.1), var(--preto));
+            }
+            .about-text-side { 
+                width: 100%; 
+                margin-left: 0; 
+                padding: 60px 5%; 
+            }
+            .section-header::before, .section-header::after { display: none; }
+            .section-header { text-align: left; justify-content: flex-start; }
+            .highlight-box { padding: 30px 20px; }
+            .ref-section { padding: 30px 20px; }
+            .top-nav { background: rgba(5,1,8,0.95); padding: 15px 5%; justify-content: center; }
+            .btn-voltar { font-size: 0.65rem; padding: 8px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegação Superior Padrão Studio -->
+    <nav class="top-nav">
+        
+        <a href="./revista-mistica-blog.html" class="btn-voltar">Retornar ao Diário</a>
+    </nav>
+
+    <main class="about-container">
+        
+        <!-- Lado Esquerdo: Imagem -->
+        <div class="about-image-side">
+            <div class="image-overlay"></div>
+        </div>
+
+        <!-- Lado Direito: Conteúdo de Leitura -->
+        <div class="about-text-side">
+            <div class="text-wrapper">
+                
+                <div class="badge">Animal de Poder e Nobreza Espiritual</div>
+                <h1 class="title">Tatuagem de Dragão Chinês: <br>Ancestralidade, Magia e a Técnica do Traço</h1>
+                
+                <div class="text-content">
+                    <!-- Parágrafo com Dropcap -->
+                    <p class="dropcap">A tatuagem de dragão chinês como animal de poder representa uma das conexões mais profundas entre o mundo físico e as dimensões espirituais elevadas. Valorizamos a simbologia desse ser que transcende a mitologia para se tornar um emblema de força, proteção e sabedoria milenar.</p>
+
+                    <h2 class="section-header">1. O Arquétipo Oriental</h2>
+                    <p>Diferente dos dragões ocidentais, muitas vezes estigmatizados como feras a serem domadas, o dragão chinês (Lóng) é uma entidade benfazeja e sagrada. Ele é o senhor das águas, das chuvas e dos ventos, simbolizando a energia Yang — o princípio ativo, solar, masculino e criativo do universo.</p>
+                    <p>Ancorar essa tatuagem significa atrair a capacidade de transformação constante. O dragão transita livremente entre os oceanos e o cosmos, ensinando o portador a navegar por diferentes estados de consciência. Historicamente, o povo chinês considera-se "descendente do dragão", o que confere à arte um peso de nobreza espiritual e linhagem ancestral.</p>
+
+                    <h2 class="section-header">2. O Dragão como Divindade</h2>
+                    <p>Dentro do misticismo contemporâneo, o dragão é reverenciado como uma divindade primordial:</p>
+                    <ul>
+                        <li><strong>Magia Draconiana:</strong> Tradições que trabalham com dragões como guardiões de portais e detentores do fogo da criação.</li>
+                        <li><strong>Assentamento na Pele:</strong> A tatuagem pode atuar como um "assentamento" energético, permitindo que o magista mantenha a conexão com a divindade em qualquer lugar.</li>
+                        <li><strong>Engenheiros do Universo:</strong> Correntes esotéricas sugerem que dragões são seres interestelares e interdimensionais que viajam através de fluxos energéticos cósmicos, representando o próprio fluxo do Tao.</li>
+                    </ul>
+
+                    <h2 class="section-header">3. Características de Poder</h2>
+                    <p>Como totem, o dragão oferece a "medicina da visão panorâmica". Ele sintetiza a força de vários animais:</p>
+                    <ul>
+                        <li><strong>Escamas de Peixe:</strong> Proteção e fluidez emocional.</li>
+                        <li><strong>Chifres de Cervo:</strong> Conexão espiritual e longevidade.</li>
+                        <li><strong>Garras de Águia:</strong> Precisão, foco e autoridade.</li>
+                    </ul>
+                    <p>Segundo as crenças, ele auxilia no domínio dos elementos e atrai prosperidade, atuando como um filtro que afasta energias de baixa vibração através da sua presença imponente.</p>
+
+                    <h2 class="section-header">4. Análise Técnica e Minimalista</h2>
+                    <p>A execução desta arte foca na estética clássica oriental sob uma ótica contemporânea:</p>
+                    <p><strong>Técnica de Aplicação:</strong> A peça utiliza o estilo Linework ou traço simples, sem sombreamento excessivo  ou preenchimentos pesados. Isso remete aos antigos pergaminhos de nanquim chineses, onde a força da imagem reside na tensão e fluidez da linha.</p>
+                    <p><strong>Agulhamento e Precisão:</strong> Para garantir a atemporalidade, são utilizadas agulhas de contorno de precisão técnica, permitindo que o corpo serpentino ganhe movimento orgânico conforme a anatomia da perna.</p>
+                    <p><strong>Minimalismo Estrutural:</strong> Ao remover ornamentos complexos, focamos na essência do símbolo. A clareza da linha reflete a clareza mental e o discernimento que o dragão proporciona ao portador.</p>
+
+                    <!-- Seção de Referências Estilizada -->
+                    <div class="ref-section">
+                        <div class="ref-group">
+                            <h3 class="ref-group-title">Referências Bibliográficas (Livros)</h3>
+                            <ul class="ref-list">
+                                <li><strong>BIEDERMANN, Hans. Dicionário de Símbolos. Ed. Pallas:</strong> Análise profunda sobre a simbologia do dragão em diversas culturas.</li>
+                                <li><strong>REID, Daniel. O Tao da Saúde, do Sexo e da Longevidade:</strong> Para entender a energia Yang e o fluxo do Tao.</li>
+                                <li><strong>CONWAY, D.J. Dancing with Dragons:</strong> Obra de referência para Magia Draconiana e rituais com dragões.</li>
+                            </ul>
+                        </div>
+
+                        <div class="ref-group">
+                            <h3 class="ref-group-title">Portais e Conteúdos Digitais</h3>
+                            <ul class="ref-list">
+                                <li><a href="https://www.ancient-origins.net/" target="_blank">Ancient Origins</a>: Artigos acadêmicos sobre artefatos de jade e a evolução do dragão imperial.</li>
+                                <li><a href="https://ipeafro.org.br/" target="_blank">Portal IPEAFRO</a>: Estudos sobre a assimilação de símbolos sagrados e ancestralidade.</li>
+                                <li><a href="https://pt.wikipedia.org/wiki/Dragão_chinês" target="_blank">Wikipedia - Dragão Chinês</a>: Base histórica sólida sobre dinastias.</li>
+                            </ul>
+                        </div>
+
+                        <div class="ref-group">
+                            <h3 class="ref-group-title">Documentários e Materiais Visuais</h3>
+                            <ul class="ref-list">
+                                <li><strong>"China: Revelada" (National Geographic):</strong> Exploração da iconografia imperial na Cidade Proibida.</li>
+                                <li><strong>Série "Mitos e Monstros" (Netflix):</strong> Episódios sobre o imaginário do dragão oriental versus ocidental.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Info-Card com frase de impacto -->
+                    <div class="highlight-box">
+                        <p>"Ao escolher este animal, você atende ao chamado dos antigos para resgatar sua própria nobreza interior. Podemos transformar esse chamado em uma marca eterna de poder."</p>
+                    </div>
+Instagram
+                    <p>Você pode acompanhar o processo de criação de dragões e outras entidades em nosso Instagram<a href="https://www.instagram.com/studioesoteric_/" target="_blank"> @studioesoteric_</a>.</p>
+                </div>
+
+                <!-- Assinatura Estilizada -->
+                <div class="signature">Nana Borges</div>
+                
+            </div>
+        </div>
+    </main>
+</body>
+</html>

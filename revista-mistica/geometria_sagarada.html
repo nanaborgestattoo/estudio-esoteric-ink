@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometria Sagrada na Tatuagem | Studio Esoteric Ink</title>
+    <meta name="description" content="A matemática divina marcada na pele: uma análise sobre o simbolismo, a precisão técnica e a espiritualidade da geometria sagrada na tatuagem.">
+    
+    <!-- DNA Esoteric Ink: Fontes Oficiais -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta e Variáveis Oficiais ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1d0d35;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        /* ================= Reset & Setup ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--preto);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            background-image: radial-gradient(circle at top right, var(--roxo-escuro) 0%, transparent 40%);
+        }
+
+        /* --- NAVEGAÇÃO --- */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(5,1,8,0.95), transparent);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid var(--borda-ouro);
+        }
+
+        .btn-voltar {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-voltar:hover { color: var(--ouro); }
+
+        /* ================= HERO SECTION ================= */
+        .hero-ritual {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(5,1,8,0.4), var(--preto)), 
+                        url('../imagem/geometria_sagrada.webp') center/cover;
+            padding: 0 5%;
+            margin-bottom: 60px;
+        }
+
+        .badge {
+            border: 1px solid var(--ouro);
+            padding: 5px 15px;
+            font-family: var(--fonte-ui);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--ouro);
+            background: rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-title {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            line-height: 1.1;
+            max-width: 1000px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+        }
+
+        /* ================= CONTEÚDO ================= */
+        .content-wrap {
+            max-width: 850px; /* Regra de Conforto DNA */
+            margin: 0 auto;
+            padding: 0 5% 100px 5%;
+        }
+
+        /* H2 com Linhas Douradas */
+        .section-header {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: 1.8rem;
+            margin: 80px 0 40px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            text-align: center;
+        }
+        .section-header::before, .section-header::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--ouro), transparent);
+        }
+
+        h3 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Dropcap */
+        .dropcap::first-letter {
+            font-family: var(--fonte-titulo);
+            font-size: 5rem;
+            color: var(--ouro);
+            float: left;
+            line-height: 0.8;
+            padding-right: 15px;
+            padding-top: 5px;
+        }
+
+        p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            text-align: justify;
+            color: var(--cinza-texto);
+        }
+
+        strong {
+            color: var(--branco-off);
+            font-family: var(--fonte-ui);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* Info-Cards (Highlight Boxes) */
+        .info-box {
+            background-color: rgba(197, 160, 89, 0.03);
+            border: 1px solid var(--borda-ouro);
+            border-left: 3px solid var(--ouro);
+            padding: 35px;
+            margin: 50px 0;
+            backdrop-filter: blur(5px);
+        }
+
+        .info-box strong {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--ouro-claro);
+            text-transform: uppercase;
+        }
+
+        /* CTA Section */
+        .cta-ritual {
+            background: rgba(197, 160, 89, 0.05);
+            border: 1px solid var(--ouro);
+            padding: 60px 40px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .cta-ritual h2 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            margin-bottom: 20px;
+        }
+
+        .btn-ritual {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 18px 40px;
+            border: 1px solid var(--ouro);
+            color: var(--ouro);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            transition: all 0.4s;
+        }
+
+        .btn-ritual:hover {
+            background: var(--ouro);
+            color: var(--preto);
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 20px;
+            border-top: 1px solid var(--borda-ouro);
+            text-align: center;
+        }
+
+        footer p {
+            font-family: var(--fonte-ui);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-bottom: 10px;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .section-header::before, .section-header::after { display: none; }
+            .hero-ritual { height: 50vh; }
+            .info-box { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="./revista-mistica-blog.html" class="btn-voltar">← Retornar ao Início</a>
+    </nav>
+
+    <header class="hero-ritual">
+        <div class="badge">Matemática Divina e Arte</div>
+        <h1 class="hero-title">Geometria Sagrada na Tatuagem:<br>A Harmonia do Cosmos Marcada na Pele</h1>
+    </header>
+
+    <main class="content-wrap">
+        
+        <p class="dropcap">A geometria sagrada na tatuagem representa muito mais do que um padrão estético; é a manifestação visual das leis matemáticas que regem o universo. No Studio Esoteric Ink, sob a curadoria de Nana Borges, entendemos que tatuar esses símbolos é um processo de sintonização com a harmonia do cosmos. Através de formas como o Círculo, o Triângulo e os Sólidos Platônicos, conseguimos traduzir conceitos complexos de criação e unidade em arte perene.</p>
+
+        <p>Historicamente, a geometria sagrada é o estudo das proporções e formas que se repetem na natureza, desde a estrutura de uma galáxia até o DNA humano. Símbolos como a Flor da Vida, o Cubo de Metatron e a Proporção Áurea são considerados a <strong>"linguagem da luz"</strong>. Ao transpor esses elementos para a pele, a tatuagem deixa de ser um adorno para se tornar um portal de consciência e equilíbrio.</p>
+
+        <div class="info-box">
+            <strong>Arquitetura Universal</strong>
+            <p>Para os interessados em aprofundar-se na história dessas formas, vale consultar o conceito de Geometria Sagrada, que detalha como civilizações antigas utilizavam esses cálculos para construir templos e monumentos sagrados. No nosso estúdio, aplicamos esse rigor matemático para garantir que cada linha da sua tatuagem seja uma extensão perfeita da sua própria energia vital.</p>
+        </div>
+
+        <p>A geometria sagrada na tatuagem funciona como um amuleto de alinhamento. Quando o design é executado com simetria e precisão, ele ajuda a estabilizar o campo energético do portador. Por isso, o planejamento desses projetos no Studio Esoteric Ink é feito de forma personalizada, analisando a anatomia do cliente para que a geometria flua organicamente com os músculos e movimentos do corpo.</p>
+
+        <h2 class="section-header">Técnicas Cirúrgicas</h2>
+        <h3>A Engenharia da Precisão</h3>
+        
+        <p>Para obter o resultado impecável que a geometria sagrada na tatuagem exige, dominamos técnicas de alta precisão como o pontilhismo (dotwork) e o dotspeed. O pontilhismo permite criar degradês e texturas profundas através de milhares de pontos individuais, garantindo um sombreamento suave que não satura a pele de forma agressiva.</p>
+
+        <div class="info-box">
+            <strong>Especificações Técnicas</strong>
+            <p>O domínio dos traços finos (fineline) é indispensável para que o desenho não perca a definição com o passar dos anos. Usamos agulhas específicas, como as RL (Round Liner) de baixíssima espessura (como 03RL ou 05RL), que permitem uma aplicação cirúrgica. A técnica de aplicação deve ser firme e uniforme; qualquer variação na profundidade da agulha pode comprometer a simetria matemática.</p>
+        </div>
+
+        <p>Dominar essas técnicas requer delicadeza e conhecimento sobre a resistência da derme e a física da pigmentação. No Studio Esoteric Ink, a aplicação é feita com um foco meditativo, garantindo que o resultado final seja tão delicado e bem executado quanto uma obra dessa magnitude exige. Se você busca um fechamento de braço ou perna que utilize essas leis matemáticas, nós oferecemos consultoria completa para criar um design que envolva seu corpo em harmonia absoluta.</p>
+
+        <h2 class="section-header">O Caminho do Fechamento</h2>
+        <h3>Frequência e Proteção</h3>
+
+        <p>Para aqueles que sentem o chamado para projetos maiores, como um fechamento total baseado em geometria sagrada, desenvolvemos composições que utilizam padrões fractais e mandalas de grande escala. O fechamento atua como uma armadura espiritual, onde os padrões repetitivos criam uma barreira de frequência elevada ao redor do portador. É uma jornada de várias sessões que exige paciência, técnica e uma conexão profunda entre tatuador e cliente.</p>
+
+        <p>Ao final de cada sessão, é comum percebermos a transformação não apenas na pele, mas na postura e na energia de quem carrega esses símbolos. A geometria sagrada na tatuagem é o encontro final entre a ciência e o espírito, entre o traço humano e o desenho divino. Convidamos você a conhecer nosso <a href="https://www.instagram.com/studioesoteric_/" style="color: var(--ouro-claro); text-decoration: underline;">Instagram @studioesoteric_</a> para visualizar nossos trabalhos, videos, informações e atualizações.</p>
+
+        <p style="font-style: italic; text-align: center; margin-top: 40px; color: var(--ouro-claro); font-size: 1.2rem;">"Tatuar geometria sagrada é um ato de respeito à arquitetura do universo. Seja em um detalhe delicado no pulso ou em um fechamento monumental, minha intenção é entregar uma obra que vibre em ressonância com a perfeição natural."</p>
+
+        <div style="margin-top: 60px; font-size: 0.85rem; color: var(--cinza-texto); border-top: 1px solid var(--borda-ouro); padding-top: 20px;">
+            <p><strong>Referências Técnicas e Filosóficas:</strong></p>
+            <p>• Geometria Analítica e Proporção Áurea aplicadas à Dermatografia.</p>
+            <p>• Tratados de Geometria Sagrada e Simbolismo Universal.</p>
+            <p>• Protocolos de Biossegurança em Técnicas de Pontilhismo de Alta Precisão.</p>
+        </div>
+
+        <section class="cta-ritual">
+            <h2>Gostaria que eu iniciasse o planejamento do seu projeto de fechamento?</h2>
+            <p>Realize uma análise da geometria que melhor se adapta à sua anatomia e intenção espiritual.</p>
+            <a href="../portal-esoteric.html" class="btn-ritual">Acessar Portal de Intenções</a>
+        </section>
+
+    </main>
+
+    <footer> 
+        <p>MATEMÁTICA DIVINA E ARTE • STUDIO ESOTERIC INK • 2026</p>
+        <p style="opacity: 0.5;">ARQUITETURA DA PELE E HARMONIA COSMOLÓGICA.</p>
+    </footer>
+
+</body>
+</html>

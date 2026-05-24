@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tatuagem de Medusa: O Arquétipo da Proteção | Studio Esoteric Ink</title>
+    
+    <!-- DNA de Fontes Esoteric Ink -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta Oficial Esoteric Ink ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1d0d35;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        /* ================= Reset & Setup ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--preto);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            background-image: radial-gradient(circle at top right, var(--roxo-escuro) 0%, transparent 40%);
+        }
+
+        /* --- NAVEGAÇÃO --- */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 25px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(5,1,8,0.9), transparent);
+        }
+
+        .nav-links { display: flex; gap: 15px; }
+
+        .btn-voltar {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            border: 1px solid var(--borda-ouro);
+            padding: 10px 20px;
+            background: rgba(5,1,8,0.5);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+        }
+
+        .btn-voltar:hover { 
+            color: var(--preto); 
+            background: var(--ouro);
+            border-color: var(--ouro);
+        }
+
+        /* ================= LAYOUT SPLIT-SCREEN ================= */
+        .about-container { display: flex; min-height: 100vh; }
+
+        .about-image-side {
+            width: 40%;
+            position: fixed;
+            height: 100vh;
+            background-image: url('../imagem/tattoo_medusa_coxa_nana_borges_tattoo_studio_esoteric_ink.webp');
+            background-size: cover;
+            background-position: center;
+            border-right: 1px solid var(--borda-ouro);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to right, rgba(5,1,8,0.1), var(--preto));
+        }
+
+        .about-text-side {
+            width: 60%;
+            margin-left: 40%;
+            padding: 120px 5% 80px 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .text-wrapper {
+            max-width: 850px;
+            width: 100%;
+        }
+
+        /* ================= COMPONENTES VISUAIS ================= */
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--ouro);
+            padding: 5px 15px;
+            font-family: var(--fonte-ui);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--ouro);
+            background: rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .title {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+            line-height: 1.2;
+            margin-bottom: 40px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+        }
+
+        .section-header {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: 1.8rem;
+            margin: 60px 0 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .section-header::before, .section-header::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--ouro), transparent);
+        }
+
+        .dropcap::first-letter {
+            font-family: var(--fonte-titulo);
+            font-size: 5rem;
+            color: var(--ouro);
+            float: left;
+            line-height: 0.8;
+            padding-right: 15px;
+            padding-top: 5px;
+        }
+
+        .text-content p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .text-content a {
+            color: var(--ouro-claro);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            transition: 0.3s;
+        }
+
+        .text-content a:hover { color: var(--ouro); }
+
+        /* Blocos de Referência e Destaque */
+        .ref-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(29, 13, 53, 0.2);
+            border: 1px solid var(--borda-ouro);
+        }
+
+        .ref-group-title {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .ref-list { list-style: none; }
+        .ref-list li {
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+            padding-bottom: 8px;
+        }
+
+        .highlight-box {
+            background-color: rgba(197, 160, 89, 0.03);
+            border: 1px solid var(--borda-ouro);
+            border-left: 3px solid var(--ouro);
+            padding: 40px;
+            margin: 50px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .highlight-box p {
+            font-style: italic;
+            color: var(--ouro-claro);
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        .signature {
+            margin-top: 60px;
+            font-family: var(--fonte-titulo);
+            font-size: 2rem;
+            color: var(--ouro);
+            text-align: right;
+            border-top: 1px solid var(--borda-ouro);
+            padding-top: 20px;
+        }
+
+        /* ================= RESPONSIVIDADE ================= */
+        @media (max-width: 992px) {
+            .about-container { flex-direction: column; }
+            .about-image-side { position: relative; width: 100%; height: 50vh; border-right: none; border-bottom: 1px solid var(--borda-ouro); }
+            .about-text-side { width: 100%; margin-left: 0; padding: 60px 5%; }
+            .section-header::before, .section-header::after { display: none; }
+            .section-header { text-align: left; justify-content: flex-start; }
+            .title { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="logo-nav"></div>
+        <div class="nav-links">
+            
+            <a href="./revista-mistica-blog.html" class="btn-voltar">Retornar ao Diário</a>
+        </div>
+    </nav>
+
+    <main class="about-container">
+        <div class="about-image-side">
+            <div class="image-overlay"></div>
+        </div>
+
+        <div class="about-text-side">
+            <div class="text-wrapper">
+                
+                <div class="badge">Soberania e Superação Feminina</div>
+                <h1 class="title">O Arquétipo da Proteção: <br>A Força da Medusa</h1>
+                
+                <div class="text-content">
+                    <p class="dropcap">A tatuagem de Medusa tornou-se um dos símbolos mais poderosos da atualidade, carregando consigo milênios de mitologia, dor e, acima de tudo, superação. Compreendemos que marcar o corpo com a face da Górgone vai muito além da estética; é um rito de proteção e um manifesto de soberania feminina.</p>
+
+                    <p>A Medusa não é apenas um monstro da Grécia Antiga, mas uma entidade de defesa que petrifica o mal e guarda os segredos de quem a carrega. Ao escolher este símbolo, a mulher evoca uma força ancestral que transforma o trauma em armadura, garantindo que nenhum olhar invasivo possa ferir sua essência sagrada.</p>
+
+                    <p>A mitologia clássica nos conta que Medusa era uma sacerdotisa de Atena, dotada de uma beleza estonteante, que foi vítima da fúria dos deuses. No entanto, na visão da <strong>bruxaria pagã e do feminismo espiritualista</strong>, essa transformação não é uma maldição, mas uma metamorfose de proteção. Para entender a profundidade das raízes gregas, você pode consultar a história da <a href="https://pt.wikipedia.org/wiki/Medusa" target="_blank">Medusa na Wikipedia</a>.</p>
+
+                    <h2 class="section-header">O Culto e as Sombras</h2>
+                    <p>Dentro da bruxaria pagã contemporânea, Medusa é reverenciada como uma guardiã das fronteiras e uma mestre no <strong>"Trabalho com Sombras"</strong>. Ela não é uma divindade passiva; sua linha de trabalho exige honestidade e a coragem de encarar o que está "petrificado" dentro de nós.</p>
+
+                    <p>As serpentes que coroam sua cabeça estão em constante movimento, captando vibrações e alertando sobre perigos ocultos. No Studio Esoteric Ink, utilizamos a técnica de <strong>Sketch & Blackwork</strong> para dar essa sensação de movimento e vida, onde cada traço reforça a intensidade e o mistério que cercam esta entidade.</p>
+
+                    <h2 class="section-header">Soberania em Traços</h2>
+                    <p>Podemos aprender com a história de Medusa que a resiliência é a chave para a soberania. Se você deseja iniciar seu processo de conexão, convidamos você a acessar nosso <a href="../portal-esoteric.html" target="_blank">Portal de Intenções</a>, onde é o início do processo para a criação da sua Medusa personalizada com base na sua história.</p>
+
+                    <div class="ref-section">
+                        <h3 class="ref-group-title">Referências e Linhagem</h3>
+                        <ul class="ref-list">
+                            <li><strong>"As Deusas e a Mulher" (Jean Shinoda Bolen):</strong> Arquétipos na psicologia.</li>
+                            <li><strong>"O Livro das Sombras" (Scott Cunningham):</strong> Práticas de proteção.</li>
+                            <li><strong>Portal Geledés:</strong> Resistência cultural e o corpo feminino.</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p>"A Medusa nos ensina que podemos ser assustadoramente poderosas e incrivelmente belas ao mesmo tempo. Cada serpente é um sentinela, cada olhar é um limite."</p>
+                    </div>
+
+                    <p>Que a face da Górgone em sua pele seja o escudo que você precisa para caminhar com a cabeça erguida, sabendo que suas serpentes estão sempre vigiando e que seu olhar é soberano sobre sua própria história.</p>
+                </div>
+
+                <div class="signature">Nana Borges</div>
+                
+            </div>
+        </div>
+    </main>
+</body>
+</html>

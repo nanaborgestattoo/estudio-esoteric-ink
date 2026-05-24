@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nana Borges Tattoo - Studio Esoteric Ink</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta e Variáveis Oficiais ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1a0b2e;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+        }
+
+        /* --- RESET BÁSICO --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--preto);
+            color: var(--branco-off);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            /* O fundo radial fica escondido sob o preto absoluto e só aparece nas áreas transparentes */
+            background-image: radial-gradient(circle at top right, #1d0d35 0%, transparent 40%);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- CLASSES UTILITÁRIAS --- */
+        .img-placeholder {
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: all 0.3s ease;
+        }
+
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--ouro);
+            padding: 5px 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--ouro);
+            margin-bottom: 20px;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .dropcap::first-letter {
+            font-family: var(--fonte-titulo);
+            font-size: 4.5rem;
+            float: left;
+            line-height: 0.8;
+            padding-right: 15px;
+            color: var(--ouro);
+        }
+
+        /* --- TÍTULOS PADRÃO (H2 com linhas) --- */
+        .section-title {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 2rem;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .section-title::before, .section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--ouro), transparent);
+        }
+
+        /* --- BOTÕES --- */
+        .btn-action {
+            display: inline-block;
+            padding: 15px 35px;
+            background: rgba(5, 1, 8, 0.8);
+            color: var(--ouro);
+            border: 1px solid var(--ouro);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transition: 0.4s;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-action:hover {
+            background: var(--ouro);
+            color: var(--preto);
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+        }
+
+        /* --- BOTÃO WHATSAPP FLUTUANTE --- */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: rgba(5, 1, 8, 0.9);
+            color: var(--ouro);
+            border: 1px solid var(--ouro);
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .whatsapp-float:hover {
+            background-color: var(--ouro);
+            color: var(--preto);
+            transform: scale(1.1);
+        }
+
+        /* --- BOTÃO CALCULADORA FLUTUANTE --- */
+        .calc-float {
+            position: fixed;
+            width: 85px;
+            height: 85px;
+            bottom: 40px;
+            left: 40px;
+            background-color: rgba(5, 1, 8, 0.9);
+            color: var(--ouro);
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            border: 1px solid var(--ouro);
+            padding: 5px;
+            backdrop-filter: blur(5px);
+        }
+
+        .calc-float:hover {
+            background-color: var(--ouro);
+            color: var(--preto);
+            transform: scale(1.05);
+        }
+
+        .calc-float span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px;
+            /* O gradiente termina em preto absoluto (#000000) para fundir com a próxima seção */
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), #000000), 
+                        url('imagem/foto_nana_bancada_maquininha.webp') center/cover no-repeat;
+        }
+
+        .hero-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        .logo-container {
+            width: 50px;
+            height: 50px;
+        }
+
+        .logo-svg {
+            width: 100%;
+            height: 100%;
+            stroke: var(--ouro);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .search-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            stroke: var(--ouro);
+        }
+
+        .hero-center {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .hero-title {
+            font-family: var(--fonte-titulo);
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: var(--branco-off);
+            text-shadow: 0 4px 15px rgba(0,0,0,0.9);
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            color: var(--ouro-claro);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+        }
+
+        .hero-subtitle::before, .hero-subtitle::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background-color: var(--ouro);
+        }
+
+        .hero-footer {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--cinza-texto);
+            padding-bottom: 20px;
+        }
+
+        /* --- WELCOME SECTION (PRETO ABSOLUTO) --- */
+        .welcome-section {
+            padding: 120px 10%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            background-color: #000000;
+        }
+
+        .welcome-img {
+            height: 600px;
+            width: 100%;
+            background-size: contain;    
+            background-repeat: no-repeat; 
+            background-position: center;  
+            border: none;
+            filter: grayscale(20%) contrast(1.1);
+        }
+
+        .welcome-content h2 {
+            font-family: var(--fonte-titulo);
+            font-size: 2.5rem;
+            color: var(--ouro);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .welcome-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--ouro-claro);
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .welcome-content p {
+            color: var(--branco-off);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            text-align: justify;
+        }
+
+        /* --- TOPICS SECTION (PRETO ABSOLUTO) --- */
+        .topics-section {
+            padding: 100px 10%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            background-color: #000000;
+        }
+
+        .topics-img {
+            height: 600px;
+            width: 100%;
+            background-size: contain;    
+            background-repeat: no-repeat; 
+            background-position: center;  
+            border: none;
+            filter: grayscale(20%) contrast(1.1);
+        }
+
+        .topics-content h2 {
+            font-family: var(--fonte-titulo);
+            font-size: 2rem;
+            color: var(--ouro-claro);
+            margin-bottom: 60px;
+            line-height: 1.4;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .topics-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .topic-link {
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+            text-decoration: none;
+            transition: transform 0.4s ease;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+        }
+
+        .topic-link:hover { transform: translateX(15px); border-bottom-color: var(--ouro); }
+
+        .topic-number {
+            color: var(--ouro);
+            font-family: var(--fonte-titulo);
+            font-size: 2.5rem;
+            line-height: 1;
+        }
+
+        .topic-text {
+            color: var(--branco-off);
+            font-family: var(--fonte-corpo);
+            font-size: 1.2rem;
+            padding-top: 5px;
+            transition: color 0.3s;
+        }
+
+        .topic-link:hover .topic-text { color: var(--ouro-claro); }
+
+        /* --- PORTALS SECTION (COM FADE) --- */
+        .portals-section {
+            padding: 120px 10%;
+            text-align: center;
+            /* Inicia preto, fica transparente no meio para revelar o fundo radial, e volta a ficar preto */
+            background: linear-gradient(to bottom, #000000 0%, transparent 20%, transparent 80%, #000000 100%);
+        }
+
+        .portals-header p {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--ouro-claro);
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+        }
+
+        .portals-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .portal-card {
+            position: relative;
+            height: 480px;
+            overflow: hidden;
+            border-radius: 2px;
+            text-decoration: none;
+            display: flex;
+            align-items: flex-end;
+            border: 1px solid var(--borda-ouro);
+            transition: border-color 0.4s ease, transform 0.4s ease;
+        }
+
+        .portal-card:hover {
+            border-color: var(--ouro);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15);
+        }
+
+        .portal-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.8s ease;
+            z-index: 1;
+            filter: grayscale(30%);
+        }
+
+        .portal-card:hover .portal-bg {
+            transform: scale(1.08); 
+            filter: grayscale(0%);
+        }
+
+        .portal-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(5,1,8,1) 0%, rgba(5,1,8,0.7) 50%, transparent 100%);
+            z-index: 2;
+        }
+
+        .portal-content {
+            position: relative;
+            z-index: 3;
+            padding: 40px 30px;
+            text-align: left;
+            width: 100%;
+        }
+
+        .portal-tag {
+            color: var(--ouro);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .portal-content h3 {
+            font-family: var(--fonte-titulo);
+            font-size: 1.8rem;
+            color: var(--branco-off);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .portal-content p {
+            color: var(--cinza-texto);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .portal-btn {
+            color: var(--ouro-claro);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .portal-btn::after {
+            content: '→';
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .portal-card:hover .portal-btn { color: var(--branco-off); }
+        .portal-card:hover .portal-btn::after { transform: translateX(5px); }
+
+        /* --- GALLERY SECTION (PRETO ABSOLUTO) --- */
+        .gallery-section {
+            padding: 100px 10% 150px 10%;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 40px;
+            background-color: #000000;
+        }
+
+        .gallery-title-btn {
+            grid-column: 1 / -1;
+            display: inline-block;
+            width: fit-content;
+            font-family: var(--fonte-titulo);
+            font-size: 3rem;
+            color: var(--ouro);
+            text-decoration: none;
+            margin-bottom: 40px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .gallery-title-btn:hover {
+            color: var(--branco-off);
+            transform: translateX(10px);
+        }
+
+        .thumbnails-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            height: 0;
+            min-height: 100%;
+            overflow-y: auto;
+            padding-right: 15px;
+        }
+
+        .thumbnails-container::-webkit-scrollbar { width: 4px; }
+        .thumbnails-container::-webkit-scrollbar-track { background: rgba(0,0,0,0.5); }
+        .thumbnails-container::-webkit-scrollbar-thumb { background: var(--ouro); border-radius: 10px; }
+
+        .thumbnail {
+            width: 100%;
+            height: 160px;
+            flex-shrink: 0;
+            cursor: pointer;
+            overflow: hidden;
+            background-size: cover; 
+            border: 1px solid var(--borda-ouro);
+            transition: border-color 0.3s;
+        }
+
+        .thumbnail:hover { border-color: var(--ouro); }
+
+        .thumb-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(5, 1, 8, 0.85);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .thumbnail:hover .thumb-overlay { opacity: 1; }
+
+        .thumb-overlay h4 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .thumb-overlay p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--branco-off);
+        }
+
+        .main-gallery-img {
+            height: auto; 
+            width: 100%;
+            aspect-ratio: 3 / 4; 
+            border: none; /* Borda dourada removida */
+            background-size: contain; 
+            transition: background-image 0.5s ease-in-out;
+            margin: 0 auto; 
+        }
+
+        /* --- REVIEWS SECTION (FUNDO ORIGINAL DA PÁGINA) --- */
+        .reviews-section {
+            padding: 120px 10%;
+            text-align: center;
+            background-color: transparent; /* Revela o fundo roxo padrão do body */
+            border-top: 1px solid var(--borda-ouro);
+        }
+
+        .reviews-header p {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--ouro-claro);
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .carousel-container {
+            overflow: hidden;
+            width: 100%;
+            padding: 20px 0;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 30px;
+            transition: transform 0.5s ease-in-out;
+            will-change: transform;
+        }
+
+        .review-card {
+            flex: 0 0 calc(33.333% - 20px);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--borda-ouro);
+            border-radius: 2px;
+            padding: 40px 30px;
+            text-align: left;
+            transition: border-color 0.4s ease, transform 0.4s ease;
+            box-sizing: border-box;
+        }
+
+        .review-card:hover {
+            border-color: var(--ouro);
+            transform: translateY(-5px);
+            background: rgba(197, 160, 89, 0.05);
+        }
+
+        .stars {
+            color: var(--ouro);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .review-text {
+            color: var(--cinza-texto);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-top: 1px solid rgba(197, 160, 89, 0.2);
+            padding-top: 20px;
+        }
+
+        .author-initial {
+            width: 40px;
+            height: 40px;
+            background-color: transparent;
+            border: 1px solid var(--ouro);
+            color: var(--ouro);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--fonte-titulo);
+            font-size: 1.2rem;
+        }
+
+        .author-name {
+            color: var(--branco-off);
+            font-family: var(--fonte-titulo);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .carousel-btn {
+            background: none;
+            border: none;
+            color: var(--ouro);
+            font-size: 2.5rem;
+            cursor: pointer;
+            padding: 10px;
+            transition: color 0.3s ease, transform 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            color: var(--branco-off);
+            transform: scale(1.2);
+        }
+
+        /* --- EXTRAS CAROUSEL SECTION (NOVA SESSÃO) --- */
+        .extras-section {
+            padding: 100px 10%;
+            text-align: center;
+            background-color: #000000; /* Alterna o ritmo voltando para o preto */
+            border-top: 1px solid var(--borda-ouro);
+        }
+
+        .extras-header p {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--ouro-claro);
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+        }
+
+        .extras-carousel-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .extras-carousel-container {
+            overflow: hidden;
+            width: 100%;
+            padding: 20px 0;
+        }
+
+        .extras-track {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.5s ease-in-out;
+            will-change: transform;
+        }
+
+        .extra-card {
+            flex: 0 0 calc(25% - 15px); /* 4 cards visíveis no desktop */
+            height: 350px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+            text-decoration: none;
+            display: flex;
+            align-items: flex-end;
+            border: 1px solid var(--borda-ouro);
+            transition: border-color 0.4s ease, transform 0.4s ease;
+            box-sizing: border-box;
+        }
+
+        .extra-card:hover {
+            border-color: var(--ouro);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15);
+        }
+
+        .extra-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.8s ease;
+            z-index: 1;
+            filter: grayscale(40%) contrast(1.1);
+        }
+
+        .extra-card:hover .extra-bg {
+            transform: scale(1.08); 
+            filter: grayscale(0%);
+        }
+
+        .extra-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(5,1,8,0.95) 0%, rgba(5,1,8,0.3) 60%, transparent 100%);
+            z-index: 2;
+        }
+
+        .extra-content {
+            position: relative;
+            z-index: 3;
+            padding: 25px 20px;
+            text-align: left;
+            width: 100%;
+        }
+
+        .extra-content h4 {
+            font-family: var(--fonte-titulo);
+            font-size: 1.3rem;
+            color: var(--branco-off);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .extra-btn {
+            color: var(--ouro-claro);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .extra-btn::after {
+            content: '→';
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .extra-card:hover .extra-btn { color: var(--branco-off); }
+        .extra-card:hover .extra-btn::after { transform: translateX(5px); }
+
+        /* Responsividade unificada */
+        @media (max-width: 1200px) {
+            .extra-card { flex: 0 0 calc(33.333% - 13.33px); }
+        }
+
+        @media (max-width: 1024px) {
+            .review-card { flex: 0 0 calc(50% - 15px); }
+            .welcome-section, .topics-section { grid-template-columns: 1fr; }
+            .portals-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .extra-card { flex: 0 0 calc(50% - 10px); }
+        }
+
+        @media (max-width: 600px) {
+            .review-card { flex: 0 0 100%; }
+            .extra-card { flex: 0 0 100%; }
+            .gallery-section { grid-template-columns: 1fr; }
+            .thumbnails-container { height: 200px; flex-direction: row; overflow-x: auto; overflow-y: hidden; }
+            .thumbnail { width: 150px; height: 100%; }
+        }
+
+        /* --- FOOTER (FUNDO ORIGINAL DA PÁGINA) --- */
+        .site-footer {
+            background-color: transparent; /* Revela o fundo roxo padrão do body */
+            padding: 60px 10% 40px;
+            text-align: center;
+            border-top: 1px solid var(--borda-ouro);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-logo {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        .footer-logo svg {
+            width: 100%;
+            height: 100%;
+            stroke: var(--ouro);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .footer-disclaimer {
+            color: var(--cinza-texto);
+            font-size: 0.85rem;
+            max-width: 700px;
+            line-height: 1.8;
+            font-family: var(--fonte-corpo);
+        }
+
+        .footer-disclaimer strong {
+            color: var(--ouro-claro);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: var(--ouro);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--branco-off);
+        }
+
+        .footer-copy {
+            margin-top: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            color: #666;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BOTÕES FLUTUANTES -->
+    <a href="./calculadora.html" class="calc-float">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+            <line x1="8" y1="6" x2="16" y2="6"></line>
+            <line x1="16" y1="14" x2="16" y2="18"></line>
+            <path d="M8 10h.01"></path>
+            <path d="M12 10h.01"></path>
+            <path d="M16 10h.01"></path>
+            <path d="M8 14h.01"></path>
+            <path d="M12 14h.01"></path>
+            <path d="M8 18h.01"></path>
+            <path d="M12 18h.01"></path>
+        </svg>
+        <span>Orçamento<br>Automático</span>
+    </a>
+
+    <a href="https://wa.link/3ij5uv" class="whatsapp-float" target="_blank">
+        <svg width="35" height="35" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.438 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <header class="hero-header">
+            <div class="logo-container">
+                
+                    <circle cx="50" cy="50" r="45" />
+                    <polygon points="50,5 79,90 4,38 96,38 21,90" />
+                </svg>
+            </div>
+            
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+        </header>
+
+        <div class="hero-center">
+            <h1 class="hero-title">Nana Borges Tattoo</h1>
+
+            <div class="hero-subtitle">Studio Esoteric Ink</div>
+            <a href="./portal-esoteric.html" class="btn-action">Portal de Intenções</a>
+        </div>
+
+        <div class="hero-footer">São Paulo - SP</div>
+    </section>
+
+    <!-- WELCOME SECTION -->
+    <section class="welcome-section">
+        <div class="img-placeholder welcome-img" style="background-image: url('imagem/tattoo_bode_old_school_coxa_nana_borges_tattoo_studio_esoteric_ink.webp');"></div>
+        <div class="welcome-content">
+            <div class="badge">Comece Por Aqui</div>
+            <h2>Manifesto Studio Esoteric Ink</h2>
+            <p class="dropcap">Seja bem-vinda(e/o) ao nosso Templo de Intenção e Portal de conhecimentos, Studio Esoteric Ink. Nós compreendemos que a tatuagem transcende a estética; ela é um ritual de materialização e um procedimento dermatológico de alta complexidade. Aqui, a geometria sagrada e a força de símbolos ancestrais fundem-se ao rigor da Histologia Dérmica.</p>
+            <a href="./manifesto.html" class="btn-action">continue lendo</a>
+        </div>
+    </section>
+
+    <!-- TOPICS SECTION -->
+    <section class="topics-section">
+        <div class="img-placeholder topics-img" style="background-image: url('imagem/foto_nana_bancada_retrato.webp');"></div>
+        <div class="topics-content">
+            <h2>"Navegue por nossa base de conhecimentos e descubra o nosso compromisso técnico e artístico".</h2>
+            <ul class="topics-list">
+                <li>
+                    <a href="./base-de-conhecimento/sobre-a-artista.html" class="topic-link">
+                        <span class="topic-number">01</span>
+                        <span class="topic-text">Sobre a Artista</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./base-de-conhecimento/pag-guia-de-cuidados-e-biosseguranca.html" class="topic-link">
+                        <span class="topic-number">02</span>
+                        <span class="topic-text">Guia de Cuidados e Biossegurança</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./base-de-conhecimento/contatos.html" class="topic-link">
+                        <span class="topic-number">03</span>
+                        <span class="topic-text">Contatos, Redes e Localização</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- PORTALS SECTION -->
+    <section class="portals-section">
+        <div class="portals-header">
+            <h2 class="section-title">Portais de Conhecimento Ancestral</h2>
+            <p>Aprofunde-se nos mistérios da arte na pele</p>
+        </div>
+
+        <div class="portals-grid">
+            
+            <a href="./revista-mistica/revista-mistica-blog.html" class="portal-card">
+                <div class="portal-bg" style="background-image: url('imagem/1revista.mistica.webp');"></div>
+                <div class="portal-overlay"></div>
+                <div class="portal-content">
+                    <span class="portal-tag">Blog Cerimonial</span>
+                    <h3>Revista Mística</h3>
+                    <p>Artigos aprofundados sobre a modificação corporal. A intersecção entre a alta precisão técnica e a tatuagem como ferramenta de ancoragem e manifestação.</p>
+                    <span class="portal-btn">Explorar</span>
+                </div>
+            </a>
+
+            <a href="./biblioteca-do-oculto/biblioteca-do-oculto.html" class="portal-card">
+                <div class="portal-bg" style="background-image: url('imagem/1biblioteca_mistica.webp');"></div>
+                <div class="portal-overlay"></div>
+                <div class="portal-content">
+                    <span class="portal-tag">Índice Simbólico A-Z</span>
+                    <h3>Biblioteca Mística</h3>
+                    <p>Um compêndio esotérico para os significados. Estudo decodificado de arquétipos, entidades e geometrias sagradas para fundamentação das artes na pele.</p>
+                    <span class="portal-btn">Acessar</span>
+                </div>
+            </a>
+
+            <a href="./acervo-feminino/acervo-feminino.html" class="portal-card">
+                <div class="portal-bg" style="background-image: url('imagem/imagem_matriarcado_da_agulha_nana_borges_studio_esoteric_ink.webp');"></div>
+                <div class="portal-overlay"></div>
+                <div class="portal-content">
+                    <span class="portal-tag">Linhagem Ancestral</span>
+                    <h3>Matriarcas da Tattoo</h3>
+                    <p>Acervo documental histórico celebrando a presença feminina na arte da tatuagem, desde as sacerdotisas primitivas às mestras contemporâneas.</p>
+                    <span class="portal-btn">Conhecer</span>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section id="galeria" class="gallery-section">
+        <a href="./galeria-completa.html" class="gallery-title-btn">Galeria</a>
+
+        <div class="thumbnails-container">
+            
+            <div class="img-placeholder thumbnail" style="background-image: url('imagem/tattoo_polvo_na_coxa_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="changeMainImage('imagem/tattoo_polvo_na_coxa_nana_borges_tattoo_studio_esoteric_ink.webp')">
+                <div class="thumb-overlay"><h4>Polvo 40 cm na Coxa</h4><p>Ver Arte</p></div>
+            </div>
+
+            <div class="img-placeholder thumbnail" style="background-image: url('imagem/tattoo_tridentes_exu_pomga_gira_antebraços_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="changeMainImage('imagem/tattoo_tridentes_exu_pomga_gira_antebraços_nana_borges_tattoo_studio_esoteric_ink.webp')">
+                <div class="thumb-overlay"><h4>Exu/Pomba Gira no Antebraço</h4><p>Ver Arte</p></div>
+            </div>
+
+            <div class="img-placeholder thumbnail" style="background-image: url('imagem/tattoo_sak_yant_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="changeMainImage('imagem/tattoo_sak_yant_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp')">
+                <div class="thumb-overlay"><h4>Sak Yant no Antebraço</h4><p>Ver Arte</p></div>
+            </div>
+
+            <div class="img-placeholder thumbnail" style="background-image: url('imagem/tattoo_onça_coxa_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="changeMainImage('imagem/tattoo_onça_coxa_nana_borges_tattoo_studio_esoteric_ink.webp')">
+                <div class="thumb-overlay"><h4>Onça na Coxa</h4><p>Ver Arte</p></div>
+            </div>
+
+            <div class="img-placeholder thumbnail" style="background-image: url('imagem/tattoo_abstrata_cobertura_fundo_preto_braço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="changeMainImage('imagem/tattoo_abstrata_cobertura_fundo_preto_braço_nana_borges_tattoo_studio_esoteric_ink.webp')">
+                <div class="thumb-overlay">
+                    <h4>Arte Abstrata</h4>
+                    <p>Ver Arte</p>
+                </div>
+            </div>
+            
+            <div class="img-placeholder thumbnail" style="background-image: url('imagem/tattoo_a_deusa_do_sol_panturrilha_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="changeMainImage('imagem/tattoo_a_deusa_do_sol_panturrilha_nana_borges_tattoo_studio_esoteric_ink.webp')">
+                <div class="thumb-overlay">
+                    <h4>Sacerdotiza do Sol</h4>
+                    <p>Ver Arte</p>
+                </div>
+            </div>
+            
+            <div class="img-placeholder thumbnail" style="background-image: url('imagem/tattoo_abelhinha_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="changeMainImage('imagem/tattoo_abelhinha_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp')">
+                <div class="thumb-overlay">
+                    <h4>Abelha</h4>
+                    <p>Ver Arte</p>
+                </div>
+            </div>
+            
+            <div class="img-placeholder thumbnail" style="background-image: url('imagem/tattoo_adinkras_braço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="changeMainImage('imagem/tattoo_adinkras_braço_nana_borges_tattoo_studio_esoteric_ink.webp')">
+                <div class="thumb-overlay">
+                    <h4>Adinkras-Sankofa</h4>
+                    <p>Ver Arte</p>
+                </div>
+            </div>
+            
+            <div class="img-placeholder thumbnail" style="background-image: url('imagem/tattoo_astronauta_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="changeMainImage('imagem/tattoo_astronauta_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp')">
+                <div class="thumb-overlay">
+                    <h4>Astronauta</h4>
+                    <p>Ver Arte</p>
+                </div>
+            </div>
+            
+            <div class="img-placeholder thumbnail" style="background-image: url('imagem/tattoo_besouro_na_coxa_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="changeMainImage('imagem/tattoo_besouro_na_coxa_nana_borges_tattoo_studio_esoteric_ink.webp')">
+                <div class="thumb-overlay">
+                    <h4>Besouro na Coxa</h4>
+                    <p>Ver Arte</p>
+                </div>
+            </div>
+            
+            <div class="img-placeholder thumbnail" style="background-image: url('imagem/tattoo_bode_old_school_coxa_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="changeMainImage('imagem/tattoo_bode_old_school_coxa_nana_borges_tattoo_studio_esoteric_ink.webp')">
+                <div class="thumb-overlay">
+                    <h4>Bode Old School 25cm</h4>
+                    <p>Ver Arte</p>
+                </div>
+            </div>
+            
+            <div class="img-placeholder thumbnail" style="background-image: url('imagem/tattoo_colorida_planta_de_poder_lavanda_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="changeMainImage('imagem/tattoo_colorida_planta_de_poder_lavanda_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp')">
+                <div class="thumb-overlay">
+                    <h4>Lavanda Colorida</h4>
+                    <p>Ver Arte</p>
+                </div>
+            </div>
+            
+            <div class="img-placeholder thumbnail" style="background-image: url('imagem/tattoo_cyber_mulher_coxa_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="changeMainImage('imagem/tattoo_cyber_mulher_coxa_nana_borges_tattoo_studio_esoteric_ink.webp')">
+                <div class="thumb-overlay">
+                    <h4>Cyber Mulher</h4>
+                    <p>Ver Arte</p>
+                </div>
+            </div>
+
+            <div class="img-placeholder thumbnail" style="background-color: rgba(5,1,8,0.8); border: 1px solid var(--ouro);" onclick="window.location.href='./galeria-completa.html'">
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; height: 100%;">
+                    <span style="font-size: 2.5rem; color: var(--ouro); margin-bottom: 5px; font-weight: 300;">+</span>
+                    <h4 style="font-family: 'Montserrat', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--branco-off); text-align: center; margin: 0 10px;">Ver Galeria<br>Completa</h4>
+                </div>
+            </div>
+
+        </div>
+        
+        <div id="main-gallery-display" class="img-placeholder main-gallery-img" style="background-image: url('imagem/tattoo_polvo_na_coxa_nana_borges_tattoo_studio_esoteric_ink.webp');"></div>
+    </section>
+
+    <!-- REVIEWS SECTION -->
+    <section class="reviews-section">
+        <div class="reviews-header">
+            <h2 class="section-title">Experiências Compartilhadas</h2>
+            <p>Avaliações Reais no Google</p>
+        </div>
+
+        <div class="carousel-wrapper">
+            <button class="carousel-btn" id="prev-btn">&#10094;</button>
+            
+            <div class="carousel-container">
+                <div class="carousel-track" id="carousel-track">
+                    
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Melhor tatuadora do mundo, tenho várias tattoos dela e todas tem ótima cicatrização além do ambiente ser limpo e organizado, sempre atende dentro dos horários e os traços dela são perfeitos!"</p>
+                        <div class="review-author">
+                            <div class="author-initial">T</div>
+                            <span class="author-name">Tabata Estevo.</span>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Ambiente muito confortável, muito higiênico e agradável. A tatuadora é uma pessoa muito agradável e simpática, e o seu trabalho é impecável! Não consigo mais tatuar com outras pessoas depois de conhecer o trabalho da Nana. Recomendo pra qualquer pessoa, de olhos fechados."</p>
+                        <div class="review-author">
+                            <div class="author-initial">D</div>
+                            <span class="author-name">Daniel Cormino.</span>
+                        </div>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Nunca havia tatuado com mulher antes, minha primeira experiência foi maravilhosa, traços finos com precisão, mão leve, quase sem dor! Uma profissional compromissada e eficiente no que faz, e o preço muito acessível! Só este ano foram 4 tatuagens com ela, e logo muito mais outras virão!"</p>
+                        <div class="review-author">
+                            <div class="author-initial">E</div>
+                            <span class="author-name">Elisabete Sacramento.</span>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Sem palavras para o Profissionalismo da Nana! Tudo perfeito, tudo muuuuito melhor que o combinado! A Boa espiritualidade inunda o estúdio e a arte dela! Super Recomendo e não vejo a hora receber mais uma arte preciosa dessa Queridíssima! 😘 #FICAADICA "</p>
+                        <div class="review-author">
+                            <div class="author-initial">J</div>
+                            <span class="author-name">Juliano Barbosa.</span>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Nossa! Sem palavras para os trabalhos do studio... Se tornou é meu local oficial para fazer tattoos, espero o tempo que for na agenda para fazer tatto com essa bruxa maravilhosa. Olha que tenho fobia de agulhas hahahah "</p>
+                        <div class="review-author">
+                            <div class="author-initial">S</div>
+                            <span class="author-name">Savio.</span>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Melhor estúdio esotérico de todos, a tatuadora é a melhor, a mão dela super leve as tintas ficaram super pigmentadas, o único perigo é se viciar e querer ir todos os meses!"</p>
+                        <div class="review-author">
+                            <div class="author-initial">I</div>
+                            <span class="author-name">Im Celeste.</span>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"A melhor tatuadora da região, super talentosa, profissional, atenciosa, e tem um excelente atendimento! Além de ser um ser humano excepcional ❤️ grande Nana, vcs não vão se arrepender em escolher essa mulher incrível pra fazer uma bela tattoo!"</p>
+                        <div class="review-author">
+                            <div class="author-initial">G</div>
+                            <span class="author-name">Gustavo.</span>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Tatuadora muito boa, o traço é fino e perfeito para o tipo de tatuagem que eu queria, além de ter a mão leve, parece que as tatuagens nem doem "</p>
+                        <div class="review-author">
+                            <div class="author-initial">K</div>
+                            <span class="author-name">King Panda.</span>
+                        </div>
+                    </div>
+                   
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Profissional maravilhosa, trabalho lindooooo e o ambiente incrível 💜 "</p>
+                        <div class="review-author">
+                            <div class="author-initial">G</div>
+                            <span class="author-name">Gabriela Luciano.</span>
+                        </div>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Eu amo o trabalho do Studio Esoteric, já fiz 4 tatuagens lá e tô com a próxima agendada. Nana é muito talentosa, tem uma mão bem levinha e desenhos incríveis. Recomendo demais! "</p>
+                        <div class="review-author">
+                            <div class="author-initial">C</div>
+                            <span class="author-name">Camila Pazini.</span>
+                        </div>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"A melhor de todaaaas, simplesmente perfeita, eu amooo ♥️♥️"</p>
+                        <div class="review-author">
+                            <div class="author-initial">L</div>
+                            <span class="author-name">Luana Araújo.</span>
+                        </div>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Nossa, amei as tatuagens, trabalho incrível, atenção e respeito sem igual, não vejo a hora de marcar a próxima."</p>
+                        <div class="review-author">
+                            <div class="author-initial">N</div>
+                            <span class="author-name">Natureza Filosofica.</span>
+                        </div>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Foi incrível, um excelente atendimento, mãos leves e um trabalho magnifico."</p>
+                        <div class="review-author">
+                            <div class="author-initial">B</div>
+                            <span class="author-name">Brenda Pereira.</span>
+                        </div>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Estudio maravilhoso e bem aconchegante e cheio de magia"</p>
+                        <div class="review-author">
+                            <div class="author-initial">K</div>
+                            <span class="author-name">Kikim.</span>
+                        </div>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Atendimento maravilhoso. Sou fã de carteirinha 😍😍"</p>
+                        <div class="review-author">
+                            <div class="author-initial">G</div>
+                            <span class="author-name">Gabriela Nascimento.</span>
+                        </div>
+                    </div>
+                    
+                </div> <!-- Fim Track -->
+            </div> <!-- Fim Container -->
+
+            <button class="carousel-btn" id="next-btn">&#10095;</button>
+        </div> <!-- Fim Wrapper -->
+
+        <!-- BOTÃO DO GOOGLE -->
+        <div style="margin-top: 50px;">
+            <a href="https://g.page/r/CTRSCm8zCQ_aEBM/review" target="_blank" class="btn-action" style="display: inline-flex; align-items: center; gap: 10px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
+                Ver todas as avaliações no Google
+            </a>
+        </div>
+    </section>
+
+    <!-- EXTRAS CAROUSEL SECTION (NOVA SESSÃO INSERIDA AQUI) -->
+    <section class="extras-section">
+        <div class="extras-header">
+            <h2 class="section-title">PARCERIAS E COLLABS</h2>
+            <p>Explore Marcas Autênticas e Profissionais </p>
+        </div>
+
+        <div class="extras-carousel-wrapper">
+            <button class="carousel-btn" id="extras-prev">&#10094;</button>
+            
+            <div class="extras-carousel-container">
+                <div class="extras-track" id="extras-track">
+                    
+                    <!-- Bloco 1 -->
+                    <a href="./para-colaboradores.html" class="extra-card">
+                        <div class="extra-bg" style="background-image: url('./imagem/anuncie-aqui-retrato.png'); background-color: #1d0d35;"></div>
+                        <div class="extra-overlay"></div>
+                        <div class="extra-content">
+                            <h4>Conheça nossos planos</h4>
+                            <span class="extra-btn">Acessar</span>
+                        </div>
+                    </a>
+
+                    <!-- Bloco 2 -->
+                    <a href="./parceria-harbolita.html" class="extra-card">
+                        <div class="extra-bg" style="background-image: url('./imagem/harbolita-capa.webp'); background-color: #1d0d35;"></div>
+                        <div class="extra-overlay"></div>
+                        <div class="extra-content">
+                            <h4>-harbolita-</h4>
+                            <span class="extra-btn">Conhecer</span>
+                        </div>
+                    </a>
+
+                    <!-- Bloco 3 -->
+                    <a href="./para-colaboradores.html" class="extra-card">
+                        <div class="extra-bg" style="background-image: url('./imagem/anuncie-aqui-retrato.png'); background-color: #1d0d35;"></div>
+                        <div class="extra-overlay"></div>
+                        <div class="extra-content">
+                            <h4>Parcerias e Collabs</h4>
+                            <span class="extra-btn">Acessar</span>
+                        </div>
+                    </a>
+
+                    <!-- Bloco 4 -->
+                    <a href="./para-colaboradores.html" class="extra-card">
+                        <div class="extra-bg" style="background-image: url('./imagem/anuncie-aqui-retrato.png'); background-color: #1d0d35;"></div>
+                        <div class="extra-overlay"></div>
+                        <div class="extra-content">
+                            <h4>Parcerias e Collabs</h4>
+                            <span class="extra-btn">Conhecer</span>
+                        </div>
+                    </a>
+
+                    <!-- Bloco 5 -->
+                    <a href="./para-colaboradores.html" class="extra-card">
+                        <div class="extra-bg" style="background-image: url('./imagem/anuncie-aqui-retrato.png'); background-color: #1d0d35;"></div>
+                        <div class="extra-overlay"></div>
+                        <div class="extra-content">
+                            <h4>Parcerias e Collabs</h4>
+                            <span class="extra-btn">Explorar</span>
+                        </div>
+                    </a>
+
+                    <!-- Bloco 6 -->
+                    <a href="./para-colaboradores.html" class="extra-card">
+                        <div class="extra-bg" style="background-image: url('./imagem/anuncie-aqui-retrato.png'); background-color: #1d0d35;"></div>
+                        <div class="extra-overlay"></div>
+                        <div class="extra-content">
+                            <h4>Parcerias e Collabs</h4>
+                            <span class="extra-btn">Acessar</span>
+                        </div>
+                    </a>
+
+                    <!-- Bloco 7 -->
+                    <a href="./para-colaboradores.html" class="extra-card">
+                        <div class="extra-bg" style="background-image: url('./imagem/anuncie-aqui-retrato.png'); background-color: #1d0d35;"></div>
+                        <div class="extra-overlay"></div>
+                        <div class="extra-content">
+                            <h4>Parcerias e Collabs</h4>
+                            <span class="extra-btn">Assistir</span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+            <button class="carousel-btn" id="extras-next">&#10095;</button>
+        </div>
+    </section>
+
+    <!-- SCRIPTS -->
+    <script>
+        function changeMainImage(imageSrc) {
+            const mainDisplay = document.getElementById('main-gallery-display');
+            mainDisplay.style.backgroundImage = `url('${imageSrc}')`;
+        }
+
+        // ==========================================
+        // Lógica do Carrossel de Avaliações
+        // ==========================================
+        const track = document.getElementById('carousel-track');
+        const cards = document.querySelectorAll('.review-card');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            if(cards.length === 0) return;
+            const cardWidth = cards[0].offsetWidth + 30; 
+            
+            let visibleCards = 3;
+            if(window.innerWidth <= 1024) visibleCards = 2;
+            if(window.innerWidth <= 600) visibleCards = 1;
+
+            const maxIndex = cards.length - visibleCards;
+
+            if (currentIndex > maxIndex) currentIndex = maxIndex;
+            if (currentIndex < 0) currentIndex = 0;
+
+            track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            let visibleCards = window.innerWidth <= 600 ? 1 : (window.innerWidth <= 1024 ? 2 : 3);
+            if (currentIndex < cards.length - visibleCards) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+
+        // ==========================================
+        // Lógica do NOVO Carrossel (Caminhos Adicionais)
+        // ==========================================
+        const trackExtras = document.getElementById('extras-track');
+        const cardsExtras = document.querySelectorAll('.extra-card');
+        const prevBtnExtras = document.getElementById('extras-prev');
+        const nextBtnExtras = document.getElementById('extras-next');
+
+        let currentIndexExtras = 0;
+
+        function updateCarouselExtras() {
+            if(cardsExtras.length === 0) return;
+            const cardWidthExtras = cardsExtras[0].offsetWidth + 20; // 20px é o gap definido no CSS
+            
+            let visibleCardsExtras = 4;
+            if(window.innerWidth <= 1200) visibleCardsExtras = 3;
+            if(window.innerWidth <= 768) visibleCardsExtras = 2;
+            if(window.innerWidth <= 600) visibleCardsExtras = 1;
+
+            const maxIndexExtras = cardsExtras.length - visibleCardsExtras;
+
+            if (currentIndexExtras > maxIndexExtras) currentIndexExtras = maxIndexExtras;
+            if (currentIndexExtras < 0) currentIndexExtras = 0;
+
+            trackExtras.style.transform = `translateX(-${currentIndexExtras * cardWidthExtras}px)`;
+        }
+
+        nextBtnExtras.addEventListener('click', () => {
+            let visibleCardsExtras = 4;
+            if(window.innerWidth <= 1200) visibleCardsExtras = 3;
+            if(window.innerWidth <= 768) visibleCardsExtras = 2;
+            if(window.innerWidth <= 600) visibleCardsExtras = 1;
+
+            if (currentIndexExtras < cardsExtras.length - visibleCardsExtras) {
+                currentIndexExtras++;
+                updateCarouselExtras();
+            }
+        });
+
+        prevBtnExtras.addEventListener('click', () => {
+            if (currentIndexExtras > 0) {
+                currentIndexExtras--;
+                updateCarouselExtras();
+            }
+        });
+
+        // Atualizar ambos os carrosséis ao redimensionar a tela
+        window.addEventListener('resize', () => {
+            updateCarousel();
+            updateCarouselExtras();
+        });
+
+        // Inicializar
+        updateCarousel();
+        updateCarouselExtras();
+    </script>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-logo">
+            <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" />
+                <polygon points="50,5 79,90 4,38 96,38 21,90" />
+            </svg>
+        </div>
+
+        <p class="footer-disclaimer">
+            Atendimento estritamente reservado a <strong>maiores de 18 anos</strong>. <br>
+            O Studio Esoteric Ink opera sob rigorosos protocolos de <strong>Biossegurança e assepsia</strong>, utilizando apenas materiais descartáveis de uso único e pigmentos aprovados pela ANVISA, garantindo a integridade histológica e energética de cada ritual na pele.
+        </p>
+
+        <div class="footer-links">
+            <a href="./base-de-conhecimento/pag-guia-de-cuidados-e-biosseguranca.html">Termos de Cuidado</a>
+            <a href="./manifesto.html">Manifesto</a>
+            <a href="./portal-esoteric.html">Agendar Consulta</a>
+        </div>
+
+        <div class="footer-copy">
+            &copy; 2026 Nana Borges Tattoo - Studio Esoteric Ink. Todos os direitos reservados. <br>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamento Studio Esoteric Ink</title>
+    
+    <!-- Pré-conexão e Fontes do DNA Esoteric Ink -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta e Variáveis Oficiais ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1d0d35;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        /* --- RESET BÁSICO --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--preto);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            background-image: radial-gradient(circle at center, var(--roxo-escuro) 0%, var(--preto) 70%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 80px 20px 40px;
+        }
+
+        /* ================= Top Nav (Consistência com o ecossistema) ================= */
+        .top-nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .logo-nav {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .logo-nav:hover { color: var(--branco-off); }
+
+        .btn-voltar {
+            color: var(--cinza-texto);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-voltar:hover { color: var(--ouro-claro); }
+
+        /* ================= Layout Principal ================= */
+        .layout-master {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* --- TEXTOS LATERAIS --- */
+        .info-lateral {
+            flex: 1;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--cinza-texto);
+            text-align: justify;
+        }
+
+        .info-lateral b {
+            color: var(--ouro-claro);
+            font-family: var(--fonte-ui);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        /* --- CALCULADORA CONTAINER (Info-Card) --- */
+        .calculadora-container {
+            background-color: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--borda-ouro);
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: border-color 0.4s ease, transform 0.4s ease;
+        }
+
+        .calculadora-container:hover {
+            border-color: var(--ouro);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(197, 160, 89, 0.15);
+        }
+
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--ouro);
+            padding: 4px 15px;
+            font-family: var(--fonte-ui);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--ouro);
+            background: rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: var(--fonte-titulo);
+            font-size: 1.6rem;
+            color: var(--branco-off);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            width: 100%;
+            border-bottom: 1px solid var(--borda-ouro);
+            padding-bottom: 15px;
+        }
+
+        /* --- FORMULÁRIOS --- */
+        .form-group { 
+            margin-bottom: 25px; 
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            color: var(--ouro-claro);
+            font-family: var(--fonte-ui);
+            margin-bottom: 10px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        select {
+            width: 100%;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--borda-ouro);
+            color: var(--branco-off);
+            font-family: var(--fonte-corpo);
+            font-size: 0.95rem;
+            outline: none;
+            appearance: none; /* Remove seta padrão */
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            /* Seta customizada elegante em SVG */
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23c5a059%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px top 50%;
+            background-size: 10px auto;
+        }
+
+        select:focus, select:hover { 
+            border-color: var(--ouro); 
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        select option {
+            background-color: var(--preto);
+            color: var(--branco-off);
+            font-family: var(--fonte-corpo);
+        }
+
+        /* --- RESULTADO E BOTÃO --- */
+        .resultado-container {
+            text-align: center;
+            margin-top: 15px;
+            border-top: 1px solid var(--borda-ouro);
+            padding-top: 30px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .valor-final {
+            font-family: var(--fonte-titulo);
+            font-size: 2.5rem;
+            color: var(--ouro);
+            margin-bottom: 25px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .btn-portal {
+            display: inline-block;
+            width: 100%;
+            padding: 18px 20px;
+            background: rgba(5, 1, 8, 0.8);
+            color: var(--ouro);
+            border: 1px solid var(--ouro);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transition: 0.4s;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            text-align: center;
+        }
+
+        .btn-portal:hover {
+            background: var(--ouro);
+            color: var(--preto);
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+        }
+
+        /* ================= Responsividade ================= */
+        @media (max-width: 900px) {
+            .layout-master { flex-direction: column; gap: 40px; }
+            .info-lateral { order: 2; text-align: center; padding: 0; font-size: 1rem; }
+            .info-lateral:first-child { order: 1; }
+            .calculadora-container { order: 2; margin: 10px 0; max-width: 100%; }
+            .info-lateral:last-child { order: 3; }
+        }
+        @media (max-width: 600px) {
+            .top-nav { flex-direction: column; gap: 15px; position: relative; padding-bottom: 20px; }
+            body { padding-top: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="./index.html" class="logo-nav">Studio Esoteric Ink</a>
+        <a href="./index.html" class="btn-voltar">← Retornar ao Saguão</a>
+    </nav>
+
+    <div class="layout-master">
+        
+        <!-- TEXTO ESQUERDO -->
+        <div class="info-lateral">
+            <p>Esta ferramenta funciona como uma <b>calculadora base</b> para fornecer uma estimativa inicial de valores. Os preços gerados aqui seguem a tabela de referência do <b>Studio Esoteric Ink</b>.</p>
+        </div>
+
+        <!-- CALCULADORA -->
+        <div class="calculadora-container">
+            <div class="badge">Diagnóstico Prévio</div>
+            <h1>Simulador de Orçamento</h1>
+
+            <div class="form-group">
+                <label>Tamanho Estimado</label>
+                <select id="tamanho" onchange="calcularOrcamento()">
+                    <option value="350">Até 5 cm</option>
+                    <option value="400">6 a 10 cm</option>
+                    <option value="500">11 a 15 cm</option>
+                    <option value="700">16 a 20 cm</option>
+                    <option value="800">21 a 30 cm</option>
+                    <option value="950">31 a 40 cm</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Complexidade do Local</label>
+                <select id="local" onchange="calcularOrcamento()">
+                    <option value="1.0">Zonas Comuns - Braços: Antebraço e parte externa do bíceps.</option>
+                    <option value="1.0">Zonas Comuns - Pernas: Panturrilha e parte externa da coxa.</option>
+                    <option value="1.0">Zonas Comuns - Tronco: Parte superior das costas.</option>
+                    <option value="1.2">Zonas Sensíveis - Articulações e Dobras: Parte interna do cotovelo, joelho e axilas.</option>
+                    <option value="1.2">Zonas Sensíveis - Extremidades: Pés, mãos e tornozelos.</option>
+                    <option value="1.2">Zonas Sensíveis - Tronco Central: Costelas, esterno, estômago e coluna.</option>
+                    <option value="1.2">Zonas Sensíveis - Cabeça e Pescoço: Atrás da orelha e garganta.</option>
+                    <option value="1.4">Zonas Complexas - Pele Fina ou Elástica: Pálpebras, lábios e genital.</option>
+                    <option value="1.4">Zonas Complexas - Grande Mobilidade: Articulações diretas (cotovelos e joelhos).</option>
+                    <option value="1.4">Zonas Complexas - Cartilagens: Orelhas e nariz.</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Estilo de Arte</label>
+                <select id="estilo" onchange="calcularOrcamento()">
+                    <option value="1.0" selected>Minimalista / Fine Line / Sombreado / Traços Simples</option>
+                    <option value="1.3">Neo Tradicional / Oriental (Irezumi) / Blackwork / Old School / Sketch</option>
+                    <option value="1.5">Semi-Realismo / Microrealismo / Geométrica / Mandalas / Blackout</option>
+                </select>
+            </div>
+
+            <div class="resultado-container">
+                <div class="valor-final" id="valorExibido">R$ 0,00</div>
+                
+                <a href="./portal-esoteric.html" class="btn-portal">
+                    IR PARA O PORTAL DE INTENÇÕES
+                </a>
+            </div>
+        </div>
+
+        <!-- TEXTO DIREITO -->
+        <div class="info-lateral">
+            <p>Ressaltamos que este <b>não é o valor final</b>. Para consolidar seu projeto ou agendamento, é obrigatório o preenchimento do formulário no <b>Portal de Intenções</b>, onde cada orçamento será avaliado individualmente.</p>
+        </div>
+        
+    </div>
+
+    <!-- SCRIPT DE CÁLCULO MANTIDO INTACTO -->
+    <script>
+        function calcularOrcamento() {
+            let valorBase = parseFloat(document.getElementById('tamanho').value);
+            let fatorLocal = parseFloat(document.getElementById('local').value);
+            let fatorEstilo = parseFloat(document.getElementById('estilo').value);
+
+            let orcamentoFinal = valorBase * fatorLocal * fatorEstilo;
+
+            document.getElementById('valorExibido').innerText = 
+                orcamentoFinal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        window.onload = calcularOrcamento;
+    </script>
+
+</body>
+</html>

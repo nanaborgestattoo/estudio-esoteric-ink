@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Atendimento e Regras da Casa | Studio Esoteric Ink</title>
+    <meta name="description" content="Transparência, Ética e Protocolos do Studio Esoteric Ink. Curadoria técnica: Nana Borges.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1a0b2e;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--preto);
+            color: var(--branco-off);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            background-image: radial-gradient(circle at top right, #1d0d35 0%, transparent 40%);
+            overflow-x: hidden;
+        }
+
+        nav {
+            padding: 20px;
+            border-bottom: 1px solid var(--borda-ouro);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 1, 8, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: var(--ouro);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--branco-off); }
+
+        .hero-section {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(5, 1, 8, 0.8), var(--preto)), 
+                        url('../imagem/politica_de_atendimento.webp') center/cover;
+            padding: 20px;
+            border-bottom: 1px solid var(--ouro);
+        }
+
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--ouro);
+            padding: 5px 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--ouro);
+            margin-bottom: 20px;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .hero-section h1 {
+            font-family: var(--fonte-titulo);
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            color: var(--branco-off);
+            max-width: 900px;
+            line-height: 1.2;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+        }
+
+        .content-wrap {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 60px 30px;
+            text-align: center;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            color: var(--ouro-claro);
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        h2 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.5rem;
+            margin: 50px 0 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2::before, h2::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--ouro), transparent);
+        }
+
+        p { margin-bottom: 25px; font-size: 1.1rem; color: var(--branco-off); opacity: 0.9; text-align: center; }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--borda-ouro);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 2px;
+            text-align: left;
+        }
+
+        .info-card ul { list-style: none; }
+
+        .info-card li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 25px;
+            color: var(--branco-off);
+            font-size: 1rem;
+        }
+
+        .info-card li::before {
+            content: "✧";
+            position: absolute;
+            left: 0;
+            color: var(--ouro);
+        }
+
+        .info-card li strong {
+            color: var(--ouro-claro);
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .highlight-box {
+            border-left: 3px solid var(--ouro);
+            padding: 20px;
+            background: rgba(197, 160, 89, 0.05);
+            margin: 30px 0;
+            font-style: italic;
+        }
+
+        .cta-section {
+            background: var(--roxo-escuro);
+            border-top: 1px solid var(--ouro);
+            padding: 60px 30px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .btn-action {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 18px 40px;
+            background: transparent;
+            color: var(--ouro);
+            border: 1px solid var(--ouro);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            transition: 0.4s;
+        }
+
+        .btn-action:hover {
+            background: var(--ouro);
+            color: var(--preto);
+        }
+
+        /* AJUSTE DO RODAPÉ UNIFICADO */
+        footer {
+            padding: 60px 20px;
+            background: var(--preto);
+            text-align: center;
+            border-top: 1px solid rgba(197, 160, 89, 0.1);
+        }
+
+        footer p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem; /* Tamanho unificado */
+            letter-spacing: 2px;
+            color: #666;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 { font-size: 1.8rem; }
+            .info-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="./pag-guia-de-cuidados-e-biosseguranca.html">← Retornar</a>
+        <div style="font-family: 'Cinzel'; color: var(--ouro); letter-spacing: 3px; font-size: 0.9rem;">Studio Esoteric Ink</div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="badge">Transparência & Ética</div>
+        <h1>Política de Atendimento e Regras da Casa</h1>
+    </header>
+
+    <div class="content-wrap">
+        
+        <p class="intro-text">Bem-vinda(e) ao nosso templo de intenção. O Studio Esoteric Ink é um espaço de excelência técnica e sensibilidade artística, onde a tatuagem é compreendida como um ritual de materialização.</p>
+        
+        <p>Para garantir a harmonia, a segurança jurídica e a integridade de nossa comunidade, operamos sob diretrizes rigorosas que priorizam o respeito e o profissionalismo.</p>
+
+        <h2>1. Curadoria de Ambiente</h2>
+        <div class="info-card">
+            <p style="text-align: left; font-size: 1rem; margin-bottom: 20px;">O Esoteric Ink é um território de liberdade e segurança, projetado para ser inteiramente livre de julgamentos ou assédios.</p>
+            <ul>
+                <li><strong>Público Prioritário:</strong> Dedicado a mulheres (cis e trans), público LGBTQIA+ e buscadores da espiritualidade.</li>
+                <li><strong>Atendimento Masculino:</strong> Homens cisgênero heterossexuais são atendidos exclusivamente mediante indicação direta de clientes ativas da casa.</li>
+                <li><strong>Exclusividade Private Studio:</strong> Sessões exclusivas, garantindo total privacidade e ausência de fluxos externos.</li>
+            </ul>
+        </div>
+
+        <h2>2. Protocolo de Agendamento</h2>
+        <div class="info-card">
+            <ul>
+                <li><strong>Sinal de Reserva:</strong> A data só é efetivada após o pagamento do sinal (abatido do total do procedimento).</li>
+                <li><strong>Análise de Projeto:</strong> O formulário não garante o agendamento; cada projeto passa por curadoria estética e técnica.</li>
+                <li><strong>Verificação (LGPD):</strong> Consultamos perfis públicos para segurança. Seus dados são protegidos pela Lei Geral de Proteção de Dados.</li>
+            </ul>
+        </div>
+
+        <h2>3. Conduta e Pontualidade</h2>
+        <div class="info-card">
+            <ul>
+                <li><strong>Tolerância:</strong> 20 minutos para atrasos. Após isso, sujeito a reagendamento ou cancelamento com retenção do sinal.</li>
+                <li><strong>Acompanhantes:</strong> Apenas uma pessoa mediante aviso prévio. Acompanhantes masculinos devem ser registrados antecipadamente.</li>
+                <li><strong>Ambiente:</strong> Restrição de entrada para indivíduos com sinais de alteração psicomotora ou intoxicação.</li>
+            </ul>
+        </div>
+
+        <h2>4. Preparação do Corpo-Templo</h2>
+        <div class="info-card">
+            <p style="text-align: left; font-size: 1rem; margin-bottom: 20px;">O descumprimento destes itens pode impedir a realização do procedimento:</p>
+            <ul>
+                <li><strong>Alimentação e Sono:</strong> Obrigatório estar bem alimentada e descansada.</li>
+                <li><strong>Abstinência:</strong> Proibido álcool ou fármacos vasodilatadores 24h antes.</li>
+                <li><strong>Hidratação:</strong> Beba água em abundância nos dias anteriores para precisão do pigmento.</li>
+            </ul>
+            <div style="text-align: center; margin-top: 15px;">
+                <a href="./guia-da-regeneracao.html" style="color: var(--ouro); font-family: 'Montserrat'; font-size: 0.8rem; text-decoration: none; border-bottom: 1px solid var(--ouro);">[ACESSAR GUIA DE REGENERAÇÃO]</a>
+            </div>
+        </div>
+
+        <h2>5. Ética e Consentimento</h2>
+        <div class="info-card">
+            <ul>
+                <li><strong>Autonomia:</strong> Você detém plena autonomia sobre seu corpo; etapas discutidas previamente.</li>
+                <li><strong>Biossegurança:</strong> Insumos 100% descartáveis e pigmentos regulamentados pela ANVISA.</li>
+                <li><strong>Responsabilidade:</strong> Omissão de informações de saúde (cardiopatias, diabetes, gravidez) é de inteira responsabilidade do cliente.</li>
+            </ul>
+        </div>
+
+        <p class="highlight-box">"Ao solicitar seu orçamento e realizar o agendamento, você declara estar ciente e de acordo com estes protocolos."</p>
+
+        <section class="cta-section">
+            <p>Nosso compromisso é com a sua vida e com a consolidação da nossa marca.</p>
+            <a href="../portal-esoteric.html" class="btn-action">Iniciar Consultoria</a>
+        </section>
+    </div>
+
+    <footer>
+        <p>BIOSSEGURANÇA E ÉTICA • STUDIO ESOTERIC INK • 2026</p>
+        <p>ARTE COM RESPONSABILIDADE BIOLÓGICA E SOCIAL.</p>
+        <p>CURADORIA TÉCNICA: NANA BORGES</p>
+    </footer>
+
+</body>
+</html>

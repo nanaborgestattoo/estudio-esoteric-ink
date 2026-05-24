@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tatuagem, Gestação e Amamentação | Studio Esoteric Ink</title>
+    <meta name="description" content="Análise técnica e científica sobre tatuagem durante a gestação e lactação sob a curadoria de Nana Borges.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1a0b2e;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--preto);
+            color: var(--branco-off);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            background-image: radial-gradient(circle at top right, #1d0d35 0%, transparent 40%);
+            overflow-x: hidden;
+        }
+
+        nav {
+            padding: 20px;
+            border-bottom: 1px solid var(--borda-ouro);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 1, 8, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: var(--ouro);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--branco-off); }
+
+        .hero-section {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* Nota: Mantendo a estrutura de imagem de fundo do design original */
+            background: linear-gradient(to bottom, rgba(5, 1, 8, 0.6), var(--preto)), 
+                        url('../imagem/gestacao-e-amamentacao.webp') center/cover;
+            padding: 20px;
+            border-bottom: 1px solid var(--ouro);
+        }
+
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--ouro);
+            padding: 5px 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--ouro);
+            margin-bottom: 20px;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .hero-section h1 {
+            font-family: var(--fonte-titulo);
+            font-size: clamp(1.5rem, 4vw, 2.8rem);
+            color: var(--branco-off);
+            max-width: 1100px;
+            line-height: 1.2;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+        }
+
+        .content-wrap {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 80px 30px;
+        }
+
+        .dropcap::first-letter {
+            font-family: var(--fonte-titulo);
+            font-size: 5rem;
+            float: left;
+            line-height: 0.8;
+            padding-right: 15px;
+            color: var(--ouro);
+        }
+
+        h2 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.6rem;
+            margin: 60px 0 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, var(--ouro), transparent);
+        }
+
+        h3 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: 1.3rem;
+            margin: 0 0 20px 0;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        p { margin-bottom: 25px; font-size: 1.1rem; color: var(--branco-off); opacity: 0.95; text-align: justify; }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--borda-ouro);
+            padding: 35px;
+            margin: 40px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            background: rgba(42, 8, 69, 0.15);
+            border-color: var(--ouro);
+        }
+
+        .info-card ul { list-style: none; }
+
+        .info-card li {
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 30px;
+            color: var(--branco-off);
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        .info-card li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--ouro);
+            font-size: 1rem;
+        }
+
+        .info-card li strong {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: var(--ouro);
+            margin-bottom: 5px;
+        }
+
+        .cta-section {
+            background: var(--roxo-escuro);
+            border-top: 2px solid var(--ouro);
+            padding: 80px 30px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .btn-whatsapp {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 20px 45px;
+            background: transparent;
+            color: var(--ouro);
+            border: 1px solid var(--ouro);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: 0.4s;
+        }
+
+        .btn-whatsapp:hover {
+            background: var(--ouro);
+            color: var(--preto);
+            box-shadow: 0 0 30px rgba(197, 160, 89, 0.4);
+        }
+
+        .references {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(197, 160, 89, 0.2);
+        }
+
+        .references h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--ouro);
+            margin-bottom: 15px;
+        }
+
+        .references p {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        footer {
+            padding: 60px 20px;
+            font-family: 'Montserrat', sans-serif;
+            border-top: 1px solid rgba(197, 160, 89, 0.1);
+            background: var(--preto);
+            text-align: center;
+        }
+
+        footer p {
+            text-align: center;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrap { padding: 50px 20px; }
+            .hero-section h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="./pag-guia-de-cuidados-e-biosseguranca.html">← Retornar</a>
+        <div style="font-family: 'Cinzel'; color: var(--ouro); letter-spacing: 3px; font-size: 0.9rem;">Studio Esoteric Ink</div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="badge">Saúde e Biossegurança</div>
+        <h1>Tatuagem, Gestação e Amamentação:<br>A Ciência do Cuidado e o Protocolo Esoteric Ink</h1>
+    </header>
+
+    <div class="content-wrap">
+        
+        <p class="dropcap">A maternidade é um rito de passagem visceral e sagrado. É natural que surja o desejo de eternizar essa transformação na pele. No entanto, quando a biologia da mãe e do bebê se fundem, a decisão de tatuar deixa de ser puramente estética e passa a ser uma questão de fisiologia aplicada. No Studio Esoteric Ink, sob a curadoria técnica de <strong>Nana Borges</strong>, tratamos cada pele como um ecossistema único e soberano.</p>
+
+        <p style="text-align: center;">Abaixo, apresentamos uma análise técnica detalhada sobre os riscos, mitos e as diretrizes científicas que regem nosso protocolo de atendimento, unindo o rigor da biossegurança ao acolhimento profissional.</p>
+
+        <h2>1. Tatuagem na Gestação</h2>
+        <h3>A Prioridade da Homeostase Fetal</h3>
+        <p>Embora a gestação não seja uma "doença", ela é um estado de imunomodulação complexo. A recomendação para o adiamento baseia-se na preservação biológica absoluta do binômio mãe-filho.</p>
+
+        <div class="info-card">
+            <ul>
+                <li><strong>Imunossupressão e Resposta Th2:</strong> Durante a gravidez, o sistema imunológico sofre um desvio para evitar a rejeição do feto. Isso torna a resposta inflamatória à tatuagem imprevisível, retardando a regeneração e aumentando a susceptibilidade a infecções.</li>
+                <li><strong>Dinâmica da Barreira Placentária:</strong> Na ausência de estudos que garantam a exclusão total da passagem transplacentária de nanopartículas de pigmento, a bioética dita a precaução absoluta contra o uso de tintas durante este período.</li>
+                <li><strong>Sinalização Neuroendócrina (Eixo HPA):</strong> A dor libera cortisol e adrenalina. Em níveis elevados, essas catecolaminas podem causar vasoconstrição uteroplacentária, interferindo na perfusão de oxigênio para o feto.</li>
+                <li><strong>Fenômeno de Koebner:</strong> Peles gestantes são mais reativas. O trauma da agulha pode desencadear dermatoses específicas da gravidez que comprometeriam tanto a estética quanto a saúde dérmica.</li>
+            </ul>
+        </div>
+
+        <h2>2. Lactantes e Fisiologia do Leite</h2>
+        <h3>Recuperação Sistêmica e Amamentação</h3>
+        <p>Para mulheres que amamentam, o risco direto ao bebê via leite materno é considerado baixo, mas a integridade sistêmica da mãe é o ponto central da nossa análise técnica.</p>
+
+        <div class="info-card">
+            <ul>
+                <li><strong>Cinética dos Pigmentos:</strong> Pigmentos de grau médico são macromoléculas fagocitadas por macrófagos na derme, não possuindo biodisponibilidade para atravessar o epitélio das glândulas mamárias.</li>
+                <li><strong>Hipersensibilidade Tardia:</strong> O risco real reside em possíveis reações alérgicas, cujo tratamento exigiria fármacos (corticosteroides) que possuem excreção no leite e podem afetar o bebê.</li>
+                <li><strong>Custo Energético:</strong> A lactogênese consome até 700 calorias diárias. Somar a isso a demanda metabólica de uma cicatrização dérmica pode sobrecarregar o organismo, gerando fadiga e afetando o reflexo de ejeção do leite.</li>
+            </ul>
+        </div>
+
+        <h2>3. Mitos e Verdades Técnicas</h2>
+        <div class="info-card">
+            <ul>
+                <li><strong>"A tinta contamina o leite" (Mito):</strong> A barreira sangue-leite é altamente seletiva. O perigo real é uma infecção secundária por negligência no pós-procedimento, e não a tinta em si.</li>
+                <li><strong>"O estresse pode secar o leite" (Parcialmente Verdade):</strong> A dor intensa inibe a ocitocina (ejeção), mas não a prolactina (produção). Mitigamos isso com sessões curtas e manejo de dor.</li>
+                <li><strong>"A pele deforma após o parto" (Verdade):</strong> A distensão tecidual altera a topografia da pele. Tatuar áreas de expansão (abdômen, seios) resulta em distorções geométricas após a involução uterina.</li>
+            </ul>
+        </div>
+
+        <h2>4. O Protocolo Esoteric Ink</h2>
+        <h3>Nossa Filosofia de "Linhagem Sagrada"</h3>
+        <p>Não somos apenas executores de arte; somos guardiões da sua biossegurança. Nosso protocolo garante que sua jornada seja ética e segura.</p>
+
+        <div class="info-card">
+            <ul>
+                <li><strong>Consultoria Prévia:</strong> Avaliação profunda do histórico clínico e do estágio da lactação realizada pessoalmente pela Nana Borges.</li>
+                <li><strong>Compliance Médico:</strong> Exigimos autorização por escrito do obstetra ou pediatra para lactantes, integrando arte e medicina.</li>
+                <li><strong>Tintas REACH-Compliant:</strong> Utilizamos pigmentos livres de aminas aromáticas e metais pesados, seguindo os mais rígidos padrões europeus.</li>
+                <li><strong>Sessões de Baixo Impacto:</strong> Planejamento fracionado para respeitar os intervalos de mamada e evitar a exaustão física da mãe.</li>
+                <li><strong>Teledermatologia de Suporte:</strong> Acompanhamento digital diário da evolução da sua cicatrização via canais diretos.</li>
+            </ul>
+        </div>
+
+        <h2>5. Diretrizes para a Mamãe</h2>
+        <div class="info-card">
+            <ul>
+                <li><strong>A Regra dos 6 Meses:</strong> Recomendamos aguardar o fim da amamentação exclusiva para que o corpo recupere reservas nutricionais e estabilidade imunológica.</li>
+                <li><strong>Planejamento de Área:</strong> Consultoria para escolha de locais que não sofrem deformação mecânica por estiramento cutâneo futuro.</li>
+                <li><strong>Hiperidratação:</strong> Plano de ingestão hídrica específica para suportar a lactação e a regeneração dérmica simultaneamente.</li>
+            </ul>
+        </div>
+
+        <p style="text-align: center; font-style: italic; color: var(--ouro-claro); margin-top: 40px;">"Sua história merece ser contada, mas no tempo certo da natureza. No Studio Esoteric Ink, a segurança da sua linhagem vem primeiro."</p>
+
+        <section class="references">
+            <h4>Referências Científicas Consultadas:</h4>
+            <p>• ANVISA - Resolução RDC nº 55/2008 (Referencial de Tintas e Segurança).</p>
+            <p>• FEBRASGO - Guia de Saúde na Gestação e Lactação.</p>
+            <p>• Journal of Applied Toxicology - Análise de migração de nanopartículas de pigmentos.</p>
+            <p>• WHO - Diretrizes de segurança em procedimentos invasivos estéticos.</p>
+        </section>
+
+        <section class="cta-section">
+            <div class="badge" style="border-color: var(--branco-off); color: var(--branco-off);">Consultoria de Segurança</div>
+            <h2 style="border: none; justify-content: center;">Deseja realizar uma consultoria?</h2>
+            <p>Fale diretamente com nossa especialista para planejar sua arte com responsabilidade.</p>
+            <a href="https://wa.me/5511994998057" class="btn-whatsapp">Conversar com Nana Borges</a>
+        </section>
+
+    </div>
+
+    <footer> 
+        <p>BIOSSEGURANÇA E ÉTICA • STUDIO ESOTERIC INK • 2026</p>
+        <p style="opacity: 0.5;">ARTE COM RESPONSABILIDADE BIOLÓGICA E ACOLHIMENTO PROFISSIONAL.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sankofa e Ancestralidade Bantu | Studio Esoteric Ink</title>
+    
+    <!-- DNA de Fontes Esoteric Ink -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta Oficial Esoteric Ink ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1d0d35;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        /* ================= Reset & Setup ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--preto);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            background-image: radial-gradient(circle at top right, var(--roxo-escuro) 0%, transparent 40%);
+        }
+
+        /* --- NAVEGAÇÃO --- */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 25px 5%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 15px;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(5,1,8,0.9), transparent);
+        }
+
+        .btn-voltar {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            border: 1px solid var(--borda-ouro);
+            padding: 10px 20px;
+            background: rgba(5,1,8,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-voltar:hover { 
+            color: var(--preto); 
+            background: var(--ouro);
+            border-color: var(--ouro);
+        }
+
+        /* ================= LAYOUT SPLIT-SCREEN ================= */
+        .about-container { display: flex; min-height: 100vh; }
+
+        .about-image-side {
+            width: 40%;
+            position: fixed;
+            height: 100vh;
+            background-image: url('../imagem/tattoo_adinkras_braço_nana_borges_tattoo_studio_esoteric_ink.webp');
+            background-size: cover;
+            background-position: center;
+            border-right: 1px solid var(--borda-ouro);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to right, rgba(5,1,8,0.1), var(--preto));
+        }
+
+        .about-text-side {
+            width: 60%;
+            margin-left: 40%;
+            padding: 120px 5% 80px 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .text-wrapper {
+            max-width: 850px;
+            width: 100%;
+        }
+
+        /* ================= COMPONENTES VISUAIS ================= */
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--ouro);
+            padding: 5px 15px;
+            font-family: var(--fonte-ui);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--ouro);
+            background: rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+        }
+
+        .title {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
+            line-height: 1.1;
+            margin-bottom: 40px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+        }
+
+        .section-header {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: 1.6rem;
+            margin: 60px 0 30px 0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .section-header::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, var(--ouro), transparent);
+        }
+
+        .dropcap::first-letter {
+            font-family: var(--fonte-titulo);
+            font-size: 5rem;
+            color: var(--ouro);
+            float: left;
+            line-height: 0.8;
+            padding-right: 15px;
+            padding-top: 5px;
+        }
+
+        .text-content p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        /* Seção de Referências Acadêmicas */
+        .academic-refs {
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(29, 13, 53, 0.2);
+            border: 1px solid var(--borda-ouro);
+        }
+
+        .academic-refs ul { list-style: none; }
+        
+        .academic-refs li {
+            margin-bottom: 20px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .academic-refs li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--ouro);
+        }
+
+        .academic-refs strong {
+            color: var(--ouro-claro);
+            display: block;
+            margin-bottom: 5px;
+            font-family: var(--fonte-ui);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .highlight-box {
+            background-color: rgba(197, 160, 89, 0.03);
+            border: 1px solid var(--borda-ouro);
+            border-left: 3px solid var(--ouro);
+            padding: 40px;
+            margin: 50px 0;
+        }
+
+        .highlight-box p {
+            font-style: italic;
+            color: var(--ouro-claro);
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        .text-content a {
+            color: var(--ouro-claro);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            transition: 0.3s;
+        }
+
+        .text-content a:hover { color: var(--ouro); }
+
+        .signature {
+            margin-top: 60px;
+            font-family: var(--fonte-titulo);
+            font-size: 2rem;
+            color: var(--ouro);
+            text-align: right;
+            border-top: 1px solid var(--borda-ouro);
+            padding-top: 20px;
+        }
+
+        /* ================= RESPONSIVIDADE ================= */
+        @media (max-width: 992px) {
+            .about-container { flex-direction: column; }
+            .about-image-side { position: relative; width: 100%; height: 50vh; border-right: none; }
+            .about-text-side { width: 100%; margin-left: 0; padding: 60px 5%; }
+            .top-nav { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="file:///home/nana/Documentos/meu%20site%20tattoo/index.html" class="btn-voltar">Início</a>
+        <a href="file:///home/nana/Documentos/meu%20site%20tattoo/revista%20mistica-blog/revista-mistica-blog.html" class="btn-voltar">Diário</a>
+    </nav>
+
+    <main class="about-container">
+        <div class="about-image-side">
+            <div class="image-overlay"></div>
+        </div>
+
+        <div class="about-text-side">
+            <div class="text-wrapper">
+                
+                <div class="badge">Ancestralidade e Resistência</div>
+                <h1 class="title">Tatuagem do Símbolo Sankofa e a Ancestralidade na Umbanda Bantu</h1>
+                
+                <div class="text-content">
+                    <p class="dropcap">A tatuagem do símbolo Sankofa e a ancestralidade Bantu representam muito mais do que uma escolha estética; são um manifesto de identidade e resistência política dentro do terreiro. No <strong>Studio Esoteric Ink</strong>, tivemos a honra de receber uma Mãe de Santo cuja trajetória é dedicada à preservação do culto negro e de quintal.</p>
+                    
+                    <p>Sua casa fundamenta-se na Umbanda sem sincretismo, focada no resgate das raízes africanas e no fortalecimento de políticas antirracistas, onde o corpo se torna o suporte para a memória viva de um povo que nunca se curvou diante do apagamento colonial. Esta obra foi projetada para ser um amuleto de recordação e afirmação. Ao escolher o Sankofa, um dos símbolos mais importantes da tradição Akan (Adinkra), para marcar sua pele, a cliente reafirma o compromisso com a filosofia africana de que "nunca é tarde para voltar e recuperar o que foi esquecido".</p>
+
+                    <p>Em um contexto de Umbanda de origem Bantu, a integração deste símbolo fortalece o conceito de que o terreiro é um espaço de cura, mas também de letramento racial e exaltação da negritude, combatendo o silenciamento imposto pela história oficial. A tatuagem do símbolo Sankofa e a ancestralidade Bantu funciona como um portal visual. Cada traço executado respeita o rigor técnico necessário para que a simbologia mantenha sua integridade vibracional na pele negra.</p>
+
+                    <h2 class="section-header">Portais de Autoridade Acadêmica</h2>
+                    <p>Para entender a profundidade desses códigos, é essencial explorar a história dos Símbolos Adinkra em portais que são referência mundial em conhecimento e preservação:</p>
+                    
+                    <div class="academic-refs">
+                        <ul>
+                            <li>
+                                <strong>IPEAFRO (Instituto de Pesquisas e Estudos Afro-Brasileiros)</strong>
+                                No Brasil, esta é a maior referência. Fundado por Abdias Nascimento, o portal possui um acervo digital riquíssimo sobre os Adinkras, incluindo glossários detalhados e o contexto de como essa simbologia se conecta com a história e a resistência negra. <a href="http://ipeafro.org.br/" target="_blank">Acesse o Acervo</a>.
+                            </li>
+                            <li>
+                                <strong>AdinkraSymbols.org (West African Wisdom)</strong>
+                                Este é o portal internacional mais abrangente. Ele funciona como um índice visual completo, onde cada símbolo é acompanhado por seu nome original em Twi e o provérbio filosófico ao qual está ligado. <a href="http://www.adinkrasymbols.org/" target="_blank">Explorar Índice</a>.
+                            </li>
+                            <li>
+                                <strong>University of Ghana (Acervos de Arte)</strong>
+                                A universidade é o centro de pesquisa "na fonte". Muitos artigos publicados tratam da iconologia dos símbolos, sendo a fonte primária para pesquisadores e artistas profissionais. <a href="https://www.ug.edu.gh/" target="_blank">Portal Acadêmico</a>.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <h2 class="section-header">Sankofa e a Umbanda de Raiz Bantu</h2>
+                    <p>Dentro do universo desta tatuagem, o conceito de Sankofa — representado pelo pássaro que volta a cabeça para trás para colher um ovo (o futuro) — é o fio condutor da vida espiritual. Na visão desta Mãe de Santo, não existe evolução real sem o reconhecimento das bases ancestrais. A Umbanda de quintal, aquela praticada com o pé no chão e o respeito às ervas, é a expressão máxima dessa filosofia: olhar para os velhos mestres para construir o novo caminho.</p>
+
+                    <p>Honrar a origem Bantu significa reconhecer a influência das línguas Kimbundu e Kikongo que moldaram o Brasil e a religiosidade de terreiro. No Studio Esoteric Ink, entendemos que tatuar uma liderança religiosa exige um estado de espírito ritualístico. A sessão não é apenas um procedimento técnico, mas um momento de troca onde a história da casa de santo e os fundamentos de proteção são levados em conta.</p>
+
+                    <h2 class="section-header">O Corpo como Território de Memória</h2>
+                    <div class="highlight-box">
+                        <p>O Sankofa comunica valores de paciência, inteligência e o direito de retornar às origens. Em uma casa de origem Bantu, este símbolo age como uma chave que conecta o presente ao tempo imemorial dos reinos de Angola e Congo. É uma ferramenta de luta contra o esquecimento.</p>
+                    </div>
+
+                    <p>A execução desta tatuagem utiliza técnicas de contraste que valorizam a melanina, garantindo que o símbolo permaneça nítido e imponente. Se você busca compreender como a arte pode servir de proteção em sua caminhada, convido você a conhecer nosso <a href="file:///home/nana/Documentos/meu%20site%20tattoo/portal-esoteric.html" target="_blank"><strong>Portal de Intenções e Amuletos</strong></a>.</p>
+
+                    <p>Trabalhamos para que cada agulhada seja um ato de afirmação da beleza e do poder da cultura negra, unindo arte de alto nível e consciência política. Você pode conferir mais detalhes sobre nosso trabalho com simbologia africana em nosso <a href="https://www.instagram.com/studioesoteric_/" target="_blank"><strong>Instagram @studioesoteric_</strong></a>.</p>
+                </div>
+
+                <div class="signature">- Nana Borges</div>
+                
+            </div>
+        </div>
+    </main>
+</body>
+</html>

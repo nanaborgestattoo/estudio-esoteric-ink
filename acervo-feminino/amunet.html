@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amunet: A Sacerdotisa de Hathor e a Tinta Sagrada | Acervo Feminino</title>
+    
+    <meta name="description" content="Conheça a história de Amunet, Sacerdotisa de Hathor, e descubra como as tatuagens no Egito Antigo funcionavam como amuletos sagrados de proteção e fertilidade feminina.">
+    <meta name="keywords" content="Amunet Sacerdotisa Hathor, Tatuagem Egito Antigo, Tatuagem feminina sagrada, Significado tatuagem egípcia, Geometria sagrada ventre, Studio Esoteric Ink, Tatuagem ritualística São Paulo, Múmia tatuada Amunet">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta Oficial Esoteric Ink ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1d0d35;
+            --preto-absolute: #050108;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        /* ================= Reset & Setup ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--preto-absolute);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            
+            /* Imagem configurada como plano de fundo fixo em toda a página */
+            background-image: linear-gradient(to bottom, rgba(5, 1, 8, 0.5), rgba(5, 1, 8, 0.85)), url('../imagem/dharma-chakra-biblioteca.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* --- NAVEGAÇÃO SUPERIOR --- */
+        .top-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 25px 40px;
+            background: linear-gradient(to bottom, rgba(5,1,8,0.9), transparent);
+            z-index: 100;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .back-link {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid var(--borda-ouro);
+            padding: 10px 20px;
+            background: rgba(5,1,8,0.5);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: var(--ouro);
+            color: var(--preto-absolute);
+            border-color: var(--ouro);
+        }
+
+        /*Container de Layout para centralizar a aba sobreposta */
+        .main-wrapper {
+            padding: 140px 20px 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Película flutuante sobreposta com tom roxo, fade suave e desfoque de fundo */
+        .article-container {
+            max-width: 900px;
+            width: 100%;
+            background: linear-gradient(180deg, rgba(29, 13, 53, 0.75) 0%, rgba(5, 1, 8, 0.92) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--borda-ouro);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            padding: 60px 8%;
+            border-radius: 4px;
+        }
+
+        /* ================= Cabeçalho do Artigo ================= */
+        .article-header {
+            text-align: center;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+            margin-bottom: 40px;
+        }
+
+        .article-category {
+            font-family: var(--fonte-ui);
+            color: var(--ouro);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .article-header h1 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+            font-weight: 400;
+            margin-bottom: 25px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+
+        .article-subtitle {
+            font-size: 1.2rem;
+            font-style: italic;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--cinza-texto);
+            opacity: 0.95;
+        }
+
+        /* ================= Corpo do Texto ================= */
+        .article-content {
+            font-size: 1.15rem;
+            text-align: justify;
+        }
+
+        /* Letra Capitular */
+        .article-content > p:first-of-type::first-letter {
+            font-family: var(--fonte-titulo);
+            float: left;
+            font-size: 5rem;
+            line-height: 0.8;
+            margin-right: 15px;
+            margin-top: 5px;
+            color: var(--ouro);
+        }
+
+        .article-content p { margin-bottom: 30px; }
+
+        /* Links internos/externos estilizados para SEO */
+        .article-content a {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--ouro);
+            transition: color 0.3s;
+        }
+        
+        .article-content a:hover {
+            color: var(--ouro);
+            border-bottom-style: solid;
+        }
+
+        .article-content h2 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: 1.8rem;
+            margin: 60px 0 30px;
+            border-bottom: 1px solid var(--borda-ouro);
+            padding-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .article-content h3 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.3rem;
+            margin: 45px 0 20px;
+            letter-spacing: 1px;
+        }
+
+        /* Citação / Destaque Místico */
+        blockquote {
+            margin: 50px auto;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(29, 13, 53, 0.5), rgba(5, 1, 8, 0.8));
+            border: 1px solid var(--borda-ouro);
+            border-left: 4px solid var(--ouro);
+            font-family: var(--fonte-titulo);
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--ouro-claro);
+            text-align: center;
+            position: relative;
+        }
+
+        /* Listas Estilizadas */
+        .rite-list {
+            list-style: none;
+            margin-bottom: 30px;
+            padding-left: 10px;
+        }
+
+        .rite-list li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .rite-list li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--ouro);
+        }
+
+        /* Estilização específica para as referências acadêmicas */
+        .refs-list {
+            list-style: none;
+            padding-left: 0;
+            font-size: 1rem;
+            opacity: 0.85;
+        }
+        
+        .refs-list li {
+            margin-bottom: 10px;
+            border-left: 2px solid var(--ouro);
+            padding-left: 15px;
+        }
+
+        /* Botão de Call to Action (CTA) */
+        .cta-container {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px dashed var(--borda-ouro);
+        }
+
+        .cta-button {
+            display: inline-block;
+            font-family: var(--fonte-ui);
+            color: var(--preto-absolute);
+            background-color: var(--ouro-claro);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            padding: 15px 35px;
+            border: 1px solid var(--ouro);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            border-bottom: 1px solid var(--ouro) !important; /* Sobrescrever estilo de link padrão */
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--ouro-claro);
+            box-shadow: 0 4px 20px rgba(197, 160, 89, 0.2);
+        }
+
+        /* ================= Rodapé ================= */
+        footer {
+            text-align: center;
+            padding: 80px 20px;
+            border-top: 1px solid var(--borda-ouro);
+            background-color: #030105;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-logo {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        .footer-text {
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--ouro-claro);
+            opacity: 0.7;
+        }
+
+        /* ================= Responsividade ================= */
+        @media (max-width: 768px) {
+            .main-wrapper { padding-top: 100px; padding-left: 10px; padding-right: 10px; }
+            .article-container { padding: 40px 5%; }
+            .article-header h1 { font-size: 2.4rem; }
+            .article-content { font-size: 1.05rem; }
+            .top-nav { padding: 15px 20px; }
+            blockquote { font-size: 1.2rem; padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="../acervo-feminino/acervo-feminino.html" class="back-link">← Acervo</a>
+    </nav>
+
+    <div class="main-wrapper">
+        <article class="article-container">
+            
+            <header class="article-header">
+                <span class="article-category">Ancestralidade • Tatuagem Ritualística</span>
+                <h1>Amunet</h1>
+                <p class="article-subtitle">A Sacerdotisa de Hathor e a Tinta que Protege a Vida</p>
+            </header>
+
+            <main class="article-content">
+
+                <p>No Egito Antigo, a tatuagem não era apenas um adorno; era uma linguagem espiritual exclusiva das mulheres e intimamente ligada ao divino. A múmia de Amunet, uma Sacerdotisa da Deusa Hathor datada de aproximadamente 2000 a.C., é a prova de que a tatuagem feminina nasceu no seio do sagrado. Suas marcas corporais desafiam a ideia de que a tatuagem era marginalizada, posicionando-a como um instrumento de proteção e conexão com a deusa do amor. Neste artigo, exploraremos como a pele de Amunet serviu de amuleto vivo para garantir a vida, a saúde e a continuidade da linhagem egípcia.</p>
+
+                <h2>A Descoberta de Tebas: O Reencontro com a Sacerdotisa</h2>
+                
+                <p>Em 1891, o arqueólogo Eugène Grébaut descobriu o túmulo de Amunet em Deir el-Bahari, parte da necrópole de Tebas. Ao examinar a múmia preservada, os pesquisadores ficaram atônitos ao encontrar padrões geométricos de pontos e linhas tatuados de forma permanente. Diferente de achados anteriores, as marcas de Amunet eram inquestionavelmente tatuagens, inseridas na pele de uma mulher de alto prestígio religioso.</p>
+
+                <p>Amunet servvia no templo de Hathor, a divindade egípcia que regia a alegria, a música, a fertilidade e a proteção materna. O fato de uma sacerdotisa portar tais marcas prova que, no Império Médio, a tatuagem era uma prática honrada e integrada aos ritos de fé. Esta descoberta mudou para sempre a percepção da arqueologia sobre o papel da mulher e da arte corporal na civilização mais icônica da história. Para entender a conexão contínua dessas heranças ancestrais com a arte contemporânea na pele, explore as diretrizes sobre <a href="../revista-mistica/tatuagem-ritualistica.html">Tatuagem Ritualística e talismãs sagrados</a>.</p>
+
+                <h2>Simbolismo e Fertilidade: A Geometria do Cuidado</h2>
+                
+                <p>As Tatuagens de Amunet não foram aplicadas de forma aleatória; elas seguiam uma lógica anatômica voltada para a proteção do ventre. Padrões de losangos e linhas pontilhadas cobriam seu abdômen inferior e coxas, áreas diretamente ligadas à gestação e ao nascimento. Para os antigos egípcios, essas formas geométricas agiam como uma "rede de proteção" espiritual para os órgãos reprodutores da mulher.</p>
+
+                <p>Acreditava-se que as tatuagens podiam afastar doenças e garantir que a sacerdotisa permanecesse fértil e segura durante o parto. Além do abdômen, marcas nos braços e ombros sugerem uma função de amuleto contínuo, conectando Amunet à energia vibrante de Hathor. Em nosso conceito ritualístico, vemos nessas marcas a raiz da tatuagem como um ato de cuidado, onde a tinta atua como uma armadura invisível para a alma.</p>
+
+                <blockquote>
+                    "Honrar Amunet é reconhecer que a nossa pele é o altar onde gravamos as nossas crenças, as nossas forças e a nossa própria divindade."
+                </blockquote>
+
+                <h2>A Técnica das Agulhas de Bronze: O Ritual do Pigmento</h2>
+                
+                <p>A técnica aplicada na pele de Amunet envolvia um processo manual meticuloso, utilizando ferramentas de bronze e pigmentos naturais. Pequenos grupos de agulhas eram usados para puncionar a pele, introduzindo uma mistura de fuligem de madeira e óleos vegetais. Este método criava tons de azul escuro ou preto, que se fundiam com a estética visual dos amuletos de faiança tão comuns no Egito.</p>
+
+                <p>O processo de tatuar era, em si, um ritual conduzido possivelmente por outras mulheres ou sacerdotisas experientes no uso dos símbolos. Não havia máquinas; cada ponto era uma intenção, uma oração cravada na derme para durar por toda a vida terrena e além dela. A precisão dos padrões de Amunet demonstra que os egípcios dominavam a arte da cicatrização e da saturação do pigmento há milênios.</p>
+
+                <h2>Amunet e o Renascimento do Sagrado Feminino</h2>
+                
+                <p>A história de Amunet é um pilar fundamental para qualquer mulher que deseja entender a tatuagem como uma extensão de seu poder interior. Ela nos ensina que marcar o corpo é uma forma de honrar os ciclos da vida e reivindicar a proteção sobre o próprio templo físico. Ao escolher uma tatuagem hoje, muitas mulheres buscam inconscientemente essa mesma conexão ritualística que Amunet ostentava com orgulho.</p>
+
+                <p>Celebramos essa linhagem egípcia, oferecendo um espaço onde a sua tatuagem pode ter a mesma profundidade de um amuleto sagrado. A Sacerdotisa de Hathor continua a nos inspirar, provando que a beleza e a espiritualidade são, e sempre foram, inseparáveis.</p>
+
+                <h2>Referências Bibliográficas</h2>
+                <ul class="refs-list">
+                    <li><b>BIANCHI, Robert S.</b> <i>Tattooing in Ancient Egypt.</i> In: Marks of Civilization, UCLA, 1988.</li>
+                    <li><b>FLETCHER, Joann.</b> <i>Ancient Egyptian Body Art.</i> British Museum Press, 2004.</li>
+                    <li><b>DETER-WOLF, Aaron.</b> <i>The Archaeology of Tattooing.</i> University of Tennessee Press, 2013.</li>
+                    <li><b>KEIMER, Ludwig.</b> <i>Remarques sur le tatouage dans l'Égypte ancienne.</i> Institut Français d'Archéologie Orientale, 1948.</li>
+                </ul>
+
+                <div class="cta-container">
+                    <h3>Desperte a Sacerdotisa em Você</h3>
+                    <p style="margin-top: 15px; margin-bottom: 30px; font-size: 1.1rem;">
+                        Assim como Amunet gravou em sua pele símbolos de proteção e poder, você também pode transformar seu corpo em um manifesto de sua essência espiritual. No Studio Esoteric Ink, somos especialistas em traduzir conceitos abstratos em arte permanente com alma. Venha criar o seu amuleto moderno com quem entende a ancestralidade da tinta.
+                    </p>
+                    <a href="../portal-esoteric.html" class="cta-button">Agende sua Consultoria de Arte Sagrada</a>
+                </div>
+
+            </main>
+        </article>
+    </div>
+
+    <footer>
+        <div class="footer-logo">Studio Esoteric Ink</div>
+        <div class="footer-text">A pele é o pergaminho • O símbolo é a chave</div>
+    </footer>
+
+</body>
+</html>

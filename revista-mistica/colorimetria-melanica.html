@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Ciência da Cor na Pele Negra | Studio Esoteric Ink</title>
+    <meta name="description" content="Ciência, colorimetria e a Escala de Fitzpatrick aplicadas à tatuagem em pele negra e retinta.">
+    
+    <!-- DNA Esoteric Ink: Fontes Oficiais -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta e Variáveis Oficiais ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1d0d35;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        /* ================= Reset & Setup ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--preto);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            background-image: radial-gradient(circle at top right, var(--roxo-escuro) 0%, transparent 40%);
+        }
+
+        /* --- NAVEGAÇÃO --- */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(5,1,8,0.95), transparent);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid var(--borda-ouro);
+        }
+
+        .btn-voltar {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-voltar:hover { color: var(--ouro); }
+
+        /* ================= HERO SECTION ================= */
+        .hero-ritual {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(5,1,8,0.6), var(--preto)), 
+                        url('../imagem/colorimetria_melanica_nana_borges_tattoo_studio_esoteric_ink.webp') center/cover;
+            padding: 0 5%;
+            margin-bottom: 60px;
+            border-bottom: 1px solid var(--borda-ouro);
+        }
+
+        .badge {
+            border: 1px solid var(--ouro);
+            padding: 5px 15px;
+            font-family: var(--fonte-ui);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--ouro);
+            background: rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-title {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.1;
+            max-width: 1000px;
+        }
+
+        /* ================= CONTEÚDO ================= */
+        .main-container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 0 5% 100px 5%;
+        }
+
+        /* H2 com Linhas Douradas */
+        .section-header {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: 1.8rem;
+            margin: 80px 0 40px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            text-align: center;
+        }
+        .section-header::before, .section-header::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--ouro), transparent);
+        }
+
+        h3 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 45px 0 20px 0;
+            text-align: left;
+        }
+
+        .dropcap::first-letter {
+            font-family: var(--fonte-titulo);
+            font-size: 5rem;
+            color: var(--ouro);
+            float: left;
+            line-height: 0.8;
+            padding-right: 15px;
+            padding-top: 5px;
+        }
+
+        p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            text-align: justify;
+            color: var(--cinza-texto);
+        }
+
+        strong {
+            color: var(--branco-off);
+            font-family: var(--fonte-ui);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* --- Componentes Específicos do Artigo --- */
+        .fitz-scale {
+            display: flex;
+            gap: 10px;
+            margin: 30px 0;
+            height: 40px;
+        }
+        .fitz-item { flex: 1; border: 1px solid rgba(255,255,255,0.1); }
+        .f1 { background: #f3e5ab; }
+        .f2 { background: #e5c298; }
+        .f3 { background: #d2a172; }
+        .f4 { background: #a57247; border: 2px solid var(--ouro); }
+        .f5 { background: #63452c; border: 2px solid var(--ouro); }
+        .f6 { background: #2e1d13; border: 2px solid var(--ouro); }
+
+        .highlight-box {
+            background-color: rgba(197, 160, 89, 0.03);
+            border: 1px solid var(--borda-ouro);
+            border-left: 3px solid var(--ouro);
+            padding: 35px;
+            margin: 50px 0;
+            backdrop-filter: blur(5px);
+        }
+
+        .subtone-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .subtone-card {
+            background: rgba(197, 160, 89, 0.05);
+            padding: 30px;
+            border: 1px solid var(--borda-ouro);
+            transition: 0.3s ease;
+        }
+
+        .subtone-card:hover { border-color: var(--ouro); }
+
+        .subtone-card strong {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--ouro);
+            font-family: var(--fonte-titulo);
+            font-size: 1.1rem;
+            text-transform: none;
+        }
+
+        .color-test-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(197, 160, 89, 0.1);
+        }
+
+        .step-num {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.8rem;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        /* --- CTA --- */
+        .cta-ritual {
+            background: rgba(197, 160, 89, 0.05);
+            border: 1px solid var(--ouro);
+            padding: 60px 40px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .btn-portal {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 18px 40px;
+            border: 1px solid var(--ouro);
+            background: var(--ouro);
+            color: var(--preto);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.4s;
+        }
+
+        .btn-portal:hover {
+            background: transparent;
+            color: var(--ouro);
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.3);
+        }
+
+        /* --- AUTHOR SECTION --- */
+        .author-section {
+            margin-top: 100px;
+            padding-top: 60px;
+            border-top: 1px solid var(--borda-ouro);
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .author-img {
+            width: 180px;
+            height: 180px;
+            border: 1px solid var(--ouro);
+            padding: 5px;
+            object-fit: cover;
+        }
+
+        footer {
+            padding: 60px 20px;
+            border-top: 1px solid var(--borda-ouro);
+            text-align: center;
+        }
+
+        footer p {
+            font-family: var(--fonte-ui);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-bottom: 10px;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .subtone-grid, .author-section { grid-template-columns: 1fr; }
+            .section-header::before, .section-header::after { display: none; }
+            .author-img { margin: 0 auto; }
+            .author-section { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="./revista-mistica-blog.html" class="btn-voltar">← Retornar ao Início</a>
+    </nav>
+
+    <header class="hero-ritual">
+        <div class="badge">Ciência e Identidade</div>
+        <h1 class="hero-title">A Ciência da Cor na Pele Negra:<br>Colorimetria e a Celebração da Melanina</h1>
+    </header>
+
+    <main class="main-container">
+        
+        <p class="dropcap">No <strong>Studio Esoteric Ink</strong>, acreditamos que a pele negra não é um "limitador" para a cor, mas sim uma tela de profundidade incomparável. O mito de que cores não aparecem em peles retintas é fruto de uma negligência histórica da indústria, que agora é combatida com ciência, técnica e respeito biológico. Para garantir resultados vibrantes e nítidos a longo prazo, aplicamos o que há de mais avançado em colorimetria e análise da Escala de Fitzpatrick.</p>
+
+        <h2 class="section-header">1. A Escala de Fitzpatrick</h2>
+        <p>Para planejar uma tatuagem colorida de alta performance, o primeiro passo técnico é identificar onde a pele se encontra na <strong>Escala de Fitzpatrick</strong>. Esta escala classifica os tipos de pele de acordo com sua resposta à exposição solar e a quantidade de melanina presente:</p>
+
+        <div class="fitz-scale">
+            <div class="fitz-item f1"></div>
+            <div class="fitz-item f2"></div>
+            <div class="fitz-item f3"></div>
+            <div class="fitz-item f4"></div>
+            <div class="fitz-item f5"></div>
+            <div class="fitz-item f6"></div>
+        </div>
+        <p style="font-size: 0.9rem; color: var(--ouro-claro); text-align: center; font-family: var(--fonte-ui); text-transform: uppercase; letter-spacing: 1px;">Destaque para Fototipos IV, V e VI (Peles Morenas e Negras)</p>
+
+        <div class="highlight-box">
+            <p><strong>Fototipos IV, V e VI:</strong> Nelas, a melanina atua como um componente biológico ativo na leitura visual. Diferente das peles claras, onde usamos tons translúcidos, priorizamos <strong>Cores Joia</strong> e pigmentos com Alta Carga de Saturação. Escolhemos tons que possuem "peso" visual suficiente para interagir com a melanina sem perder o brilho, como o Azul Royal, Verde Esmeralda e Vermelhos Profundos.</p>
+        </div>
+
+        <h2 class="section-header">2. O Efeito Vitral</h2>
+        <p>Para entender como a tatuagem cicatriza, usamos a analogia do <strong>Vitral</strong>. O pigmento da tatuagem é depositado na derme (camada profunda), enquanto a epiderme (camada superficial, onde reside a melanina) cicatriza por cima, funcionando como um vidro translúcido.</p>
+
+        <p>Quanto mais escura a pele, mais "escuro" é esse vidro. Se aplicarmos uma cor clara ou "leitosa" (tons pastel), a melanina irá encobri-la, resultando em um aspecto acinzentado (ashy). Por isso, selecionamos o valor tonal de cada pigmento para que ele "vença" o filtro natural da pele e mantenha a vivacidade.</p>
+
+        <h2 class="section-header">3. Leitura de Subtom</h2>
+        <p>Peles negras possuem "almas" cromáticas diferentes. Identificar o subtom é o que separa uma tatuagem que "vibrará" de uma que "morrerá" na pele:</p>
+
+        <div class="subtone-grid">
+            <div class="subtone-card">
+                <strong>Subtom Dourado (Quente)</strong>
+                <p style="font-size: 0.95rem;">Peles que refletem tons amarelados. Respondem magnificamente a laranjas vibrantes e roxos intensos.</p>
+            </div>
+            <div class="subtone-card">
+                <strong>Subtom Oliva (Frio/Neutro)</strong>
+                <p style="font-size: 0.95rem;">Peles com reflexos esverdeados ou acinzentados. Tons quentes e puros são essenciais para evitar a opacidade.</p>
+            </div>
+            <div class="subtone-card">
+                <strong>Subtom Avermelhado (Quente)</strong>
+                <p style="font-size: 0.95rem;">Peles profundas com fundo mogno. Trabalhamos com "tom sobre tom" luxuoso ou contrastes de altíssima saturação.</p>
+            </div>
+            <div class="subtone-card">
+                <strong>Peles Retintas</strong>
+                <p style="font-size: 0.95rem;">Foco total em Saturação Máxima e contraste joia para garantir leitura à longa distância.</p>
+            </div>
+        </div>
+
+        <h2 class="section-header">4. Protocolo: O Color Test</h2>
+        <p>A etapa mais fundamental do nosso processo é o <strong>Color Test</strong>. Não trabalhamos com suposições; trabalhamos com resultados reais e cicatrização comprovada.</p>
+
+        <div class="color-test-step">
+            <div class="step-num">I</div>
+            <div>
+                <strong>O Procedimento:</strong>
+                <p style="margin-bottom: 0;">Aplicamos pequenos pontos ou linhas de pigmentos selecionados em uma área discreta.</p>
+            </div>
+        </div>
+
+        <div class="color-test-step">
+            <div class="step-num">II</div>
+            <div>
+                <strong>A Janela de Cicatrização:</strong>
+                <p style="margin-bottom: 0;">Aguardamos de 4 a 6 semanas. Só após a renovação completa da epiderme vemos como a sua melanina filtrou cada cor.</p>
+            </div>
+        </div>
+
+        <div class="color-test-step">
+            <div class="step-num">III</div>
+            <div>
+                <strong>Avaliação Técnica:</strong>
+                <p style="margin-bottom: 0;">Analisamos qual pigmento manteve a fidelidade e qual precisará de ajustes na mistura ou técnica de aplicação.</p>
+            </div>
+        </div>
+
+        <h2 class="section-header">5. Espaço Negativo</h2>
+        <p>Em peles escuras, o "respiro" da pele é um elemento de design. Usamos o <strong>Espaço Negativo</strong> (áreas sem tinta) para criar contraste e separação visual. Isso evita que, com o passar dos anos, a tatuagem perca a definição. Uma tatuagem inteligente em pele negra é projetada para ser lida a metros de distância, mantendo a nitidez por décadas.</p>
+
+        <section class="cta-ritual">
+            <h2 style="font-family: var(--fonte-titulo); margin-bottom: 15px;">Sua Pele é uma Obra de Arte e merece Ciência.</h2>
+            <p>Tatuar a pele negra exige reverência à sua história biológica e domínio técnico absoluto. Vamos exaltar a sua identidade através da cor?</p>
+            <a href="../portal-esoteric.html" class="btn-portal">Portal de Intenções</a>
+        </section>
+
+        <section class="author-section">
+            <img src="../imagem/foto_nana_bancada.webp" alt="Nana Borges" class="author-img">
+            <div class="author-info">
+                <h4 style="font-family: var(--fonte-titulo); color: var(--ouro); font-size: 1.5rem; margin-bottom: 10px;"></h4>
+                <p style="font-size: 1rem;"> <strong>Studio Esoteric Ink</strong> é especialista em colorimetria aplicada e biologia da cicatrização. Como pesquisadores da tatuagem ritualística, acreditamos que a pele negra é o pergaminho mais nobre para a manifestação da arte eterna.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>COLORIMETRIA APLICADA • ESTÉTICA RITUALÍSTICA • STUDIO ESOTERIC INK</p>
+        <p style="margin-top: 10px; opacity: 0.5;">© 2026 - Desenvolvido com Ciência e Magia.</p>
+    </footer>
+
+</body>
+</html>

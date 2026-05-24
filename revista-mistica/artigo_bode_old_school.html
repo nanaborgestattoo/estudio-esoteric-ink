@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tatuagem de Bode Old School | Studio Esoteric Ink</title>
+    
+    <!-- Pré-conexão e Fontes do DNA Esoteric Ink -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta e Variáveis Oficiais ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1d0d35;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        /* ================= Reset & Setup ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--preto);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            /* Brilho sutil do roxo escuro no fundo preto ritual */
+            background-image: radial-gradient(circle at top right, var(--roxo-escuro) 0%, transparent 40%);
+        }
+
+        /* --- NAVEGAÇÃO DE TOPO (Alinhada à direita conforme solicitado) --- */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 25px 5%;
+            display: flex;
+            justify-content: flex-end; 
+            align-items: center;
+            gap: 30px;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(5,1,8,0.9), transparent);
+        }
+
+        .logo-nav {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: 0.3s;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .logo-nav:hover { color: var(--branco-off); }
+
+        .btn-voltar {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            border: 1px solid var(--borda-ouro);
+            padding: 10px 20px;
+            background: rgba(5,1,8,0.5);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-voltar::before {
+            content: '←';
+            font-size: 1.1rem;
+        }
+
+        .btn-voltar:hover { 
+            color: var(--preto); 
+            background: var(--ouro);
+            border-color: var(--ouro);
+        }
+
+        /* ================= LAYOUT SPLIT-SCREEN ================= */
+        .about-container { display: flex; min-height: 100vh; }
+
+        /* Lado Esquerdo (Imagem Fixa) */
+        .about-image-side {
+            width: 40%;
+            position: fixed;
+            height: 100vh;
+            /* Caminho original da imagem preservado rigorosamente */
+            background-image: url('../imagem/tattoo_bode_old_school_coxa_nana_borges_tattoo_studio_esoteric_ink (copiar 1).webp');
+            background-size: cover;
+            background-position: center;
+            border-right: 1px solid var(--borda-ouro);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            /* Gradiente escuro fundindo a imagem ao Preto Ritual */
+            background: linear-gradient(to right, rgba(5,1,8,0.1), var(--preto));
+        }
+
+        /* Lado Direito (Texto) */
+        .about-text-side {
+            width: 60%;
+            margin-left: 40%;
+            padding: 120px 5% 80px 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .text-wrapper {
+            max-width: 850px; /* Regra DNA: Limite de conforto de leitura */
+            width: 100%;
+        }
+
+        /* --- COMPONENTES DO DNA VISUAL --- */
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--ouro);
+            padding: 5px 15px;
+            font-family: var(--fonte-ui);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--ouro);
+            background: rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .title {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            line-height: 1.2;
+            margin-bottom: 40px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+        }
+
+        /* H2 com linhas douradas */
+        .section-header {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: 2rem;
+            margin: 60px 0 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            text-align: center;
+        }
+        .section-header::before, .section-header::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--ouro), transparent);
+        }
+
+        /* Letra Capitular (Dropcap) */
+        .dropcap::first-letter {
+            font-family: var(--fonte-titulo);
+            font-size: 5rem;
+            color: var(--ouro);
+            float: left;
+            line-height: 0.8;
+            padding-right: 15px;
+            padding-top: 5px;
+            text-shadow: 0 2px 10px rgba(197, 160, 89, 0.2);
+        }
+
+        .text-content p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .text-content strong {
+            color: var(--branco-off);
+            font-family: var(--fonte-ui);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* Estilização elegante dos links no meio do texto */
+        .text-content a {
+            color: var(--ouro-claro);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .text-content a:hover {
+            color: var(--branco-off);
+            text-decoration-color: var(--ouro);
+        }
+
+        /* Info-Card / Highlight Box */
+        .highlight-box {
+            background-color: rgba(197, 160, 89, 0.03);
+            border: 1px solid var(--borda-ouro);
+            border-left: 3px solid var(--ouro);
+            padding: 40px;
+            margin: 50px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .highlight-box p {
+            font-style: italic;
+            color: var(--ouro-claro);
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 0;
+            font-family: var(--fonte-corpo);
+        }
+
+        .signature {
+            margin-top: 60px;
+            font-family: var(--fonte-titulo);
+            font-size: 2rem;
+            color: var(--ouro);
+            text-align: right;
+            border-top: 1px solid var(--borda-ouro);
+            padding-top: 20px;
+        }
+
+        /* ================= RESPONSIVIDADE ================= */
+        @media (max-width: 992px) {
+            .top-nav { justify-content: space-between; gap: 15px; padding: 15px 5%; background: rgba(5,1,8,0.95); }
+            .logo-nav { font-size: 1rem; }
+            .about-container { flex-direction: column; }
+            .about-image-side { 
+                position: relative; 
+                width: 100%; 
+                height: 50vh; 
+                border-right: none;
+                border-bottom: 1px solid var(--borda-ouro);
+            }
+            .image-overlay { background: linear-gradient(to bottom, rgba(5,1,8,0.1), var(--preto)); }
+            .about-text-side { width: 100%; margin-left: 0; padding: 60px 5%; }
+            .section-header::before, .section-header::after { display: none; }
+            .section-header { text-align: left; justify-content: flex-start; }
+            .highlight-box { padding: 30px 20px; }
+            .btn-voltar { font-size: 0.65rem; padding: 8px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegação Superior -->
+    <nav class="top-nav">
+        
+        <a href="./revista-mistica-blog.html" class="btn-voltar">Retornar ao Diário</a>
+    </nav>
+
+    <main class="about-container">
+        
+        <!-- Lado Esquerdo: Imagem -->
+        <div class="about-image-side">
+            <div class="image-overlay"></div>
+        </div>
+
+        <!-- Lado Direito: Texto -->
+        <div class="about-text-side">
+            <div class="text-wrapper">
+                
+                <div class="badge">Mistério e Tradição</div>
+                <h1 class="title">Tatuagem de Bode Old School: <br>O Mistério e o Poder da Figura Esotérica</h1>
+                
+                <div class="text-content">
+                    <p class="dropcap">A tatuagem de bode old school é uma das minhas maiores paixões como tatuadora. Aqui no Studio Esoteric Ink, vemos esse estilo não apenas como uma técnica, mas como uma herança viva que atravessa gerações.</p>
+                    
+                    <p>O estilo Old School, ou Tradicional Americano, surgiu por volta da década de 1920 e 1930, ganhando força nos portos e bases militares com nomes icônicos como Sailor Jerry. Com seus traços pretos sólidos e negritos, o estilo sobreviveu ao tempo e segue intocado em preferência, sendo perfeito para representar temas intensos e polêmicos que dividem opiniões.</p>
+
+                    <p>Neste projeto de 25cm na coxa, exploramos a figura do bode, um animal que carrega uma carga simbólica pesadíssima e mitos diversos. Como animal de poder, o bode representa a determinação, a independência e a capacidade de escalar as montanhas mais íngremes da vida, enfrentando o que for necessário para atingir o topo. É uma figura de virilidade e força bruta, mas também de profunda conexão com o oculto e o desconhecido.</p>
+
+                    <p>Para entender como essa estética se consolidou e por que ela permanece tão atual na cultura da modificação corporal, você pode conferir a história da <a href="https://www.sailorjerry.com/en/tattoos" target="_self"><strong>Tatuagem Old School Sailor Jerry Official</strong></a>: O site oficial do espólio de Norman Collins (Sailor Jerry) é o "portal sagrado" para quem busca a origem do estilo. Ele contém a biografia, a filosofia por trás do traço e a explicação dos pigmentos e máquinas da época. No Studio Esoteric Ink, aplicamos essa solidez visual para dar corpo a divindades e seres que habitam o imaginário esotérico e religioso.</p>
+
+                    <h2 class="section-header">Baphomet, Belzebu e o Esoterismo do Bode Negro</h2>
+                    <p>Quando falamos da tatuagem de bode old school, é impossível não mencionar Baphomet. Esta figura, popularizada por Eliphas Levi no século XIX, utiliza a cabeça de bode para simbolizar o equilíbrio dos opostos: o bem e o mal, o masculino e o feminino, o céu e a terra. Baphomet não é uma figura de "terror", mas um símbolo de sabedoria iniciática e da luz astral. O bode, neste contexto, é o receptáculo da inteligência espiritual que desafia as convenções dogmáticas.</p>
+                    
+                    <p>Já a associação com Belzebu traz uma camada mais densa. Historicamente derivado de divindades filisteias, Belzebu acabou sendo integrado à demonologia cristã e muitas vezes representado com traços caprinos. Na tatuagem de bode old school, essas referências se fundem para criar uma imagem que exala mistério. O bode negro torna-se um ícone de rebeldia e de conhecimento proibido, alguém que caminha pelas sombras com autoridade e não teme o julgamento alheio.</p>
+                    
+                    <p>Essa dualidade faz com que o bode seja um dos temas mais requisitados para quem busca uma arte com significado profundo. No esoterismo, o bode é aquele que enxerga além do véu. Se você sente o chamado para ancorar essa força em sua pele, convido você a conhecer nosso <a href="../portal-esoteric.html" target="_self"><strong>Portal de Intenções</strong></a> para estruturarmos juntos um projeto que respeite a sua linha espiritual e sua estética pessoal.</p>
+
+                    <h2 class="section-header">O Bode na Quimbanda e as Entidades Encantadas</h2>
+                    <p>Nas religiões de matriz africana, especialmente na Quimbanda, a figura do bode ganha contornos vivos e vibrantes. Ele é celebrado em pontos cantados como um ser encantado e misterioso. Diferente das interpretações europeias, aqui o bode é um companheiro de jornada. Ele é o animal que "bebe e fuma", um mensageiro das encruzilhadas que acompanha entidades de peso, como o respeitado Tata Caveira.</p>
+                    
+                    <p>Nesse contexto, o bode simboliza a proteção nas passagens e a força necessária para lidar com as energias do cemitério e das ruas. Ele é um guardião que conhece os caminhos da noite. Na tatuagem, representar esse "bode encantado" com chifres imponentes é uma forma de honrar essa ancestralidade e a força da magia brasileira. É um ser que impõe respeito e que carrega a sabedoria das almas e da terra.</p>
+                    
+                    <p>A força dessa representação está na sua capacidade de transmutação. O bode da Quimbanda é sagaz e estratégico. Se você quer ver como traduzimos essa energia em traços firmes e sombreados impactantes, dê uma olhada no nosso Instagram<a href="https://www.instagram.com/studioesoteric_/" target="_self"><strong> @studioesoteric_</strong></a>, onde postamos os detalhes dessa tattoo de 25cm e outras artes que celebram as entidades e o sagrado de matriz africana.</p>
+
+                    <h2 class="section-header">O Bode na Mitologia Hindu e a Conexão com Shiva</h2>
+                    <p>Na tradição hindu, a figura do bode aparece de forma marcante através de Daksha, um dos filhos de Brahma e uma figura central em um dos mitos mais importantes envolvendo Lorde Shiva. Após um conflito devastador que resultou na decapitação de Daksha, Shiva, em um ato de misericórdia e restauração do equilíbrio, substituiu a cabeça de Daksha pela de um bode.</p>
+                    
+                    <p>Desde então, Daksha é representado como uma divindade com corpo humano e cabeça de bode, servindo como um eterno devoto de Shiva. Essa imagem simboliza a transformação do ego e da arrogância em humildade espiritual perante o deus da destruição e regeneração.</p>
+
+                    <h2 class="section-header">O Bode como Vahana (Montaria)</h2>
+                    <p>Além da história de Daksha, o bode também é reconhecido como o Vahana (veículo ou montaria) de outras divindades importantes:</p>
+                    <p><strong>Agni:</strong> O deus do fogo é frequentemente retratado montando um bode preto. O animal simboliza a vitalidade, o calor e a força necessária para o sacrifício ritualístico.</p>
+                    <p><strong>Mangala:</strong> O regente do planeta Marte na astrologia védica também utiliza o bode como sua montaria, representando a energia guerreira, a coragem e a impulsividade.</p>
+
+                    <h2 class="section-header">Uma Teoria Transcendental</h2>
+                    <p>Poderíamos questionar: seria o bode com o terceiro olho (um atributo clássico de Shiva) uma representação da união entre o instinto animal bruto e a consciência divina suprema? Essa teoria sugere que o bode não é apenas um acompanhante, mas uma manifestação da própria capacidade de Shiva de enxergar através da matéria, transformando o "animal" em um ser de pura percepção espiritual.</p>
+
+                    <h2 class="section-header">O Mistério do Terceiro Olho e a Teoria do Bode Supremo</h2>
+                    <p>O detalhe crucial desta tatuagem é o terceiro olho cravado na testa do animal. O terceiro olho, ou Olho de Shiva/Glândula Pineal, simboliza a visão que transcende o plano físico — a clarividência e a intuição absoluta. O que significa, então, um grande bode preto com três olhos e chifres múltiplos? Seria ele uma representação de uma divindade interestelar que observa nossa dimensão, ou talvez o símbolo de uma consciência que já integrou todas as suas sombras e agora enxerga a verdade sem filtros?</p>
+                    
+                    <p>Este bode de três olhos nos questiona: estamos realmente vendo a realidade ou apenas o que nos foi ensinado a ver? Seus chifres, que parecem antenas para o divino e o abissal, sugerem uma criatura que domina todos os espectros da existência. É uma arte que não entrega respostas fáceis, mas que exige que o observador encare seus próprios mitos e preconceitos.</p>
+
+                    <div class="highlight-box">
+                        <p>Essa tatuagem de bode old school é muito mais que um desenho; é um manifesto esotérico na pele. Seja como Baphomet, como um mestre da Quimbanda ou como um totem de poder, o bode segue como uma das figuras mais magnéticas da tatuagem mundial. Se você está pronto para carregar esse mistério e essa força na sua coxa, com a solidez que só o Old School proporciona, o meu estúdio está de portas abertas para realizar esse ritual através da tinta.</p>
+                    </div>
+                </div>
+
+                <div class="signature">Nana Borges</div>
+                
+            </div>
+        </div>
+    </main>
+</body>
+</html>

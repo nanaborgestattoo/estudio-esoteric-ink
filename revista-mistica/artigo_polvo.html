@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tatuagem de Polvo Animal de Poder | Studio Esoteric Ink</title>
+    
+    <!-- DNA de Fontes Esoteric Ink -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta Oficial Esoteric Ink ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1d0d35;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        /* ================= Reset & Setup ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--preto);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            background-image: radial-gradient(circle at top right, var(--roxo-escuro) 0%, transparent 40%);
+        }
+
+        /* --- NAVEGAÇÃO --- */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 25px 5%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 15px;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(5,1,8,0.9), transparent);
+        }
+
+        .btn-voltar {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            border: 1px solid var(--borda-ouro);
+            padding: 10px 20px;
+            background: rgba(5,1,8,0.5);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+        }
+
+        .btn-voltar:hover { 
+            color: var(--preto); 
+            background: var(--ouro);
+            border-color: var(--ouro);
+        }
+
+        /* ================= LAYOUT SPLIT-SCREEN ================= */
+        .about-container { display: flex; min-height: 100vh; }
+
+        .about-image-side {
+            width: 40%;
+            position: fixed;
+            height: 100vh;
+            background-image: url('../imagem/tattoo_polvo_na_coxa_nana_borges_tattoo_studio_esoteric_ink (copiar 1a).webp');
+            background-size: cover;
+            background-position: center;
+            border-right: 1px solid var(--borda-ouro);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to right, rgba(5,1,8,0.1), var(--preto));
+        }
+
+        .about-text-side {
+            width: 60%;
+            margin-left: 40%;
+            padding: 120px 5% 80px 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .text-wrapper {
+            max-width: 850px;
+            width: 100%;
+        }
+
+        /* ================= COMPONENTES VISUAIS ================= */
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--ouro);
+            padding: 5px 15px;
+            font-family: var(--fonte-ui);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--ouro);
+            background: rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .title {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: clamp(2rem, 3.5vw, 3.2rem);
+            line-height: 1.1;
+            margin-bottom: 40px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+        }
+
+        .section-header {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: 1.6rem;
+            margin: 60px 0 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .section-header::before, .section-header::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--ouro), transparent);
+        }
+
+        .dropcap::first-letter {
+            font-family: var(--fonte-titulo);
+            font-size: 5rem;
+            color: var(--ouro);
+            float: left;
+            line-height: 0.8;
+            padding-right: 15px;
+            padding-top: 5px;
+        }
+
+        .text-content p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .text-content ul {
+            margin-bottom: 25px;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .text-content li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .text-content li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--ouro);
+            font-size: 0.8rem;
+        }
+
+        .text-content a {
+            color: var(--ouro-claro);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            transition: 0.3s;
+        }
+
+        .text-content a:hover { color: var(--ouro); }
+
+        /* Blocos de Referência e Destaque */
+        .ref-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(29, 13, 53, 0.2);
+            border: 1px solid var(--borda-ouro);
+        }
+
+        .ref-group { margin-bottom: 30px; }
+        .ref-group:last-child { margin-bottom: 0; }
+
+        .ref-group-title {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-left: 3px solid var(--ouro);
+            padding-left: 15px;
+        }
+
+        .ref-list { list-style: none; padding-left: 0; }
+        .ref-list li {
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+            padding-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .ref-list li::before { content: "› "; color: var(--ouro); }
+
+        .highlight-box {
+            background-color: rgba(197, 160, 89, 0.03);
+            border: 1px solid var(--borda-ouro);
+            border-left: 3px solid var(--ouro);
+            padding: 40px;
+            margin: 50px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .highlight-box p {
+            font-style: italic;
+            color: var(--ouro-claro);
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        .signature {
+            margin-top: 60px;
+            font-family: var(--fonte-titulo);
+            font-size: 2rem;
+            color: var(--ouro);
+            text-align: right;
+            border-top: 1px solid var(--borda-ouro);
+            padding-top: 20px;
+        }
+
+        /* ================= RESPONSIVIDADE ================= */
+        @media (max-width: 992px) {
+            .about-container { flex-direction: column; }
+            .about-image-side { position: relative; width: 100%; height: 50vh; border-right: none; }
+            .about-text-side { width: 100%; margin-left: 0; padding: 60px 5%; }
+            .section-header::before, .section-header::after { display: none; }
+            .section-header { text-align: left; justify-content: flex-start; }
+            .top-nav { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        
+        <a href="./revista-mistica-blog.html" class="btn-voltar">Retornar ao Diário</a>
+    </nav>
+
+    <main class="about-container">
+        <div class="about-image-side">
+            <div class="image-overlay"></div>
+        </div>
+
+        <div class="about-text-side">
+            <div class="text-wrapper">
+                
+                <div class="badge">Xamanismo Marinho e Totemismo</div>
+                <h1 class="title">Tatuagem de Polvo Animal de Poder: Mistério e Transcendência na Pele</h1>
+                
+                <div class="text-content">
+                    <p class="dropcap">A tatuagem de polvo animal de poder é uma das escolhas mais profundas para quem busca expressar versatilidade, inteligência e uma conexão com os mistérios insondáveis do universo. Realizamos no <strong>Studio Esoteric Ink</strong>, este projeto monumental de 40 cm na lateral da coxa, uma localização que permite explorar toda a fluidez dos tentáculos que se moldam à anatomia da cliente. Carregar o polvo em seu totem pessoal é aceitar um convite para mergulhar nas águas do subconsciente e emergir com a capacidade de se adaptar a qualquer circunstância.</p>
+
+                    <p>Como animal de poder, o polvo ensina a importância da flexibilidade. Por não possuir ossos, ele consegue atravessar fendas minúsculas, simbolizando a nossa capacidade de encontrar saídas em situações onde nos sentimos encurralados. Ter uma tatuagem de polvo auxilia o indivíduo a desenvolver uma visão multideterminada da vida, já que este cefalópode possui três corações e um sistema nervoso altamente distribuído.</p>
+
+                    <p>Para aqueles que buscam entender a biologia fascinante que serve de base para essas crenças, vale consultar o estudo detalhado sobre a <a href="https://pt.wikipedia.org/wiki/Cefalópode#Inteligência" target="_blank">inteligência dos cefalópodes</a>. Traduzimos essa complexidade biológica em um design autoral que respeita a fluidez e a força do animal, criando um amuleto permanente que exalta a soberania sobre as próprias emoções.</p>
+
+                    <h2 class="section-header">Teorias Interestelares e Origens Estelares</h2>
+                    <p>Para além do simbolismo terrestre, a tatuagem de polvo está frequentemente ligada a teorias fascinantes sobre a vida interestelar. A teoria da panspermia, por exemplo, é usada para especular que o DNA dos cefalópodes teria chegado ao nosso planeta através de cometas durante a explosão cambriana. Essa "origem alienígena" explicaria por que sua anatomia é tão radicalmente diferente de qualquer outra forma de vida terrestre.</p>
+
+                    <p>Em certas crenças místicas, o polvo é associado a raças estelares antigas, como seres vindos de sistemas estelares aquáticos desconhecidos. Ele é visto como um "observador interestelar". Capturamos essa aura através de texturas que remetem à pele galáctica. Se você sente que sua origem espiritual atravessa as estrelas, convido você a conhecer nosso <a href="../portal-esoteric.html">Portal de Intenções</a>.</p>
+
+                    <h2 class="section-header">A Força do Totem na Vida Prática</h2>
+                    <p>Carregar a tatuagem de polvo na coxa é ancorar a força do movimento na base do corpo. O polvo tem a incrível capacidade de regenerar seus membros, o que ensina que perdas temporárias são oportunidades para crescer algo novo e mais forte. Na vida ativa, esse animal auxilia na gestão de multitarefas, permitindo lidar com diferentes áreas (trabalho, família, espiritualidade) com destreza.</p>
+
+                    <p>A magia do polvo também está na defesa. Sua nuvem de tinta simboliza a proteção contra ataques psíquicos, permitindo uma retirada estratégica. Você pode acompanhar os bastidores deste projeto de 40 cm em nosso <a href="https://www.instagram.com/studioesoteric_/" target="_blank">Instagram @studioesoteric_</a>.</p>
+
+                    <div class="ref-section">
+                        <div class="ref-group">
+                            <h3 class="ref-group-title">Referências Bibliográficas e Científicas</h3>
+                            <ul class="ref-list">
+                                <li><strong>"Outras Mentes: O Polvo e a Origem da Consciência" (Peter Godfrey-Smith):</strong> Explora a inteligência dos cefalópodes.</li>
+                                <li><strong>"Animal Speak" (Ted Andrews):</strong> Referência clássica sobre animais de poder e totens.</li>
+                                <li><strong>"Panspermia Dirigida e a Explosão Cambriana":</strong> Estudos de Astrobiologia sobre origens exógenas.</li>
+                            </ul>
+                        </div>
+
+                        <div class="ref-group">
+                            <h3 class="ref-group-title">Canais de Pesquisa de Base</h3>
+                            <ul class="ref-list">
+                                <li><a href="https://www.nature.com/" target="_blank">Nature Journal</a> (Genoma do polvo).</li>
+                                <li><a href="https://www.seti.org/" target="_blank">SETI Institute</a> (Exobiologia e vida complexa).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h2 class="section-header">Conexão com o Abismo</h2>
+                    <p>Concluímos reforçando que esta tatuagem é um símbolo de mistério eterno. Para a cliente que carrega esta peça, o polvo é um guardião que a incentiva a não temer as próprias profundezas. É no escuro do oceano — ou da alma — que se encontram as maiores pérolas de sabedoria.</p>
+
+                    <div class="highlight-box">
+                        <p>Cada tentáculo deste projeto foi desenhado para abraçar a anatomia, simbolizando que você está agora sob a proteção de um poder antigo e transcendental. Que a medicina do polvo traga calma para as tempestades e astúcia para as bonanças.</p>
+                    </div>
+                </div>
+
+                <div class="signature">- Nana Borges</div>
+                
+            </div>
+        </div>
+    </main>
+</body>
+</html>

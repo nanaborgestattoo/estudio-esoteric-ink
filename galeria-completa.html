@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria Completa - Studio Esoteric Ink</title>
+    
+    <!-- Pré-conexão e Fontes do DNA Esoteric Ink -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta e Variáveis Oficiais ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1d0d35;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--preto);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            background-image: radial-gradient(circle at top right, var(--roxo-escuro) 0%, transparent 40%);
+            padding: 50px 5%;
+        }
+
+        /* CABEÇALHO DA GALERIA */
+        .gallery-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--borda-ouro);
+        }
+
+        .gallery-title {
+            font-family: var(--fonte-titulo);
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--branco-off);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .btn-back {
+            color: var(--ouro-claro);
+            font-family: var(--fonte-ui);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .btn-back::before {
+            content: '←';
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-back:hover { color: var(--branco-off); }
+        .btn-back:hover::before { transform: translateX(-5px); }
+
+        /* GRADE DA GALERIA */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px; /* Espaçamento elegante */
+        }
+
+        .grid-item {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 2px;
+            border: 1px solid var(--borda-ouro);
+            transition: transform 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+            filter: grayscale(20%);
+        }
+
+        .grid-item:hover {
+            transform: translateY(-8px);
+            border-color: var(--ouro);
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15);
+            z-index: 2;
+            filter: grayscale(0%);
+        }
+
+        /* EFEITOS MÍSTICOS (VINHETA E PELÍCULA ROXA DA MARCA) */
+        .grid-item::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Vinheta Roxa Esoteric Ink */
+        .vignette-purple::after {
+            background: radial-gradient(circle, transparent 40%, rgba(29, 13, 53, 0.8) 120%);
+        }
+
+        /* Película central Esoteric Ink */
+        .center-film::after {
+            background: rgba(29, 13, 53, 0.5); /* Filtro roxo escuro por cima da foto */
+            mix-blend-mode: multiply;
+        }
+
+        /* Remove os efeitos ao passar o mouse para dar um "vislumbre" nítido */
+        .grid-item:hover::after {
+            opacity: 0;
+        }
+
+        /* MODAL / LIGHTBOX (FOTO EM TELA CHEIA) */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(5, 1, 8, 0.95); /* Preto da paleta com leve transparência */
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            box-shadow: 0 0 50px rgba(0,0,0,1);
+            border: 1px solid var(--borda-ouro);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: var(--ouro);
+            font-size: 3rem;
+            cursor: pointer;
+            font-family: var(--fonte-ui);
+            line-height: 1;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--branco-off);
+            transform: scale(1.1);
+        }
+
+        /* Responsividade do Cabeçalho */
+        @media (max-width: 768px) {
+            .gallery-header { flex-direction: column; gap: 20px; text-align: center; }
+            .btn-back { align-self: center; }
+            .grid-container { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; }
+            .close-btn { top: 15px; right: 20px; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="gallery-header">
+        <h1 class="gallery-title">Acervo Completo</h1>
+
+        <a href="./index.html" class="btn-back">Voltar ao Portal</a>
+    </header>
+
+    <div class="grid-container" id="gallery-grid">
+        <!-- As 71 fotos estão renderizadas aqui. 
+             A classe "vignette-purple" aplica o sombreado místico em algumas imagens.
+             A classe "center-film" está na imagem 36. -->
+             
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_polvo_na_coxa_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_dragão_chines_panturrilha_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_onça_coxa_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_bode_old_school_coxa_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_caveira_perna_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_coração_perna_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_cobra_old_school.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_tridentes_exu_pomga_gira_antebraços_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_old_school_caveira_e_punhal_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_old_school_de_onça_na_mão_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_olho_gore.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_lua_old_school_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_flor_caveira_ombro_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_letras_dedos_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_xoxo_dedos_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_abstrata_cobertura_braço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_tridentes_exu_pomga_gira_antebraços_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_astronauta_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_cyber_mulher_coxa_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_noiva_cadaver_coxa_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_ritualistics_bruxa_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_deusa_lunar_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_deusa_venus_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_a_deusa_do_sol_panturrilha_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_medusa_coxa_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_sheela_na_gig_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_cogumelo_panturrilha_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_besouro_na_coxa_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_abelhinha_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_cavalo_marinho_fineline_ombro_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_lagartixa_de_duas_cabeças_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_sapinha_nana_borges_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_adinkras_braço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_runas_roda_viking_mão_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_runas_tiwaz_braço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_sak_yant_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        
+        <!-- FOTO CENTRAL DA GRADE (ITEM 36) - POSSUI A PELÍCULA ROXA EXCLUSIVA -->
+        <div class="grid-item center-film" style="background-image: url('imagem/tattoo_os_quatro_elementos_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_ritualistica_antebraço_vassoura_de_bruxa_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_ritualistica_braço_leque_da_cigana_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_ritualistica_braço_triquetra_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_ritualistica_fineline_pulso_triquetra_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_ritualistica_jurema_braço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_ritualistica_panturrilha_jurema_mestre_preá_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_ritualistica_exu_cobra_nana_borges_studio_esoteric_ink (3).webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_exu_mirim_panturrilha_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_colorida_planta_de_poder_arruda_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_colorida_planta_de_poder_lavanda_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_colorida_planta_de_poder_quebra_demanda_antebraço_nana_borges_tattoo_studio_esoteric_ink_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_colorida_ursinho_braço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_vermelha_baleia_braço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_bodinho_minimalista_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/caveira_de_bode_na_coxa_nana_borges_tattoo_studio_esoteric_ink (2).webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_coqueiro_braço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_fantasma_cornifero_nana_borges_studio_esoteric_ink (2).webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_loki_lobisomem_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_memento_mori_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_minie_mickey_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_tridentes_pescoço.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_data_pescoço.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_letras_braço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_fantasminha_gore_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_vaceira_de_bode_kim_nana_borges_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_personagem_desencanto_luci_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_personagem_meninas_super_poderosas_ele_panturrilha_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_personagem_panturrilha_BB8_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_personagem_rick_and_morty_braking_bad_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_personagem_star_wars_panturrilha_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_personagem_stitch_panturrilha_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_homenagem_antebraço_girassol_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_homenagem_mae_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item" style="background-image: url('imagem/tattoo_floral_ombro_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+        <div class="grid-item vignette-purple" style="background-image: url('imagem/tattoo_floral_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp');" onclick="openLightbox(this)"></div>
+    </div>
+
+    <!-- ESTRUTURA DO MODAL (LIGHTBOX) -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+        <span class="close-btn" onclick="forceCloseLightbox()">&times;</span>
+        <img src="" alt="Arte Tattoo Ampliada" class="lightbox-img" id="lightbox-image">
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-image');
+
+        function openLightbox(element) {
+            const bgImage = element.style.backgroundImage;
+            const imageUrl = bgImage.slice(4, -1).replace(/"/g, ""); 
+            lightboxImg.src = imageUrl;
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox(event) {
+            if (event.target !== lightboxImg) {
+                lightbox.classList.remove('active');
+                lightboxImg.src = '';
+            }
+        }
+
+        function forceCloseLightbox() {
+            lightbox.classList.remove('active');
+            lightboxImg.src = '';
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape" && lightbox.classList.contains('active')) {
+                forceCloseLightbox();
+            }
+        });
+    </script>
+<div class="footer-copy">
+            &copy; 2026 Nana Borges Tattoo - Studio Esoteric Ink. Todos os direitos reservados. <br>
+        </div>
+    </footer>
+
+</body>
+</html>

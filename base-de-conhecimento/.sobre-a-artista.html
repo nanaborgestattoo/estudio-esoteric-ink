@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Artista | Nana Borges - Studio Esoteric Ink</title>
+    
+    <!-- Pré-conexão e Fontes do DNA Esoteric Ink -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta e Variáveis Oficiais ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1d0d35;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        /* --- RESET BÁSICO --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--preto);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* ================= Top Nav ================= */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: flex-end; 
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(5,1,8,0.9), transparent);
+        }
+
+        .btn-voltar {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s ease;
+            border: 1px solid var(--borda-ouro);
+            padding: 10px 20px;
+            border-radius: 2px;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-voltar:hover { 
+            color: var(--preto); 
+            background-color: var(--ouro);
+            border-color: var(--ouro);
+        }
+
+        /* ================= Componentes Globais (DNA Visual) ================= */
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--ouro);
+            padding: 5px 15px;
+            font-family: var(--fonte-ui);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--ouro);
+            background: rgba(0,0,0,0.3);
+            margin-bottom: 25px;
+        }
+
+        .dropcap::first-letter {
+            font-family: var(--fonte-titulo);
+            font-size: 4.5rem;
+            float: left;
+            line-height: 0.8;
+            padding-right: 15px;
+            color: var(--ouro);
+        }
+
+        .section-title {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.8rem;
+            margin: 60px 0 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .section-title::before, .section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--ouro), transparent);
+        }
+
+        .btn-action {
+            display: inline-block;
+            padding: 15px 35px;
+            background: rgba(5, 1, 8, 0.8);
+            color: var(--ouro);
+            border: 1px solid var(--ouro);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transition: 0.4s;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            margin-top: 20px;
+        }
+
+        .btn-action:hover {
+            background: var(--ouro);
+            color: var(--preto);
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+        }
+
+        /* ================= Seção Principal (Split Screen) ================= */
+        .about-container {
+            display: flex;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at top right, var(--roxo-escuro) 0%, transparent 50%);
+        }
+
+        .about-image-side {
+            width: 40%;
+            position: fixed;
+            height: 100vh;
+            background-image: url('/home/nana/Documentos/meu site tattoo/imagem/nana_borges_tattoo_studio_esoteric_ink.webp');
+            background-size: cover;
+            background-position: center;
+            border-right: 1px solid var(--borda-ouro);
+            filter: grayscale(20%) contrast(1.1);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            /* Degradê que funde suavemente a imagem ao preto absoluto do fundo */
+            background: linear-gradient(to right, rgba(5,1,8,0.2), var(--preto));
+        }
+
+        .about-text-side {
+            width: 60%;
+            margin-left: 40%;
+            padding: 100px 5% 80px 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centraliza o invólucro de conteúdo */
+        }
+
+        .text-wrap {
+            max-width: 850px; /* Limite de leitura elegante */
+            width: 100%;
+        }
+
+        .title {
+            font-family: var(--fonte-titulo);
+            color: var(--branco-off);
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            line-height: 1.2;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .text-wrap p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            text-align: justify;
+            color: var(--cinza-texto);
+        }
+
+        /* ================= Especialidades (Info-Cards) ================= */
+        .specialties-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .spec-item {
+            background: rgba(255, 255, 255, 0.02); /* Fundo translúcido */
+            border: 1px solid var(--borda-ouro);
+            padding: 25px;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .spec-item:hover {
+            border-color: var(--ouro);
+            transform: translateY(-5px);
+            background: rgba(197, 160, 89, 0.05);
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15);
+        }
+
+        .spec-item strong {
+            display: block;
+            color: var(--ouro);
+            font-family: var(--fonte-ui);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .spec-item span {
+            font-family: var(--fonte-corpo);
+            color: var(--cinza-texto);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ================= Highlight Box ================= */
+        .highlight-box {
+            background: rgba(197, 160, 89, 0.05);
+            padding: 35px;
+            border-left: 2px solid var(--ouro);
+            margin: 50px 0;
+            border-right: 1px solid var(--borda-ouro);
+            border-top: 1px solid var(--borda-ouro);
+            border-bottom: 1px solid var(--borda-ouro);
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: var(--branco-off);
+            font-style: italic;
+            font-size: 1.15rem;
+        }
+
+        /* ================= Links Secundários ================= */
+        .base-tecnica-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0 40px;
+            color: var(--ouro-claro);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .base-tecnica-link::before {
+            content: '◈';
+            color: var(--ouro);
+            font-size: 1.2rem;
+        }
+
+        .base-tecnica-link:hover {
+            color: var(--branco-off);
+        }
+
+        /* ================= Assinatura e Footer ================= */
+        .signature {
+            margin-top: 60px;
+            font-family: var(--fonte-titulo);
+            font-size: 2.5rem;
+            color: var(--ouro);
+            text-align: right;
+            padding-right: 20px;
+        }
+
+        footer {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid var(--borda-ouro);
+            text-align: center;
+            width: 100%;
+        }
+
+        .footer-seal {
+            font-family: var(--fonte-ui);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #666;
+        }
+
+        /* ================= Responsividade ================= */
+        @media (max-width: 992px) {
+            .top-nav { justify-content: center; background: rgba(5,1,8,0.95); padding: 15px; }
+            .about-container { flex-direction: column; }
+            .about-image-side { position: relative; width: 100%; height: 50vh; border-right: none; border-bottom: 1px solid var(--borda-ouro); }
+            .image-overlay { background: linear-gradient(to bottom, rgba(5,1,8,0.2), var(--preto)); }
+            .about-text-side { width: 100%; margin-left: 0; padding: 60px 5%; }
+            .specialties-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="file:///home/nana/Documentos/meu%20site%20tattoo/index.html" class="btn-voltar">Retornar ao Saguão</a>
+    </nav>
+
+    <main class="about-container">
+        
+        <div class="about-image-side">
+            <div class="image-overlay"></div>
+        </div>
+
+        <div class="about-text-side">
+            <div class="text-wrap">
+                <div class="badge">Mestria Técnica e Espiritual</div>
+                <h1 class="title">Nana Borges e o Conceito <br>Studio Esoteric Ink</h1>
+                
+                <p class="dropcap">Seja bem-vinda ao meu universo. Sou Nana Borges, a mente e o coração que pulsam através do Studio Esoteric Ink. Minha relação com a arte precede a agulha; o desenho sempre foi minha forma favorita de expressão artística para ler o mundo e manifestar intenções.</p>
+
+                <p>Em 2019, minha trajetória convergiu para o universo da tatuagem, onde encontrei minha vocação soberana. Iniciei meu caminho sob a mentoria de uma mestra e amiga, mergulhando nos fundamentos que hoje são pilares inegociáveis do meu trabalho: a biossegurança de padrão ambulatorial, a ética de bancada e a precisão técnica. Minha formação é contínua e rigorosa, amparada em estudos de Histologia e Fisiologia Cutânea (baseados em referências clássicas como Junqueira & Carneiro) e nas normas internacionais de segurança química da Comissão Europeia. Para mim, tatuar é gerenciar um trauma biológico com domínio científico, garantindo que a arte se integre à pele com saúde e longevidade.</p>
+
+                <h2 class="section-title">Studio Cigano e a Excelência Itinerante</h2>
+                <p>Atualmente, o Studio Esoteric Ink vive sua fase de <strong>Estúdio Cigano</strong>. Atendo em locais criteriosamente selecionados nas regiões de Barueri e São Paulo (como o renomado Espaço Kiron, na Saúde), mantendo a mobilidade de atender em outras regiões, desde que cumpram minhas exigências máximas de rigor técnico. Cada espaço parceiro é avaliado por mim para garantir a infraestrutura de assepsia, conforto e a atmosfera necessária para a sua imersão.</p>
+
+                
+
+                <h2 class="section-title">Especialidades e Domínio Técnico</h2>
+                <div class="specialties-grid">
+                    <div class="spec-item">
+                        <strong>Fine Line & Minimalismo</strong>
+                        <span>Precisão absoluta em traços finos para símbolos, escritas e amuletos.</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Blackwork & Blackout</strong>
+                        <span>Uso estratégico de colorimetria científica e preenchimentos sólidos de profundidade oceânica.</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Tatuagem Cerimonial</strong>
+                        <span>Talismãs baseados em geometria sagrada, sigilos pessoais e pontos riscados.</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Coberturas & Despigmentação</strong>
+                        <span>Resgate de peles saturadas através de lise osmótica e neutralização de valor.</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Estilos Autorais</strong>
+                        <span>Domínio de Old School, Sketch e Tatuagem Tradicional com variações de espessura.</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Oriental (Irezumi)</strong>
+                        <span>Foco em fluidez anatômica e narrativas ancestrais de grande escala.</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Coloridas & Sem Contorno</strong>
+                        <span>Exploração cromática vibrante com transições suaves e alta performance.</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Micro ou Semi-Realismo</strong>
+                        <span>Aplicação técnica de luz e sombra para profundidade e volume realistas.</span>
+                    </div>
+                </div>
+
+                <h2 class="section-title">O Compromisso com o Alto Padrão</h2>
+                <div class="highlight-box">
+                    <p>Um Ateliê de Alto Padrão transforma o procedimento técnico em uma experiência de segurança absoluta. Nossa assepsia é um compromisso ético com a vida. Utilizamos o que há de melhor no cenário mundial — pigmentos regulamentados pela ANVISA, maquinário que reduz o trauma tecidual e técnicas aprimoradas para cada necessidade dermatológica.</p>
+                </div>
+
+                <p>O "Portal de Intenção" inicia no seu primeiro contato e só se conclui quando a arte está totalmente integrada ao seu corpo e à sua história. Ser um Ateliê de Alto Padrão garante que você está em um espaço seguro de consagração, ciência e excelência.</p>
+
+                <br>
+                <a href="file:///home/nana/Documentos/meu%20site%20tattoo/base%20de%20conhecimento%201,2,3/canone.html" class="base-tecnica-link">Acesse aqui nossa Base de Estudos e Referências Bibliográficas Técnicas</a>
+                <br>
+                <a href="file:///home/nana/Documentos/meu%20site%20tattoo/portal-esoteric.html" class="btn-action">Portal de Intenções</a>
+                
+                <div class="signature">- Nana Borges</div>
+
+                <footer>
+                    <div class="footer-seal">Studio Esoteric Ink • High Standard Tattooing • 2026</div>
+                </footer>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>

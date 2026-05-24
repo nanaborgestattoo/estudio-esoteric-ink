@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tatuagem Ritualística | Studio Esoteric Ink</title>
+    <meta name="description" content="A Alquimia entre a Carne e o Espírito: Tatuagem como rito de passagem e consagração no Studio Esoteric Ink.">
+    
+    <!-- DNA Esoteric Ink: Tipografia Oficial -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Identidade Cromática ================= */
+        :root {
+            --preto-ritual: #050108;
+            --roxo-escuro: #1d0d35;
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        /* ================= Reset & Setup ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--preto-ritual);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at top right, var(--roxo-escuro) 0%, transparent 40%);
+        }
+
+        /* --- NAVEGAÇÃO --- */
+        .article-nav {
+            background: rgba(5, 1, 8, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 20px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--borda-ouro);
+        }
+
+        .article-nav a {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .article-nav a:hover { color: var(--ouro); letter-spacing: 3px; }
+
+        /* ================= HERO SECTION ================= */
+        .ritual-hero {
+            height: 75vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(5, 1, 8, 0.5), var(--preto-ritual)), 
+                        url('../imagem/capa_tattoo_ritualistica_nana_borges_tattoo_studio_esoteric-ink.webp') center/cover;
+            padding: 0 5%;
+            border-bottom: 1px solid var(--ouro);
+            margin-top: 0;
+        }
+
+        .ritual-hero span {
+            border: 1px solid var(--ouro);
+            padding: 5px 15px;
+            font-family: var(--fonte-ui);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--ouro);
+            background: rgba(0,0,0,0.5);
+            margin-bottom: 25px;
+            backdrop-filter: blur(5px);
+        }
+
+        .ritual-hero h1 {
+            font-family: var(--fonte-titulo);
+            font-size: clamp(1.8rem, 5vw, 3.2rem);
+            color: var(--ouro);
+            max-width: 1000px;
+            line-height: 1.1;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        /* ================= CONTEÚDO ================= */
+        .content-wrap {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 80px 5%;
+        }
+
+        .dropcap::first-letter {
+            font-family: var(--fonte-titulo);
+            font-size: 5rem;
+            color: var(--ouro);
+            float: left;
+            line-height: 0.8;
+            padding-right: 15px;
+            padding-top: 5px;
+        }
+
+        h2 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: 1.8rem;
+            margin: 80px 0 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        h2::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, var(--ouro), transparent);
+        }
+
+        p {
+            margin-bottom: 25px;
+            font-size: 1.15rem;
+            text-align: justify;
+            color: var(--branco-off);
+            opacity: 0.9;
+        }
+
+        em { color: var(--ouro-claro); }
+
+        /* Links no texto */
+        .content-wrap a {
+            color: var(--ouro-claro);
+            text-decoration: underline;
+            text-decoration-color: var(--ouro);
+            transition: 0.3s;
+        }
+
+        .content-wrap a:hover { color: var(--ouro); }
+
+        /* Boxes Técnicos / Info-Cards */
+        .info-box {
+            background: rgba(197, 160, 89, 0.03);
+            border: 1px solid var(--borda-ouro);
+            border-left: 3px solid var(--ouro);
+            padding: 35px;
+            margin: 50px 0;
+            backdrop-filter: blur(5px);
+        }
+
+        .info-box ul { list-style: none; }
+
+        .info-box li {
+            margin-bottom: 20px;
+            padding-left: 0;
+        }
+
+        .info-box strong {
+            color: var(--ouro);
+            display: block;
+            margin-bottom: 5px;
+            font-family: var(--fonte-titulo);
+            text-transform: none;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
+        /* Bloquinho de links de destaque */
+        .highlight-links {
+            background: linear-gradient(135deg, rgba(29, 13, 53, 0.4), rgba(5, 1, 8, 0.9));
+            border: 1px solid var(--ouro);
+            padding: 50px;
+            margin: 80px 0;
+            text-align: left;
+        }
+
+        .highlight-links h4 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .highlight-links ul { list-style: none; }
+
+        .highlight-links li {
+            margin-bottom: 20px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .highlight-links li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--ouro);
+            font-size: 0.8rem;
+        }
+
+        .highlight-links a {
+            color: var(--branco-off);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .highlight-links a:hover { color: var(--ouro); letter-spacing: 3px; }
+
+        /* Call to Action Box */
+        .cta-section {
+            background: rgba(197, 160, 89, 0.05);
+            border-top: 1px solid var(--ouro);
+            padding: 80px 5%;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .cta-section h2 { border: none; justify-content: center; margin: 0 0 20px 0; }
+        .cta-section p { text-align: center; margin-bottom: 30px;}
+
+        .btn-ritual {
+            display: inline-block;
+            padding: 20px 50px;
+            background: transparent;
+            color: var(--ouro);
+            border: 1px solid var(--ouro);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 600;
+            transition: 0.4s;
+        }
+
+        .btn-ritual:hover {
+            background: var(--ouro);
+            color: var(--preto-ritual);
+            box-shadow: 0 0 30px rgba(197, 160, 89, 0.4);
+        }
+
+        /* Referências Bibliográficas */
+        .references-box {
+            margin-top: 100px;
+            padding: 40px;
+            border-top: 1px solid #222;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .references-box strong {
+            display: block;
+            margin-bottom: 20px;
+            font-family: var(--fonte-ui);
+            text-transform: uppercase;
+            color: var(--cinza-texto);
+            letter-spacing: 1px;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 60px 20px;
+            border-top: 1px solid var(--borda-ouro);
+            background: var(--preto-ritual);
+            text-align: center;
+        }
+
+        footer p {
+            text-align: center;
+            font-family: var(--fonte-ui);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrap { padding: 40px 5%; }
+            .ritual-hero h1 { font-size: 2rem; }
+            h2::after { display: none; }
+            .highlight-links { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="article-nav">
+        <a href="./revista-mistica-blog.html">← Retornar ao Início</a>
+        <div style="font-family: 'Cinzel'; color: var(--ouro); letter-spacing: 2px; font-size: 0.8rem;">Studio Esoteric Ink</div>
+    </nav>
+
+    <header class="ritual-hero">
+        <span>Práticas Ancestrais</span>
+        <h1>Tatuagem Ritualística:<br>A Alquimia entre a Carne e o Espírito</h1>
+    </header>
+
+    <div class="content-wrap">
+        
+        <p class="dropcap">A tatuagem, em sua gênese mais profunda, nunca foi apenas sobre o visível. Ela é um rito de passagem, uma armadura de proteção e uma heráldica de poder pessoal. No Studio Esoteric Ink, resgatamos essa linhagem ancestral para oferecer mais do que uma imagem: entregamos uma cerimônia de ancoragem, onde a derme se torna o suporte para a materialização da sua vontade.</p>
+
+        <h2>O Portal de Intenções e a Exclusividade da Jornada</h2>
+        <p>Diferente de um procedimento comercial, o nosso processo é um convite à introspecção. Tudo nasce no Portal de Intenções. Este é o primeiro filtro de nossa triagem, onde sua história, seus arquétipos e seus objetivos são compartilhados sob o mais absoluto sigilo e respeito.</p>
+
+        <p>Por se tratar de um trabalho que exige uma preparação técnica e espiritual minuciosa, as vagas são estritamente limitadas. A exclusividade não é apenas um concept, mas uma necessidade: cada sessão requer um alinhamento prévio entre a geometria do desenho, a astrologia do momento e a sua biografia energética.</p>
+
+        <h2>A Ética da Espiritualidade e o Respeito à Individualidade</h2>
+        <p>No Studio Esoteric Ink, a ética é o nosso alicerce. Respeitamos a soberania da sua espiritualidade. Seja qual for a sua crença ou caminho, o ritual é desenhado para honrar a sua verdade individual. Minha atuação é a de uma facilitadora que une o rigor da biossegurança à potência da magia.</p>
+
+        <h2>O Ritual: Onde a Magia e a Tinta se Encontram</h2>
+        <p>Meus trabalhos ritualísticos são amparados por iniciações sólidas em linhas de Magia e pela guarda direta de meus guias — Dona Maria Mulambo, Exu Tata Caveira e Pombagira Menina. Sob a proteção destes e de outros mestres e ancestrais, os portais são abertos para que o símbolo seja fixado não apenas na pele, mas na sua estrutura sutil.</p>
+
+        <p>Para você, isso significa que cada traço é uma consagração. A dor deixa de ser um ruído para se tornar um catalisador — um portal de transformação que auxilia na dissolução de padrões antigos, selando o seu novo caminho através da precisão de um amuleto vivo.</p>
+
+        <h2>A Consagração do Altar: Do Físico ao Transcendental</h2>
+        <p>No dia da sua cerimônia, o estúdio deixa de ser um ambiente técnico para se tornar um espaço sagrado. A preparação é absoluta:</p>
+
+        <div class="info-box">
+            <ul>
+                <li><strong>Defumação e Purificação:</strong> Limpeza profunda do campo vibracional para garantir a clareza da intenção.</li>
+                <li><strong>Frequências Sonoras e Cromoterapia:</strong> Ondas sonoras e luzes específicas para induzir estados de presença e receptividade.</li>
+                <li><strong>O Altar de Intenções:</strong> Um espaço dedicado onde objetos pessoais, oferendas simbólicas e elementos das divindades trabalhadas (conforme a triagem) são dispostos para ancorar a energia da sessão.</li>
+                <li><strong>Meditação Guiada:</strong> Um momento de canalização para que mente e corpo estejam em sintonia com a agulha.</li>
+            </ul>
+        </div>
+
+        <h2>A Ressignificação da Dor: O Parto de Si Mesmo</h2>
+        <p>Na Tatuagem Ritualística, a dor é ressignificada através da gentileza e do profissionalismo. De acordo com a teoria de <a href="https://ea.fflch.usp.br/obra/os-ritos-de-passagem" target="_self">Arnold van Gennep</a>, a dor atua como o limiar que separa quem você era de quem você escolhe ser. Sob meu cuidado, você é conduzido com segurança através desse processo de renascimento, transformando o desconforto físico em uma experiência catártica de superação.</p>
+
+        <p><em>"A pele é o pergaminho onde escrevemos nossa evolução. No Studio Esoteric Ink, cada ponto e cada linha é um compromisso inegociável com a sua verdade."</em></p>
+
+        <p>Historicamente, esse compromisso é visto desde <a href="otzi.html" target="_self">Ötzi</a> e suas marcas de cura, passando pela proteção talismânica de <a href="../acervo-feminino/amunet.html" target="_self">Amunet</a> e as oferendas de <a href="https://www.astrocentro.com.br/blog/espiritual/deusa-hator/" target="_self">Hathor</a>, até a força ancestral presente na <a href="https://mundoeducacao.uol.com.br/historiageral/cultura-nok.htm" target="_self">Herança de Nok</a>.</p>
+
+        <h2>Como Iniciar seu Rito de Passagem?</h2>
+        <p>Devido à profundidade e ao tempo de preparação exigido para cada ritual, o acesso é feito apenas sob agendamento e triagem prévia. Se você sente que é o momento de transformar seu corpo em um altar de poder e proteção, o portal está aberto.</p>
+
+        <section class="highlight-links">
+            <h4>Acesso ao Sagrado</h4>
+            <ul>
+                <li><a href="../portal-esoteric.html" target="_self">Acessar o Portal de Intenções Agora</a> – Inicie sua triagem e reserve seu lugar nesta experiência exclusiva.</li>
+                <li><a href="../base-de-conhecimento/pag-guia-de-cuidados-e-biosseguranca.html" target="_self">Conheça nossa Base de Conhecimento</a> – Aprofunde-se nos fundamentos científicos, biológicos e tecnicos que sustentam o nosso método.</li>
+                <li><a href="./revista-mistica-blog.html" target="_self">Conheça a Revista Mística</a> – Os conhecimentos e registros de sabedoria e poder que guiam a nossa arte.</li>
+            </ul>
+        </section>
+
+        <div class="references-box">
+            <strong>Referências Bibliográficas Consultadas:</strong>
+            <p>• DETER-WOLF, A. The Archaeology of Tattooing.</p>
+            <p>• SANDERS, C. R. Customizing the Body: The Art and Culture of Tattooing.</p>
+            <p>• <a href="https://ea.fflch.usp.br/obra/os-ritos-de-passagem" target="_self">VAN GENNEP, A.</a> Os Ritos de Passagem.</p>
+            <p>• RUBIN, Arnold. Marks of Civilization.</p>
+            <p>• KRUTAK, Lars. The Tattooing Arts of Tribal Women.</p>
+            <p>• Journal of Archaeological Science: Analysis of Ancient Pigments.</p>
+            <p>• ARNAULT, Renan & ALCANTARA E SILVA, Victor. “Os ritos de passagem”. In: Enciclopédia de Antropologia.</p>
+        </div>
+
+        <section class="cta-section">
+            <h2>Quer iniciar seu procedimento de curadoria para a sua Cerimônia Particular?</h2>
+            <p>Inicie seu processo de triagem para ter sua Tatuagem Ritualística.</p>
+            <a href="../portal-esoteric.html" class="btn-ritual">Portal de Intenções</a>
+        </section>
+
+    </div>
+
+    <footer> 
+        <p>TATUAGEM RITUALÍSTICA • STUDIO ESOTERIC INK • 2026</p>
+        <p style="opacity: 0.5;">A PELE COMO ALTAR E MEMÓRIA DO SAGRADO.</p>
+    </footer>
+
+</body>
+</html>

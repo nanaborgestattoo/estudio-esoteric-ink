@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mestre Preá na Jurema Sagrada | Studio Esoteric Ink</title>
+    
+    <!-- DNA de Fontes Esoteric Ink -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta Oficial Esoteric Ink ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1d0d35;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        /* ================= Reset & Setup ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--preto);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            background-image: radial-gradient(circle at top right, var(--roxo-escuro) 0%, transparent 40%);
+        }
+
+        /* --- NAVEGAÇÃO --- */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 25px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(5,1,8,0.9), transparent);
+        }
+
+        .btn-voltar {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            border: 1px solid var(--borda-ouro);
+            padding: 10px 20px;
+            background: rgba(5,1,8,0.5);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-voltar::before { content: '←'; }
+
+        .btn-voltar:hover { 
+            color: var(--preto); 
+            background: var(--ouro);
+            border-color: var(--ouro);
+        }
+
+        /* ================= LAYOUT SPLIT-SCREEN ================= */
+        .about-container { display: flex; min-height: 100vh; }
+
+        .about-image-side {
+            width: 40%;
+            position: fixed;
+            height: 100vh;
+            background-image: url('../imagem/tattoo_ritualistica_panturrilha_jurema_mestre_preá_nana_borges_tattoo_studio_esoteric_ink (cópia 1).webp');
+            background-size: cover;
+            background-position: center;
+            border-right: 1px solid var(--borda-ouro);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to right, rgba(5,1,8,0.1), var(--preto));
+        }
+
+        .about-text-side {
+            width: 60%;
+            margin-left: 40%;
+            padding: 120px 5% 80px 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .text-wrapper {
+            max-width: 850px;
+            width: 100%;
+        }
+
+        /* ================= COMPONENTES VISUAIS ================= */
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--ouro);
+            padding: 5px 15px;
+            font-family: var(--fonte-ui);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--ouro);
+            background: rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .title {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: clamp(2.2rem, 4vw, 3.8rem);
+            line-height: 1.1;
+            margin-bottom: 40px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+        }
+
+        .section-header {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: 1.8rem;
+            margin: 60px 0 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .section-header::before, .section-header::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--ouro), transparent);
+        }
+
+        .dropcap::first-letter {
+            font-family: var(--fonte-titulo);
+            font-size: 5rem;
+            color: var(--ouro);
+            float: left;
+            line-height: 0.8;
+            padding-right: 15px;
+            padding-top: 5px;
+            text-shadow: 0 2px 10px rgba(197, 160, 89, 0.2);
+        }
+
+        .text-content p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .text-content strong {
+            color: var(--branco-off);
+            font-family: var(--fonte-ui);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .highlight-box {
+            background-color: rgba(197, 160, 89, 0.03);
+            border: 1px solid var(--borda-ouro);
+            border-left: 3px solid var(--ouro);
+            padding: 40px;
+            margin: 50px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .highlight-box p {
+            font-style: italic;
+            color: var(--ouro-claro);
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        .signature {
+            margin-top: 60px;
+            font-family: var(--fonte-titulo);
+            font-size: 2rem;
+            color: var(--ouro);
+            text-align: right;
+            border-top: 1px solid var(--borda-ouro);
+            padding-top: 20px;
+        }
+
+        /* ================= RESPONSIVIDADE ================= */
+        @media (max-width: 992px) {
+            .about-container { flex-direction: column; }
+            .about-image-side { position: relative; width: 100%; height: 50vh; border-right: none; }
+            .about-text-side { width: 100%; margin-left: 0; padding: 60px 5%; }
+            .section-header::before, .section-header::after { display: none; }
+            .section-header { text-align: left; justify-content: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="logo-nav"></div>
+        <a href="./revista-mistica-blog.html" class="btn-voltar">Retornar ao Diário</a>
+    </nav>
+
+    <main class="about-container">
+        <div class="about-image-side">
+            <div class="image-overlay"></div>
+        </div>
+
+        <div class="about-text-side">
+            <div class="text-wrapper">
+                
+                <div class="badge">Ancestralidade e Fundamento</div>
+                <h1 class="title">Mestre Preá na Jurema: <br>A Ciência de Antônio Pereira</h1>
+                
+                <div class="text-content">
+                    <p class="dropcap">O culto ao Mestre Preá é um dos pilares mais respeitados da Jurema Nordestina e do Catimbó. No Studio Esoteric Ink, traduzimos essa força em arte ritualística, transformando o corpo do Juremeiro em um ponto de firmeza. Antônio Pereira da Silva, o homem por trás da entidade, traz em sua história a bravura de quem domina os caminhos, as ervas e o "corte" das demandas.</p>
+
+                    <h2 class="section-header">O Legado e a Ciência</h2>
+                    <p>Antônio Pereira da Silva viveu no sertão, consolidando sua fama pela maestria no uso de raízes e na proteção de seus afilhados. Dentro da Jurema Sagrada, ele é reconhecido como um mestre de "ciência" — um profundo conhecedor das propriedades ocultas da natureza.</p>
+                    
+                    <p><strong>O Mestre da Passagem:</strong> Uma curiosidade fundamental na religião é que o Preá é um dos poucos mestres que transita com total autoridade entre a "mata" (o reino da vida) e a "calunga" (o reino dos mortos), sendo um guia indispensável em momentos de precisão espiritual.</p>
+                    
+                    <p><strong>A Queda: O Episódio do "Mal de Legião"
+:</strong> 
+Antônio nasceu no interior de Pernambuco. Sua vida, inicialmente comum, foi interrompida por um surto de violência extrema que, na tradição espiritual, é descrito como uma possessão por forças de baixa vibração ou uma "legião" de obsessores..</p>
+
+<p>
+Em um estado de total desequilíbrio mental e espiritual, Antônio cometeu crimes que marcaram a memória da região. Tomado por uma fúria incontrolável, ele atacou sua própria família, resultando na morte de seus pais e parentes próximos. O ápice do horror ocorreu quando ele ateou fogo à pequena vila onde moravam.</p>
+
+<p>
+Diz a lenda que ele caçava pequenos roedores (preás), ateava-lhes fogo e os soltava na vegetação seca para ver o rastro de destruição. Esse ato cruel acabou batizando-o com o apelido que levaria para a eternidade: Preá. Foi uma fase de "trevas em vida", onde ele se tornou o próprio símbolo do medo.</p>
+
+<p><strong>A Redenção e a Jurema Sagrada
+:</strong> 
+Após anos de sofrimento, perambulação e o peso de seus atos, Antônio encontrou o amparo da Jurema Sagrada. No mundo espiritual, entende-se que sua vinda à Terra tinha uma missão, mas ele foi desviado por forças contrárias. Sua redenção não veio pelo esquecimento dos seus erros, mas pelo trabalho incansável de auxílio aos outros.</p>
+
+<p>
+Ao "tomar o tombo" (passar para o plano espiritual), ele foi acolhido pelos mestres da Jurema e passou por um longo processo de purificação. Hoje, Mestre Preá é uma entidade de tronco, um mestre que conhece as sombras como ninguém e, por isso, tem autoridade para retirar as pessoas delas.</p>
+
+                    <h2 class="section-header">Estética Gótica e Técnica</h2>
+                    <p>Para honrar a densidade desta entidade, aplicamos um rigor técnico que une sofisticação visual e durabilidade na pele:</p>
+                    
+                    <p><strong>Blackwork & Deep Shading:</strong> A utilização de pretos foscos e cinzas saturados cria uma atmosfera gótica e atemporal, ideal para representar os cenários de atuação do mestre, como a encruzilhada e o cemitério.</p>
+                    
+                    <p><strong>Pontilhismo Ritual:</strong> Aplicado nas nuvens e no luar ao fundo para conferir uma aura etérea, destacando a figura central do mestre através de texturas que remetem ao misticismo clássico.</p>
+
+                    <h2 class="section-header">Simbolismo do Axé</h2>
+                    <p><strong>O Facão na Cintura:</strong> Representa a lei e a autoridade. É a ferramenta que abre caminhos na mata virgem e corta as perseguições espirituais.</p>
+                    <p><strong>O Galo Vigilante:</strong> Posicionado ao pé do mestre, simboliza o despertar espiritual e a vigilância constante contra inimigos ocultos.</p>
+                    <p><strong>Cachaça, Vela e Cigarro:</strong> Elementos de sustentação mágica que alimentam a conexão direta entre o médium e a entidade durante o transe e o trabalho.</p>
+                    
+                  <p><strong>O Mistério da Faca:</strong> O objeto mais emblemático de sua indumentária espiritual é a faca (ou punhal) que carrega pendurada.
+<p>
+    Ela não serve para ferir, mas para cortar o mal. É usada para romper laços de magia negativa, cordões fluídicos de obsessores e inveja.<p>
+
+    <p>A faca também representa sua própria história e o peso do passado; ele domina o instrumento que outrora causou dor, transformando-o em ferramenta de proteção.<p>
+
+    <p>Na Jurema, a faca no cinturão do mestre indica que ele é um "Mestre de Esquerda" ou de "Frente", pronto para o combate espiritual e para a defesa de seus afilhados e médiuns.<p>
+
+<p>Mestre Preá é a prova de que, dentro da Jurema Sagrada, o perdão se conquista com trabalho e a escuridão do passado pode ser transmutada em luz de guia para aqueles que ainda caminham perdidos..</p>  
+
+                    <div class="highlight-box">
+                        <p>"Tatuar o Mestre Preá é assumir um compromisso de honrar uma linhagem ancestral. O resultado é um portal de fé onde a força do mestre guia o destino do devoto com sabedoria inabalável."</p>
+                    </div>
+
+                    <p>Esta obra é a celebração da ciência nordestina: uma união impecável entre a visão artística personalizada e a técnica de alta performance do Studio Esoteric Ink.</p>
+                </div>
+
+                <div class="signature">Nana Borges</div>
+                
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+

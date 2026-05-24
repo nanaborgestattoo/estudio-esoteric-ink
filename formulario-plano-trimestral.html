@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triagem Comercial: Plano Trimestral | Studio Esoteric Ink</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta e Variáveis Oficiais ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1a0b2e;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            --borda-foco: rgba(197, 160, 89, 0.7);
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--preto);
+            color: var(--branco-off);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            background-image: radial-gradient(circle at top left, #1d0d35 0%, transparent 40%),
+                              radial-gradient(circle at bottom right, #130725 0%, transparent 35%);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- GLOBAL CLASSES --- */
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--ouro);
+            padding: 5px 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--ouro);
+            margin-bottom: 20px;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .section-title {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.6rem;
+            margin: 30px 0 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, var(--ouro), transparent);
+        }
+
+        .btn-action {
+            display: inline-block;
+            padding: 18px 40px;
+            background: var(--ouro);
+            color: var(--preto);
+            border: 1px solid var(--ouro);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: 0.4s;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.2);
+            text-align: center;
+            width: 100%;
+        }
+
+        .btn-action:hover {
+            background: transparent;
+            color: var(--ouro);
+            box-shadow: 0 0 25px rgba(197, 160, 89, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* --- BOTÃO FLUTUANTE (Voltar) --- */
+        .back-float {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            top: 30px;
+            left: 30px;
+            background-color: rgba(5, 1, 8, 0.9);
+            color: var(--ouro);
+            border: 1px solid var(--ouro);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .back-float:hover {
+            background-color: var(--ouro);
+            color: var(--preto);
+            transform: translateX(-5px);
+        }
+
+        /* --- HERO DO FORMULÁRIO --- */
+        .form-hero {
+            padding: 80px 40px 40px;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(5, 1, 8, 0.8), #000000);
+            border-bottom: 1px solid var(--borda-ouro);
+        }
+
+        .form-hero h1 {
+            font-family: var(--fonte-titulo);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: var(--ouro);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        /* --- CONTAINER DO FORMULÁRIO --- */
+        .form-container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .intro-text {
+            color: var(--cinza-texto);
+            text-align: justify;
+            margin-bottom: 40px;
+            font-size: 1.05rem;
+            border-left: 2px solid var(--ouro);
+            padding-left: 20px;
+        }
+
+        /* --- ESTRUTURA DOS CAMPOS --- */
+        .form-group {
+            margin-bottom: 35px;
+            background: linear-gradient(145deg, rgba(26, 11, 46, 0.2) 0%, rgba(5, 1, 8, 0.4) 100%);
+            border: 1px solid rgba(197, 160, 89, 0.1);
+            padding: 25px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group:hover {
+            border-color: rgba(197, 160, 89, 0.25);
+        }
+
+        .form-label {
+            display: block;
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .form-help {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            color: #888899;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        /* Inputs de Texto */
+        .input-text {
+            width: 100%;
+            background: rgba(5, 1, 8, 0.8);
+            border: 1px solid var(--borda-ouro);
+            padding: 15px;
+            color: var(--branco-off);
+            font-family: var(--fonte-corpo);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .input-text:focus {
+            outline: none;
+            border-color: var(--ouro-claro);
+            box-shadow: 0 0 10px rgba(197, 160, 89, 0.2);
+            background: rgba(26, 11, 46, 0.5);
+        }
+
+        /* Opções Selecionáveis (Radio e Checkbox) */
+        .option-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            color: var(--cinza-texto);
+            cursor: pointer;
+            font-size: 0.95rem;
+            user-select: none;
+        }
+
+        .option-label input {
+            margin-top: 6px;
+            accent-color: var(--ouro);
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        /* --- TELA DE SUCESSO --- */
+        #success-screen {
+            display: none;
+            max-width: 700px;
+            margin: 80px auto;
+            padding: 40px;
+            border: 1px solid var(--ouro);
+            background: linear-gradient(145deg, rgba(26, 11, 46, 0.4) 0%, rgba(5, 1, 8, 0.9) 100%);
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        #success-screen h2 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        #success-screen p {
+            color: var(--cinza-texto);
+            margin-bottom: 20px;
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        #success-screen .footer-signature {
+            margin-top: 40px;
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 768px) {
+            .back-float { top: 15px; left: 15px; width: 40px; height: 40px; }
+            .form-hero { padding-top: 100px; }
+            .form-container { margin: 30px auto; }
+            .form-group { padding: 18px; }
+        }
+
+        /* --- FOOTER --- */
+        .site-footer {
+            padding: 60px 10% 40px;
+            text-align: center;
+            border-top: 1px solid var(--borda-ouro);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            background-color: #050108;
+            margin-top: 100px;
+        }
+        .footer-logo { width: 50px; height: 50px; margin-bottom: 10px; }
+        .footer-logo svg { width: 100%; height: 100%; stroke: var(--ouro); stroke-width: 2; fill: none; }
+        .footer-copy { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; color: #666; letter-spacing: 1.5px; text-transform: uppercase;}
+    </style>
+</head>
+<body>
+
+    <a href="./aliança-comercial.html" class="back-float" title="Voltar para Detalhes do Plano">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+    </a>
+
+    <header class="form-hero">
+        <div class="badge">Curadoria Técnica</div>
+        <h1>Formulário de Triagem Comercial</h1>
+        <p style="font-family: 'Montserrat', sans-serif; color: var(--cinza-texto); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">Plano Trimestral: O Estratégico</p>
+    </header>
+
+    <main class="form-container">
+        
+        <form id="triagem-form" onsubmit="handleFormSubmit(event)">
+            
+            <div class="intro-text">
+                <p>Bem-vinda(e/o) à Triagem do Ecossistema Studio Esoteric Ink — Modelo Estratégico.</p>
+                <p style="margin-top: 10px; font-size: 0.95rem;">Agradecemos seu intereste em firmar uma aliança comercial de médio prazo conosco. O Plano Trimestral foi desenhado para marcas que compreendem o tempo de maturação do SEO e barateiam o custo de aquisição de clientes através de uma presença contínua e inteligente de 90 dias.</p>
+                <p style="margin-top: 10px; font-size: 0.95rem; font-style: italic;">Este formulário serve para alinhar suas metas de mercado, públicos-alvo e cronograma de campanhas com a nossa curadoria técnica. Após o envio, avaliaremos a sinergia da sua marca e, caso aprovado, você receberá o link seguro para ativação do seu ciclo estratégico.</p>
+            </div>
+
+            <h2 class="section-title">Seção 1: Identificação e Contato</h2>
+            
+            <div class="form-group">
+                <label class="form-label" for="nome_responsavel">1. Nome Completo do Responsável:</label>
+                <input type="text" id="nome_responsavel" class="input-text" required placeholder="Sua resposta">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="nome_marca">2. Nome Oficial da Marca / Projeto Comercial:</label>
+                <input type="text" id="nome_marca" class="input-text" required placeholder="Sua resposta">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="email_corporativo">3. E-mail Corporativo para Contato, Faturamento e Relatórios Analíticos:</label>
+                <input type="email" id="email_corporativo" class="input-text" required placeholder="seu@email.com">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="whatsapp_comercial">4. WhatsApp de Atendimento Comercial ou Diretor de Marketing (com DDD):</label>
+                <input type="tel" id="whatsapp_comercial" class="input-text" required placeholder="(00) 00000-0000">
+            </div>
+
+
+            <h2 class="section-title">Seção 2: Alinhamento de Nicho, Estética e Autoridade</h2>
+            
+            <div class="form-group">
+                <label class="form-label">5. Em qual segmento sua marca ou projeto se posiciona?</label>
+                <div class="option-container">
+                    <label class="option-label">
+                        <input type="radio" name="segmento" value="Estúdio de Tatuagem" required>
+                        <span>Estúdio de Tatuagem / Body Art / Modificação Corporal</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="segmento" value="Cosméticos">
+                        <span>Cosméticos / Cuidados Dérmicos (Aftercare)</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="segmento" value="Moda Autoral">
+                        <span>Moda Autoral / Vestuário Alternativo / Joalheria</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="segmento" value="Arte">
+                        <span>Arte / Ilustração / Galeria Digital</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="segmento" value="Literatura">
+                        <span>Literatura / Filosofia / Produtos Conceituais ou Místicos</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="segmento" value="Outro">
+                        <span>Outro (Por favor, especifique na próxima pergunta)</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="links_oficiais">6. Links Oficiais para Análise de Presença Digital:</label>
+                <span class="form-help">(Instagram, Site, Portfólio ou E-commerce ativo)</span>
+                <textarea id="links_oficiais" class="input-text" rows="4" required placeholder="Sua resposta" style="resize: vertical; min-height: 100px;"></textarea>
+                <span class="form-help" style="margin-top: 8px; font-style: italic;">Nossa curadoria avaliará a consistência visual, a qualidade das imagens e o fit cultural com o público da Mestra Nana Borges. Certifique-se de que os perfis indicados estejam públicos.</span>
+            </div>
+
+
+            <h2 class="section-title">Seção 3: Planejamento de Campanha e Insumos (90 Dias)</h2>
+            
+            <div class="form-group">
+                <label class="form-label" for="objetivo_comercial">7. Qual o principal objetivo comercial da sua marca para os próximos 3 meses no nosso ecossistema?</label>
+                <textarea id="objetivo_comercial" class="input-text" rows="4" required placeholder="Sua resposta" style="resize: vertical; min-height: 100px;"></textarea>
+                <span class="form-help" style="margin-top: 8px;">Exemplos: Lançamento de uma nova coleção, atração de clientes para agenda de tatuagem, consolidação de branding, venda de infoprodutos, etc.</span>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">8. Você planeja realizar alguma alteração de criativo, promoção ou produto ao longo do trimestre?</label>
+                <span class="form-help">Lembrando que o Plano Trimestral inclui até duas substituições completas de texto/arte gratuitas ao longo do ciclo.</span>
+                <div class="option-container" style="margin-top: 10px;">
+                    <label class="option-label">
+                        <input type="radio" name="alteracao_criativo" value="Não mudará abordagem" required>
+                        <span>Não, manterei a mesma campanha e produto fixos durante os 90 dias.</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="alteracao_criativo" value="Pretende mudar abordagem">
+                        <span>Sim, pretendo mudar a abordagem/oferta após os primeiros 30 ou 60 dias.</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="alteracao_criativo" value="Talvez dependendo da performance">
+                        <span>Talvez, dependendo da performance dos relatórios mensais.</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="diretrizes_copywriting">9. Diretrizes de Copywriting e Valores Inegociáveis:</label>
+                <span class="form-help">Quais conceitos, termos técnicos ou tom de voz nossa equipe de redação deve obrigatoriamente adotar (ou evitar) ao criar o seu anúncio?</span>
+                <textarea id="diretrizes_copywriting" class="input-text" rows="4" required placeholder="Sua resposta" style="resize: vertical; min-height: 100px;"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="upload_kit_marca">10. Link para Upload do Kit de Marca (Identidade Visual & Imagens):</label>
+                <input type="url" id="upload_kit_marca" class="input-text" required placeholder="https://drive.google.com/drive/...">
+                <span class="form-help" style="margin-top: 8px;">Insira o link de uma pasta compartilhada (Google Drive, Dropbox ou similar) contendo seu logotipo em alta resolução e o acervo de imagens em alta qualidade que usaremos para diagramar seu bloco publicitário.</span>
+            </div>
+
+
+            <h2 class="section-title">Seção 4: Termos e Próximos Passos</h2>
+            
+            <div class="form-group">
+                <label class="form-label">11. Ciência de Faturamento e Vigência Contratual:</label>
+                <div class="option-container" style="margin-top: 15px;">
+                    <label class="option-label" style="color: var(--branco-off);">
+                        <input type="checkbox" id="declaracao_ciencia" required>
+                        <span>Declaro estar ciente de que o Plano Trimestral opera em um ciclo contínuo de 90 dias e o investimento de R$ 735 é faturado de forma integral após a aprovação da triagem. Entendo também que terei direito a relatórios mensais de tráfego simplificados enviados ao e-mail cadastrado.</span>
+                    </label>
+                </div>
+            </div>
+
+            <div style="margin-top: 50px;">
+                <button type="submit" class="btn-action">Enviar para Curadoria Estratégica</button>
+            </div>
+
+        </form>
+
+        <section id="success-screen">
+            <h2>Insumos estratégicos recebidos com sucesso.</h2>
+            <p>Seu planejamento para os próximos 90 dias foi encaminhado diretamente para a nossa curadoria técnica e de marketing. Nosso prazo de análise criteriosa é de até 48 horas úteis.</p>
+            <p>Fique atento aos seus canais de contato: caso seu projeto seja aprovado, você receberá a confirmação junto com o link de checkout para o valor de R$ 735 e agendaremos o início do desenvolvimento das suas copys e parametrização dos links com rastreamento (UTM Tracker).</p>
+            
+            <div class="footer-signature">
+                Atenciosamente,<br>
+                <span style="color: var(--ouro)">Equipe de Curadoria | Studio Esoteric Ink</span>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-logo">
+            <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" />
+                <polygon points="50,5 79,90 4,38 96,38 21,90" />
+            </svg>
+        </div>
+        <div class="footer-copy">
+            &copy; 2026 Nana Borges Tattoo - Studio Esoteric Ink. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Impede o reload real da página
+            
+            // --- INÍCIO DA FUNÇÃO DO WHATSAPP ---
+            
+            // Número de Destino
+            const telefoneDestino = "5511994998057"; 
+            
+            // Capturando os dados preenchidos
+            const nome = document.getElementById('nome_responsavel').value;
+            const marca = document.getElementById('nome_marca').value;
+            const email = document.getElementById('email_corporativo').value;
+            const whatsapp = document.getElementById('whatsapp_comercial').value;
+            
+            const radioSegmento = document.querySelector('input[name="segmento"]:checked');
+            const segmento = radioSegmento ? radioSegmento.value : 'Não informado';
+            
+            const links = document.getElementById('links_oficiais').value;
+            
+            // Campos específicos do Plano Trimestral
+            const objetivo = document.getElementById('objetivo_comercial').value;
+            
+            const radioAlteracao = document.querySelector('input[name="alteracao_criativo"]:checked');
+            const alteracao = radioAlteracao ? radioAlteracao.value : 'Não informado';
+            
+            const diretrizes = document.getElementById('diretrizes_copywriting').value;
+            const upload = document.getElementById('upload_kit_marca').value;
+
+            // Montando o texto elegante para o WhatsApp
+            const textoWhatsApp = `*💎 Nova Triagem Comercial: Plano Trimestral (O Estratégico)*\n\n` +
+                                  `*1. Responsável:* ${nome}\n` +
+                                  `*2. Marca/Projeto:* ${marca}\n` +
+                                  `*3. E-mail:* ${email}\n` +
+                                  `*4. WhatsApp:* ${whatsapp}\n\n` +
+                                  `*5. Segmento:* ${segmento}\n` +
+                                  `*6. Links Oficiais:*\n${links}\n\n` +
+                                  `*7. Objetivo Comercial (90 Dias):*\n${objetivo}\n\n` +
+                                  `*8. Alteração de Criativo:* ${alteracao}\n\n` +
+                                  `*9. Diretrizes de Copywriting:*\n${diretrizes}\n\n` +
+                                  `*10. Kit de Marca:* ${upload}\n\n` +
+                                  `✅ *Declaração de Ciência Estratégica:* Aceita`;
+
+            // Codificando o texto para URL e abrindo a nova guia com o WhatsApp
+            const urlWhatsApp = `https://wa.me/${5511994998057}?text=${encodeURIComponent(textoWhatsApp)}`;
+            window.open(urlWhatsApp, '_blank');
+            
+            // --- FIM DA FUNÇÃO DO WHATSAPP ---
+
+            // Oculta o formulário com suavidade
+            document.getElementById('triagem-form').style.display = 'none';
+            
+            // Exibe a tela de sucesso configurada
+            const successScreen = document.getElementById('success-screen');
+            successScreen.style.display = 'block';
+            
+            // Rola a página de volta para o topo para melhor visualização da mensagem
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>

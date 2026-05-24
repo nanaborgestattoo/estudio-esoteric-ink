@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exu Cobra: O Guardião da Transmutação | Studio Esoteric Ink</title>
+    
+    <!-- DNA de Fontes Esoteric Ink -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta Oficial Esoteric Ink ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1d0d35;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        /* ================= Reset & Setup ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--preto);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            background-image: radial-gradient(circle at top right, var(--roxo-escuro) 0%, transparent 40%);
+        }
+
+        /* --- NAVEGAÇÃO --- */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 25px 5%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 15px;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(5,1,8,0.9), transparent);
+        }
+
+        .btn-voltar {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            border: 1px solid var(--borda-ouro);
+            padding: 10px 20px;
+            background: rgba(5,1,8,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-voltar:hover { 
+            color: var(--preto); 
+            background: var(--ouro);
+            border-color: var(--ouro);
+        }
+
+        /* ================= LAYOUT SPLIT-SCREEN ================= */
+        .about-container { display: flex; min-height: 100vh; }
+
+        .about-image-side {
+            width: 40%;
+            position: fixed;
+            height: 100vh;
+            background-image: url('../imagem/tattoo_ritualistica_exu_cobra_nana_borges_studio_esoteric_ink (3).webp');
+            background-size: cover;
+            background-position: center;
+            border-right: 1px solid var(--borda-ouro);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to right, rgba(5,1,8,0.1), var(--preto));
+        }
+
+        .about-text-side {
+            width: 60%;
+            margin-left: 40%;
+            padding: 120px 5% 80px 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .text-wrapper {
+            max-width: 850px;
+            width: 100%;
+        }
+
+        /* ================= COMPONENTES VISUAIS ================= */
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--ouro);
+            padding: 5px 15px;
+            font-family: var(--fonte-ui);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--ouro);
+            background: rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+        }
+
+        .title {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: clamp(2rem, 3.5vw, 3.2rem);
+            line-height: 1.1;
+            margin-bottom: 40px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+        }
+
+        .section-header {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: 1.6rem;
+            margin: 60px 0 30px 0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .section-header::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, var(--ouro), transparent);
+        }
+
+        .dropcap::first-letter {
+            font-family: var(--fonte-titulo);
+            font-size: 5rem;
+            color: var(--ouro);
+            float: left;
+            line-height: 0.8;
+            padding-right: 15px;
+            padding-top: 5px;
+        }
+
+        .text-content p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .text-content ul {
+            margin-bottom: 25px;
+            list-style: none;
+        }
+
+        .text-content li {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .text-content li::before {
+            content: "•";
+            color: var(--ouro);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Estilização das Referências */
+        .ref-container {
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(29, 13, 53, 0.2);
+            border: 1px solid var(--borda-ouro);
+        }
+
+        .ref-group { margin-bottom: 35px; }
+
+        .ref-title {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-left: 3px solid var(--ouro);
+            padding-left: 15px;
+        }
+
+        .ref-list { list-style: none; padding-left: 0; }
+        .ref-list li {
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+            font-size: 0.95rem;
+            padding-left: 0;
+        }
+        
+        .ref-list li::before { content: "› "; color: var(--ouro); }
+        .ref-list li::after { content: none; }
+
+        .highlight-box {
+            background-color: rgba(197, 160, 89, 0.03);
+            border: 1px solid var(--borda-ouro);
+            border-left: 3px solid var(--ouro);
+            padding: 40px;
+            margin: 50px 0;
+        }
+
+        .highlight-box p {
+            font-style: italic;
+            color: var(--ouro-claro);
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        .text-content a {
+            color: var(--ouro-claro);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            transition: 0.3s;
+        }
+
+        .text-content a:hover { color: var(--ouro); }
+
+        .signature {
+            margin-top: 60px;
+            font-family: var(--fonte-titulo);
+            font-size: 2rem;
+            color: var(--ouro);
+            text-align: right;
+            border-top: 1px solid var(--borda-ouro);
+            padding-top: 20px;
+        }
+
+        /* ================= RESPONSIVIDADE ================= */
+        @media (max-width: 992px) {
+            .about-container { flex-direction: column; }
+            .about-image-side { position: relative; width: 100%; height: 50vh; border-right: none; }
+            .about-text-side { width: 100%; margin-left: 0; padding: 60px 5%; }
+            .top-nav { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        
+        <a href="./revista-mistica-blog.html" class="btn-voltar">Retornar ao Diário</a>
+    </nav>
+
+    <main class="about-container">
+        <div class="about-image-side">
+            <div class="image-overlay"></div>
+        </div>
+
+        <div class="about-text-side">
+            <div class="text-wrapper">
+                
+                <div class="badge">Guardião da Transmutação e o Mistério das Matas</div>
+                <h1 class="title">Exu Cobra: Sabedoria Ancestral e Poder Regenerativo</h1>
+                
+                <div class="text-content">
+                    <p class="dropcap">A figura do <strong>Exu Cobra</strong> (também conhecido como Exu Serpente) na Quimbanda é uma das representações mais viscerais da sabedoria ancestral e do poder regenerativo. Traduzimos essa energia em uma arte que une o simbolismo da serpente à altivez do guerreiro, criando um selo de proteção e movimento para o portador.</p>
+
+                    <h2 class="section-header">Origem e Mitologia: O Senhor do Movimento Sinuoso</h2>
+                    <p>O Exu Cobra pertence à <strong>Linha das Matas</strong>, atuando sob a regência dos mistérios das densas matas fechadas e sua magia profunda. Sua mitologia está ligada ao conhecimento das ervas, das plantas, raizes, dos venenos que curam e da capacidade de trocar de pele — o símbolo máximo da evolução espiritual e da morte de velhos ciclos.</p>
+                    
+                    <ul>
+                        <li><strong>Linhas de Trabalho:</strong> Limpeza de energias densas, quebra de feitiços e proteção de magistas e manipulação de magias e conhecimentos ancestrais. Por sua natureza serpentina, ele desfaz nós e bloqueios com rapidez absoluta.</li>
+                        <li><strong>Pontos de Força:</strong> Matas fechadas, clareiras e raízes de árvores antigas, onde a energia da terra e da vida pulsante se encontram.</li>
+                    </ul>
+
+                    <h2 class="section-header">O Dragão da Terra: Simbologia e Poder</h2>
+                    <p>Diferente dos Exus que operam em cemitérios, o Exu Cobra traz a "Medicina da Terra". Ele é o detentor do segredo do bote — a paciência estratégica combinada com a ação fulminante. Tê-lo tatuado significa ancorar a astúcia e a proteção contra traições e inimigos ocultos.</p>
+
+                    <h2 class="section-header">Análise Técnica: Studio Esoteric Ink</h2>
+                    <p>Nesta obra técnica, a execução foi pensada para destacar a dualidade entre a pessoa e a entidade:</p>
+                    <ul>
+                        <li><strong>Hachuras e Pontilhismo:</strong> Note a precisão nas escamas da cauda, que alternam entre o preto sólido e áreas de respiro, criando volume e tridimensionalidade.</li>
+                        <li><strong>Fine Line Anatômico:</strong> A fluidez da serpente respeita a anatomia do corpo, simulando um movimento real de proteção e abraço.</li>
+                        <li><strong>Sombreamento Seletivo:</strong> O foco nos detalhes faciais transmite a sabedoria e a sagacidade de um verdadeiro mestre de linha.</li>
+                    </ul>
+
+                    <!-- Seção de Referências -->
+                    <div class="ref-container">
+                        <div class="ref-group">
+                            <h3 class="ref-title">Fontes de Pesquisa e Referência</h3>
+                            <ul class="ref-list">
+                                <li><strong>"Quimbanda: O Culto da Chama Vermelha e Preta" (Danilo Coppini):</strong> Fundamental sobre as linhas e falanges de Exu.</li>
+                                <li><strong>IPEA (Instituto de Pesquisa e Estudos Afro-Brasileiros):</strong> Base iconográfica das divindades de matriz africana.</li>
+                                <li><strong>"Exu: Além do Bem e do Mal":</strong> Documentário essencial para a desmistificação das entidades de rua.</li>
+                                <li><a href="https://www.axedanfeero.com.br/quimbanda" target="_blank">Portal O Guardião</a>: Conteúdo especializado em fundamentos de Quimbanda.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h2 class="section-header">Ancoragem e Ritualística na Pele</h2>
+                    <p>Para o magista de Quimbanda, tatuar o Exu Cobra é um processo de <strong>assentamento visual</strong>. A arte serve como um amuleto vivo, onde cada traço reforça a conexão espiritual:</p>
+                    <ul>
+                        <li><strong>Tridente:</strong> Domínio sobre os três mundos (físico, espiritual e astral).</li>
+                        <li><strong>Serpente:</strong> Representa o movimento ascensional e a imortalidade do espírito.</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <p>Esta tatuagem é um registro de respeito e soberania. No Studio Esoteric Ink, transformamos a fé em traços eternos, honrando a linhagem dos mestres das matas com clareza técnica e fundamento.</p>
+                    </div>
+
+                    <p>Acompanhe a evolução de nossos portais em nosso <a href="https://www.instagram.com/studioesoteric_/" target="_blank"><strong>Instagram @studioesoteric_</strong></a>.</p>
+                </div>
+
+                <div class="signature">- Nana Borges</div>
+                
+            </div>
+        </div>
+    </main>
+</body>
+</html>

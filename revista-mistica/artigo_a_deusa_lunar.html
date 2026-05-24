@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tatuagem Ritualística | Studio Esoteric Ink</title>
+    
+    <!-- Pré-conexão e Fontes do DNA Esoteric Ink -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta e Variáveis Oficiais ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1d0d35;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        /* ================= Reset & Setup ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--preto);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            /* Brilho sutil do roxo escuro no fundo preto ritual */
+            background-image: radial-gradient(circle at top right, var(--roxo-escuro) 0%, transparent 40%);
+        }
+
+        /* --- NAVEGAÇÃO DE TOPO --- */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 25px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(5,1,8,0.9), transparent);
+        }
+
+        .btn-voltar {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            border: 1px solid var(--borda-ouro);
+            padding: 10px 20px;
+            background: rgba(5,1,8,0.5);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-voltar::before {
+            content: '←';
+            font-size: 1.1rem;
+        }
+
+        .btn-voltar:hover { 
+            color: var(--preto); 
+            background: var(--ouro);
+            border-color: var(--ouro);
+        }
+
+        /* ================= LAYOUT SPLIT-SCREEN ================= */
+        .about-container { display: flex; min-height: 100vh; }
+
+        /* Lado Esquerdo (Imagem Fixa) */
+        .about-image-side {
+            width: 40%;
+            position: fixed;
+            height: 100vh;
+            /* Caminho da imagem preservado */
+            background-image: url('../imagem/tattoo_deusa_lunar_antebraço_nana_borges_tattoo_studio_esoteric_ink.webp');
+            background-size: cover;
+            background-position: center;
+            border-right: 1px solid var(--borda-ouro);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            /* Gradiente escuro mesclando a imagem com a parte de texto */
+            background: linear-gradient(to right, rgba(5,1,8,0.1), var(--preto));
+        }
+
+        /* Lado Direito (Texto) */
+        .about-text-side {
+            width: 60%;
+            margin-left: 40%;
+            padding: 120px 5% 80px 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centraliza o wrapper de conteúdo */
+        }
+
+        .text-wrapper {
+            max-width: 850px; /* Regra DNA: Limite de conforto de leitura */
+            width: 100%;
+        }
+
+        /* --- COMPONENTES DO DNA VISUAL --- */
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--ouro);
+            padding: 5px 15px;
+            font-family: var(--fonte-ui);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--ouro);
+            background: rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .title {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            line-height: 1.2;
+            margin-bottom: 40px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+        }
+
+        /* H2 com linhas douradas */
+        .section-header {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: 2rem;
+            margin: 60px 0 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            text-align: center;
+        }
+        .section-header::before, .section-header::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--ouro), transparent);
+        }
+
+        /* Letra Capitular (Dropcap) */
+        .dropcap::first-letter {
+            font-family: var(--fonte-titulo);
+            font-size: 5rem;
+            color: var(--ouro);
+            float: left;
+            line-height: 0.8;
+            padding-right: 15px;
+            padding-top: 5px;
+            text-shadow: 0 2px 10px rgba(197, 160, 89, 0.2);
+        }
+
+        .text-content p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .text-content strong {
+            color: var(--branco-off);
+            font-family: var(--fonte-ui);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* Info-Card / Highlight Box */
+        .highlight-box {
+            background-color: rgba(197, 160, 89, 0.03);
+            border: 1px solid var(--borda-ouro);
+            border-left: 3px solid var(--ouro);
+            padding: 40px;
+            margin: 50px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+        
+        .highlight-box p {
+            font-style: italic;
+            color: var(--ouro-claro);
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        .signature {
+            margin-top: 60px;
+            font-family: var(--fonte-titulo);
+            font-size: 2rem;
+            color: var(--ouro);
+            text-align: right;
+            border-top: 1px solid var(--borda-ouro);
+            padding-top: 20px;
+        }
+
+        /* ================= RESPONSIVIDADE ================= */
+        @media (max-width: 992px) {
+            .about-container { flex-direction: column; }
+            .about-image-side { 
+                position: relative; 
+                width: 100%; 
+                height: 50vh; 
+                border-right: none;
+                border-bottom: 1px solid var(--borda-ouro);
+            }
+            .image-overlay {
+                background: linear-gradient(to bottom, rgba(5,1,8,0.1), var(--preto));
+            }
+            .about-text-side { 
+                width: 100%; 
+                margin-left: 0; 
+                padding: 60px 5%; 
+            }
+            .section-header::before, .section-header::after { display: none; }
+            .section-header { text-align: left; justify-content: flex-start; }
+            .highlight-box { padding: 30px 20px; }
+            .top-nav { background: rgba(5,1,8,0.95); padding: 15px 5%; }
+            .btn-voltar { font-size: 0.65rem; padding: 8px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegação Superior Padrão Studio -->
+    <nav class="top-nav">
+        <div class="logo-nav"></div>
+        <a href="./revista-mistica-blog.html" class="btn-voltar">Retornar ao Diário</a>
+    </nav>
+
+    <main class="about-container">
+        
+        <!-- Lado Esquerdo: Imagem -->
+        <div class="about-image-side">
+            <div class="image-overlay"></div>
+        </div>
+
+        <!-- Lado Direito: Conteúdo de Leitura -->
+        <div class="about-text-side">
+            <div class="text-wrapper">
+                
+                <div class="badge">A Alquimia entre Símbolo e Técnica</div>
+                <h1 class="title">Tatuagem Ritualística: <br>A Deusa Lunar</h1>
+                
+                <div class="text-content">
+                    <!-- Parágrafo com Dropcap -->
+                    <p class="dropcap">A tatuagem ritualística feminina transcende o adorno. Trata-se de uma ferramenta de poder que materializa a biografia espiritual da mulher. Neste projeto exclusivo para a Nathi, a pele deixa de ser um suporte passivo para se tornar um altar vivo, onde cada linha ancora identidade, crença e ancestralidade.</p>
+
+                    <h2 class="section-header">O Domínio Técnico</h2>
+                    <p>A execução desta peça exige uma maestria técnica que equilibre delicadeza e durabilidade. O <strong>Fine Line</strong> é utilizado para conferir fluidez aos cabelos da Deusa e à precisão dos símbolos zodiacais, garantindo que o design permaneça nítido ao respeitar a anatomia.</p>
+
+                    <p>As técnicas de <strong>Whip Shading & Dotwork</strong> (pontilhismo) foram aplicadas para criar a profundidade etérea das fases lunares e a textura aveludada da Pantera Negra. Isso permite um degradê suave que confere volume sem sobrecarregar a composição, mantendo a sofisticação da estética feminina.</p>
+
+                    <h2 class="section-header">Arquitetura Simbólica</h2>
+                    <p>A composição foi estruturada seguindo princípios de geometria sagrada e equilíbrio visual:</p>
+                    <p><strong>A Introspecção da Deusa:</strong> No coração da obra, a figura feminina em estado meditativo protege o "sagrado interno". O posicionamento das mãos evoca o conceito de totalidade e proteção do mundo psíquico.</p>
+                    <p><strong>O Cinturão Zodiacal:</strong> Disposto em arco, o mapa astrológico atua como uma moldura de proteção e navegação existencial, conectando a microestrutura humana ao macrocosmos.</p>
+                    <p><strong>Ciclicidade Lunar:</strong> Acima da coroa, as fases da lua regem o ritmo do tempo não linear. O contraste entre o preenchimento sólido e as áreas de luz reflete a dualidade feminina de luz e sombra.</p>
+
+                    <h2 class="section-header">O Animal de Poder</h2>
+                    <p>A inclusão da <strong>Pantera Negra</strong> eleva o projeto de uma peça decorativa para um escudo espiritual. Como mestre do silêncio e guardiã do desconhecido, a pantera simboliza a autoridade espiritual e a proteção instintiva, equilibrando a introspecção da Deusa com a prontidão para a ação no mundo material.</p>
+
+                    <!-- Info-Card com frase de impacto -->
+                    <div class="highlight-box">
+                        <p>"Não se trata apenas de pigmento sob a pele, mas da materialização de um processo de cura e autodescoberta. Cada detalhe — do arco zodiacal ao olhar sereno da Deusa — converge para transformar o corpo em uma relíquia pessoal, um testemunho vivo de uma jornada sagrada."</p>
+                    </div>
+
+                    <p>Esta obra é a celebração do feminino consciente: uma união impecável entre a visão artística personalizada e a técnica de alta performance, resultando em uma peça única que transcende o tempo e a moda.</p>
+                </div>
+
+                <!-- Assinatura Estilizada -->
+                <div class="signature">Nana Borges</div>
+                
+            </div>
+        </div>
+    </main>
+</body>
+</html>

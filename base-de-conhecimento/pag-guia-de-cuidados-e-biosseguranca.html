@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Saúde e Biossegurança | Studio Esoteric Ink</title>
+    <meta name="description" content="A arte caminha de mãos dadas com a biossegurança e o respeito à individualidade biológica.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta e Variáveis Oficiais ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1a0b2e;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--preto);
+            color: var(--branco-off);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            background-image: radial-gradient(circle at top right, #1d0d35 0%, transparent 40%);
+            overflow-x: hidden;
+        }
+
+        /* ================= Navegação ================= */
+        nav {
+            padding: 20px;
+            border-bottom: 1px solid var(--borda-ouro);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 1, 8, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: var(--ouro);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--branco-off); }
+
+        /* ================= Hero Section ================= */
+        .hero-section {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(5, 1, 8, 0.8), var(--preto)), 
+                        url('../imagem/maos-sobre-bancada.webp') center/cover;
+            padding: 20px;
+            border-bottom: 1px solid var(--ouro);
+        }
+
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--ouro);
+            padding: 5px 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--ouro);
+            margin-bottom: 20px;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .hero-section h1 {
+            font-family: var(--fonte-titulo);
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            color: var(--branco-off);
+            max-width: 900px;
+            line-height: 1.2;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+            margin-bottom: 20px;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--cinza-texto);
+            max-width: 700px;
+            font-style: italic;
+        }
+
+        /* ================= Container Principal ================= */
+        .content-wrap {
+            max-width: 1000px; 
+            margin: 0 auto;
+            padding: 60px 30px;
+        }
+
+        /* ================= Destaque Biossegurança (Info-Card) ================= */
+        .bio-highlight {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--borda-ouro);
+            padding: 40px;
+            margin-bottom: 80px;
+            border-radius: 2px;
+        }
+
+        .bio-highlight h2 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--borda-ouro);
+            padding-bottom: 15px;
+        }
+
+        .bio-highlight h4 {
+            color: var(--ouro-claro);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-family: var(--fonte-titulo);
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .bio-highlight ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .bio-highlight li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 25px;
+            color: var(--cinza-texto);
+        }
+
+        .bio-highlight li::before {
+            content: "✧";
+            position: absolute;
+            left: 0;
+            color: var(--ouro);
+        }
+
+        .bio-highlight strong {
+            color: var(--branco-off);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .read-more-content {
+            display: none;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--borda-ouro);
+        }
+
+        .read-more-btn {
+            background: none;
+            border: none;
+            color: var(--ouro);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.3s;
+        }
+
+        /* ================= Grid de Protocolos (Ajuste de Igualdade) ================= */
+        .protocol-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .protocol-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--borda-ouro);
+            text-decoration: none;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            height: 100%; /* Força o card a esticar na linha */
+        }
+
+        .protocol-card-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1; /* Garante que o conteúdo preencha o card e alinhe o link no fundo */
+        }
+
+        .protocol-card p {
+            flex-grow: 1; /* Faz o texto ocupar o espaço necessário para empurrar o link para baixo */
+        }
+
+        /* Restante do CSS preservado... */
+        .protocol-card:hover { border-color: var(--ouro); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(197, 160, 89, 0.1); background: rgba(197, 160, 89, 0.05); }
+        .protocol-card-image-wrapper { width: 100%; height: 200px; overflow: hidden; border-bottom: 1px solid var(--borda-ouro); }
+        .protocol-card-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; filter: grayscale(30%) contrast(1.1); }
+        .protocol-card:hover .protocol-card-image { transform: scale(1.05); filter: grayscale(0%) contrast(1.1); }
+        .protocol-card h3 { font-family: var(--fonte-titulo); color: var(--ouro-claro); font-size: 1.3rem; margin-bottom: 15px; line-height: 1.3; }
+        .protocol-card p { font-size: 0.95rem; color: var(--cinza-texto); margin-bottom: 25px; line-height: 1.6; }
+        .protocol-link { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--ouro); font-weight: 600; display: flex; align-items: center; gap: 10px; margin-top: auto; transition: color 0.3s; }
+        .protocol-link::after { content: '→'; transition: transform 0.3s; }
+        .protocol-card:hover .protocol-link { color: var(--branco-off); }
+        .protocol-card:hover .protocol-link::after { transform: translateX(5px); }
+        .category-section { margin-bottom: 80px; }
+        .category-header { display: flex; flex-direction: column; align-items: center; margin-bottom: 40px; text-align: center; }
+        .category-header span { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; letter-spacing: 4px; color: var(--ouro-claro); margin-bottom: 10px; }
+        .category-header h2 { font-family: var(--fonte-titulo); font-size: 2rem; color: var(--ouro); display: flex; align-items: center; justify-content: center; gap: 15px; width: 100%; text-transform: uppercase; letter-spacing: 2px; }
+        .category-header h2::before, .category-header h2::after { content: ""; flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--ouro), transparent); }
+        footer { padding: 60px 20px; background: var(--preto); text-align: center; border-top: 1px solid rgba(197, 160, 89, 0.1); margin-top: 60px; }
+        footer h3 { font-family: var(--fonte-titulo); color: var(--ouro); margin-bottom: 15px; font-size: 1.5rem; }
+        footer p { color: var(--cinza-texto); font-family: var(--fonte-corpo); font-size: 1rem; margin-bottom: 30px; }
+        .btn-action { display: inline-block; padding: 15px 35px; background: transparent; color: var(--ouro); border: 1px solid var(--ouro); text-decoration: none; font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; font-weight: bold; transition: 0.4s; }
+        .footer-credits { margin-top: 50px; }
+        .footer-credits p { color: #666; font-family: 'Montserrat', sans-serif; font-size: 0.65rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 5px; opacity: 0.8; }
+        @media (max-width: 768px) { .hero-section h1 { font-size: 2rem; } .protocol-grid { grid-template-columns: 1fr; } .category-header h2 { font-size: 1.5rem; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="../index.html">← Retornar à Home</a>
+        <div style="font-family: 'Cinzel'; color: var(--ouro); letter-spacing: 3px; font-size: 0.9rem;">Studio Esoteric Ink</div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="badge">Guia Oficial</div>
+        <h1>Saúde, Segurança & Inclusão</h1>
+        <p class="hero-desc">No Studio Esoteric Ink, a arte caminha de mãos dadas com a biossegurança e o respeito à individualidade biológica. Entenda como adaptamos nossa técnica para garantir a sua segurança.</p>
+    </header>
+
+    <main class="content-wrap">
+
+        <section class="bio-highlight">
+            <h2>Conformidade Juridica e Biológica</h2>
+            <p style="color: var(--cinza-texto); font-size: 1.1rem;">A integridade física de nossos clientes é a prioridade absoluta. Entendemos que a tatuagem é um procedimento invasivo e, por isso, aplicamos um protocolo de biossegurança rígido, superando as exigências sanitárias básicas para garantir um ambiente totalmente seguro e livre de contaminação cruzada.</p>
+            
+            <div id="moreText" class="read-more-content">
+                <h4>Protocolos de Esterilização e Higiene</h4>
+                <p style="color: var(--cinza-texto); margin-bottom: 15px;">Nosso atendimento segue normas rígidas de controle de infecção:</p>
+                <ul>
+                    <li><strong>Materiais 100% Descartáveis:</strong> Todas as agulhas, cartuchos, biqueiras, protetores de cabos e recipientes de tinta (batoques) são estritamente descartáveis.</li>
+                    <li><strong>Barreira Biológica (Surface Wrapping):</strong> Todas as superfícies de contato são devidamente isoladas com barreiras plásticas.</li>
+                    <li><strong>Tintas Regulamentadas:</strong> Utilizamos apenas pigmentos registrados e aprovados pela ANVISA.</li>
+                </ul>
+
+                <h4>Antissepsia e Assepsia</h4>
+                <p style="color: var(--cinza-texto); margin-bottom: 15px;">O controle microbiológico é aplicado em todas as etapas do processo:</p>
+                <ul>
+                    <li><strong>Higiene das Mãos:</strong> Lavagem rigorosa e uso de antissépticos.</li>
+                    <li><strong>Preparo da Pele:</strong> Limpeza com soluções antissépticas específicas.</li>
+                    <li><strong>EPIs:</strong> Uso obrigatório de luvas, máscaras e toucas.</li>
+                </ul>
+
+                <h4>Infraestrutura Adequada</h4>
+                <p style="color: var(--cinza-texto); margin-bottom: 15px;">Seleção de locais de atendimento que possuam:</p>
+                <ul>
+                    <li><strong>Alvará Sanitário:</strong> Documentação vigente e em conformidade.</li>
+                    <li><strong>Gestão de Resíduos:</strong> Contrato de coleta de lixo infectante.</li>
+                </ul>
+            </div>
+
+            <button id="toggleBtn" class="read-more-btn" onclick="toggleText()">Ler texto completo ↓</button>
+        </section>
+
+        <section class="category-section">
+            <div class="category-header">
+                <span>MÓDULO 01</span>
+                <h2>Cuidados e Informações</h2>
+            </div>
+            <div class="protocol-grid">
+                
+                <a href="./guia-da-regeneracao.html" class="protocol-card">
+                    <div class="protocol-card-image-wrapper">
+                        <img src="../imagem/foto_cuidados_com_a_tattoo.webp" alt="Guia de Cuidados" class="protocol-card-image">
+                    </div>
+                    <div class="protocol-card-content">
+                        <h3>Guia de Cuidados e Cicatrização</h3>
+                        <p>Acesse nosso manual completo com o passo a passo para garantir uma cicatrização perfeita.</p>
+                        <span class="protocol-link">Acessar Guia</span>
+                    </div>
+                </a>
+
+                <a href="./faq-duvidas-frequentes.html" class="protocol-card">
+                    <div class="protocol-card-image-wrapper">
+                        <img src="../imagem/faq_duvidas-frequentes.webp" alt="FAQ Dúvidas" class="protocol-card-image">
+                    </div>
+                    <div class="protocol-card-content">
+                        <h3>FAQ - Dúvidas Frequentes</h3>
+                        <p>Respostas rápidas para as perguntas mais comuns sobre dor, preparo e orçamentos.</p>
+                        <span class="protocol-link">Acessar FAQ</span>
+                    </div>
+                </a>
+
+                <a href="./canone.html" class="protocol-card">
+                    <div class="protocol-card-image-wrapper">
+                        <img src="../imagem/1revista.mistica.webp" alt="Cânone" class="protocol-card-image">
+                    </div>
+                    <div class="protocol-card-content">
+                        <h3>Cânone de Conhecimento</h3>
+                        <p>Guia de transparência detalhando as bases científicas e simbólicas da Metodologia Nana Borges.</p>
+                        <span class="protocol-link">Acessar Cânone</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="category-section">
+            <div class="category-header">
+                <span>MÓDULO 02</span>
+                <h2>Ciclos de Vida</h2>
+            </div>
+            <div class="protocol-grid">
+                <a href="./artigo-gestacao.html" class="protocol-card">
+                    <div class="protocol-card-image-wrapper">
+                        <img src="../imagem/gestacao-e-amamentacao.webp" alt="Gestantes e Lactantes" class="protocol-card-image">
+                    </div>
+                    <div class="protocol-card-content">
+                        <h3>Gestantes e Lactantes</h3>
+                        <p>Entenda os riscos biológicos e o nosso protocolo de acolhimento.</p>
+                        <span class="protocol-link">Ler Diretrizes</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="category-section">
+            <div class="category-header">
+                <span>MÓDULO 03</span>
+                <h2>Condições de Saúde</h2>
+            </div>
+            <div class="protocol-grid">
+                <a href="./diabetes.html" class="protocol-card">
+                    <div class="protocol-card-image-wrapper">
+                        <img src="../imagem/diabetes-e-tattoo.webp" alt="Diabetes" class="protocol-card-image">
+                    </div>
+                    <div class="protocol-card-content">
+                        <h3>Diabetes</h3>
+                        <p>Orientações sobre controle glicêmico e cicatrização.</p>
+                        <span class="protocol-link">Ler Diretrizes</span>
+                    </div>
+                </a>
+
+                <a href="./tatuagem-e-soropositividade.html" class="protocol-card">
+                    <div class="protocol-card-image-wrapper">
+                        <img src="../imagem/soropositividade_nana_borges_studio_esoteric_ink.webp" alt="Soropositividade" class="protocol-card-image">
+                    </div>
+                    <div class="protocol-card-content">
+                        <h3>Soropositividade</h3>
+                        <p>Desmistificando preconceitos baseados no protocolo I=I.</p>
+                        <span class="protocol-link">Ler Diretrizes</span>
+                    </div>
+                </a>
+
+                <a href="./coagulaçao-e-medicamentos.html" class="protocol-card">
+                    <div class="protocol-card-image-wrapper">
+                        <img src="../imagem/coagulaçao_medicamentosa_nana_borges_tattoo_studio_esoteric_ink.webp" alt="Coagulação e Medicamentos" class="protocol-card-image">
+                    </div>
+                    <div class="protocol-card-content">
+                        <h3>Coagulação e Medicamentos</h3>
+                        <p>Como proceder com distúrbios de coagulação ou anticoagulantes.</p>
+                        <span class="protocol-link">Ler Diretrizes</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="category-section">
+            <div class="category-header">
+                <span>MÓDULO 04</span>
+                <h2>Dermatologia</h2>
+            </div>
+            <div class="protocol-grid">
+                <a href="./psoriase-e-dermatite.html" class="protocol-card">
+                    <div class="protocol-card-image-wrapper">
+                        <img src="../imagem/psoriase_e_dermatite.webp" alt="Psoríase e Dermatite" class="protocol-card-image">
+                    </div>
+                    <div class="protocol-card-content">
+                        <h3>Psoríase e Dermatite</h3>
+                        <p>O fenômeno de Koebner e segurança em peles reativas.</p>
+                        <span class="protocol-link">Ler Diretrizes</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="category-section">
+            <div class="category-header">
+                <span>MÓDULO 05</span>
+                <h2>Protocolos Jurídicos e Ética</h2>
+            </div>
+            <div class="protocol-grid">
+                <a href="./protocolos-juridicos.html" class="protocol-card">
+                    <div class="protocol-card-image-wrapper">
+                        <img src="../imagem/protocolos_juridicos.webp" alt="Protocolos Jurídicos" class="protocol-card-image">
+                    </div>
+                    <div class="protocol-card-content">
+                        <h3>Protocolos Jurídicos</h3>
+                        <p>Acesse documentação necessária e termos de consentimento.</p>
+                        <span class="protocol-link">Ver Documentos</span>
+                    </div>
+                </a>
+
+                <a href="./politica-de-atendimento" class="protocol-card">
+                    <div class="protocol-card-image-wrapper">
+                        <img src="../imagem/politica_de_atendimento.webp" alt="Política de Atendimento" class="protocol-card-image">
+                    </div>
+                    <div class="protocol-card-content">
+                        <h3>Política de Atendimento</h3>
+                        <p>Nossas regras de agendamento, remarcação e curadoria.</p>
+                        <span class="protocol-link">Ler Política</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <h3>Dúvidas sobre sua condição específica?</h3>
+        <p>Se o seu caso não estiver listado acima, entre em contato para uma consultoria técnica individualizada.</p>
+        <a href="https://api.whatsapp.com/send?phone=5511994998057" class="btn-action">CONVERSAR COM NANA BORGES</a>
+        
+        <div class="footer-credits">
+            <p>BIOSSEGURANÇA E ÉTICA • STUDIO ESOTERIC INK • 2026</p>
+            <p>CONFORMIDADE JURÍDICA E INTEGRIDADE BIOLÓGICA.</p>
+            <p>CURADORIA TÉCNICA: NANA BORGES</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleText() {
+            var content = document.getElementById("moreText");
+            var btn = document.getElementById("toggleBtn");
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                btn.innerHTML = "Ler texto completo ↓";
+            } else {
+                content.style.display = "block";
+                btn.innerHTML = "Ocultar texto ↑";
+            }
+        }
+    </script>
+
+</body>
+</html>

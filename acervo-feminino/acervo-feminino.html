@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Matriarcado da Agulha - Studio Esoteric Ink</title>
+    
+    <meta name="description" content="O manifesto definitivo da Esoteric Ink sobre a história da tatuagem feminina. De sacerdotisas egípcias às mestras modernas, descubra a nossa linhagem de poder.">
+    <meta name="keywords" content="Manifesto Tatuagem Feminina, Esoteric Ink, História da Tatuagem, Empoderamento Feminino, Sagrado Feminino, Evolução da Tatuagem, Mulheres Tatuadoras, Identidade e Tinta">
+    <link rel="canonical" href="https://seusite.com/manifesto-esoteric-ink-linhagem-feminina-tatuagem-historia">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta e Variáveis Oficiais ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1d0d35;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        /* ================= Reset & Setup ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        
+        body {
+            background-color: var(--preto);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            background-image: radial-gradient(circle at top right, var(--roxo-escuro) 0%, transparent 40%);
+        }
+
+        h1, h2, h3 {
+            font-family: var(--fonte-titulo);
+            color: var(--branco-off);
+            font-weight: 400;
+        }
+
+        /* --- COMPONENTES GLOBAIS (DNA Visual) --- */
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--ouro);
+            padding: 5px 12px;
+            font-family: var(--fonte-ui);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--ouro);
+            background: rgba(0,0,0,0.5);
+            margin-bottom: 15px;
+        }
+
+        .dropcap::first-letter {
+            font-family: var(--fonte-titulo);
+            font-size: 4.5rem;
+            float: left;
+            line-height: 0.8;
+            padding-right: 15px;
+            color: var(--ouro);
+        }
+
+        /* --- BOTÃO VOLTAR --- */
+        .back-nav { 
+            position: absolute; 
+            top: 30px; 
+            left: 5%; 
+            z-index: 10; 
+        }
+        .btn-voltar { 
+            color: var(--ouro-claro); 
+            text-decoration: none; 
+            font-family: var(--fonte-ui); 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            transition: color 0.3s; 
+            border: 1px solid var(--borda-ouro);
+            padding: 10px 20px;
+            background: rgba(5,1,8,0.5);
+            backdrop-filter: blur(5px);
+        }
+        .btn-voltar:hover { 
+            color: var(--preto); 
+            background: var(--ouro);
+            border-color: var(--ouro);
+        }
+
+        /* ================= Cabeçalho Hero ================= */
+        header {
+            text-align: center;
+            padding: 150px 5% 80px;
+            background: linear-gradient(to bottom, rgba(5, 1, 8, 0.6), var(--preto)), url('../imagem/imagem_matriarcado_da_agulha_nana_borges_studio_esoteric_ink.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            border-bottom: 1px solid var(--borda-ouro);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header h1 { 
+            font-size: clamp(2.5rem, 5vw, 4.5rem); 
+            margin-bottom: 25px; 
+            letter-spacing: 3px; 
+            text-transform: uppercase;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.9);
+            color: var(--ouro);
+        }
+        header p { 
+            max-width: 700px; 
+            font-size: 1.15rem; 
+            color: var(--cinza-texto); 
+            text-align: justify;
+        }
+
+        /* ================= Estilos do Manifesto (Introdução com Ler Mais) ================= */
+        .manifesto-intro {
+            margin-bottom: 60px;
+            border: 1px solid var(--borda-ouro);
+            background: rgba(255, 255, 255, 0.01);
+            padding: 40px;
+            position: relative;
+        }
+        .manifesto-intro h2 {
+            font-size: 1.8rem;
+            color: var(--ouro);
+            margin-bottom: 25px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        .manifesto-p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            text-align: justify;
+            color: var(--branco-off);
+        }
+        .manifesto-subtitulo {
+            font-family: var(--fonte-titulo);
+            font-size: 1.3rem;
+            color: var(--ouro-claro);
+            margin: 30px 0 15px 0;
+            letter-spacing: 1px;
+        }
+        /* Estrutura do Acordeão Nativo */
+        .manifesto-details {
+            width: 100%;
+        }
+        .manifesto-details[open] summary {
+            margin-bottom: 25px;
+        }
+        .manifesto-details summary {
+            list-style: none;
+            outline: none;
+            cursor: pointer;
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--ouro-claro);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+            transition: color 0.3s ease;
+            font-weight: 600;
+        }
+        .manifesto-details summary:hover {
+            color: var(--branco-off);
+        }
+        .manifesto-details summary::-webkit-details-marker {
+            display: none;
+        }
+        .manifesto-details summary .txt-abrir { display: inline; }
+        .manifesto-details summary .txt-fechar { display: none; }
+        .manifesto-details[open] summary .txt-abrir { display: none; }
+        .manifesto-details[open] summary .txt-fechar { display: inline; }
+        
+        .manifesto-details summary::after {
+            content: '↓';
+            font-size: 1rem;
+            transition: transform 0.3s;
+        }
+        .manifesto-details[open] summary::after {
+            content: '↑';
+        }
+
+        /* ================= Mosaico Visual Refinado ================= */
+        .mosaic-section {
+            padding: 40px 5%;
+            background-color: transparent;
+        }
+        .mosaic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .mosaic-item {
+            position: relative;
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            text-decoration: none;
+            border: 1px solid var(--borda-ouro);
+            transition: all 0.4s ease;
+            filter: grayscale(80%) contrast(1.2);
+        }
+        .mosaic-item:hover {
+            border-color: var(--ouro);
+            transform: translateY(-5px);
+            filter: grayscale(0%) contrast(1.1);
+            box-shadow: 0 10px 20px rgba(197, 160, 89, 0.15);
+        }
+        .mosaic-overlay {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(5,1,8,0.95), transparent);
+        }
+        .mosaic-text {
+            position: relative;
+            z-index: 2;
+            padding: 15px;
+            color: var(--ouro-claro);
+            font-family: var(--fonte-titulo);
+            font-size: 1rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px #000;
+        }
+
+        /* ================= Navegação Horizontal (Substitui Sidebar) ================= */
+        .era-nav {
+            position: sticky;
+            top: 0;
+            background-color: rgba(5, 1, 8, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 5%;
+            text-align: center;
+            border-top: 1px solid var(--borda-ouro);
+            border-bottom: 1px solid var(--borda-ouro);
+            z-index: 100;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .era-nav a {
+            color: var(--cinza-texto);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.85rem;
+            margin: 0 15px;
+            padding: 5px 0;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid transparent;
+        }
+        .era-nav a:hover { 
+            color: var(--ouro);
+            border-bottom: 1px solid var(--ouro);
+        }
+        .era-nav::-webkit-scrollbar { height: 2px; }
+        .era-nav::-webkit-scrollbar-thumb { background: var(--ouro); }
+
+        /* ================= Área de Conteúdo Limitada ================= */
+        main { 
+            max-width: 850px; /* Limite de 850px conforme DNA */
+            margin: 0 auto; 
+            padding: 80px 5% 100px; 
+        }
+        
+        .era-section { 
+            margin-bottom: 100px; 
+            scroll-margin-top: 100px; 
+        }
+
+        .era-title { 
+            font-size: 2.2rem; 
+            color: var(--ouro); 
+            margin-bottom: 15px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            text-align: center;
+        }
+        .era-title::before, .era-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--ouro), transparent);
+        }
+
+        .section-desc {
+            text-align: center;
+            color: var(--cinza-texto);
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+            font-style: italic;
+        }
+
+        /* ================= Info-Cards (Artigos) ================= */
+        .articles-column {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .article-card {
+            background-color: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--borda-ouro);
+            border-left: 3px solid var(--ouro);
+            padding: 40px 40px;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.12);
+            border-color: var(--ouro);
+            background: rgba(197, 160, 89, 0.04);
+        }
+
+        .article-title { 
+            font-size: 2rem; 
+            margin-bottom: 5px; 
+            line-height: 1.2; 
+            color: var(--branco-off);
+            transition: color 0.3s ease;
+        }
+
+        .article-card:hover .article-title {
+            color: var(--ouro);
+        }
+
+        .quote-text {
+            font-style: italic;
+            color: var(--ouro-claro);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            font-family: var(--fonte-corpo);
+        }
+
+        .article-excerpt { 
+            font-size: 1.05rem; 
+            margin-bottom: 30px; 
+            flex-grow: 1; 
+            line-height: 1.8;
+            color: var(--cinza-texto);
+        }
+
+        .read-more {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .read-more::after {
+            content: '→';
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .read-more:hover { 
+            color: var(--branco-off); 
+        }
+        .read-more:hover::after { 
+            transform: translateX(5px); 
+        }
+
+        /* ================= Rodapé ================= */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid var(--borda-ouro);
+            background-color: #030105;
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            clear: both;
+        }
+
+        .footer-logo {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.3rem; /* Letras menores */
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+        }
+
+        .footer-text {
+            font-family: var(--fonte-ui);
+            font-size: 0.65rem; /* Letras pequenas */
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--ouro-claro);
+            opacity: 0.6;
+        }
+
+        /* ================= Responsividade ================= */
+        @media (max-width: 768px) {
+            .main-wrapper { padding-top: 100px; padding-left: 10px; padding-right: 10px; }
+            .article-container { padding: 40px 5%; }
+            .article-header h1 { font-size: 2.4rem; }
+            .article-content { font-size: 1.05rem; }
+            .top-nav { padding: 15px 20px; }
+            blockquote { font-size: 1.2rem; padding: 25px; }
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .era-title { font-size: 1.8rem; }
+            .article-card { padding: 30px 20px; }
+            .back-nav { top: 20px; left: 20px; }
+            .btn-voltar { padding: 8px 15px; font-size: 0.65rem; }
+            header p { text-align: left; padding: 0 10px; }
+            .era-nav a { font-size: 0.75rem; margin: 0 10px; }
+            .era-title::before, .era-title::after { display: none; }
+            .manifesto-intro { padding: 25px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="back-nav">
+        <a href="../index.html" class="btn-voltar">← Voltar ao Studio</a>
+    </div>
+
+    <header>
+        <h1>O Matriarcado da Agulha</h1>
+        <p class="dropcap">"A Linhagem da Tinta: Das Sacerdotisas às Mestras Modernas. Uma jornada histórica pelo poder feminino cravado na pele, desvendando o sagrado, a rebeldia e a excelência técnica através dos séculos."</p>
+    </header>
+
+    <section class="mosaic-section">
+        <div class="mosaic-grid">
+            <a href="#amunet" class="mosaic-item" style="background-image: url('../imagem/imagem_amunet_nana_borges_studio_esoteric_ink.webp');"><div class="mosaic-overlay"></div><div class="mosaic-text">Amunet</div></a>
+            <a href="#ukok" class="mosaic-item" style="background-image: url('../imagem/princesa-ukok.webp');"><div class="mosaic-overlay"></div><div class="mosaic-text">Princesa de Ukok</div></a>
+            <a href="#olive" class="mosaic-item" style="background-image: url('../imagem/olive.webp');"><div class="mosaic-overlay"></div><div class="mosaic-text">Olive Oatman</div></a>
+            <a href="#maud" class="mosaic-item" style="background-image: url('../imagem/maud.webp');"><div class="mosaic-overlay"></div><div class="mosaic-text">Maud Wagner</div></a>
+            <a href="#jessie" class="mosaic-item" style="background-image: url('../imagem/jessie.webp');"><div class="mosaic-overlay"></div><div class="mosaic-text">Jessie Knight</div></a>
+            <a href="#mildred" class="mosaic-item" style="background-image: url('../imagem/mildred.webp');"><div class="mosaic-overlay"></div><div class="mosaic-text">Mildred Hull</div></a>
+            <a href="#kat" class="mosaic-item" style="background-image: url('../imagem/kat.webp');"><div class="mosaic-overlay"></div><div class="mosaic-text">Kat Von D</div></a>
+            <a href="#hannah" class="mosaic-item" style="background-image: url('../imagem/hannah.webp');"><div class="mosaic-overlay"></div><div class="mosaic-text">Hannah Flowers</div></a>
+            <a href="#debora" class="mosaic-item" style="background-image: url('../imagem/debora.webp');"><div class="mosaic-overlay"></div><div class="mosaic-text">Debora Cherrys</div></a>
+           
+            <a href="#sasha" class="mosaic-item" style="background-image: url('../imagem/sasha.webp');"><div class="mosaic-overlay"></div><div class="mosaic-text">Sasha Masiuk</div></a>
+        </div>
+    </section>
+
+    <nav class="era-nav">
+        <a href="#ancestral">I. Era Ancestral</a>
+        <a href="#pioneiras">II. O Século XIX e Pioneiras</a>
+        <a href="#ouro">III. A Era de Ouro e os Portos</a>
+        <a href="#contemporaneas">IV. Mestras Contemporâneas</a>
+    </nav>
+
+    <main>
+
+        <section class="manifesto-intro">
+            <h2>A Linhagem de Mulheres que Escrevem a História na Pele</h2>
+            <p class="manifesto-p">A tatuagem feminina nunca foi uma tendência passageira; ela é um rugido de soberania que ecoa através dos milênios.</p>
+            <p class="manifesto-p">Da Sacerdotisa Amunet no Egito Antigo à precisão arquitetônica de Nissaco no Japão moderno, a tinta tem sido o nosso amuleto, nossa armadura e nossa voz mais profunda.</p>
+            
+            <details class="manifesto-details">
+                <summary>
+                    <span class="txt-abrir">Ler o Manifesto Completo</span>
+                    <span class="txt-fechar">Fechar Manifesto</span>
+                </summary>
+                
+                <p class="manifesto-p">Em nosso conceito de tatuagem, não apenas aplicamos pigmento na derme; nós honramos uma linhagem de mulheres que desafiaram o gelo, o cativeiro, o circo e as leis para serem donas de si mesmas.</p>
+                <p class="manifesto-p">Este manifesto é o nosso compromisso com você: transformar cada traço em um elo entre o seu corpo e essa história monumental de liberdade.</p>
+                
+                <h3 class="manifesto-subtitulo">A Coragem como Pigmento: Das Sombras para o Mainstream</h3>
+                <p class="manifesto-p">Nossa jornada nos ensina que a agulha, nas mãos de uma mulher, é um instrumento de revolução silenciosa e beleza técnica absoluta.</p>
+                <p class="manifesto-p">Vimos Maud Wagner trocar o picadeiro pela arte manual e Mildred Hull conquistar a perigosa Bowery para abrir o caminho para o empreendedorismo feminino.</p>
+                <p class="manifesto-p">Aprendemos com Jessie Knight que a resiliência é o que mantém a nossa mano firme, mesmo quando o mundo ao redor parece desmoronar em guerras e preconceitos.</p>
+                <p class="manifesto-p">Hoje, celebramos ícones como Kat Von D, que trouxe nossa arte para a luz do sol, provando que o talento feminino é uma força que o mundo não pode mais ignorar.</p>
+                <p class="manifesto-p">Cada artista que citamos nesta galeria histórica contribuiu com um átomo de coragem para que hoje você pudesse entrar no nosso estúdio com orgulho e segurança.</p>
+                
+                <h3 class="manifesto-subtitulo">A Técnica como Ritual: Onde a Tradição Encontra a Inovação</h3>
+                <p class="manifesto-p">No Studio Esoteric Ink, bebemos da fonte de mestras como Hannah Flowers e Debora Cherrys para entender que a tatuagem é a fusão definitiva entre as belas artes e a biologia.</p>
+                <p class="manifesto-p">Buscamos a delicadeza microscópica de Gara e a profundidade rítmica de Sasha Masiuk para garantir que sua pele receba o tratamento de uma obra de arte de museu.</p>
+                <p class="manifesto-p">Para nós, o Dotwork, o Fine Line e o Realismo não são apenas estilos; são linguagens que usamos para traduzir o que palavras não conseguem expressar.</p>
+                <p class="manifesto-p">Respeitamos a anatomia e a história de cada cliente, pois sabemos que uma tatuagem bem executada é aquela que envelhece com a mesma dignidade da Princesa de Ukok.</p>
+                <p class="manifesto-p">Nossa curadoria técnica é o seu escudo, garantindo que a beleza do seu projeto seja tão eterna quanto as histórias que o inspiraram.</p>
+                
+                <h3 class="manifesto-subtitulo">O Seu Corpo, O Seu Império: O Futuro é Escrito em Tinta</h3>
+              
+                <p class="manifesto-p">Quando você escolhe marcar sua pele, você está se unindo a Olive Oatman e a tantas outras que usaram o corpo para sinalizar quem realmente são.</p>
+                <p class="manifesto-p">O Nosso Studio Esoteric Ink existe para ser o santuário onde essa transformação acontece, unindo a mística ancestral à sofisticação do design contemporâneo.</p>
+                <p class="manifesto-p">Não somos apenas um estúdio; somos os guardiões de uma tradição que celebra a mulher como a criadora e a própria obra-prima.</p>
+                <p class="manifesto-p">Venha fazer parte desta história, deixe que a nossa agulha grave em você a força de todas as que vieram antes e a luz das que estão por vir.</p>
+                <p class="manifesto-p">Seu corpo é um templo, sua história é sagrada, e a sua tatuagem é o seu manifesto para o mundo.</p>
+                
+                <h3 class="manifesto-subtitulo">Nossa Promessa de Excelência</h3>
+                <p class="manifesto-p">Inspiradas por cada uma das mulheres que apresentamos nesta biblioteca, o Studio Esoteric Ink reafirma seu compromisso com a higiene impecável, a técnica de elite e o atendimento humanizado. Estamos aqui para garantir que sua experiência de tatuagem seja tão rica e profunda quanto o legado que carregamos conosco.</p>
+            </details>
+        </section>
+
+        <section id="ancestral" class="era-section">
+            <h2 class="era-title">Era Ancestral: O Nascimento do Sagrado</h2>
+            <p class="section-desc">Onde a tatuagem era o elo entre o corpo humano e a divindade.</p>
+
+            <div class="articles-column">
+                <article id="amunet" class="article-card">
+                    <span class="badge">Egito Antigo</span>
+                    <h3 class="article-title">Amunet</h3>
+                    <p class="quote-text">"A Sacerdotisa de Hathor"</p>
+                    <p class="article-excerpt">Antes das pirâmides serem lendas, Amunet já carregava no ventre as marcas da fertilidade e da proteção divina. Descubra como a tatuagem nasceu no seio do sagrado egípcio.</p>
+                    <a href="./amunet.html" class="read-more">Descobrir o Mistério de Amunet</a>
+                </article>
+
+                <article id="ukok" class="article-card">
+                    <span class="badge">Sibéria</span>
+                    <h3 class="article-title">Princesa de Ukok</h3>
+                    <p class="quote-text">"A Soberana do Gelo"</p>
+                    <p class="article-excerpt">Preservada por 2500 anos no permafrost siberiano, suas tatuagens de criaturas mitológicas revelam uma linhagem de poder que desafia o tempo.</p>
+                    <a href="./princesa-ukok.html" class="read-more">Ver as Marcas da Princesa</a>
+                </article>
+            </div>
+        </section>
+
+        <section id="pioneiras" class="era-section">
+            <h2 class="era-title">O Século XIX e as Pioneiras</h2>
+            <p class="section-desc">Mulheres que usaram a pele para reivindicar liberdade e independência.</p>
+
+            <div class="articles-column">
+                <article id="olive" class="article-card">
+                    <span class="badge">Era Vitoriana</span>
+                    <h3 class="article-title">Olive Oatman</h3>
+                    <p class="quote-text">"Identidade entre Dois Mundos"</p>
+                    <p class="article-excerpt">Uma marca azul no queixo que abalou a sociedade vitoriana. Conheça a história da mulher que transformou o trauma em um símbolo eterno de pertencimento.</p>
+                    <a href="./olive.html" class="read-more">Conhecer a Jornada de Olive</a>
+                </article>
+
+                <article id="maud" class="article-card">
+                    <span class="badge">Inovação Técnica</span>
+                    <h3 class="article-title">Maud Wagner</h3>
+                    <p class="quote-text">"A Primeira Dama da Máquina"</p>
+                    <p class="article-excerpt">Ela trocou as luzes do circo pelo barulho das agulhas. Maud não foi apenas a primeira tatuadora dos EUA; ela foi a arquiteta da nossa profissão.</p>
+                    <a href="./maud.html" class="read-more">Ler sobre a Audácia de Maud</a>
+                </article>
+            </div>
+        </section>
+
+        <section id="ouro" class="era-section">
+            <h2 class="era-title">A Era de Ouro e os Portos</h2>
+            <p class="section-desc">Quando elas assumiram o controle dos estúdios e conquistaram o respeito militar.</p>
+
+            <div class="articles-column">
+                <article id="jessie" class="article-card">
+                    <span class="badge">Reino Unido</span>
+                    <h3 class="article-title">Jessie Knight</h3>
+                    <p class="quote-text">"O Punho de Ferro Britânico"</p>
+                    <p class="article-excerpt">De Barry aos grandes portos, Jessie foi a primeira a vencer prêmios em um mundo de marinheiros. Descubra como ela tatuou a história da Segunda Guerra.</p>
+                    <a href="./jessie.html" class="read-more">Explorar o Legado de Jessie</a>
+                </article>
+
+                <article id="mildred" class="article-card">
+                    <span class="badge">Bowery - NY</span>
+                    <h3 class="article-title">Mildred Hull</h3>
+                    <p class="quote-text">"A Rainha de Bowery"</p>
+                    <p class="article-excerpt">Em plena Nova York dos anos 30, Mildred fundou seu império. Conheça a mulher que provou que o lugar da mulher é gerindo sua própria arte.</p>
+                    <a href="./mildred.html" class="read-more">Visitar o Império de Mildred</a>
+                </article>
+            </div>
+        </section>
+
+        <section id="contemporaneas" class="era-section">
+            <h2 class="era-title">As Mestras Contemporâneas</h2>
+            <p class="section-desc">A sofisticação técnica e a estética que definem o luxo na tatuagem atual.</p>
+
+            <div class="articles-column">
+                <article id="kat" class="article-card">
+                    <span class="badge">Preto e Cinza</span>
+                    <h3 class="article-title">Kat Von D</h3>
+                    <p class="quote-text">"A Revolução do Realismo"</p>
+                    <p class="article-excerpt">Do underground para o topo do mundo. Veja como Kat elevou o retrato em preto e cinza ao status de alta costura na pele.</p>
+                    <a href="./kat.html" class="read-more">Ver a Maestria de Kat Von D</a>
+                </article>
+
+                <article id="hannah" class="article-card">
+                    <span class="badge">Neo Tradicional</span>
+                    <h3 class="article-title">Hannah Flowers</h3>
+                    <p class="quote-text">"O Romance Vitoriano"</p>
+                    <p class="article-excerpt">Onde a tatuagem encontra as Belas Artes. Deixe-se encantar pela fusão entre o Art Nouveau e o Neo Tradicional de Hannah.</p>
+                    <a href="./hanna.html" class="read-more">Entrar no Jardim de Hannah</a>
+                </article>
+
+                <article id="debora" class="article-card">
+                    <span class="badge">Realismo Colorido</span>
+                    <h3 class="article-title">Debora Cherrys</h3>
+                    <p class="quote-text">"A Alquimia das Cores"</p>
+                    <p class="article-excerpt">Saturação impecável e ornamentos de realeza. Descubra por que Debora é a referência máxima em retratos coloridos de luxo.</p>
+                    <a href="./debora.html" class="read-more">Brilhar com as Cores de Debora</a>
+                </article>
+
+              
+
+                <article id="sasha" class="article-card">
+                    <span class="badge">Dotwork & Escala</span>
+                    <h3 class="article-title">Sasha Masiuk</h3>
+                    <p class="quote-text">"O Império do Pontilhismo"</p>
+                    <p class="article-excerpt">O poder da escala e a precisão do dotwork. Saiba como Sasha transformou a botânica em uma marca de autoridade global.</p>
+                    <a href="./sasha.html" class="read-more">Contemplar o Poder de Sasha</a>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-logo">Studio Esoteric Ink</div>
+        <div class="footer-text">A pele é o pergaminho • O símbolo é a chave</div>
+    </footer>
+
+</body>
+</html>

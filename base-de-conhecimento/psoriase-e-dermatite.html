@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peles Reativas e Condições Especiais | Studio Esoteric Ink</title>
+    <meta name="description" content="Ciência e segurança na tatuagem para peles com psoríase, dermatite e condições especiais. Curadoria técnica: Nana Borges.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1a0b2e;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--preto);
+            color: var(--branco-off);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            background-image: radial-gradient(circle at top right, #1d0d35 0%, transparent 40%);
+            overflow-x: hidden;
+        }
+
+        nav {
+            padding: 20px;
+            border-bottom: 1px solid var(--borda-ouro);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 1, 8, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: var(--ouro);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--branco-off); }
+
+        .hero-section {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(5, 1, 8, 0.7), var(--preto)), 
+                        url('../imagem/psoriase_e_dermatite.webp') center/cover;
+            padding: 20px;
+            border-bottom: 1px solid var(--ouro);
+        }
+
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--ouro);
+            padding: 5px 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--ouro);
+            margin-bottom: 20px;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .hero-section h1 {
+            font-family: var(--fonte-titulo);
+            font-size: clamp(1.5rem, 4vw, 2.8rem);
+            color: var(--branco-off);
+            max-width: 1000px;
+            line-height: 1.2;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+        }
+
+        .content-wrap {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 80px 30px;
+            text-align: center;
+        }
+
+        .dropcap::first-letter {
+            font-family: var(--fonte-titulo);
+            font-size: 5rem;
+            float: left;
+            line-height: 0.8;
+            padding-right: 15px;
+            color: var(--ouro);
+        }
+
+        h2 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.6rem;
+            margin: 60px 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2::before, h2::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--ouro), transparent);
+        }
+
+        h3 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: 1.1rem;
+            margin: 0 0 20px 0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        p { margin-bottom: 25px; font-size: 1.1rem; color: var(--branco-off); opacity: 0.95; text-align: justify; }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--borda-ouro);
+            padding: 35px;
+            margin: 40px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+            text-align: left;
+        }
+
+        .info-card:hover {
+            background: rgba(197, 160, 89, 0.05);
+            border-color: var(--ouro);
+        }
+
+        .info-card ul { list-style: none; }
+
+        .info-card li {
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 30px;
+            color: var(--branco-off);
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        .info-card li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--ouro);
+            font-size: 1rem;
+        }
+
+        .info-card li strong {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: var(--ouro);
+            margin-bottom: 5px;
+        }
+
+        .cta-section {
+            background: var(--roxo-escuro);
+            border-top: 2px solid var(--ouro);
+            padding: 80px 30px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .btn-whatsapp {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 20px 45px;
+            background: transparent;
+            color: var(--ouro);
+            border: 1px solid var(--ouro);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: 0.4s;
+        }
+
+        .btn-whatsapp:hover {
+            background: var(--ouro);
+            color: var(--preto);
+            box-shadow: 0 0 30px rgba(197, 160, 89, 0.4);
+        }
+
+        .references {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(197, 160, 89, 0.2);
+            text-align: left;
+        }
+
+        .references h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--ouro);
+            margin-bottom: 15px;
+        }
+
+        .references p {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        footer {
+            padding: 60px 20px;
+            font-family: 'Montserrat', sans-serif;
+            border-top: 1px solid rgba(197, 160, 89, 0.1);
+            background: var(--preto);
+            text-align: center;
+        }
+
+        footer p {
+            text-align: center;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrap { padding: 50px 20px; }
+            .hero-section h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="./pag-guia-de-cuidados-e-biosseguranca.html">← Retornar </a>
+        <div style="font-family: 'Cinzel'; color: var(--ouro); letter-spacing: 3px; font-size: 0.9rem;">Studio Esoteric Ink</div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="badge">Biossegurança & Cuidados Especiais</div>
+        <h1>Tatuagem em Peles Reativas e Condições Especiais:<br>A Ciência por trás da Segurança</h1>
+    </header>
+
+    <div class="content-wrap">
+        
+        <p class="dropcap">Para muitas pessoas, a tatuagem é uma forma de reconciliação com o próprio corpo, especialmente quando se convive com condições crônicas como a psoríase, a dermatite ou distúrbios de <strong><a href="./coagulaçao-e-medicamentos.html" style="color: var(--ouro-claro); text-decoration: underline;">COAGULAÇÃO</a></strong>. No entanto, essas "telas" exigem um olhar clínico e um domínio técnico que ultrapassam a estética. Dominar a fisiopatologia dessas condições é um dos pilares do nosso trabalho, garantindo que a arte não comprometa a saúde sob a curadoria de <strong>Nana Borges</strong>.</p>
+
+        <h2>1. Psoríase e o Desafio do Fenômeno de Koebner</h2>
+        <p>A psoríase é uma doença inflamatória mediada por células T. O maior desafio técnico é o chamado Fenômeno de Koebner (ou resposta isomórfica), onde traumas na pele sã podem desencadear novas lesões.</p>
+
+        <div class="info-card">
+            <ul>
+                <li><strong>A Solução Técnica:</strong> O procedimento só deve ser realizado em fase de remissão (inativa). Recomendamos que a área esteja livre de placas por, no mínimo, seis meses.</li>
+                <li><strong>Mapeamento Estratégico:</strong> Analisamos áreas de "eleição" do sistema imune, evitando zonas de atrito constante como joelhos e cotovelos, priorizando áreas de pele mais estáveis.</li>
+            </ul>
+        </div>
+
+        <h2>2. Dermatite Atópica e a Reatividade Cutânea</h2>
+        <p>A disfunção na barreira cutânea torna a pele mais permeável a irritantes. O sistema imunológico pode identificar componentes da tinta como invasores.</p>
+
+        <div class="info-card">
+            <h3>Pureza dos Insumos</h3>
+            <p style="font-size: 0.95rem;">Selecionamos rigorosamente pigmentos com baixíssima carga alergênica e livres de metais pesados (como o níquel e o cádmio).</p>
+
+            <h3>O Teste de Pigmentação (Spot Test)</h3>
+            <p style="font-size: 0.95rem;">✦ Antes de grandes projetos, aplicamos uma microquantidade de pigmento em uma área discreta para observar a resposta imunológica tardia (de 48h a 7 dias).</p>
+        </div>
+
+        <h2>3. Protocolos para Distúrbios Sanguíneos</h2>
+        <p>Medidas rigorosas de controle de danos teciduais para clientes com condições hematológicas ou uso de medicações específicas:</p>
+
+        <div class="info-card">
+            <ul>
+                <li><strong>Técnica de Baixo Trauma:</strong> Uso de máquinas com batida regulável e curso de agulha curto para deposição precisa na derme papilar.</li>
+                <li><strong>Protocolo de Manejo:</strong> Uso de substâncias hemostáticas tópicas e crioterapia (compressas frias) no pós-tatuagem para reduzir hematomas.</li>
+            </ul>
+        </div>
+
+        <h2>4. A Escolha Técnica: Por que o Esoteric Ink?</h2>
+        <p>A autoridade técnica diferencia um aplicador de pigmento de um especialista em pele. Entendemos a biologia por trás da agulha.</p>
+
+        <div class="info-card">
+            <ul>
+                <li><strong>Anamnese de Alta Precisão:</strong> Triagem técnica avaliando histórico medicamentoso e fases de atividade da condição.</li>
+                <li><strong>Mão Leve e Precisão:</strong> Foco na preservação da integridade tecidual para uma cicatrização rápida e sem respostas inflamatórias.</li>
+                <li><strong>Acompanhamento Dedicado:</strong> Suporte monitorado em cada etapa para garantir resultados impecáveis mesmo em peles desafiadoras.</li>
+            </ul>
+        </div>
+
+        <p style="text-align: center; font-style: italic; color: var(--ouro-claro); margin-top: 40px;">"Sua saúde é nossa prioridade absoluta. Dominamos a ciência para que você ostente sua arte com tranquilidade."</p>
+
+        <section class="references">
+            <h4>Referências Técnicas e Bases de Pesquisa:</h4>
+            <p>• Journal of the American Academy of Dermatology - Estudos sobre o Fenômeno de Koebner.</p>
+            <p>• Diretrizes de Segurança Europeias - Protocolos de testes de contato para pigmentos.</p>
+            <p>• World Federation of Hemophilia - Manejo de procedimentos cutâneos invasivos.</p>
+            <p>• ANVISA - Normas de biossegurança e anamnese detalhada para grupos de risco.</p>
+        </section>
+
+        <section class="cta-section">
+            <div class="badge" style="border-color: var(--branco-off); color: var(--branco-off);">Consultoria Técnica</div>
+            <h2 style="border: none; justify-content: center;">Vamos planejar sua tatuagem juntos?</h2>
+            <p style="text-align: center;">Possui alguma dessas condições e deseja realizar seu sonho com total segurança?</p>
+            <a href="../portal-esoteric.html" class="btn-whatsapp">Agendar Avaliação Técnica</a>
+        </section>
+
+    </div>
+
+    <footer> 
+        <p>BIOSSEGURANÇA E ÉTICA • STUDIO ESOTERIC INK • 2026</p>
+        <p style="opacity: 0.5;">ARTE COM RESPONSABILIDADE BIOLÓGICA E RIGOR CIENTÍFICO.</p>
+    </footer>
+
+</body>
+</html>

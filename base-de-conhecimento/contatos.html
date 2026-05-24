@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatos e Localização | Studio Esoteric Ink</title>
+    
+    <!-- Pré-conexão e Fontes do DNA Esoteric Ink -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta e Variáveis Oficiais ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1d0d35;
+            --roxo-marca: #5a189a; /* Adicionado para garantir o destaque dos ícones */
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        /* --- RESET BÁSICO --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--preto);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* ================= Background Imersivo (DNA Visual) ================= */
+        .bg-container {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            /* Fundo imersivo com filtro escuro e sobreposição do gradiente Preto/Roxo da marca */
+            background-image: linear-gradient(to bottom, rgba(5, 1, 8, 0.85), var(--preto)), 
+                              url('https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            filter: grayscale(60%);
+        }
+
+        /* ================= Componentes Globais ================= */
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--ouro);
+            padding: 5px 15px;
+            font-family: var(--fonte-ui);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--ouro);
+            background: rgba(0,0,0,0.5);
+            margin-bottom: 25px;
+        }
+
+        /* ================= Top Nav ================= */
+        .top-nav {
+            width: 100%;
+            padding: 30px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .logo-nav {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .logo-nav:hover {
+            color: var(--branco-off);
+        }
+
+        .btn-voltar {
+            color: var(--cinza-texto);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-voltar:hover { 
+            color: var(--ouro-claro); 
+        }
+
+        /* ================= Main Content ================= */
+        .contact-main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .contact-header {
+            margin-bottom: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .section-title {
+            font-family: var(--fonte-titulo);
+            color: var(--branco-off);
+            font-size: clamp(3rem, 5vw, 4rem);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            width: 100%;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.9);
+        }
+
+        .section-title::before, .section-title::after {
+            content: "";
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--ouro), transparent);
+        }
+
+        .contact-header p {
+            font-family: var(--fonte-corpo);
+            font-size: 1.2rem;
+            color: var(--ouro-claro);
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ================= Info-Cards de Contato ================= */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .contact-card {
+            background-color: rgba(255, 255, 255, 0.02); /* Fundo translúcido */
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--borda-ouro);
+            padding: 40px 30px;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--ouro);
+            background: rgba(197, 160, 89, 0.05);
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15);
+        }
+
+        /* Modificação solicitada: Ícones na cor Roxo Marca */
+        .icon-box {
+            font-size: 2.2rem;
+            color: var(--roxo-marca);
+            margin-bottom: 20px;
+            font-family: var(--fonte-ui);
+            line-height: 1;
+            text-shadow: 0 0 15px rgba(90, 24, 154, 0.4); /* Leve brilho roxo para dar destaque no fundo escuro */
+            transition: color 0.4s ease;
+        }
+
+        .contact-card:hover .icon-box {
+            color: var(--ouro); /* Ao passar o mouse, ele acende em dourado */
+            text-shadow: 0 0 15px rgba(197, 160, 89, 0.4);
+        }
+
+        .contact-card h3 {
+            font-family: var(--fonte-titulo);
+            font-size: 1.4rem;
+            color: var(--branco-off);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .contact-card p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            color: var(--cinza-texto);
+            flex-grow: 1;
+        }
+
+        .contact-link {
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--ouro-claro);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link::after {
+            content: '→';
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover .contact-link {
+            color: var(--branco-off);
+        }
+
+        .contact-card:hover .contact-link::after {
+            transform: translateX(5px);
+        }
+
+        /* ================= Footer ================= */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-family: var(--fonte-ui);
+            font-size: 0.7rem;
+            color: #666;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border-top: 1px solid var(--borda-ouro);
+            background-color: var(--preto); /* Garante leitura sólida no rodapé */
+            margin-top: auto;
+        }
+
+        /* ================= Responsividade ================= */
+        @media (max-width: 768px) {
+            .top-nav { flex-direction: column; gap: 20px; padding-bottom: 10px; }
+            .section-title { font-size: 2.2rem; }
+            .section-title::before, .section-title::after { display: none; } /* Linhas removidas no celular para caber o título */
+            .contact-header p { font-size: 1.1rem; padding: 0 15px; }
+            .contact-grid { grid-template-columns: 1fr; max-width: 450px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-container"></div>
+
+    <nav class="top-nav">
+        <a href="../index.html" class="logo-nav">Studio Esoteric Ink</a>
+        <a href="../index.html" class="btn-voltar">← Retornar ao Saguão</a>
+    </nav>
+
+    <main class="contact-main">
+        
+        <div class="contact-header">
+            <div class="badge">Atendimento & Localização</div>
+            <h1 class="section-title">Cruze o Portal</h1>
+            <p>"Agende seu ritual. Estamos prontos para traduzir a sua intenção de arte na pele."</p>
+        </div>
+
+        <div class="contact-grid">
+            
+            <!-- Card WhatsApp -->
+            <a href="https://wa.link/3ij5uv" target="_blank" class="contact-card">
+                <div class="icon-box">✦</div>
+                <h3>Orçamentos</h3>
+                <p>Inicie seu atendimento e agende sua sessão de forma direta via WhatsApp.</p>
+                <span class="contact-link">Chamar no WhatsApp</span>
+            </a>
+
+            <!-- Card Instagram -->
+            <a href="https://www.instagram.com/studioesoteric_?igsh=ang2Mm01Nms1ZmJy" target="_blank" class="contact-card">
+                <div class="icon-box">✧</div>
+                <h3>Portfólio no Instagram</h3>
+                <p>Acompanhe nosso diário visual, artes disponíveis e o dia a dia do estúdio.</p>
+                <span class="contact-link">@studioesoteric_</span>
+            </a>
+
+            <!-- Card Email -->
+            <a href="mailto:nanaborgesesotericink@gmail.com" class="contact-card">
+                <div class="icon-box">✉</div>
+                <h3>Projetos Especiais</h3>
+                <p>Para dúvidas detalhadas, parcerias ou projetos artísticos complexos.</p>
+                <span class="contact-link">Enviar E-mail</span>
+            </a>
+
+            <!-- Card Localização -->
+            <a href="https://maps.app.goo.gl/TpXKBvbh3uJv2gza9" target="_blank" class="contact-card">
+                <div class="icon-box">⌂</div>
+                <h3>O Templo</h3>
+                <p>Nossos atendimentos são realizados, principalmente no Espaço Kirom, no Bairro da Saúde, São Paulo. Atendimento apenas com hora marcada.</p>
+                <span class="contact-link">Ver no Mapa</span>
+            </a>
+
+            <!-- Card Redes Sociais -->
+            <a href="https://www.youtube.com/@studioesotericink" target="_blank" class="contact-card">
+                <div class="icon-box">▶</div>
+                <h3>Canal do Youtube</h3>
+                <p>Acompanhe alguns videos sobre a nossa arte, dicas, ideias, desenvolvimento e entretenimento.</p>
+                <span class="contact-link">Ver Canal</span>
+            </a>
+
+            <!-- Card Pinterest -->
+            <a href="https://br.pinterest.com/studioesoteric/?invite_code=6c1eb7178b014a8fbd13b77ffa974c88&sender=1023161746501864606" target="_blank" class="contact-card">
+                <div class="icon-box">⚲</div>
+                <h3>Pinterest</h3>
+                <p>Você pode nos encontrar também no catalogo mundial de arte e divulgação, o Pinterest.</p>
+                <span class="contact-link">Ver Pinterest</span>
+            </a>
+
+        </div>
+
+    </main>
+
+    <footer>
+        &copy; 2026 Nana Borges Tattoo | Studio Esoteric Ink
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debora Cherrys: Retratos Neo-Tradicionais, Cores e Técnica Impecável | Biblioteca Esoteric Ink</title>
+    
+    <meta name="description" content="Conheça Debora Cherrys, a mestra dos retratos neo-tradicionais coloridos. Descubra sua técnica de saturação e como ela une delicadeza e força na pele.">
+    <meta name="keywords" content="Debora Cherrys, Tatuagem Neo Tradicional Colorida, Retratos Femininos, Saturação de Pigmento, Tatuagem Espanhola, Design de Joias na Tatuagem, Neo Tradicional Moderno, Studio Esoteric Ink">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta Oficial Esoteric Ink ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1d0d35;
+            --preto-absolute: #050108;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        /* ================= Reset & Setup ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--preto-absolute);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            
+            /* Imagem configurada como plano de fundo fixo em toda a página */
+            background-image: linear-gradient(to bottom, rgba(5, 1, 8, 0.5), rgba(5, 1, 8, 0.85)), url('../imagem/dharma-chakra-biblioteca.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* --- NAVEGAÇÃO SUPERIOR --- */
+        .top-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 25px 40px;
+            background: linear-gradient(to bottom, rgba(5,1,8,0.9), transparent);
+            z-index: 100;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .back-link {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid var(--borda-ouro);
+            padding: 10px 20px;
+            background: rgba(5,1,8,0.5);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: var(--ouro);
+            color: var(--preto-absolute);
+            border-color: var(--ouro);
+        }
+
+        /*Container de Layout para centralizar a aba sobreposta */
+        .main-wrapper {
+            padding: 140px 20px 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Película flutuante sobreposta com tom roxo, fade suave e desfoque de fundo */
+        .article-container {
+            max-width: 900px;
+            width: 100%;
+            background: linear-gradient(180deg, rgba(29, 13, 53, 0.75) 0%, rgba(5, 1, 8, 0.92) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--borda-ouro);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            padding: 60px 8%;
+            border-radius: 4px;
+        }
+
+        /* ================= Cabeçalho do Artigo ================= */
+        .article-header {
+            text-align: center;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+            margin-bottom: 40px;
+        }
+
+        .article-category {
+            font-family: var(--fonte-ui);
+            color: var(--ouro);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .article-header h1 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+            font-weight: 400;
+            margin-bottom: 25px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+
+        .article-subtitle {
+            font-size: 1.2rem;
+            font-style: italic;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--cinza-texto);
+            opacity: 0.95;
+        }
+
+        /* ================= Corpo do Texto ================= */
+        .article-content {
+            font-size: 1.15rem;
+            text-align: justify;
+        }
+
+        /* Letra Capitular */
+        .article-content > p:first-of-type::first-letter {
+            font-family: var(--fonte-titulo);
+            float: left;
+            font-size: 5rem;
+            line-height: 0.8;
+            margin-right: 15px;
+            margin-top: 5px;
+            color: var(--ouro);
+        }
+
+        .article-content p { margin-bottom: 30px; }
+
+        /* Links internos/externos estilizados para SEO */
+        .article-content a {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--ouro);
+            transition: color 0.3s;
+        }
+        
+        .article-content a:hover {
+            color: var(--ouro);
+            border-bottom-style: solid;
+        }
+
+        .article-content h2 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: 1.8rem;
+            margin: 60px 0 30px;
+            border-bottom: 1px solid var(--borda-ouro);
+            padding-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .article-content h3 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.3rem;
+            margin: 45px 0 20px;
+            letter-spacing: 1px;
+        }
+
+        /* Citação / Destaque Místico */
+        blockquote {
+            margin: 50px auto;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(29, 13, 53, 0.5), rgba(5, 1, 8, 0.8));
+            border: 1px solid var(--borda-ouro);
+            border-left: 4px solid var(--ouro);
+            font-family: var(--fonte-titulo);
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--ouro-claro);
+            text-align: center;
+            position: relative;
+        }
+
+        /* Listas Estilizadas */
+        .rite-list {
+            list-style: none;
+            margin-bottom: 30px;
+            padding-left: 10px;
+        }
+
+        .rite-list li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .rite-list li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--ouro);
+        }
+
+        /* Estilização específica para as referências acadêmicas */
+        .refs-list {
+            list-style: none;
+            padding-left: 0;
+            font-size: 1rem;
+            opacity: 0.85;
+        }
+        
+        .refs-list li {
+            margin-bottom: 10px;
+            border-left: 2px solid var(--ouro);
+            padding-left: 15px;
+        }
+
+        /* Botão de Call to Action (CTA) */
+        .cta-container {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px dashed var(--borda-ouro);
+        }
+
+        .cta-button {
+            display: inline-block;
+            font-family: var(--fonte-ui);
+            color: var(--preto-absolute);
+            background-color: var(--ouro-claro);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            padding: 15px 35px;
+            border: 1px solid var(--ouro);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            border-bottom: 1px solid var(--ouro) !important; /* Sobrescrever estilo de link padrão */
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--ouro-claro);
+            box-shadow: 0 4px 20px rgba(197, 160, 89, 0.2);
+        }
+
+        /* ================= Rodapé ================= */
+        footer {
+            text-align: center;
+            padding: 80px 20px;
+            border-top: 1px solid var(--borda-ouro);
+            background-color: #030105;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-logo {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        .footer-text {
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--ouro-claro);
+            opacity: 0.7;
+        }
+
+        /* ================= Responsividade ================= */
+        @media (max-width: 768px) {
+            .main-wrapper { padding-top: 100px; padding-left: 10px; padding-right: 10px; }
+            .article-container { padding: 40px 5%; }
+            .article-header h1 { font-size: 2.4rem; }
+            .article-content { font-size: 1.05rem; }
+            .top-nav { padding: 15px 20px; }
+            blockquote { font-size: 1.2rem; padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="../acervo-feminino/acervo-feminino.html" class="back-link">← Acervo</a>
+    </nav>
+
+    <div class="main-wrapper">
+        <article class="article-container">
+            
+            <header class="article-header">
+                <span class="article-category">Ancestralidade • Tatuagem Ritualística</span>
+                <h1>Debora Cherrys</h1>
+                <p class="article-subtitle">A Alquimista das Cores no Neo Tradicional de Elite</p>
+            </header>
+
+            <main class="article-content">
+
+                <p>Dando continuidade à nossa Biblioteca de Histórias Ancestrais, aterrissamos na Espanha para conhecer o trabalho vibrante de Debora Cherrys. Se Hannah Flowers nos trouxe a melancolia vitoriana, Debora nos entrega a força das cores saturadas e a vivacidade do Neo Tradicional moderno. Seu trabalho é uma lição de como o contraste e a aplicação técnica impecável podem transformar um retrato em uma joia de impacto visual absoluto.</p>
+
+                <p>A tatuagem europeia contemporânea tem em Debora Cherrys um de seus maiores expoentes de precisão técnica e criatividade cromática. Espanhola de Madrid, Debora conquistou o mundo ao fundir a solidez do estilo tradicional com o detalhamento luxuriante do Neo Tradicional. Suas obras são famosas por apresentar mulheres poderosas, frequentemente adornadas com joias complexas, animais místicos e uma paleta de cores que parece brilhar sob a pele.</p>
+
+                <p>Neste artigo, analisaremos como Debora Cherrys elevou o nível da saturação de pigmento, tornando-se uma referência para quem busca tatuagens que resistem ao tempo com vivacidade. Compreender a aplicação correta da cor e as texturas estruturais é fundamental para garantir o envelhecimento perfeito da peça. Se você se interessa pelas raízes profundas dessa manifestação artística, explore também nossa pesquisa sobre <a href="../revista-mistica/tatuagem-ritualistica.html">Tatuagem Ritualística e talismãs sagrados</a>.</p>
+
+                <h2>O Domínio da Saturação: O Segredo do Pigmento Sólido</h2>
+                
+                <p>O grande diferencial técnico de Debora Cherrys é a sua capacidade de "empacotar" o pigmento de forma tão uniforme que suas cores parecem irreais de tão sólidas. Ela utiliza uma técnica de preenchimento que evita traumas excessivos na pele, permitindo que tons vibrantes de turquesa, magenta e ouro permaneçam intensos após a cicatrização.</p>
+
+                <p>Seus traços são de uma limpeza matemática, variando entre linhas externas mais grossas para estruturar a peça e linhas finas internas para os detalhes das joias. O sombreamento que ela aplica nos rostos é de uma suavidade cirúrgica, criando volumes tridimensionais que saltam da pele sem perder a essência da ilustração.</p>
+
+                <p>Nos inspiramos nessa autoridade técnica, onde a cor não é apenas um detalhe, mas o coração pulsante da obra de arte. Debora provou que o Neo Tradicional colorido pode ser extremamente sofisticado, desafiando a ideia de que apenas o preto e cinza transmite seriedade.</p>
+
+                <blockquote>
+                    "Seu trabalho é uma lição de como o contraste e a aplicação técnica impecável podem transformar um retrato em uma joia de impacto visual absoluto."
+                </blockquote>
+
+                <h2>A Estética da Ornamentação: Mulheres e Joias</h2>
+                
+                <p>Uma marca registrada de Debora são os adornos. Seus retratos femininos são quase sempre acompanhados de elementos da joalheria clássica, pérolas e pedras preciosas. Essa escolha não é apenas estética; ela reflete uma celebração da autoestima feminina e da ideia de que o corpo é um tesouro a ser decorado com o melhor da arte.</p>
+
+                <p>As joias em suas tatuagens possuem um brilho metálico e uma transparência de lapidação que exigem um conhecimento avançado de teoria das cores e reflexos de luz. Ela frequentemente insere elementos da fauna e flora que parecem proteger a figura central, criando uma narrativa de conexão entre o humano e o selvagem.</p>
+
+                <p>Cada tatuagem de Debora é um manifesto de que a mulher pode ser delicada e adornada, mas também imponente e tecnicamente inatacável. Sua arte é um convite para que a portadora se sinta como uma rainha de sua própria história, carregando em sua pele um emblema de luxo e poder.</p>
+
+                <h2>O Legado de Debora Cherrys para a Arte Autoral</h2>
+                
+                <p>Debora é uma das artistas mais premiadas em convenções internacionais, o que solidifica sua posição como uma das maiores referências femininas da atualidade. Ela incentiva o desenvolvimento de um "estilo autoral", onde o artista não apenas replica referências, mas cria um universo visual próprio e coerente.</p>
+
+                <p>Sua influência é visível em uma legião de novos tatuadores que buscam equilibrar a beleza do design com a durabilidade técnica do pigmento. Para a Esoteric Ink, Debora é o exemplo perfeito de que a tatuagem é uma fusão entre técnica de engenharia de pigmento e sensibilidade artística de alta costura. Ao observar uma peça de Debora Cherrys, entendemos que a pele pode ser transformada em uma tela de riqueza visual incalculável. Seu trabalho é a celebração definitiva de que a cor é uma ferramenta de poder e que a beleza, quando bem executada, é eterna.</p>
+
+                <h2>Referências Bibliográficas</h2>
+                <ul class="refs-list">
+                    <li><b>HEILMANN, Maria.</b> <i>Neo-Traditional Tattoo Art: The New Standard.</i> Schiffer, 2018.</li>
+                    <li><b>KOPP, J. C.</b> <i>The Art of Tattooing: Techniques and Styles.</i> Fine Arts Press, 2019.</li>
+                    <li><b>MULLER, Dan.</b> <i>Modern Spanish Tattoo Masters.</i> Madrid Art Review, 2021.</li>
+                    <li><b>ZAMPIERI, Michela.</b> <i>Color Theory in Modern Tattooing.</i> International Journal of Body Art, 2022.</li>
+                </ul>
+
+                <div class="cta-container">
+                    <h3>Ilumine sua Pele com Cores de Realeza</h3>
+                    <p style="margin-top: 15px; margin-bottom: 30px; font-size: 1.1rem;">
+                        Inspiradas pela vivacidade e pela precisão de Debora Cherrys, oferecemos a você a chance de ter um projeto que une a força do Neo Tradicional com a delicadeza de um retrato ornamentado. No Esoteric Ink, dominamos a arte da saturação sólida para que sua tatuagem brilhe com intensidade por décadas. Venha transformar sua essência em uma joia permanente.
+                    </p>
+                    <a href="../portal-esoteric.html" class="cta-button">Agende Sua Consultoria de Arte Ancestral</a>
+                </div>
+
+            </main>
+        </article>
+    </div>
+
+    <footer>
+        <div class="footer-logo">Studio Esoteric Ink</div>
+        <div class="footer-text">A pele é o pergaminho • O símbolo é a chave</div>
+    </footer>
+
+</body>
+</html>

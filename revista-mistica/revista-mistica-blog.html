@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revista Mística | Diários de Tinta e Alma</title>
+    
+    <!-- Pré-conexão e Fontes do DNA Esoteric Ink -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta e Variáveis Oficiais ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1d0d35;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        /* --- RESET BÁSICO --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--preto);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            background-image: radial-gradient(circle at top right, var(--roxo-escuro) 0%, transparent 40%);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--fonte-titulo);
+            color: var(--branco-off);
+            font-weight: 400;
+        }
+
+        /* ================= Componentes Globais ================= */
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--ouro);
+            padding: 4px 12px;
+            font-family: var(--fonte-ui);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--ouro);
+            background: rgba(0,0,0,0.5);
+            margin-bottom: 15px;
+        }
+
+        .dropcap::first-letter {
+            font-family: var(--fonte-titulo);
+            font-size: 4.5rem;
+            float: left;
+            line-height: 0.8;
+            padding-right: 15px;
+            color: var(--ouro);
+        }
+
+        .section-title {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .section-title::before, .section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--ouro), transparent);
+        }
+
+        .section-desc {
+            font-family: var(--fonte-ui);
+            color: var(--ouro-claro);
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        /* ================= Top Nav ================= */
+        .top-nav {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding: 25px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            border-bottom: 1px solid var(--borda-ouro);
+        }
+
+        .top-nav .logo {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .top-nav .logo:hover {
+            color: var(--branco-off);
+        }
+
+        .top-nav .links a {
+            font-family: var(--fonte-ui);
+            color: var(--cinza-texto);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s;
+        }
+
+        .top-nav .links a:hover {
+            color: var(--ouro-claro);
+        }
+
+        /* ================= Hero / Capa do Blog ================= */
+        .hero {
+            height: 75vh;
+            min-height: 500px;
+            background-image: linear-gradient(to bottom, rgba(5, 1, 8, 0.4), var(--preto)), 
+                              url('../imagem/1revista.mistica.webp');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            border-bottom: 1px solid var(--borda-ouro);
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 5vw, 5rem);
+            margin-bottom: 25px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.9);
+            color: var(--branco-off);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 650px;
+            color: var(--cinza-texto);
+            text-shadow: 1px 2px 5px rgba(0,0,0,0.8);
+            text-align: justify;
+        }
+
+        /* ================= Menu de Categorias (Editorial) ================= */
+        .blog-categories {
+            position: sticky;
+            top: 0;
+            background-color: rgba(5, 1, 8, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--borda-ouro);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .blog-categories a {
+            color: var(--cinza-texto);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding-bottom: 5px;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .blog-categories a:hover {
+            color: var(--ouro);
+            border-bottom: 1px solid var(--ouro);
+        }
+
+        .blog-categories::-webkit-scrollbar { height: 2px; }
+        .blog-categories::-webkit-scrollbar-thumb { background: var(--ouro); }
+
+        /* ================= Container Principal ================= */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 5%;
+        }
+
+        .category-section {
+            margin-bottom: 120px;
+            padding-top: 100px;
+            margin-top: -100px;
+        }
+
+        .section-header {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        /* ================= Carrossel Horizontal (Info-Cards com Imagem) ================= */
+        .carousel-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            padding: 20px 0;
+            scroll-behavior: smooth;
+        }
+
+        .carousel-wrapper::-webkit-scrollbar { height: 4px; }
+        .carousel-wrapper::-webkit-scrollbar-track { background: rgba(0,0,0,0.5); }
+        .carousel-wrapper::-webkit-scrollbar-thumb { background: var(--ouro); border-radius: 10px; }
+
+        .carousel-track {
+            display: flex;
+            gap: 25px;
+            width: max-content;
+            padding-bottom: 15px;
+        }
+
+        .carousel-card {
+            background-color: rgba(255, 255, 255, 0.02); /* Fundo translúcido */
+            border: 1px solid var(--borda-ouro);
+            width: 280px;
+            height: 280px; /* Aumentado para acomodar a imagem e o texto */
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(5px);
+            overflow: hidden; /* Mantém a imagem dentro da borda */
+        }
+
+        .carousel-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--ouro);
+            background: rgba(197, 160, 89, 0.05);
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15);
+        }
+
+        .carousel-img {
+            width: 100%;
+            height: 150px;
+            background-color: rgba(0, 0, 0, 0.6); /* Fundo padrão enquanto a imagem não é adicionada */
+            background-size: cover;
+            background-position: center;
+            border-bottom: 1px solid var(--borda-ouro);
+            transition: filter 0.4s ease;
+            filter: grayscale(40%) contrast(1.1);
+        }
+
+        .carousel-card:hover .carousel-img {
+            filter: grayscale(0%) contrast(1.1);
+        }
+
+        .carousel-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .carousel-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            line-height: 1.3;
+            color: var(--branco-off);
+        }
+
+        .carousel-card span {
+            font-size: 0.75rem;
+            color: var(--ouro-claro);
+            font-family: var(--fonte-ui);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .carousel-card:hover span {
+            color: var(--branco-off);
+        }
+
+        /* ================= Grid de Posts (Editorial Cards) ================= */
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .post-card {
+            background-color: rgba(255, 255, 255, 0.02); /* Fundo translúcido */
+            border: 1px solid var(--borda-ouro);
+            transition: all 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+        }
+
+        .post-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--ouro);
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15);
+        }
+
+        .post-image {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--borda-ouro);
+            transition: filter 0.5s ease;
+            filter: grayscale(40%) contrast(1.1);
+        }
+
+        .post-card:hover .post-image {
+            filter: grayscale(0%) contrast(1.1);
+        }
+
+        .post-content {
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .post-title {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            line-height: 1.3;
+            color: var(--branco-off);
+            transition: color 0.3s ease;
+        }
+
+        .post-card:hover .post-title {
+            color: var(--ouro);
+        }
+
+        .post-excerpt {
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+            flex-grow: 1;
+            color: var(--cinza-texto);
+            line-height: 1.8;
+        }
+
+        .read-article {
+            color: var(--ouro-claro);
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-flex;
+            align-items: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .read-article::after {
+            content: '→';
+            margin-left: 8px;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .post-card:hover .read-article {
+            color: var(--branco-off);
+        }
+
+        .post-card:hover .read-article::after {
+            transform: translateX(5px);
+        }
+
+        /* ================= Footer ================= */
+        footer {
+            text-align: center;
+            padding: 60px 5% 40px;
+            background-color: transparent;
+            border-top: 1px solid var(--borda-ouro);
+        }
+
+        footer p {
+            font-family: var(--fonte-ui);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #666;
+        }
+
+        /* ================= Responsividade ================= */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .top-nav { flex-direction: column; gap: 15px; }
+            .top-nav .links a { margin-left: 15px; margin-right: 15px; }
+            .blog-categories { justify-content: flex-start; padding: 15px; }
+            .section-title { font-size: 1.8rem; }
+            .dropcap::first-letter { font-size: 3.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="../index.html" class="logo">Início</a>
+        <div class="links">
+            <a href="./tatuagem-ritualistica.html">Tattoo Ritualística</a>
+            <a href="../biblioteca-do-oculto/biblioteca-do-oculto.html">Biblioteca do Oculto</a>
+            
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Tinta, Corpo e Alma</h1>
+        <p class="dropcap">"A pele é o pergaminho. A agulha, a pena. Adentre nosso diário de estudos sobre a arte, a ciência e o rito da tatuagem. Uma jornada onde a materialização estética encontra a fundamentação dermatológica e o cerimonial ancestral."</p>
+    </header>
+
+    <nav class="blog-categories">
+        <a href="#saude">Diário da Agulha</a>
+        <a href="#tecnica">Filosofia da Tinta</a>
+        <a href="#ritual">O Rito e o Espírito</a>
+    </nav>
+
+    <main>
+
+        <section id="saude" class="category-section">
+            <div class="section-header">
+                <h2 class="section-title">Diário da Agulha</h2>
+                <p class="section-desc">Registros, reflexões e estudos sobre a arte de marcar a pele.</p>
+            </div>
+
+            <div class="carousel-wrapper">
+                <div class="carousel-track">
+                    
+                    <a href="./artigo_a_deusa_lunar.html" class="carousel-card">
+                        <!-- Basta inserir o caminho da imagem no 'url()' abaixo -->
+                        <div class="carousel-img" style="background-image: url('../imagem/deusa_lunar.webp');"></div>
+                        <div class="carousel-content">
+                            <h3>A Deusa Lunar</h3>
+                            <span>Ler registro</span>
+                        </div>
+                    </a>
+                    
+                    <a href="./artigo_mestre_prea.html" class="carousel-card">
+                        <div class="carousel-img" style="background-image: url('../imagem/metre_prea.webp');"></div>
+                        <div class="carousel-content">
+                            <h3>Mestre Preá- Jurema Sagrada</h3>
+                            <span>Ler registro</span>
+                        </div>
+                    </a>
+                    
+                    <a href="./artigo_bode_old_school.html" class="carousel-card">
+                        <div class="carousel-img" style="background-image: url('../imagem/bode_preto.webp');"></div>
+                        <div class="carousel-content">
+                            <h3>O Bode Preto</h3>
+                            <span>Ler registro</span>
+                        </div>
+                    </a>
+                    
+                    <a href="./artigo_tridentes_exu_pombagira.html" class="carousel-card">
+                        <div class="carousel-img" style="background-image: url('../imagem/exu_e_pombagira.webp');"></div>
+                        <div class="carousel-content">
+                            <h3>Tridentes dos Guardiões</h3>
+                            <span>Ler registro</span>
+                        </div>
+                    </a>
+                    
+                    <a href="./artigo_os_4_elementos.html" class="carousel-card">
+                        <div class="carousel-img" style="background-image: url('../imagem/4elementos.webp');"></div>
+                        <div class="carousel-content">
+                            <h3>Os 4 Elementos</h3>
+                            <span>Ler registro</span>
+                        </div>
+                    </a>
+                    
+                    <a href="./artigo_polvo.html" class="carousel-card">
+                        <div class="carousel-img" style="background-image: url('../imagem/polvo.webp');"></div>
+                        <div class="carousel-content">
+                            <h3>O Polvo</h3>
+                            <span>Ler registro</span>
+                        </div>
+                    </a>
+                    
+                    <a href="./artigo_exu_cobra.html" class="carousel-card">
+                        <div class="carousel-img" style="background-image: url('../imagem/exu.webp');"></div>
+                        <div class="carousel-content">
+                            <h3>Exu Cobra</h3>
+                            <span>Ler registro</span>
+                        </div>
+                    </a>
+                    
+                    <a href="./artigo_dragao_chines.html" class="carousel-card">
+                        <div class="carousel-img" style="background-image: url('../imagem/dragao.webp');"></div>
+                        <div class="carousel-content">
+                            <h3>Dragão Chinês</h3>
+                            <span>Ler registro</span>
+                        </div>
+                    </a>
+                    
+                    <a href="./artigo_medusa.html" class="carousel-card">
+                        <div class="carousel-img" style="background-image: url('../imagem/medusa.webp');"></div>
+                        <div class="carousel-content">
+                            <h3>Medusa</h3>
+                            <span>Ler registro</span>
+                        </div>
+                  
+                   
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+
+        <section id="tecnica" class="category-section">
+            <div class="section-header">
+                <h2 class="section-title">Filosofia da Tinta</h2>
+                <p class="section-desc">Colorimetria, estética e o comportamento da tinta</p>
+            </div>
+
+            <div class="posts-grid">
+                
+                <a href="./tatuar_sem_significado.html" class="post-card">
+                    <img src="../imagem/tattoo_semsignificado.webp" alt="tatuagem comum" class="post-image">
+                    <div class="post-content">
+                        <span class="badge">Estética e Técnica</span>
+                        <h3 class="post-title">A Beleza de Tatuar Porque Sim</h3>
+                        <p class="post-excerpt">Explorando o valor intrínseco da ornamentação e a filosofia por trás da tatuagem puramente estética.</p>
+                        <span class="read-article">Ler artigo</span>
+                    </div>
+                </a>
+
+                <a href="./irezumi-tradicional.html" class="post-card">
+                    <img src="../imagem/irezumi_nana_borges_tattoo_studio_esoteric_ink.webp" alt="Irezumi" class="post-image">
+                    <div class="post-content">
+                        <span class="badge">Tradição Milenar</span>
+                        <h3 class="post-title">Tatuagens Tradicionais (Irezumi)</h3>
+                        <p class="post-excerpt">A história, o simbolismo e a técnica por trás das grandes peças da tatuagem tradicional japonesa.</p>
+                        <span class="read-article">Ler artigo</span>
+                    </div>
+                </a>
+
+                <a href="./colorimetria-melanica.html" class="post-card">
+                    <img src="../imagem/colorimetria_melanica_nana_borges_tattoo_studio_esoteric_ink.webp" alt="Pele Negra" class="post-image">
+                    <div class="post-content">
+                        <span class="badge">Colorimetria</span>
+                        <h3 class="post-title">Colorimetria em Pele Negra</h3>
+                        <p class="post-excerpt">Segredos do contraste e pigmentação para garantir cores vivas e duradouras em peles ricas em melanina.</p>
+                        <span class="read-article">Ler artigo</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+
+        <section id="ritual" class="category-section">
+            <div class="section-header">
+                <h2 class="section-title">O Rito e o Espírito</h2>
+                <p class="section-desc">A ancestralidade e o impacto espiritual da marcação no corpo</p>
+            </div>
+
+            <div class="posts-grid">
+                
+                <a href="./geometria_sagarada.html" class="post-card">
+                    <img src="../imagem/geometria_sagrada.webp" alt="Geometria Sagrada" class="post-image">
+                    <div class="post-content">
+                        <span class="badge">Simbologia</span>
+                        <h3 class="post-title">Geometria Sagrada</h3>
+                        <p class="post-excerpt">A matemática divina na pele: como formas geométricas criam portais de energia e harmonia visual.</p>
+                        <span class="read-article">Ler artigo</span>
+                    </div>
+                </a>
+
+                <a href="file:./tatuagem-ritualistica.html" class="post-card">
+                    <img src="../imagem/capa_tattoo_ritualistica_nana_borges_tattoo_studio_esoteric-ink.webp" alt="Cerimonial" class="post-image">
+                    <div class="post-content">
+                        <span class="badge">Ritual</span>
+                        <h3 class="post-title">O Despertar da Tatuagem Cerimonial</h3>
+                        <p class="post-excerpt">Mais do que estética, uma consagração. Como ritos de intenção e resiliência se encontram na agulha.</p>
+                        <span class="read-article">Ler artigo</span>
+                    </div>
+                </a>
+
+                <a href="./espiritualidade-cicatrizacao.html" class="post-card">
+                    <img src="../imagem/espiritualidade_da_cicatrizacao_nana_borges_tattoo_studio_esoteric_ink.webp" alt="Cicatrização" class="post-image">
+                    <div class="post-content">
+                        <span class="badge">Corpo e Alma</span>
+                        <h3 class="post-title">A Espiritualidade da Cicatrização</h3>
+                        <p class="post-excerpt">O processo físico e metafísico de regeneração: quando o corpo aceita a nova marca e encerra o rito.</p>
+                        <span class="read-article">Ler artigo</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>A tinta marca a pele; a intenção marca a alma. &copy;

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maud Wagner: A Equilibrista que Gravou seu Nome na História da Tatuagem | Biblioteca Esoteric Ink</title>
+    
+    <meta name="description" content="Conheça a história de Maud Wagner, a primeira tatuadora profissional dos EUA. Explore seu legado de independência, a técnica hand-poked e a força feminina na tatuagem.">
+    <meta name="keywords" content="Maud Wagner, Primeira tatuadora feminina, História da tatuagem, Técnica Hand-poked, Tatuagem tradicional americana, Mulheres tatuadoras, Studio Esoteric Ink, Tatuagem ritualística São Paulo">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta Oficial Esoteric Ink ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1d0d35;
+            --preto-absolute: #050108;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        /* ================= Reset & Setup ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--preto-absolute);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            
+            /* Imagem configurada como plano de fundo fixo em toda a página */
+            background-image: linear-gradient(to bottom, rgba(5, 1, 8, 0.5), rgba(5, 1, 8, 0.85)), url('../imagem/dharma-chakra-biblioteca.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* --- NAVEGAÇÃO SUPERIOR --- */
+        .top-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 25px 40px;
+            background: linear-gradient(to bottom, rgba(5,1,8,0.9), transparent);
+            z-index: 100;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .back-link {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid var(--borda-ouro);
+            padding: 10px 20px;
+            background: rgba(5,1,8,0.5);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: var(--ouro);
+            color: var(--preto-absolute);
+            border-color: var(--ouro);
+        }
+
+        /*Container de Layout para centralizar a aba sobreposta */
+        .main-wrapper {
+            padding: 140px 20px 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Película flutuante sobreposta com tom roxo, fade suave e desfoque de fundo */
+        .article-container {
+            max-width: 900px;
+            width: 100%;
+            background: linear-gradient(180deg, rgba(29, 13, 53, 0.75) 0%, rgba(5, 1, 8, 0.92) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--borda-ouro);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            padding: 60px 8%;
+            border-radius: 4px;
+        }
+
+        /* ================= Cabeçalho do Artigo ================= */
+        .article-header {
+            text-align: center;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+            margin-bottom: 40px;
+        }
+
+        .article-category {
+            font-family: var(--fonte-ui);
+            color: var(--ouro);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .article-header h1 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+            font-weight: 400;
+            margin-bottom: 25px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+
+        .article-subtitle {
+            font-size: 1.2rem;
+            font-style: italic;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--cinza-texto);
+            opacity: 0.95;
+        }
+
+        /* ================= Corpo do Texto ================= */
+        .article-content {
+            font-size: 1.15rem;
+            text-align: justify;
+        }
+
+        /* Letra Capitular */
+        .article-content > p:first-of-type::first-letter {
+            font-family: var(--fonte-titulo);
+            float: left;
+            font-size: 5rem;
+            line-height: 0.8;
+            margin-right: 15px;
+            margin-top: 5px;
+            color: var(--ouro);
+        }
+
+        .article-content p { margin-bottom: 30px; }
+
+        /* Links internos/externos estilizados para SEO */
+        .article-content a {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--ouro);
+            transition: color 0.3s;
+        }
+        
+        .article-content a:hover {
+            color: var(--ouro);
+            border-bottom-style: solid;
+        }
+
+        .article-content h2 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: 1.8rem;
+            margin: 60px 0 30px;
+            border-bottom: 1px solid var(--borda-ouro);
+            padding-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .article-content h3 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.3rem;
+            margin: 45px 0 20px;
+            letter-spacing: 1px;
+        }
+
+        /* Citação / Destaque Místico */
+        blockquote {
+            margin: 50px auto;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(29, 13, 53, 0.5), rgba(5, 1, 8, 0.8));
+            border: 1px solid var(--borda-ouro);
+            border-left: 4px solid var(--ouro);
+            font-family: var(--fonte-titulo);
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--ouro-claro);
+            text-align: center;
+            position: relative;
+        }
+
+        /* Listas Estilizadas */
+        .rite-list {
+            list-style: none;
+            margin-bottom: 30px;
+            padding-left: 10px;
+        }
+
+        .rite-list li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .rite-list li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--ouro);
+        }
+
+        /* Estilização específica para as referências acadêmicas */
+        .refs-list {
+            list-style: none;
+            padding-left: 0;
+            font-size: 1rem;
+            opacity: 0.85;
+        }
+        
+        .refs-list li {
+            margin-bottom: 10px;
+            border-left: 2px solid var(--ouro);
+            padding-left: 15px;
+        }
+
+        /* Botão de Call to Action (CTA) */
+        .cta-container {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px dashed var(--borda-ouro);
+        }
+
+        .cta-button {
+            display: inline-block;
+            font-family: var(--fonte-ui);
+            color: var(--preto-absolute);
+            background-color: var(--ouro-claro);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            padding: 15px 35px;
+            border: 1px solid var(--ouro);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            border-bottom: 1px solid var(--ouro) !important; /* Sobrescrever estilo de link padrão */
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--ouro-claro);
+            box-shadow: 0 4px 20px rgba(197, 160, 89, 0.2);
+        }
+
+        /* ================= Rodapé ================= */
+        footer {
+            text-align: center;
+            padding: 80px 20px;
+            border-top: 1px solid var(--borda-ouro);
+            background-color: #030105;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-logo {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        .footer-text {
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--ouro-claro);
+            opacity: 0.7;
+        }
+
+        /* ================= Responsividade ================= */
+        @media (max-width: 768px) {
+            .main-wrapper { padding-top: 100px; padding-left: 10px; padding-right: 10px; }
+            .article-container { padding: 40px 5%; }
+            .article-header h1 { font-size: 2.4rem; }
+            .article-content { font-size: 1.05rem; }
+            .top-nav { padding: 15px 20px; }
+            blockquote { font-size: 1.2rem; padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="../acervo-feminino/acervo-feminino.html" class="back-link">← Acervo</a>
+    </nav>
+
+    <div class="main-wrapper">
+        <article class="article-container">
+            
+            <header class="article-header">
+                <span class="article-category">Ancestralidade • Tatuagem Ritualística</span>
+                <h1>Maud Wagner</h1>
+                <p class="article-subtitle">A Equilibrista que Gravou seu Nome na História da Tatuagem</p>
+            </header>
+
+            <main class="article-content">
+
+                <p>Aqui, a resistência feminina ganha um novo nome: Maud Wagner, a mulher que transformou o próprio corpo em uma tela de independência e abriu as portas do mercado profissional para todas nós. Se hoje as mulheres ocupam cadeiras de destaque nos maiores estúdios do mundo, é porque ela ousou ocupar esse espaço em 1904. Maud não foi apenas uma mulher tatuada; ela foi a primeira artista profissional feminina reconhecida nos Estados Unidos, em uma era de profunda repressão. Sua trajetória é um manifesto de autonomia, onde o corpo feminino deixou de ser apenas um objeto de admiração para se tornar um instrumento de trabalho e arte. Neste artigo, mergulharemos na vida da mulher que trocou a segurança das normas sociais pelo risco e pelo brilho da tinta permanente.</p>
+
+                <h2>Do Picadeiro às Agulhas: O Encontro que Mudou o Destino de Maud</h2>
+                
+                <p>Antes de se tornar uma lenda da tatuagem, Maud Stevens era uma talentosa artista de circo, atuando como contorcionista e equilibrista em trapézio. Sua vida mudou radicalmente na Louisiana Purchase Exposition, em 1904, onde conheceu Gus Wagner, um marinheiro que se autodenominava "o homem mais tatuado do mundo".</p>
+
+                <p>Gus ficou fascinado por Maud, mas ela, demonstrando sua natureza estratégica e decidida, impôs uma condição inusitada para aceitar um encontro com ele. Ela exigiu que Gus a ensinasse a tatuar, utilizando a técnica tradicional de hand-poked (tatuagem manual sem o uso de máquinas elétricas).</p>
+
+                <p>Maud viu na tatuagem não apenas uma curiosidade, mas uma oportunidade de carreira e de expressão que o picadeiro do circo não podia oferecer sozinha. Esse "acordo" de namoro tornou-se uma das parcerias mais produtivas da história da arte corporal, unindo amor e aprendizado técnico rigoroso. Para entender as raízes profundas dessa forma de arte como manifestação de poder, veja nossa página sobre <a href="../revista-mistica/tatuagem-ritualistica.html">Tatuagem Ritualística e talismãs sagrados</a>.</p>
+
+                <h2>A Técnica Hand-poked: A Maestria Manual de uma Pioneira</h2>
+                
+                <p>Enquanto as máquinas elétricas de tatuagem começavam a ganhar espaço, Maud Wagner manteve-se fiel à técnica artesanal do hand-poked. Mesmo após o casamento com Gus, ela aprimorou o método manual, utilizando agulhas presas a hastes de madeira para inserir o pigmento ponto a ponto.</p>
+
+                <p>Essa escolha técnica conferia às suas tatuagens uma textura e uma alma que as máquinas da época muitas vezes falhavam em replicar com a mesma delicadeza. Maud cobriu quase todo o seu corpo com desenhos icônicos da época: borboletas, tigres, cavalos e figuras femininas, todos executados com precisão impecável. Ela provou que a força de uma tatuadora não estava no motor de uma máquina, mas na firmeza de sua mão e na clareza de sua visão artística. Para o Esoteric Ink, essa dedicação técnica de Maud é um lembrete de que a arte da tatuagem é, acima de tudo, um ofício de paciência e conexão manual.</p>
+
+                <blockquote>
+                    "A resistência feminina ganha um novo nome: Maud Wagner, a mulher que transformou o próprio corpo em uma tela de independência e abriu as portas do mercado profissional para todas nós."
+                </blockquote>
+
+                <h2>O Legado de Independência: Quebrando o Tabu do Corpo Feminino</h2>
+                
+                <p>Maud Wagner utilizou sua posição como "atração de circo" para normalizar a presença de mulheres tatuadas e tatuadoras em ambientes públicos. Ao lado de seu marido e, mais tarde, de sua filha Lotteva, ela viajou pelo país como uma artista independente, vivendo de sua própria arte.</p>
+
+                <p>Sua filha, Lotteva Wagner, seguiu seus passos e tornou-se uma tatuadora prodígio aos nove anos, consolidando a linhagem feminina que Maud iniciou. Maud recusou-se a ser apenas uma "mulher de vitrine"; ela era a dona do seu próprio estúdio itinerante e mestre de sua própria técnica. Sua história é um pilar do feminismo na tatuagem, mostrando que o corpo da mulher pertence a ela mesma, para ser decorado e usado como ela desejar. Hoje, olhamos para as fotos de Maud e vemos não apenas uma mulher tatuada, mas uma visionária que esculpiu o caminho para a liberdade criativa feminina.</p>
+
+                <h2>Maud Wagner e a Estética Atemporal da Esoteric Ink</h2>
+                
+                <p>A coragem de Maud em desafiar o status quo é o que nos move a buscar sempre a excelência e a originalidade em cada projeto que realizamos. Ela nos ensinou que a tatuagem é uma linguagem de poder e que cada traço na pele é um passo em direção à nossa própria identidade soberana.</p>
+
+                <p>Ao tatuar no Studio Esoteric Ink, você não está apenas recebendo um desenho; você está honrando o legado de mulheres como Maud que lutaram pelo direito de criar. Sua influência vive em cada linha firme e em cada decisão de uma mulher em marcar sua história de forma permanente e orgulosa. Maud Wagner não foi apenas a primeira; ela foi a prova de que a tatuagem feminina é uma força imparável da natureza humana e artística.</p>
+
+                <h2>Referências Bibliográficas</h2>
+                <ul class="refs-list">
+                    <li><b>CAPLAN, Jane (Ed.).</b> <i>Written on the Body: The Tattoo in European and American History.</i> Princeton University Press, 2000.</li>
+                    <li><b>MIRESI, Lisa.</b> <i>Maud Wagner: The First Lady of Tattoo.</i> Tattoo History Magazine, 2012.</li>
+                    <li><b>PORTER, J. H.</b> <i>The Great American Tattoo.</i> Art History Journal, 1998.</li>
+                    <li><b>BRAUNBERGER, Christine.</b> <i>Revolt of the Body: The Tattooed Female in American Culture.</i> NWSA Journal, 2000.</li>
+                </ul>
+
+                <div class="cta-container">
+                    <h3>Transforme sua Pele em um Manifesto de Arte</h3>
+                    <p style="margin-top: 15px; margin-bottom: 30px; font-size: 1.1rem;">
+                        Inspirados pelo pioneirismo de Maud Wagner, acreditamos que a sua pele merece ser tratada com a mesma dedicação técnica e respeito histórico. No Studio Esoteric Ink, unimos a tradição do traço feito à mão com a visão moderna da beleza feminina. Estamos prontos para ajudar você a escrever o seu próximo capítulo através da tatuagem.
+                    </p>
+                    <a href="../portal-esoteric.html" class="cta-button">Agende sua Sessão de Arte</a>
+                </div>
+
+            </main>
+        </article>
+    </div>
+
+    <footer>
+        <div class="footer-logo">Studio Esoteric Ink</div>
+        <div class="footer-text">A pele é o pergaminho • O símbolo é a chave</div>
+    </footer>
+
+</body>
+</html>

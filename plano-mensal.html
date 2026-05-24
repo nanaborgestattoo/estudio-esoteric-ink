@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano Mensal: O Essencial | Studio Esoteric Ink</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta e Variáveis Oficiais ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1a0b2e;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--preto);
+            color: var(--branco-off);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            background-image: radial-gradient(circle at top left, #1d0d35 0%, transparent 40%),
+                              radial-gradient(circle at bottom right, #130725 0%, transparent 35%);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- CLASSES GLOBAIS REAPROVEITADAS --- */
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--ouro);
+            padding: 5px 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--ouro);
+            margin-bottom: 20px;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .section-title {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 2rem;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .section-title::before, .section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--ouro), transparent);
+        }
+
+        .btn-action {
+            display: inline-block;
+            padding: 18px 40px;
+            background: var(--ouro);
+            color: var(--preto);
+            border: 1px solid var(--ouro);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: 0.4s;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.2);
+            text-align: center;
+        }
+
+        .btn-action:hover {
+            background: transparent;
+            color: var(--ouro);
+            box-shadow: 0 0 25px rgba(197, 160, 89, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* --- BOTÃO FLUTUANTE (Voltar) --- */
+        .back-float {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            top: 30px;
+            left: 30px;
+            background-color: rgba(5, 1, 8, 0.9);
+            color: var(--ouro);
+            border: 1px solid var(--ouro);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .back-float:hover {
+            background-color: var(--ouro);
+            color: var(--preto);
+            transform: translateX(-5px);
+        }
+
+        /* --- HERO DO PLANO --- */
+        .plan-hero {
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(to bottom, rgba(5, 1, 8, 0.8), #000000), 
+                        url('./imagem/anuncie-aqui-paisagem.png') center/cover no-repeat;
+            border-bottom: 1px solid var(--borda-ouro);
+        }
+
+        .plan-hero h1 {
+            font-family: var(--fonte-titulo);
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
+            color: var(--ouro);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .plan-hero p {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--cinza-texto);
+            font-size: 0.95rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        /* --- DETALHES DO INVESTIMENTO --- */
+        .plan-details {
+            padding: 90px 10%;
+            background-color: #000000;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .details-content h2 {
+            font-family: var(--fonte-titulo);
+            font-size: 2rem;
+            color: var(--ouro-claro);
+            margin-bottom: 25px;
+        }
+
+        .details-content p {
+            color: var(--cinza-texto);
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* Tabela de Entregas Sofisticada */
+        .delivery-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        .delivery-table td {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+            color: var(--branco-off);
+            font-size: 0.95rem;
+        }
+
+        .delivery-table td strong {
+            color: var(--ouro-claro);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        /* Card de Preço Lateral */
+        .price-card {
+            border: 1px solid var(--ouro);
+            background: linear-gradient(145deg, rgba(26, 11, 46, 0.4) 0%, rgba(5, 1, 8, 0.9) 100%);
+            padding: 50px 40px;
+            text-align: center;
+            position: sticky;
+            top: 120px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .price-card .term {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            color: var(--ouro);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .price-card .value {
+            font-family: var(--fonte-titulo);
+            font-size: 3.5rem;
+            color: var(--branco-off);
+            margin-bottom: 5px;
+        }
+
+        .price-card .period {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--cinza-texto);
+            display: block;
+            margin-bottom: 35px;
+        }
+
+        .price-card .specs-list {
+            text-align: left;
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .price-card .specs-list li {
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--cinza-texto);
+        }
+
+        .price-card .specs-list li::before {
+            content: "✦";
+            color: var(--ouro);
+            font-size: 0.8rem;
+        }
+
+        /* --- SESSÃO FAQ (DÚVIDAS SANADAS) --- */
+        .plan-faq {
+            padding: 100px 15%;
+            background: linear-gradient(to bottom, #000000 0%, rgba(26, 11, 46, 0.3) 100%);
+        }
+
+        .faq-grid {
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .faq-item {
+            border: 1px solid var(--borda-ouro);
+            background: rgba(5, 1, 8, 0.6);
+            padding: 30px;
+            transition: border-color 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--ouro);
+        }
+
+        .faq-question {
+            font-family: var(--fonte-titulo);
+            font-size: 1.15rem;
+            color: var(--ouro-claro);
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .faq-answer {
+            color: var(--cinza-texto);
+            font-size: 0.95rem;
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        /* --- SEÇÃO FINAL DE CHAMADA (CTA) --- */
+        .final-cta {
+            padding: 100px 10%;
+            text-align: center;
+            background-color: #000000;
+            border-top: 1px solid rgba(197, 160, 89, 0.1);
+        }
+
+        .cta-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-wrapper p {
+            font-size: 1.1rem;
+            color: var(--cinza-texto);
+            margin-bottom: 35px;
+        }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 900px) {
+            .plan-details { grid-template-columns: 1fr; gap: 50px; }
+            .price-card { position: relative; top: 0; padding: 40px 20px; }
+            .plan-faq { padding: 80px 5%; }
+        }
+
+        /* --- FOOTER --- */
+        .site-footer {
+            padding: 60px 10% 40px;
+            text-align: center;
+            border-top: 1px solid var(--borda-ouro);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            background-color: #050108;
+        }
+        .footer-logo { width: 50px; height: 50px; margin-bottom: 10px; }
+        .footer-logo svg { width: 100%; height: 100%; stroke: var(--ouro); stroke-width: 2; fill: none; }
+        .footer-copy { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; color: #666; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 20px;}
+    </style>
+</head>
+<body>
+
+    <!-- BOTÃO VOLTAR -->
+    <a href="./para-colaboradores.html" class="back-float" title="Voltar para Alianças">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+    </a>
+
+    <!-- HERO DO PLANO -->
+    <section class="plan-hero">
+        <div class="badge">Acesso Imediato</div>
+        <h1>Plano Mensal</h1>
+        <p>A entrada ideal para marcas consolidadas ou projetos independentes que buscam posicionamento ágil e colheita de autoridade no ecossistema Esoteric Ink.</p>
+    </section>
+
+    <!-- DETALHES TÉCNICOS E PREÇO -->
+    <section class="plan-details">
+        <div class="details-content">
+            <h2>Como Funciona a Inserção Essencial</h2>
+            <p>O modelo de assinatura mensal foi desenhado para negócios que demandam flexibilidade sem abrir mão do absoluto rigor técnico. Ao ingressar, sua marca passa a habitar o ambiente nativo do nosso portal, aproveitando a autoridade de domínio já estabelecida para impulsionar seus próprios resultados orgânicos.</p>
+            
+            <p>Nossa equipe faz a curadoria e adaptação da sua identidade para a linguagem visual e textual do estúdio, garantindo que o público receba seu anúncio não como uma interrupção intrusiva, mas como uma recomendação editorial sofisticada.</p>
+            
+            <table class="delivery-table">
+                <tr>
+                    <td><strong>Vigência</strong></td>
+                    <td>30 dias corridos a partir da validação da triagem.</td>
+                </tr>
+                <tr>
+                    <td><strong>Suporte Técnico</strong></td>
+                    <td>Configuração e otimização de links para rastreamento limpo.</td>
+                </tr>
+                <tr>
+                    <td><strong>SEO Aplicado</strong></td>
+                    <td>Otimização semântica básica no bloco de texto de apresentação.</td>
+                </tr>
+                <tr>
+                    <td><strong>Atualizações</strong></td>
+                    <td>Permite uma alteração de criativo/texto por ciclo mensal.</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- CARD DE PREÇO FIXADO -->
+        <div class="price-card">
+            <span class="term">Assinatura Essencial</span>
+            <div class="value">R$ 290</div>
+            <span class="period">por mês / renovação voluntária</span>
+            
+            <ul class="specs-list">
+                <li>1 Espaço publicitário integrado ao portal</li>
+                <li>Redação com técnicas de Copywriting de Elite</li>
+                <li>Otimização de SEO On-Page inclusa</li>
+                <li>Link direto parametrizado para o seu canal</li>
+                <li>Triagem estética de conformidade</li>
+            </ul>
+
+            <a href="./formulario-plano-mensal.html" class="btn-action" style="width: 100%;">
+                Garantir Meu Espaço
+            </a>
+        </div>
+    </section>
+
+    <!-- PERGUNTAS FREQUENTES (TODAS AS DÚVIDAS SANADAS) -->
+    <section class="plan-faq">
+        <h2 class="section-title">Esclarecimentos Técnicos</h2>
+        
+        <div class="faq-grid">
+            <div class="faq-item">
+                <div class="faq-question">1. Há fidelidade contratual ou renovação automática?</div>
+                <div class="faq-answer">
+                    Não. O Plano Mensal opera no modelo de ciclo fechado de 30 dias. Ao final do período, você decide se deseja renovar a veiculação por mais um mês ou encerrar a parceria. Sem taxas ocultas de cancelamento.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">2. O que acontece se a minha marca não passar na triagem?</div>
+                <div class="faq-answer">
+                    A triagem é feita antes de qualquer cobrança efetiva. Caso nosso conselho editorial note que o seu produto, serviço ou estética visual não possui sinergia com o ecossistema do Studio Esoteric Ink, notificaremos você com o feedback técnico e nenhum valor será faturado.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">3. Eu preciso enviar a arte pronta ou o estúdio desenvolve?</div>
+                <div class="faq-answer">
+                    Você nos envia seus insumos brutos (logotipo, fotos em alta resolução do seu acervo e as principais informações do negócio). Nossa equipe cuidará de tratar a imagem e escrever o texto publicitário para garantir que tudo flua organicamente na nossa grade visual e de SEO.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">4. Como é mensurado o retorno dos acessos?</div>
+                <div class="faq-answer">
+                    Todos os links de saída direcionados para o seu site ou WhatsApp são configurados com parâmetros limpos de rastreamento (UTMs). Dessa forma, você consegue verificar exatamente no seu painel de tráfego (ou Analytics) quantos clientes vieram diretamente da nossa vitrine.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION FINAL -->
+    <section class="final-cta">
+        <div class="cta-wrapper">
+            <div class="badge">Posicionamento de Valor</div>
+            <h2 style="font-family: var(--fonte-titulo); color: var(--ouro); font-size: 1.8rem; margin-bottom: 20px;">Destaque o seu Legado no Mercado Certo</h2>
+            <p>Não desperdice energia em canais poluídos. Conecte a sua marca com quem realmente consome arte, sofisticação e profundidade conceitual.</p>
+            <a href="./formulario-plano-mensal.html" class="btn-action">
+                Solicitar Triagem do Meu Projeto
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER PADRÃO -->
+    <footer class="site-footer">
+        <div class="footer-logo">
+            <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" />
+                <polygon points="50,5 79,90 4,38 96,38 21,90" />
+            </svg>
+        </div>
+        <div class="footer-copy">
+            &copy; 2026 Nana Borges Tattoo - Studio Esoteric Ink. Todos os direitos reservados.
+        </div>
+    </footer>
+
+</body>
+</html>

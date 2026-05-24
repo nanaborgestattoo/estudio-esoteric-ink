@@ -1,0 +1,244 @@
+
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conteúdo em Expansão | Biblioteca Esoteric Ink</title>
+    
+    <meta name="description" content="Nossa base de conhecimento e biblioteca do oculto estão em constante expansão. Em breve, novos artigos ritualísticos estarão disponíveis.">
+    <meta name="robots" content="noindex, follow">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta Oficial Esoteric Ink ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1d0d35;
+            --preto-absoluto: #050108;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        /* ================= Reset & Setup ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--preto-absoluto);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            background-image: radial-gradient(circle at center, var(--roxo-escuro) 0%, var(--preto-absoluto) 80%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* --- NAVEGAÇÃO SUPERIOR --- */
+        .top-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 25px 40px;
+            background: linear-gradient(to bottom, rgba(5,1,8,0.9), transparent);
+            z-index: 100;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .back-link {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid var(--borda-ouro);
+            padding: 10px 20px;
+            background: rgba(5,1,8,0.5);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: var(--ouro);
+            color: var(--preto-absoluto);
+            border-color: var(--ouro);
+        }
+
+        /* ================= Container Central de Aviso ================= */
+        .notice-container {
+            max-width: 850px;
+            margin: auto;
+            padding: 140px 20px 80px;
+            text-align: center;
+        }
+
+        /* Ícone / Símbolo Místico Central */
+        .notice-symbol {
+            font-family: var(--fonte-titulo);
+            font-size: 3rem;
+            color: var(--ouro);
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        .notice-category {
+            font-family: var(--fonte-ui);
+            color: var(--ouro);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        /* Caixa do Título Principal Requisitado */
+        .notice-title {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 400;
+            line-height: 1.4;
+            margin-bottom: 35px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Divisor Ornamental Místico */
+        .divider {
+            width: 80px;
+            height: 1px;
+            background: var(--ouro);
+            margin: 0 auto 35px;
+            position: relative;
+            opacity: 0.7;
+        }
+        .divider::after {
+            content: "✦";
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background: #080311;
+            padding: 0 8px;
+            color: var(--ouro);
+            font-size: 0.8rem;
+        }
+
+        /* Descrição de Contexto */
+        .notice-description {
+            font-size: 1.15rem;
+            max-width: 650px;
+            margin: 0 auto 45px;
+            color: var(--cinza-texto);
+            opacity: 0.85;
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* Link de Retorno Principal */
+        .action-button {
+            display: inline-block;
+            font-family: var(--fonte-ui);
+            color: var(--preto-absoluto);
+            background-color: var(--ouro);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            padding: 15px 35px;
+            border: 1px solid var(--ouro);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .action-button:hover {
+            background-color: transparent;
+            color: var(--ouro-claro);
+            border-color: var(--ouro-claro);
+            box-shadow: 0 4px 20px rgba(197, 160, 89, 0.2);
+        }
+
+        /* Animando o Símbolo Místico */
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; text-shadow: 0 0 30px rgba(197, 160, 89, 0.6); }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        /* ================= Rodapé ================= */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid var(--borda-ouro);
+            background-color: #030105;
+            width: 100%;
+        }
+
+        .footer-logo {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        .footer-text {
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--ouro-claro);
+            opacity: 0.7;
+        }
+
+        /* ================= Responsividade ================= */
+        @media (max-width: 768px) {
+            .notice-container { padding-top: 120px; padding-bottom: 60px; }
+            .notice-title { font-size: 1.6rem; }
+            .notice-description { font-size: 1.05rem; }
+            .top-nav { padding: 15px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="./biblioteca-do-oculto.html" class="back-link">← Biblioteca</a>
+    </nav>
+
+    <main class="notice-container">
+        <div class="notice-symbol">✦</div>
+        <span class="notice-category">Base de Conhecimento • Esoteric Ink</span>
+        
+        <h1 class="notice-title">
+            Este e outros artigos estarão disponíveis em breve, postados gradualmente em nosso blog de informações e base de conhecimento.
+        </h1>
+        
+        <div class="divider"></div>
+        
+        <p class="notice-description">
+            Nossos escribas e mestres da agulha estão transcrevendo os segredos dos símbolos sagrados para o pergaminho digital. O conhecimento ancestral requer tempo para ser lapidado com a reverência que sua jornada merece.
+        </p>
+
+        <a href="./biblioteca-do-oculto.html" class="action-button">Retornar à Biblioteca</a>
+    </main>
+
+    <footer>
+        <div class="footer-logo">Studio Esoteric Ink</div>
+        <div class="footer-text">A pele é o pergaminho • O símbolo é a chave</div>
+    </footer>
+
+</body>
+</html>

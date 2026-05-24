@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jessie Knight: A Primeira Dama da Tatuagem Britânica | Biblioteca Esoteric Ink</title>
+    
+    <meta name="description" content="Conheça a história de Jessie Knight, a primeira mulher tatuadora do Reino Unido. Descubra sua técnica premiada, resiliência na Segunda Guerra e seu legado na tatuagem tradicional.">
+    <meta name="keywords" content="Jessie Knight tatuadora, Primeira mulher tatuadora Reino Unido, Tatuagem tradicional europeia, História da tatuagem feminina, Tatuagem Segunda Guerra Mundial, Studio Esoteric Ink, Tatuagem Old School inglesa, Pioneiras da tatuagem">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta Oficial Esoteric Ink ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1d0d35;
+            --preto-absolute: #050108;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        /* ================= Reset & Setup ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--preto-absolute);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            
+            /* Imagem configurada como plano de fundo fixo em toda a página */
+            background-image: linear-gradient(to bottom, rgba(5, 1, 8, 0.5), rgba(5, 1, 8, 0.85)), url('../imagem/dharma-chakra-biblioteca.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* --- NAVEGAÇÃO SUPERIOR --- */
+        .top-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 25px 40px;
+            background: linear-gradient(to bottom, rgba(5,1,8,0.9), transparent);
+            z-index: 100;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .back-link {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid var(--borda-ouro);
+            padding: 10px 20px;
+            background: rgba(5,1,8,0.5);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: var(--ouro);
+            color: var(--preto-absolute);
+            border-color: var(--ouro);
+        }
+
+        /*Container de Layout para centralizar a aba sobreposta */
+        .main-wrapper {
+            padding: 140px 20px 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Película flutuante sobreposta com tom roxo, fade suave e desfoque de fundo */
+        .article-container {
+            max-width: 900px;
+            width: 100%;
+            background: linear-gradient(180deg, rgba(29, 13, 53, 0.75) 0%, rgba(5, 1, 8, 0.92) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--borda-ouro);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            padding: 60px 8%;
+            border-radius: 4px;
+        }
+
+        /* ================= Cabeçalho do Artigo ================= */
+        .article-header {
+            text-align: center;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+            margin-bottom: 40px;
+        }
+
+        .article-category {
+            font-family: var(--fonte-ui);
+            color: var(--ouro);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .article-header h1 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+            font-weight: 400;
+            margin-bottom: 25px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+
+        .article-subtitle {
+            font-size: 1.2rem;
+            font-style: italic;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--cinza-texto);
+            opacity: 0.95;
+        }
+
+        /* ================= Corpo do Texto ================= */
+        .article-content {
+            font-size: 1.15rem;
+            text-align: justify;
+        }
+
+        /* Letra Capitular */
+        .article-content > p:first-of-type::first-letter {
+            font-family: var(--fonte-titulo);
+            float: left;
+            font-size: 5rem;
+            line-height: 0.8;
+            margin-right: 15px;
+            margin-top: 5px;
+            color: var(--ouro);
+        }
+
+        .article-content p { margin-bottom: 30px; }
+
+        /* Links internos/externos estilizados para SEO */
+        .article-content a {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--ouro);
+            transition: color 0.3s;
+        }
+        
+        .article-content a:hover {
+            color: var(--ouro);
+            border-bottom-style: solid;
+        }
+
+        .article-content h2 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: 1.8rem;
+            margin: 60px 0 30px;
+            border-bottom: 1px solid var(--borda-ouro);
+            padding-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .article-content h3 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.3rem;
+            margin: 45px 0 20px;
+            letter-spacing: 1px;
+        }
+
+        /* Citação / Destaque Místico */
+        blockquote {
+            margin: 50px auto;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(29, 13, 53, 0.5), rgba(5, 1, 8, 0.8));
+            border: 1px solid var(--borda-ouro);
+            border-left: 4px solid var(--ouro);
+            font-family: var(--fonte-titulo);
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--ouro-claro);
+            text-align: center;
+            position: relative;
+        }
+
+        /* Listas Estilizadas */
+        .rite-list {
+            list-style: none;
+            margin-bottom: 30px;
+            padding-left: 10px;
+        }
+
+        .rite-list li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .rite-list li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--ouro);
+        }
+
+        /* Estilização específica para as referências acadêmicas */
+        .refs-list {
+            list-style: none;
+            padding-left: 0;
+            font-size: 1rem;
+            opacity: 0.85;
+        }
+        
+        .refs-list li {
+            margin-bottom: 10px;
+            border-left: 2px solid var(--ouro);
+            padding-left: 15px;
+        }
+
+        /* Botão de Call to Action (CTA) */
+        .cta-container {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px dashed var(--borda-ouro);
+        }
+
+        .cta-button {
+            display: inline-block;
+            font-family: var(--fonte-ui);
+            color: var(--preto-absolute);
+            background-color: var(--ouro-claro);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            padding: 15px 35px;
+            border: 1px solid var(--ouro);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            border-bottom: 1px solid var(--ouro) !important; /* Sobrescrever estilo de link padrão */
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--ouro-claro);
+            box-shadow: 0 4px 20px rgba(197, 160, 89, 0.2);
+        }
+
+        /* ================= Rodapé ================= */
+        footer {
+            text-align: center;
+            padding: 80px 20px;
+            border-top: 1px solid var(--borda-ouro);
+            background-color: #030105;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-logo {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        .footer-text {
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--ouro-claro);
+            opacity: 0.7;
+        }
+
+        /* ================= Responsividade ================= */
+        @media (max-width: 768px) {
+            .main-wrapper { padding-top: 100px; padding-left: 10px; padding-right: 10px; }
+            .article-container { padding: 40px 5%; }
+            .article-header h1 { font-size: 2.4rem; }
+            .article-content { font-size: 1.05rem; }
+            .top-nav { padding: 15px 20px; }
+            blockquote { font-size: 1.2rem; padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="../acervo-feminino/acervo-feminino.html" class="back-link">← Acervo</a>
+    </nav>
+
+    <div class="main-wrapper">
+        <article class="article-container">
+            
+            <header class="article-header">
+                <span class="article-category">Ancestralidade • Tatuagem Ritualística</span>
+                <h1>Jessie Knight</h1>
+                <p class="article-subtitle">A Primeira Dama da Tatuagem que Desafiou o Império Britânico</p>
+            </header>
+
+            <main class="article-content">
+
+                <p>No cenário rústico dos portos ingleses e das bases navais, surgiu uma figura que mudaria a estética da tatuagem tradicional europeia: Jessie Knight. Ela não foi apenas uma artista; foi uma força da natureza que manteve sua agulha firme durante a Segunda Guerra Mundial, provando que a arte feminina é resiliente e eterna. Iniciando sua carreira profissional em 1921, Jessie foi a primeira mulher a ser reconhecida como tatuadora oficial e proprietária de estúdio no Reino Unido. Sua história é um testemunho de audácia, onde ela usou seu talento para navegar por um ambiente de marinheiros, soldados e rebeldes com maestria técnica. Neste artigo, exploraremos como Jessie Knight transformou a dor e o preconceito em uma carreira premiada que durou mais de quatro décadas.</p>
+
+                <h2>Do Circo aos Portos: A Forja de uma Artista de Elite</h2>
+                
+                <p>Como muitas pioneiras, Jessie Knight cresceu no ambiente itinerante do circo e das feiras, onde aprendeu as bases da performance e da disciplina. Seu pai, também tatuador e artista, foi seu primeiro mentor, mas Jessie rapidamente superou as expectativas, desenvolvendo um estilo próprio e refinado.</p>
+
+                <p>Em uma época em que o lugar da mulher era no ambiente doméstico, ela abriu seu primeiro estúdio em Barry, no País de Gales, focando no público naval. Durante a Segunda Guerra Mundial, enquanto o mundo entrava em colapso, Jessie Knight mantinha seu estúdio aberto, tatuando soldados que partiam para a frente de batalha.</p>
+
+                <p>Suas tatuagens serviam como amuletos de sorte e lembranças de amores deixados para trás, consolidando seu papel como uma figura central na moral das tropas. Jessie não era apenas uma tatuadora; ela era uma conselheira e uma guardiã das memórias daqueles que enfrentavam o desconhecido. Para mergulhar mais fundo nos mistérios e técnicas que consagram a pele como proteção, explore nossa análise detalhada em <a href="../revista-mistica/tatuagem-ritualistica.html">Tatuagem Ritualística e talismãs sagrados</a>.</p>
+
+                <h2>A Técnica Premiada: O Diferencial do Olhar Feminino</h2>
+                
+                <p>O que diferenciava Jessie Knight de seus contemporâneos masculinos era a sua atenção obsessiva aos detalhes e a fluidez de seus desenhos. Em 1955, ela venceu o segundo lugar na competição de "Melhor Tatuador do Mundo", um feito extraordinário para uma mulher naquela década.</p>
+
+                <p>Sua técnica era caracterizada por traços firmes e um sombreamento delicado que trazia vida a temas clássicos, como navios, rosas e pin-ups. Ela foi uma das primeiras a entender que a tatuagem precisava respeitar a curvatura natural do corpo humano para ter o impacto visual máximo. Nos inspiramos nessa precisão de Jessie, onde a técnica é usada para exaltar a beleza anatômica de cada cliente com respeito e arte. Ela provou que a agulha, nas mãos de uma mulher, podia ser um instrumento de extrema sofisticação técnica e sensibilidade estética.</p>
+
+                <blockquote>
+                    "Ela não foi apenas uma artista; foi uma força da natureza que manteve sua agulha firme, provando que a arte feminina é resiliente e eterna."
+                </blockquote>
+
+                <h2>Resistência e Independência: O Punho de Ferro em Luva de Veludo</h2>
+                
+                <p>A trajetória de Jessie Knight não foi isenta de desafios; ela enfrentou assaltos e preconceitos brutais por ser uma mulher em um território masculino. Relatos contam que ela mantinha uma arma ou objetos de defesa sob sua bancada, pronta para proteger seu espaço e sua integridade profissional.</p>
+
+                <p>Sua independência financeira e sua recusa em se conformar aos papéis de gênero da época fizeram dela uma figura lendária e, às vezes, temida. Ela trabalhou até os 80 anos, tatuando até pouco antes de sua morte, demonstrando que a paixão pela tinta é uma chama que não se apaga com a idade. Jessie transformou o estigma em prestígio, tornando-se uma celebridade procurada por colecionadores de arte corporal de toda a Europa. Hoje, celebramos Jessie Knight como a arquiteta da tatuagem feminina moderna, cuja coragem permitiu que hoje pudéssemos tatuar com liberdade.</p>
+
+                <h2>O Legado de Jessie Knight no Studio Esoteric Ink</h2>
+                
+                <p>A história de Jessie é o alicerce da nossa crença de que a tatuagem feminina é um ato de bravura e uma declaração de independência. Aqui no Studio Esoteric Ink, honramos o rigor técnico que rendeu prêmios a Jessie, buscando sempre a perfeição em cada detalhe de nossos projetos.</p>
+
+                <p>Acreditamos que, assim como as tatuagens de Jessie serviram de amuleto para soldados, sua arte no nosso estúdio serve de amuleto para a sua jornada diária. Venha fazer parte dessa linhagem de mulheres que não têm medo de marcar sua história e reivindicar seu espaço no mundo. Jessie Knight abreu o caminho nos portos britânicos para que hoje pudéssemos criar com segurança, sofisticação e alma em nosso próprio estúdio.</p>
+
+                <h2>Referências Bibliográficas</h2>
+                <ul class="refs-list">
+                    <li><b>BURCHETT, George.</b> <i>Memoirs of a Tattooist.</i> Oldbourne, 1958.</li>
+                    <li><b>FRIEDMAN, Anna Felicity.</b> <i>The World Atlas of Tattoo.</i> Thames & Hudson, 2015.</li>
+                    <li><b>DYKES, Neil.</b> <i>Jessie Knight: The First Lady of British Tattooing.</i> National Maritime Museum, 2017.</li>
+                    <li><b>LODDER, Matt.</b> <i>Tattoo: An Art History.</i> Yale University Press, 2019.</li>
+                </ul>
+
+                <div class="cta-container">
+                    <h3>Marque sua Força com a Elegância de uma Pioneira</h3>
+                    <p style="margin-top: 15px; margin-bottom: 30px; font-size: 1.1rem;">
+                        Inspiradas pela técnica premiada e pela coragem inabalável de Jessie Knight, oferecemos a você uma experiência de tatuagem que une história e sofisticação. Aqui cada projeto é tratado com a honra que sua história merece. Transforme sua pele em um troféu de sua própria jornada e força interior.
+                    </p>
+                    <a href="../portal-esoteric.html" class="cta-button">Agende sua Sessão de Arte</a>
+                </div>
+
+            </main>
+        </article>
+    </div>
+
+    <footer>
+        <div class="footer-logo">Studio Esoteric Ink</div>
+        <div class="footer-text">A pele é o pergaminho • O símbolo é a chave</div>
+    </footer>
+
+</body>
+</html>

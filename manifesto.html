@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manifesto - Studio Esoteric Ink</title>
+
+    <!-- Pré-conexão e Fontes do DNA Esoteric Ink -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta e Variáveis Oficiais ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1d0d35;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        /* ================= Reset & Setup ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--preto);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            /* Fundo Preto Ritual com brilho Roxo Escuro */
+            background-image: radial-gradient(circle at top right, var(--roxo-escuro) 0%, transparent 50%);
+        }
+
+        /* --- BOTÃO VOLTAR (Padrão do Studio) --- */
+        .back-nav { 
+            position: absolute; 
+            top: 30px; 
+            left: 5%; 
+            z-index: 10; 
+        }
+        .btn-voltar { 
+            color: var(--ouro-claro); 
+            text-decoration: none; 
+            font-family: var(--fonte-ui); 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            transition: color 0.3s; 
+            border: 1px solid var(--borda-ouro);
+            padding: 10px 20px;
+            background: rgba(5,1,8,0.5);
+            backdrop-filter: blur(5px);
+        }
+        .btn-voltar:hover { 
+            color: var(--preto); 
+            background: var(--ouro);
+            border-color: var(--ouro);
+        }
+
+        /* ================= Estrutura Principal ================= */
+        #manifesto {
+            padding: 120px 5% 80px;
+        }
+
+        .manifesto-container {
+            max-width: 850px; /* Largura elegante de leitura */
+            margin: 0 auto;
+        }
+
+        /* --- Cabeçalho e Títulos --- */
+        .manifesto-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .manifesto-header h2 {
+            font-family: var(--fonte-titulo);
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--ouro);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+        /* Linhas em degradê dourado ladeando o título principal */
+        .manifesto-header h2::before, .manifesto-header h2::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--ouro), transparent);
+        }
+
+        .manifesto-header p {
+            font-family: var(--fonte-ui);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.85rem;
+            color: var(--ouro-claro);
+            margin-top: 10px;
+        }
+
+        .accent-line {
+            width: 40px;
+            height: 2px;
+            background: var(--ouro);
+            margin: 30px auto 0;
+        }
+
+        /* --- Seções do Texto --- */
+        .manifesto-section {
+            margin-bottom: 60px;
+        }
+
+        .manifesto-section h3 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            border-left: 3px solid var(--ouro);
+            padding-left: 15px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .manifesto-section p {
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        /* Letra Capitular Mística (Dropcap) no primeiro parágrafo */
+        .dropcap::first-letter {
+            font-family: var(--fonte-titulo);
+            font-size: 4.5rem;
+            color: var(--ouro);
+            float: left;
+            line-height: 0.8;
+            padding-right: 15px;
+            padding-top: 5px;
+            text-shadow: 0 2px 10px rgba(197, 160, 89, 0.2);
+        }
+
+        .manifesto-section strong {
+            color: var(--branco-off);
+            font-family: var(--fonte-ui);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* --- Listas --- */
+        .priority-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            font-family: var(--fonte-ui);
+            font-size: 0.95rem;
+        }
+        .priority-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--borda-ouro);
+            color: var(--branco-off);
+            display: flex;
+            align-items: center;
+        }
+        .priority-list li::before {
+            content: "◈";
+            color: var(--ouro);
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* --- Componente Info-Card (Quote e Base Científica) --- */
+        .quote-box, .scientific-base {
+            background-color: rgba(197, 160, 89, 0.03);
+            border: 1px solid var(--borda-ouro);
+            border-left: 3px solid var(--ouro);
+            padding: 40px;
+            margin: 50px 0;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .quote-box {
+            text-align: center;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--ouro-claro);
+            border-left: 1px solid var(--borda-ouro); /* Ajuste visual pro quote */
+            border-top: 3px solid var(--ouro);
+        }
+        .quote-box span {
+            color: var(--branco-off);
+            display: block;
+            margin-top: 15px;
+            font-style: normal;
+            font-family: var(--fonte-ui);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Base Científica Específica */
+        .scientific-base h4 {
+            font-family: var(--fonte-titulo);
+            font-size: 1.6rem;
+            color: var(--ouro);
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+        .scientific-item {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            color: var(--cinza-texto);
+            line-height: 1.6;
+        }
+        .scientific-item b {
+            color: var(--ouro-claro);
+            font-family: var(--fonte-ui);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- Links e Botões UI --- */
+        .link-cuidados {
+            color: var(--ouro-claro);
+            text-decoration: none;
+            font-family: var(--fonte-ui);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+        .link-cuidados::after {
+            content: '→';
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        .link-cuidados:hover { color: var(--branco-off); }
+        .link-cuidados:hover::after { transform: translateX(5px); }
+
+        .btn-saiba-mais {
+            display: inline-block;
+            font-family: var(--fonte-ui);
+            font-size: 0.75rem;
+            color: var(--ouro-claro);
+            border: 1px solid var(--borda-ouro);
+            padding: 10px 25px;
+            text-decoration: none;
+            margin-top: 25px;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(0,0,0,0.5);
+        }
+        .btn-saiba-mais:hover {
+            border-color: var(--ouro);
+            color: var(--preto);
+            background: var(--ouro);
+        }
+
+        .btn-portal {
+            display: inline-block;
+            background: rgba(5,1,8,0.8);
+            color: var(--ouro-claro);
+            border: 1px solid var(--ouro);
+            padding: 18px 45px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: var(--fonte-ui);
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            transition: all 0.4s ease;
+            margin-top: 30px;
+            backdrop-filter: blur(5px);
+        }
+        .btn-portal:hover {
+            background: var(--ouro);
+            color: var(--preto);
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.3);
+        }
+
+        /* --- Rodapé do Manifesto --- */
+        .final-footer-note {
+            display: block;
+            font-family: var(--fonte-ui);
+            font-size: 0.7rem;
+            color: #666;
+            margin-top: 80px;
+            text-align: center;
+            border-top: 1px solid var(--borda-ouro);
+            padding-top: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .manifesto-header h2::before, .manifesto-header h2::after { display: none; }
+            .quote-box, .scientific-base { padding: 30px 20px; }
+            .back-nav { top: 20px; left: 20px; }
+            .btn-voltar { padding: 8px 15px; font-size: 0.65rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegação Superior -->
+    <div class="back-nav">
+        <a href="index.html" class="btn-voltar">← Voltar ao Studio</a>
+    </div>
+
+    <!-- Container Principal do Manifesto -->
+    <section id="manifesto">
+        <div class="manifesto-container">
+            
+            <div class="manifesto-header">
+                <h2>Manifesto Studio Esoteric Ink</h2>
+                <p>A Ciência, o Sagrado e a Soberania da Pele</p>
+                <div class="accent-line"></div>
+            </div>
+
+            <div class="manifesto-section">
+                <h3>1. O Conceito e a Materialização Biológica</h3>
+                <p class="dropcap">Seja bem-vinda(e/o) ao nosso templo de intenção. Compreendemos que a tatuagem transcende a estética; ela é um ritual de materialização e um procedimento dermatológico de alta complexidade. Aqui, a geometria sagrada e a força de símbolos ancestrais fundem-se ao rigor da Histologia Dérmica.</p>
+                <p>Não entregamos apenas desenhos; entregamos saúde estética. Nossa metodologia baseia-se na compreensão profunda de como o pigmento interage com os macrófagos e como a derme se regenera. Ao cruzar nosso portal, você adentra um ambiente de excelência onde o sagrado é protegido pela precisão técnica.</p>
+            </div>
+
+            <div class="manifesto-section">
+                <h3>2. Política de Acolhimento: Um Refúgio de Liberdade e Segurança</h3>
+                <p>O Studio Esoteric Ink é um Safe Space (Espaço Seguro), projetado para ser inteiramente livre de julgamentos. Nosso refúgio é dedicado àqueles que buscam expressar sua soberania individual com segurança:</p>
+                
+                <ul class="priority-list">
+                    <li>Mulheres (Cis e Trans) e Público LGBTQIAPN+</li>
+                    <li>Buscadores da Espiritualidade e do Esoterismo</li>
+                    <li>Pessoas que buscam Restauração e Cura (Coberturas e Despigmentação)</li>
+                </ul>
+                
+                <p style="margin-top: 30px;"><strong>Sobre o Atendimento ao Público Masculino:</strong> Para preservar a privacidade de nosso público prioritário, homens cisgênero heterossexuais são atendidos exclusivamente via indicação direta de clientes da casa, mediante análise de afinidade com a estética soberana do estúdio e investimento de exclusividade diferenciado.</p>
+            </div>
+
+            <!-- Caixa de Citação convertida para Info-Card -->
+            <div class="quote-box">
+                "A higienização meticulosa e o conhecimento biológico são as primeiras orações do nosso ritual."
+                <span>— Studio Esoteric Ink —</span>
+            </div>
+
+            <div class="manifesto-section">
+                <h3>3. O Compromisso: Ciência, Biossegurança e Ética Dermatológica</h3>
+                <p>Nossa conduta ética baseia-se na transparência total e na autoridade técnica:</p>
+                <p><strong>Privacidade Absoluta:</strong> Operamos em formato Private Studio. Durante sua sessão, o espaço e a atenção da mestre são exclusivos para você.</p>
+                <p><strong>Rigor Ambulatorial:</strong> Utilizamos insumos de alta performance, 100% descartáveis e pigmentos regulamentados. Nossa assepsia segue padrões de biossegurança de luxo.</p>
+                <p><strong>Anamnese Crítica:</strong> Realizamos uma triagem técnica antes de cada projeto. Avaliamos a saúde da sua pele, a presença de nevos (pintas) e o histórico de cicatrização para garantir que a arte nunca mascare a sua saúde.</p>
+                <p><strong>Colorimetria Científica:</strong> Nossos tons — do Preto Profundo ao Verde Esmeralda Digital — são aplicados com base na física da luz e nos subtons da sua pele (Escala de Fitzpatrick), garantindo vivacidade eterna.</p>
+            </div>
+
+            <div class="manifesto-section">
+                <h3>4. Regras da Casa: A Preparação do Corpo-Templo</h3>
+                <p>Para que a obra atinja a perfeição, o seu organismo deve estar em harmonia:</p>
+                <p><strong>Fisiologia e Nutrição:</strong> É obrigatório estar bem alimentada(e) e descansada(e). A estabilidade glicêmica é vital para a retenção do pigmento e controle da dor.</p>
+                <p><strong>Abstinência Ética:</strong> Proibido o consumo de álcool ou substâncias 24h antes. Substâncias psicoativas alteram a coagulação e a resposta imunológica (Tattoo Flu).</p>
+                <p><strong>Hidratação Sistêmica:</strong> A saúde da derme dita o resultado. Aumente a ingestão de água nos 7 dias anteriores. Pele desidratada não retém a sofisticação do nosso traço.</p>
+                <p><strong>Pontualidade e Foco:</strong> Oferecemos 20 min de tolerância. Priorizamos o silêncio e a concentração; acompanhantes devem ser informados e registrados previamente.</p>
+                
+                <a href="./base-de-conhecimento/guia-da-regeneracao.html" class="link-cuidados">veja o guia de cuidados completo</a>
+            </div>
+
+            <div class="manifesto-section">
+                <h3>5. A Jornada Soberana: Como Iniciar sua Tattoo</h3>
+                <p><strong>1. O Portal de Intenções:</strong> Inicie sua jornada preenchendo nosso formulário.</p>
+                <p><strong>2. Consultoria Técnica e Reserva:</strong> Alinhamos a viabilidade biológica do projeto e confirmamos sua data.</p>
+                <p><strong>3. Criação e Ritual:</strong> Sua arte é personalizada através da união entre a sua história e nossa maestria técnica.</p>
+
+                <!-- Base Científica convertida para Info-Card -->
+                <div class="scientific-base">
+                    <h4>Base de Amparo Técnico-Científico</h4>
+                    <p style="font-size: 0.95rem; color: var(--cinza-texto); margin-bottom: 25px; font-style: italic;">O conhecimento aplicado na metodologia Nana Borges Tattoo fundamenta-se em curadoria rigorosa de estudos acadêmicos e protocolos internacionais.</p>
+                    
+                    <div class="scientific-item"><b>1. Histologia e Fisiologia Cutânea:</b> Histologia Básica (Junqueira & Carneiro); The Fate of Tattoo Ink in the Skin (NCBI).</div>
+                    <div class="scientific-item"><b>2. Colorimetria e Física Óptica:</b> A Cor no Processo Criativo (Lilian Barros); The Tyndall Effect in Skin Tattoos; Escala de Fitzpatrick.</div>
+                    <div class="scientific-item"><b>3. Biossegurança e Toxicologia:</b> Manuais da ANVISA e estudos da Comissão Europeia (JRC) sobre segurança de pigmentos.</div>
+                    <div class="scientific-item"><b>4. Dermatologia Preventiva:</b> Diretrizes do INCA (Prevenção ao Melanoma) e estudos da Skin Cancer Foundation.</div>
+                    <div class="scientific-item"><b>5. Gestão de Trauma:</b> Dermatologia de Sampaio e Rivitti; Estudos PubMed sobre Óleos Ozonizados.</div>
+
+                    <a href="./base-de-conhecimento/canone.html" class="btn-saiba-mais">Saiba Mais (Referências Completas)</a>
+
+                    <p style="font-family: var(--fonte-titulo); font-style: italic; font-size: 1.1rem; margin-top: 30px; color: var(--ouro-claro); border-top: 1px solid var(--borda-ouro); padding-top: 20px; text-align: center;">
+                        "Operamos sob evidências: do domínio da lise osmótica à densidade molecular dos pigmentos."
+                    </p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 80px;">
+                <p style="color: var(--branco-off); font-family: var(--fonte-titulo); font-size: 1.5rem;">Quer fazer um agendamento?</p>
+                <a href="./portal-esoteric.html" class="btn-portal">Portal de Intenções</a>
+            </div>
+            
+            <span class="final-footer-note">Baseado em protocolos da ANVISA e diretrizes da Sociedade Brasileira de Dermatologia.</span>
+        </div>
+    </section>
+
+<script src="../leitor.js"></script>
+</body>
+</html>

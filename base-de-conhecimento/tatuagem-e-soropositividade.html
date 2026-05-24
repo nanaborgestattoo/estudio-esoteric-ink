@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tatuagem e Soropositividade | Studio Esoteric Ink</title>
+    <meta name="description" content="Análise técnica e científica sobre tatuagem para pessoas vivendo com HIV sob a curadoria de Nana Borges.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1a0b2e;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--preto);
+            color: var(--branco-off);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            background-image: radial-gradient(circle at top right, #1d0d35 0%, transparent 40%);
+            overflow-x: hidden;
+        }
+
+        nav {
+            padding: 20px;
+            border-bottom: 1px solid var(--borda-ouro);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 1, 8, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: var(--ouro);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--branco-off); }
+
+        .hero-section {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(5, 1, 8, 0.7), var(--preto)), 
+                        url('../imagem/soropositividade_nana_borges_studio_esoteric_ink.webp') center/cover;
+            padding: 20px;
+            border-bottom: 1px solid var(--ouro);
+        }
+
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--ouro);
+            padding: 5px 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--ouro);
+            margin-bottom: 20px;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .hero-section h1 {
+            font-family: var(--fonte-titulo);
+            font-size: clamp(1.5rem, 4vw, 2.8rem);
+            color: var(--branco-off);
+            max-width: 1100px;
+            line-height: 1.2;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+        }
+
+        .content-wrap {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 80px 30px;
+        }
+
+        .dropcap::first-letter {
+            font-family: var(--fonte-titulo);
+            font-size: 5rem;
+            float: left;
+            line-height: 0.8;
+            padding-right: 15px;
+            color: var(--ouro);
+        }
+
+        h2 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.6rem;
+            margin: 60px 0 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, var(--ouro), transparent);
+        }
+
+        h3 {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro-claro);
+            font-size: 1.3rem;
+            margin: 0 0 20px 0;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        p { margin-bottom: 25px; font-size: 1.1rem; color: var(--branco-off); opacity: 0.95; text-align: justify; }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--borda-ouro);
+            padding: 35px;
+            margin: 40px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            background: rgba(42, 8, 69, 0.15);
+            border-color: var(--ouro);
+        }
+
+        .info-card ul { list-style: none; }
+
+        .info-card li {
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 30px;
+            color: var(--branco-off);
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        .info-card li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--ouro);
+            font-size: 1rem;
+        }
+
+        .info-card li strong {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: var(--ouro);
+            margin-bottom: 5px;
+        }
+
+        .cta-section {
+            background: var(--roxo-escuro);
+            border-top: 2px solid var(--ouro);
+            padding: 80px 30px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .btn-whatsapp {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 20px 45px;
+            background: transparent;
+            color: var(--ouro);
+            border: 1px solid var(--ouro);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: 0.4s;
+        }
+
+        .btn-whatsapp:hover {
+            background: var(--ouro);
+            color: var(--preto);
+            box-shadow: 0 0 30px rgba(197, 160, 89, 0.4);
+        }
+
+        .references {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(197, 160, 89, 0.2);
+        }
+
+        .references h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--ouro);
+            margin-bottom: 15px;
+        }
+
+        .references p {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        footer {
+            padding: 60px 20px;
+            font-family: 'Montserrat', sans-serif;
+            border-top: 1px solid rgba(197, 160, 89, 0.1);
+            background: var(--preto);
+            text-align: center;
+        }
+
+        footer p {
+            text-align: center;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrap { padding: 50px 20px; }
+            .hero-section h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="./pag-guia-de-cuidados-e-biosseguranca.html">← Retornar</a>
+        <div style="font-family: 'Cinzel'; color: var(--ouro); letter-spacing: 3px; font-size: 0.9rem;">Studio Esoteric Ink</div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="badge">Biossegurança & Acolhimento</div>
+        <h1>Tatuagem e Soropositividade:<br>Ciência, Biossegurança e o Resgate da Autonomia Corporal</h1>
+    </header>
+
+    <div class="content-wrap">
+        
+        <p class="dropcap">A modificação corporal é, historicamente, um rito de apropriação e expressão da identidade. No entanto, para pessoas vivendo com HIV (PVHIV), o caminho até a poltrona de um tatuador muitas vezes é barrado por desinformação e preconceito. É fundamental desmistificar a relação entre o vírus e o processo de tatuagem, pautando a discussão no que há de mais moderno na infectologia e na biossegurança aplicada.</p>
+
+        <p>Dominar os fundamentos biológicos e técnicos por trás de cada procedimento é um dos pilares do nosso trabalho e atendimento. Acreditamos que o conhecimento técnico é a ferramenta mais eficaz contra o estigma, permitindo uma tratativa pessoal que respeita a individualidade de cada cliente.</p>
+
+        <h2>1. O Vírus e o Meio Externo</h2>
+        <h3>A Fragilidade do HIV</h3>
+        <p>Diferente do que o senso comum sugere, o vírus da imunodeficiência humana (HIV) apresenta baixíssima resistência fora do hospedeiro. Estudos publicados em periódicos como o <em>The Lancet Infectious Diseases</em> reiteram que, uma vez exposto ao ambiente externo, a infectividade do vírus cai drasticamente em questão de minutos.</p>
+
+        <div class="info-card">
+            <ul>
+                <li><strong>O Conceito I = I (Indetectável = Intransmissível):</strong> Quando uma pessoa mantém a carga viral indetectável no sangue por pelo menos seis meses, o risco de transmissão é nulo. No contexto de perfurações, esse estado significa que o sistema imunológico está equilibrado, permitindo que a regeneração tecidual ocorra de maneira análoga a de qualquer outro indivíduo.</li>
+                <li><strong>Estabilidade Viral:</strong> O HIV não sobrevive ao ressecamento ou a variações de temperatura ambiente por longos períodos, o que torna o contágio em ambientes com assepsia rigorosa praticamente inexistente.</li>
+            </ul>
+        </div>
+
+        <h2>2. Biossegurança Universal</h2>
+        <h3>A Ciência da Proteção Integral</h3>
+        <p>No Studio Esoteric Ink, implementamos as <strong>Precauções Universais de Biossegurança</strong>. Esse protocolo parte do princípio de que todo e qualquer fluido biológico deve ser tratado como potencialmente infectante, eliminando a necessidade de distinções ou tratamentos diferenciados.</p>
+
+        <div class="info-card">
+            <ul>
+                <li><strong>Barreiras Físicas e Contaminação Cruzada:</strong> O uso de filmes de polietileno em superfícies de contato e o isolamento de cabos garantem que não haja transferência de patógenos entre atendimentos.</li>
+                <li><strong>Assepsia Química de Alto Nível:</strong> Utilizamos detergentes enzimáticos que degradam matéria orgânica e soluções de álcool 70% com tempo de contato controlado.</li>
+                <li><strong>Gestão de Resíduos Perfurocortantes:</strong> O descarte imediato conforme as normas da RDC 222/2018 da ANVISA assegura o ciclo de segurança biológica do início ao fim da sessão.</li>
+            </ul>
+        </div>
+
+        <h2>3. Fisiologia da Cicatrização</h2>
+        <h3>Resposta Imunológica</h3>
+        <p>Para que uma tatuagem tenha um resultado estético excelente, o corpo precisa cumprir etapas complexas de reparo tecidual. De acordo com a dermatologia, o principal marcador para PVHIV é a contagem de células CD4+.</p>
+
+        <div class="info-card">
+            <ul>
+                <li><strong>Linfócitos e Reparo:</strong> Se os níveis de linfócitos estiverem dentro da normalidade, a cascata de cicatrização (inflamatória, proliferativa e remodelação) ocorre sem intercorrências.</li>
+                <li><strong>Monitoramento de Imunidade:</strong> Caso a imunidade esteja momentaneamente baixa, o organismo pode levar mais tempo para fechar as feridas epidérmicas, exigindo um pós-cuidado mais vigilante para evitar infecções oportunistas.</li>
+            </ul>
+        </div>
+
+        <h2>4. Ética e Sigilo</h2>
+        <p>Legalmente e eticamente, ninguém é obrigado a declarar sua sorologia para realizar procedimentos estéticos. O estigma, infelizmente, ainda faz com que muitos profissionais recusem atendimento por medo infundado.</p>
+
+        <div class="info-card">
+            <ul>
+                <li><strong>Acolhimento como Alicerce:</strong> Criamos um ambiente onde a transparência é opcional, mas o respeito é garantido.</li>
+                <li><strong>Uso Técnico da Informação:</strong> Se o cliente opta por compartilhar sua condição, essa informação é integrada à nossa análise técnica apenas para otimizar o suporte pós-procedimento.</li>
+            </ul>
+        </div>
+
+        <p style="text-align: center; font-style: italic; color: var(--ouro-claro); margin-top: 40px;">"A tatuagem é uma celebração da vida. Transformar o ato de tatuar em uma experiência de cura e reafirmação é o que nos permite oferecer um porto seguro para todos."</p>
+
+        <section class="references">
+            <h4>Referências e Base Científica:</h4>
+            <p>• CDC (Centers for Disease Control and Prevention): Diretrizes sobre Transmissão de Patógenos.</p>
+            <p>• U=U International Consensus: Evidências sobre a intransmissibilidade do HIV.</p>
+            <p>• ANVISA (RDC 222/2018): Boas práticas de gerenciamento de resíduos.</p>
+            <p>• Journal of the American Academy of Dermatology: Estudos sobre cicatrização e imunidade.</p>
+        </section>
+
+        <section class="cta-section">
+            <div class="badge" style="border-color: var(--branco-off); color: var(--branco-off);">Excelência Técnica</div>
+            <h2 style="border: none; justify-content: center;">Pronto para sua próxima arte?</h2>
+            <p>Com a pele preparada e os cuidados alinhados, o resultado será impecável.</p>
+            <a href="../portal-esoteric.html" class="btn-whatsapp">Agendar Minha Sessão</a>
+        </section>
+
+    </div>
+
+    <footer> 
+        <p>COMPROMISSO COM A BIOSSEGURANÇA E O ACOLHIMENTO • STUDIO ESOTERIC INK • 2026</p>
+        <p style="opacity: 0.5;">ARTE COM RESPONSABILIDADE BIOLÓGICA E RESPEITO AO SIGILO.</p>
+    </footer>
+
+</body>
+</html>
