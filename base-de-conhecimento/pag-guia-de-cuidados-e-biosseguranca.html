@@ -222,13 +222,11 @@
             flex-grow: 1; /* Faz o texto ocupar o espaço necessário para empurrar o link para baixo */
         }
 
-        /* Restante do CSS preservado... */
         .protocol-card:hover { border-color: var(--ouro); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(197, 160, 89, 0.1); background: rgba(197, 160, 89, 0.05); }
         .protocol-card-image-wrapper { width: 100%; height: 200px; overflow: hidden; border-bottom: 1px solid var(--borda-ouro); }
         .protocol-card-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; filter: grayscale(30%) contrast(1.1); }
         .protocol-card:hover .protocol-card-image { transform: scale(1.05); filter: grayscale(0%) contrast(1.1); }
         .protocol-card h3 { font-family: var(--fonte-titulo); color: var(--ouro-claro); font-size: 1.3rem; margin-bottom: 15px; line-height: 1.3; }
-        .protocol-card p { font-size: 0.95rem; color: var(--cinza-texto); margin-bottom: 25px; line-height: 1.6; }
         .protocol-link { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--ouro); font-weight: 600; display: flex; align-items: center; gap: 10px; margin-top: auto; transition: color 0.3s; }
         .protocol-link::after { content: '→'; transition: transform 0.3s; }
         .protocol-card:hover .protocol-link { color: var(--branco-off); }
@@ -300,7 +298,6 @@
                 <h2>Cuidados e Informações</h2>
             </div>
             <div class="protocol-grid">
-                
                 <a href="./guia-da-regeneracao.html" class="protocol-card">
                     <div class="protocol-card-image-wrapper">
                         <img src="../imagem/foto_cuidados_com_a_tattoo.webp" alt="Guia de Cuidados" class="protocol-card-image">
@@ -409,6 +406,17 @@
                     <div class="protocol-card-content">
                         <h3>Psoríase e Dermatite</h3>
                         <p>O fenômeno de Koebner e segurança em peles reativas.</p>
+                        <span class="protocol-link">Ler Diretrizes</span>
+                    </div>
+                </a>
+
+                <a href="./anamnese.html" class="protocol-card">
+                    <div class="protocol-card-image-wrapper">
+                        <img src="../imagem/anamnese.png" alt="Ficha de Anamnese" class="protocol-card-image">
+                    </div>
+                    <div class="protocol-card-content">
+                        <h3>Ficha de Anamnese</h3>
+                        <p>A segurança do seu templo físico é a base da nossa arte.</p>
                         <span class="protocol-link">Ler Diretrizes</span>
                     </div>
                 </a>

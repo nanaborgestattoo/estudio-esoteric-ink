@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anamnese Clínica & Biossegurança | Studio Esoteric Ink</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= Paleta e Variáveis Oficiais ================= */
+        :root {
+            --ouro: #c5a059;
+            --ouro-claro: #e2c28d;
+            --roxo-escuro: #1d0d35;
+            --preto: #050108;
+            --branco-off: #f4f4f8;
+            --cinza-texto: #cccccc;
+            --borda-ouro: rgba(197, 160, 89, 0.3);
+            
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Lora', serif;
+            --fonte-ui: 'Montserrat', sans-serif;
+        }
+
+        /* --- RESET BÁSICO --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            background-color: var(--preto);
+            color: var(--cinza-texto);
+            font-family: var(--fonte-corpo);
+            line-height: 1.8;
+            background-image: radial-gradient(circle at top right, var(--roxo-escuro) 0%, transparent 40%);
+            -webkit-font-smoothing: antialiased;
+            padding: 80px 5%;
+        }
+
+        /* ================= Estrutura Principal ================= */
+        .portal-container {
+            background-color: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--borda-ouro);
+            padding: 80px 60px;
+            max-width: 850px;
+            margin: 0 auto;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+        }
+
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--ouro);
+            padding: 5px 15px;
+            font-family: var(--fonte-ui);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--ouro);
+            background: rgba(0,0,0,0.3);
+            margin-bottom: 25px;
+        }
+
+        .portal-header {
+            text-align: center;
+            margin-bottom: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .portal-header h1 {
+            font-family: var(--fonte-titulo);
+            color: var(--branco-off);
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .portal-header p {
+            font-family: var(--fonte-corpo);
+            font-size: 1.1rem;
+            color: var(--ouro-claro);
+            font-style: italic;
+        }
+
+        /* Títulos H2 com Linhas Douradas */
+        .section-title {
+            font-family: var(--fonte-titulo);
+            color: var(--ouro);
+            font-size: 1.4rem;
+            margin: 60px 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .section-title::before, .section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--ouro), transparent);
+        }
+
+        /* ================= Campos do Formulário ================= */
+        .input-group { 
+            margin-bottom: 35px; 
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            color: var(--ouro-claro);
+            font-family: var(--fonte-ui);
+            margin-bottom: 12px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        input[type="text"], input[type="tel"], input[type="date"], select, textarea {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--borda-ouro);
+            color: var(--branco-off);
+            padding: 15px;
+            font-family: var(--fonte-corpo);
+            font-size: 1.05rem;
+            outline: none;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        input:focus, textarea:focus { 
+            border-color: var(--ouro); 
+            box-shadow: 0 0 15px rgba(197, 160, 89, 0.1);
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: rgba(204, 204, 204, 0.4);
+            font-family: var(--fonte-ui);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        /* Radios e Checkboxes */
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background: rgba(0,0,0,0.2);
+            padding: 25px;
+            border: 1px solid rgba(197, 160, 89, 0.1);
+        }
+
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            color: var(--cinza-texto);
+            transition: color 0.3s;
+        }
+
+        .check-item:hover {
+            color: var(--branco-off);
+        }
+
+        .check-item input {
+            margin-top: 5px;
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--ouro);
+            cursor: pointer;
+        }
+
+        .check-item span strong {
+            color: var(--ouro-claro);
+            font-family: var(--fonte-ui);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* ================= Caixas de Instrução ================= */
+        .instruction-box {
+            font-size: 0.95rem;
+            background: rgba(197, 160, 89, 0.05);
+            border-left: 2px solid var(--ouro);
+            border-right: 1px solid var(--borda-ouro);
+            border-top: 1px solid var(--borda-ouro);
+            border-bottom: 1px solid var(--borda-ouro);
+            padding: 25px;
+            margin: 15px 0 20px;
+            font-style: italic;
+            color: var(--cinza-texto);
+        }
+
+        .instruction-box strong {
+            color: var(--ouro-claro);
+            font-family: var(--fonte-ui);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-style: normal;
+        }
+
+        /* ================= Botão de Envio ================= */
+        .btn-enviar {
+            width: 100%;
+            display: inline-block;
+            padding: 20px;
+            background: rgba(5, 1, 8, 0.8);
+            color: var(--ouro);
+            border: 1px solid var(--ouro);
+            font-family: var(--fonte-ui);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: 0.4s;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            margin-top: 20px;
+        }
+
+        .btn-enviar:hover {
+            background: var(--ouro);
+            color: var(--preto);
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+        }
+
+        /* ================= Responsividade ================= */
+        @media (max-width: 768px) {
+            body { padding: 40px 15px; }
+            .portal-container { padding: 40px 20px; }
+            .portal-header h1 { font-size: 1.8rem; }
+            .section-title { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="portal-container">
+        <div class="portal-header">
+            <div class="badge">Segurança & Histologia</div>
+            <h1>Ficha de Anamnese Clínica</h1>
+            <p>"A segurança do seu templo físico é a base da nossa arte."</p>
+        </div>
+
+        <div class="instruction-box" style="text-align: center; margin-bottom: 50px;">
+            <strong>Por que preencher esta ficha?</strong><br>
+            A tatuagem é um procedimento invasivo que interage diretamente com o seu sistema imunológico e derme. Para garantir uma cicatrização perfeita e a sua segurança absoluta, precisamos conhecer o seu histórico de saúde. <em>Todas as informações são estritamente sigilosas.</em>
+        </div>
+
+        <form id="form-anamnese">
+            
+            <!-- SEÇÃO 1 -->
+            <div class="section-title">I. Identificação Básica</div>
+            
+            <div class="input-group">
+                <label>Nome Completo</label>
+                <input type="text" id="nome" required placeholder="Seu nome completo">
+            </div>
+            
+            <div class="input-group">
+                <label>Data de Nascimento</label>
+                <input type="text" id="nascimento" required placeholder="DD/MM/AAAA">
+            </div>
+
+            <div class="input-group">
+                <label>Contato de Emergência (Nome e Telefone)</label>
+                <input type="text" id="emergencia" required placeholder="Ex: Maria (Mãe) - (11) 90000-0000">
+            </div>
+
+            <!-- SEÇÃO 2 -->
+            <div class="section-title">II. Histórico Clínico e Sistêmico</div>
+
+            <div class="input-group">
+                <label>Você possui alguma das condições abaixo? (Marque todas que se aplicam)</label>
+                <div class="radio-group">
+                    <label class="check-item"><input type="checkbox" name="saude" value="Diabetes"> <span><strong>Diabetes</strong> (Pode afetar o tempo de cicatrização)</span></label>
+                    <label class="check-item"><input type="checkbox" name="saude" value="Hipertensão"> <span><strong>Hipertensão</strong> (Pressão Alta)</span></label>
+                    <label class="check-item"><input type="checkbox" name="saude" value="Doença Autoimune"> <span><strong>Doença Autoimune</strong> (Lúpus, Vitiligo, etc.)</span></label>
+                    <label class="check-item"><input type="checkbox" name="saude" value="Epilepsia"> <span><strong>Epilepsia / Convulsões</strong></span></label>
+                    <label class="check-item"><input type="checkbox" name="saude" value="Problemas Cardíacos"> <span><strong>Problemas Cardíacos</strong></span></label>
+                    <label class="check-item"><input type="checkbox" name="saude" value="Hepatite/HIV"> <span><strong>Hepatite ou HIV</strong> (Apenas para adequação de cuidados pós-tattoo)</span></label>
+                    <label class="check-item"><input type="checkbox" name="saude" value="Nenhuma das anteriores"> <span><strong>Nenhuma das opções acima</strong></span></label>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Faz uso contínuo de algum medicamento?</label>
+                <div class="instruction-box">
+                    Atenção especial para: Anticoagulantes, Imunossupressores, Corticoides ou Roacutan (Isotretinoína). O uso de Roacutan exige uma pausa de 6 meses antes de tatuar.
+                </div>
+                <textarea id="medicamentos" rows="3" placeholder="Liste os medicamentos ou digite 'Não'"></textarea>
+            </div>
+
+            <!-- SEÇÃO 3 -->
+            <div class="section-title">III. Dermatologia e Alergias</div>
+
+            <div class="input-group">
+                <label>Diagnóstico do Fototipo (Como sua pele reage ao sol?)</label>
+                <div class="radio-group">
+                    <label class="check-item"><input type="radio" name="fototipo" value="Pele Claríssima (Não bronzeia, queima fácil)" required> <span><strong>Peles Claríssimas:</strong> Alta fotossensibilidade. Fica vermelha e não bronzeia.</span></label>
+                    <label class="check-item"><input type="radio" name="fototipo" value="Pele Média/Melânica (Bronzeia fácil)"> <span><strong>Peles Médias a Melânicas:</strong> Bronzeiam-se com facilidade, adquirindo tons dourados.</span></label>
+                    <label class="check-item"><input type="radio" name="fototipo" value="Subtom Oliva"> <span><strong>Subtons Oliva:</strong> Nuances esverdeadas ou acinzentadas.</span></label>
+                    <label class="check-item"><input type="radio" name="fototipo" value="Pele Negra Retinta"> <span><strong>Peles Negras Retintas:</strong> Ricas em melanina, intensificam o brilho ao sol.</span></label>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Condições de Pele e Cicatrização (Marque se possuir)</label>
+                <div class="radio-group">
+                    <label class="check-item"><input type="checkbox" name="pele" value="Queloides"> <span><strong>Tendência a Queloides</strong> (Cicatriz em alto relevo)</span></label>
+                    <label class="check-item"><input type="checkbox" name="pele" value="Psoríase/Dermatite"> <span><strong>Psoríase, Eczema ou Dermatite Atópica</strong></span></label>
+                    <label class="check-item"><input type="checkbox" name="pele" value="Alergia a Metais"> <span><strong>Alergia a Metais</strong> (Níquel, bijuterias, etc.)</span></label>
+                    <label class="check-item"><input type="checkbox" name="pele" value="Alergia a Cosméticos/Tintas"> <span><strong>Alergia a Cosméticos, Látex ou Tintas</strong></span></label>
+                    <label class="check-item"><input type="checkbox" name="pele" value="Nenhuma condição de pele"> <span><strong>Nenhuma das opções</strong></span></label>
+                </div>
+            </div>
+
+            <!-- SEÇÃO 4 -->
+            <div class="section-title">IV. Condição Atual (Para o dia da Sessão)</div>
+
+            <div class="input-group">
+                <div class="radio-group">
+                    <label class="check-item"><input type="radio" name="gestante" value="Sim" required> <span><strong>Estou Gestante ou Amamentando</strong> (Contraindicado para tatuagem)</span></label>
+                    <label class="check-item"><input type="radio" name="gestante" value="Não"> <span><strong>Não estou gestante ou amamentando</strong></span></label>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Nas últimas 24 horas, você:</label>
+                <div class="radio-group">
+                    <label class="check-item"><input type="checkbox" name="hoje" value="Alimentou-se bem"> <span>Alimentou-se bem antes de vir?</span></label>
+                    <label class="check-item"><input type="checkbox" name="hoje" value="Bebeu água"> <span>Bebeu bastante água?</span></label>
+                    <label class="check-item"><input type="checkbox" name="hoje" value="Consumiu Álcool/Drogas"> <span>Consumiu álcool ou drogas ilícitas? (Pode aumentar o sangramento e a dor)</span></label>
+                </div>
+            </div>
+
+            <!-- SEÇÃO 5 -->
+            <div class="section-title">V. Termo de Responsabilidade</div>
+
+            <div class="instruction-box">
+                Ao enviar esta ficha, você declara que todas as informações fornecidas são verdadeiras. Omitir dados de saúde pode colocar sua integridade física em risco. Você também se compromete a seguir rigorosamente o <strong>Guia de Cuidados Pós-Tatuagem</strong> fornecido pelo Studio Esoteric Ink.
+            </div>
+
+            <label class="check-item" style="margin-bottom: 40px;">
+                <input type="checkbox" id="aceite" required> 
+                <span style="font-family: var(--fonte-ui); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--ouro-claro); padding-top: 3px;">
+                    Declaro que as informações são verdadeiras e assumo a responsabilidade pelos cuidados pós-procedimento.
+                </span>
+            </label>
+
+            <button type="submit" class="btn-enviar">Assinar e Enviar Anamnese</button>
+            
+            <p style="text-align: center; font-family: var(--fonte-ui); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; margin-top: 30px; color: #666;">
+                Documento Confidencial. Protegido por sigilo profissional.
+            </p>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('form-anamnese').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Coleta de Dados Básicos
+            const nome = document.getElementById('nome').value;
+            const nascimento = document.getElementById('nascimento').value;
+            const emergencia = document.getElementById('emergencia').value;
+            const medicamentos = document.getElementById('medicamentos').value || "Nenhum";
+
+            // Função auxiliar para pegar checkboxes marcados
+            const getCheckedValues = (name) => {
+                const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
+                let values = [];
+                checkboxes.forEach((cb) => values.push(cb.value));
+                return values.length > 0 ? values.join(", ") : "Nada declarado";
+            };
+
+            // Coleta de Checkboxes e Radios
+            const saude = getCheckedValues('saude');
+            const pele = getCheckedValues('pele');
+            const hoje = getCheckedValues('hoje');
+            
+            const fototipoRadio = document.querySelector('input[name="fototipo"]:checked');
+            const fototipo = fototipoRadio ? fototipoRadio.value : "Não informado";
+
+            const gestanteRadio = document.querySelector('input[name="gestante"]:checked');
+            const gestante = gestanteRadio ? gestanteRadio.value : "Não informado";
+
+            // Formatação da Mensagem para WhatsApp
+            let msg = `📋 *FICHA DE ANAMNESE - ESOTERIC INK* 📋\n\n`;
+            
+            msg += `👤 *I. IDENTIFICAÇÃO*\n`;
+            msg += `• *Nome:* ${nome}\n`;
+            msg += `• *Nascimento:* ${nascimento}\n`;
+            msg += `• *Emergência:* ${emergencia}\n\n`;
+
+            msg += `🩺 *II. HISTÓRICO CLÍNICO*\n`;
+            msg += `• *Condições:* ${saude}\n`;
+            msg += `• *Medicamentos:* ${medicamentos}\n\n`;
+
+            msg += `🔬 *III. DERMATOLOGIA*\n`;
+            msg += `• *Fototipo:* ${fototipo}\n`;
+            msg += `• *Condições de Pele/Alergias:* ${pele}\n\n`;
+
+            msg += `⚖️ *IV. ESTADO ATUAL*\n`;
+            msg += `• *Gestante/Lactante:* ${gestante}\n`;
+            msg += `• *Nas últimas 24h:* ${hoje}\n\n`;
+
+            msg += `✅ *TERMO DE RESPONSABILIDADE*\n`;
+            msg += `O cliente declarou que as informações são verdadeiras e aceitou os termos de cuidado pós-tatuagem.`;
+
+            // Codifica e envia
+            const textoUrl = encodeURIComponent(msg);
+            const numeroWhatsapp = "5511994998057"; // Substitua pelo número correto
+            const urlWhatsapp = `https://api.whatsapp.com/send?phone=${numeroWhatsapp}&text=${textoUrl}`;
+            
+            window.open(urlWhatsapp, '_blank');
+        });
+    </script>
+
+</body>
+</html>

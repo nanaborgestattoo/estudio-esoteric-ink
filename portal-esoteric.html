@@ -472,51 +472,11 @@
                     * Sinta-se livre para usar suas próprias palavras se não tiver certeza sobre os termos técnicos. A alma da arte importa mais que o nome.
                 </p>
             </div>
-
-            <div class="section-title">IV. Diagnóstico do Fototipo</div>
-            
-            <div class="input-group">
-                <label>Para a precisão do projeto, como sua pele se comporta sob a luz solar?</label>
-                <div class="radio-group">
-                    <label class="check-item">
-                        <input type="radio" name="Sol" value="Fitzpatrick_I_II"> 
-                        <span><strong>Peles Claríssimas:</strong> Alta fotossensibilidade. Apresenta vermelhidão imediata e não desenvolvem pigmentação protetora ao sol (não bronzeia).</span>
-                    </label>
-
-                    <label class="check-item">
-                        <input type="radio" name="Sol" value="Fitzpatrick_III_IV"> 
-                        <span><strong>Peles Médias a Melânicas:</strong> Resposta equilibrada ao sol. Bronzeiam-se com facilidade, adquirindo tons dourados ou amendoados.</span>
-                    </label>
-
-                    <label class="check-item">
-                        <input type="radio" name="Sol" value="Oliva"> 
-                        <span><strong>Subtons Oliva:</strong> Peles com nuances esverdeadas ou levemente acinzentadas, comuns em descendências mediterrâneas ou árabes, por exemplo, mas não necessariamente.</span>
-                    </label>
-
-                    <label class="check-item">
-                        <input type="radio" name="Sol" value="Negra_Retinta"> 
-                        <span><strong>Peles Negras retintas e Preciosas:</strong> Ricas em melanina protetora. Sob o sol, intensificam sua profundidade com brilho natural. Exigem domínio técnico em pigmentologia para exaltar o contraste.</span>
-                    </label>
-                </div>
-            </div>
-
-            <div class="input-group">
-                <label>Histórico de Saúde & Cicatrização</label>
-                <div class="radio-group">
-                    <label class="check-item"><input type="checkbox" name="Saude_Diabetes" value="Sim"> Diabetes</label>
-                    <label class="check-item"><input type="checkbox" name="Saude_Queloides" value="Sim"> Queloides / Cicatriz escura</label>
-                    <label class="check-item"><input type="checkbox" name="Saude_Alergias" value="Sim"> Alergia a metais/tintas</label>
-                    <label class="check-item"><input type="checkbox" name="Saude_Medicamentos" value="Sim"> Medicamentos de uso continuo ou anticoagulantes.</label>
-                    <label class="check-item"><input type="checkbox" name="Saude_Sensivel" value="Sim"> Psoríase / Dermatites</label>
-                    <label class="check-item"><input type="checkbox" name="Saude_Gestante" value="Sim"> Gestante / Amamentando</label>
-                    <label class="check-item"><input type="checkbox" name="Saude_OK" value="Sim"> Nenhuma das opções</label>
-                </div>
-            </div>
             
             <div class="input-group">
                 <label>Registro da Área (Foto)</label>
                 <div class="instruction-box">
-                    "Anexe uma foto da área a ser tatuada em luz natural (perto de uma janela), sem flash ou filtros. Essencial para leitura de subtom."
+                    "Anexe uma foto da área a ser tatuada em luz natural (perto de uma janela), sem flash ou filtros."
                 </div>
                 <input type="file" name="Foto_Pele" accept="image/*">
             </div>
@@ -529,28 +489,27 @@
                 <input type="file" name="Foto_Tattoo" accept="image/*">
             </div>
 
-            <div class="section-title">V. O Protocolo para Teste de Cores E AGENDAMENTO</div>
+            <div class="section-title">IV. Agendamento e Reserva</div>
             
             <div class="investment-note">
                 <p style="color:var(--ouro); font-family: var(--fonte-ui); font-size: 1rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;">
-                    Consultoria Técnico e Patch Test
+                    Consultoria Técnica e Agendamento
                 </p>
                 <p style="font-size: 0.95rem; margin-top: 15px; color: var(--cinza-texto);">
-                    Após a aprovação do Orçamento, o valor de R$ 150,00 é solicitado. Este valor garante a execução do seu projeto e a  reserva do seu agendamento.  </p>
-                    </p> <strong style="color: var(--branco-off);">Será descontado integralmente do valor final da tatuagem.</strong><br><br> </p>
-                    A decisão de aguardar o período de teste da cor é uma decisão mútua sua junto ao Studio Esoteric Ink, de acordo com o resultado da triagem, após a consultoria com a tatuadora e aprovação final do projeto.
+                    Após a aprovação do Orçamento, o valor de R$ 150,00 é solicitado. Este valor garante a execução do seu projeto e a reserva do seu agendamento.<br><br>
+                    <strong style="color: var(--branco-off);">Será descontado integralmente do valor final da tatuagem.</strong>
                 </p>
             </div>
             
             <div class="input-group">
                 <label>Campo para Informações Adicionais e dúvidas, se necessário.</label>
-                <input type="text" name="Observacoes" placeholder="Ex: Gestante ou Amamentando, Dúvidas sobre teste de cor, etc.">
+                <input type="text" name="Observacoes" placeholder="Ex: Dúvidas sobre o projeto, horários de preferência, etc.">
             </div>
 
             <label class="check-item" style="margin-bottom: 40px;">
                 <input type="checkbox" name="Aceite_Termos" required> 
                 <span style="font-family: var(--fonte-ui); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--ouro-claro); padding-top: 3px;">
-                    Compreendo a importância do diagnóstico técnico e desejo prosseguir.
+                    Confirmo as informações e desejo prosseguir com a solicitação.
                 </span>
             </label>
 
@@ -606,21 +565,6 @@
             const estiloTecnica = form.elements['Estilo_Tecnica'].value;
             const observacoes = form.elements['Observacoes'].value || "Nenhuma";
 
-            // Coleta do Radio do Fototipo (Sol)
-            const solRadio = form.querySelector('input[name="Sol"]:checked');
-            const fototipo = solRadio ? solRadio.value : "Não selecionado";
-
-            // Coleta dos Checkboxes do Histórico de Saúde
-            let saude = [];
-            if(form.elements['Saude_Diabetes'].checked) saude.push("Diabetes");
-            if(form.elements['Saude_Queloides'].checked) saude.push("Queloides/Cicatriz Escura");
-            if(form.elements['Saude_Alergias'].checked) saude.push("Alergia a metais/tintas");
-            if(form.elements['Saude_Medicamentos'].checked) saude.push("Medicamentos contínuos/anticoagulantes");
-            if(form.elements['Saude_Sensivel'].checked) saude.push("Psoríase/Dermatites");
-            if(form.elements['Saude_Gestante'].checked) saude.push("Gestante/Amamentando");
-            if(form.elements['Saude_OK'].checked) saude.push("Nenhuma das condições");
-            const historicoSaude = saude.length > 0 ? saude.join(", ") : "Não informado";
-
             // Formatação estilizada da mensagem para o WhatsApp
             let textoMensagem = `✨ *NOVA INTENÇÃO DE ARTE - ESOTERIC INK* ✨\n\n`;
             textoMensagem += `👤 *I. IDENTIDADE & CONEXÃO*\n`;
@@ -637,11 +581,7 @@
             textoMensagem += `✍️ *III. ESTILO & CROMATISMO*\n`;
             textoMensagem += `• *Preferência:* ${estiloTecnica}\n\n`;
             
-            textoMensagem += `🧪 *IV. ALQUIMIA & DIAGNÓSTICO*\n`;
-            textoMensagem += `• *Comportamento ao Sol:* ${fototipo}\n`;
-            textoMensagem += `• *Histórico de Saúde:* ${historicoSaude}\n\n`;
-            
-            textoMensagem += `👁️‍🗨️ *V. OBSERVAÇÕES & DÚVIDAS*\n`;
+            textoMensagem += `👁️‍🗨️ *IV. OBSERVAÇÕES & DÚVIDAS*\n`;
             textoMensagem += `• ${observacoes}\n\n`;
             textoMensagem += `--- _*Nota:* Arquivos de imagens/referências anexados diretamente pelo portal._`;
 
