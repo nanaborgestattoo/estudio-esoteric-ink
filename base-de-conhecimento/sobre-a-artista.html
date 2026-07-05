@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Artista | Nana Borges - Studio Esoteric Ink</title>
     
-    <!-- Pré-conexão e Fontes do DNA Esoteric Ink -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
@@ -120,7 +119,8 @@
         }
 
         .btn-action {
-            display: inline-block;
+            display: table; /* Alterado para facilitar centralização */
+            margin: 30px auto 0; /* Centralização automática em relação ao pai */
             padding: 15px 35px;
             background: rgba(5, 1, 8, 0.8);
             color: var(--ouro);
@@ -134,7 +134,6 @@
             transition: 0.4s;
             cursor: pointer;
             backdrop-filter: blur(5px);
-            margin-top: 20px;
         }
 
         .btn-action:hover {
@@ -151,23 +150,21 @@
         }
 
         .about-image-side {
-    width: 40%;
-    position: fixed;
-    height: 100vh;
-    /* Adicionamos ../ para sair da pasta atual e entrar na pasta imagem */
-    background-image: url('../imagem/nana_borges_tattoo_studio_esoteric_ink.webp');
-    background-size: cover;
-    background-position: center;
-    border-right: 1px solid var(--borda-ouro);
-    filter: grayscale(20%) contrast(1.1);
-
+            width: 40%;
+            position: fixed;
+            height: 100vh;
+            background-image: url('../imagem/nana_borges_tattoo_studio_esoteric_ink.webp');
+            background-size: cover;
+            background-position: center;
+            border-right: 1px solid var(--borda-ouro);
+            filter: grayscale(10%) contrast(1.05);
         }
 
         .image-overlay {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            /* Degradê que funde suavemente a imagem ao preto absoluto do fundo */
-            background: linear-gradient(to right, rgba(5,1,8,0.2), var(--preto));
+            /* Suavizamos a sombra para 0.3 para maior clareza visual */
+            background: linear-gradient(to right, rgba(5,1,8,0.1), rgba(5,1,8,0.3));
         }
 
         .about-text-side {
@@ -176,11 +173,11 @@
             padding: 100px 5% 80px 5%;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Centraliza o invólucro de conteúdo */
+            align-items: center; 
         }
 
         .text-wrap {
-            max-width: 850px; /* Limite de leitura elegante */
+            max-width: 850px; 
             width: 100%;
         }
 
@@ -210,7 +207,7 @@
         }
 
         .spec-item {
-            background: rgba(255, 255, 255, 0.02); /* Fundo translúcido */
+            background: rgba(255, 255, 255, 0.02); 
             border: 1px solid var(--borda-ouro);
             padding: 25px;
             transition: all 0.4s ease;
@@ -262,10 +259,11 @@
 
         /* ================= Links Secundários ================= */
         .base-tecnica-link {
-            display: inline-flex;
+            display: flex; /* Mudado para flex para facilitar centralização via margin */
+            width: fit-content;
+            margin: 20px auto 40px;
             align-items: center;
             gap: 10px;
-            margin: 20px 0 40px;
             color: var(--ouro-claro);
             text-decoration: none;
             font-family: var(--fonte-ui);
@@ -312,14 +310,31 @@
             color: #666;
         }
 
-        /* ================= Responsividade ================= */
+        /* ================= Responsividade Corrigida ================= */
         @media (max-width: 992px) {
             .top-nav { justify-content: center; background: rgba(5,1,8,0.95); padding: 15px; }
             .about-container { flex-direction: column; }
-            .about-image-side { position: relative; width: 100%; height: 50vh; border-right: none; border-bottom: 1px solid var(--borda-ouro); }
-            .image-overlay { background: linear-gradient(to bottom, rgba(5,1,8,0.2), var(--preto)); }
-            .about-text-side { width: 100%; margin-left: 0; padding: 60px 5%; }
+            
+            .about-image-side { 
+                position: relative; 
+                width: 100%; 
+                height: 65vh; /* Proporção áurea para Mobile */
+                border-right: none; 
+                border-bottom: 1px solid var(--borda-ouro); 
+                background-position: center 15%; /* Prioriza o enquadramento do rosto/tronco */
+            }
+
+            .image-overlay { 
+                background: linear-gradient(to bottom, rgba(5,1,8,0.05), rgba(5,1,8,0.4)); 
+            }
+
+            .about-text-side { width: 100%; margin-left: 0; padding: 60px 8%; align-items: center; }
+            .text-wrap { text-align: center; }
+            .text-wrap p { text-align: justify; } /* Mantém a elegância do texto justificado */
+            .title { font-size: 2.2rem; text-align: center; }
+            .badge { display: table; margin: 0 auto 25px; } /* Centraliza o badge no mobile */
             .specialties-grid { grid-template-columns: 1fr; }
+            .signature { text-align: center; padding-right: 0; }
         }
     </style>
 </head>
@@ -346,8 +361,6 @@
 
                 <h2 class="section-title">O Studio e a Excelência Itinerante</h2>
                 <p>Atualmente, o Studio Esoteric Ink vive sua fase de <strong>Estúdio Cigano</strong>. Atendo em locais criteriosamente selecionados em São Paulo e Região, mantendo a mobilidade de atender em outras regiões, desde que cumpram minhas exigências máximas de rigor técnico. Cada espaço parceiro é avaliado por mim para garantir a infraestrutura de assepsia, conforto e a atmosfera necessária para a sua imersão.</p>
-
-                
 
                 <h2 class="section-title">Especialidades e Domínio Técnico</h2>
                 <div class="specialties-grid">
@@ -394,7 +407,7 @@
 
                 <br>
                 <a href="./canone.html" class="base-tecnica-link">Acesse aqui nossa Base de Estudos e Referências Bibliográficas Técnicas</a>
-                <br>
+                
                 <a href="../portal-esoteric.html" class="btn-action">Portal de Intenções</a>
                 
                 <div class="signature">- Nana Borges</div>
