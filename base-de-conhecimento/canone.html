@@ -226,9 +226,56 @@
             .pillar-card { padding: 25px; }
             .manifesto-box { padding: 30px 20px; }
         }
+
+        /* --- BOTÃO VOLTAR AO TOPO --- */
+        .top-float {
+            position: fixed; 
+            width: 52px; 
+            height: 52px; 
+            bottom: 40px; 
+            right: 40px; 
+            background-color: rgba(5, 1, 8, 0.9);
+            color: var(--ouro, #c5a059); 
+            border: 1px solid var(--ouro, #c5a059); 
+            border-radius: 50px; 
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8); 
+            z-index: 1000; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            text-decoration: none; 
+            transition: 0.4s; 
+            backdrop-filter: blur(5px); 
+            font-size: 20px; 
+            opacity: 0; 
+            pointer-events: none;
+        }
+        .top-float.show { 
+            opacity: 1; 
+            pointer-events: auto; 
+        }
+        .top-float:hover { 
+            background-color: var(--ouro, #c5a059); 
+            color: var(--preto, #050108); 
+        }
+
+        /* Ajuste Mobile para não conflitar com a barra do navegador */
+        @media (max-width: 768px) {
+            .top-float { 
+                width: 44px; 
+                height: 44px; 
+                bottom: 80px; /* Mantém acima da barra nativa do celular */
+                right: 20px; 
+                z-index: 9999; 
+            }
+        }
     </style>
 </head>
 <body>
+
+    <!-- BOTÃO VOLTAR AO TOPO -->
+    <a href="#" class="top-float" id="topFloat" aria-label="Voltar ao topo">↑</a>
 
     <nav>
         <a href="../base-de-conhecimento/pag-guia-de-cuidados-e-biosseguranca.html" class="logo-text">←Retornar</a>
@@ -690,6 +737,27 @@
         </section>
 
     </main>
+
+    <!-- SCRIPT DO BOTÃO VOLTAR AO TOPO -->
+    <script>
+        const topFloat = document.getElementById('topFloat');
+        if(topFloat) {
+            // Faz o botão aparecer após rolar 500px
+            window.addEventListener('scroll', () => {
+                if(window.scrollY > 500) { topFloat.classList.add('show'); } 
+                else { topFloat.classList.remove('show'); }
+            });
+
+            // Força a rolagem suave para o topo ao clicar
+            topFloat.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+    </script>
 
     <footer style="text-align: center; padding: 40px; color: #444; font-size: 0.7rem; letter-spacing: 2px;">
         ESTABELECENDO O NOVO PADRÃO DA TATUAGEM • 2026

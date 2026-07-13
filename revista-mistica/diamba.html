@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Cannabis Sagrada — Uma História Ancestral | Studio Esoteric Ink</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ouro:#c5a059;
+  --ouro-claro:#e2c28d;
+  --roxo-escuro:#1a0b2e;
+  --preto:#050108;
+  --branco-off:#f4f4f8;
+  --cinza-texto:#cccccc;
+  --borda-ouro:rgba(197,160,89,.3);
+  --verde-diamba:#3f5a44;
+  --fonte-titulo:'Cinzel',serif;
+  --fonte-corpo:'Lora',serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{max-width:100%;overflow-x:hidden;}
+body{
+  background-color:var(--preto);
+  color:var(--branco-off);
+  font-family:var(--fonte-corpo);
+  line-height:1.8;
+  background-image:radial-gradient(circle at top right,#1d0d35 0%,transparent 40%);
+  scroll-behavior:smooth;
+}
+a{color:inherit;}
+img{max-width:100%;display:block;}
+
+/* ---------- utilidades ---------- */
+.badge{
+  display:inline-block;border:1px solid var(--ouro);padding:5px 15px;
+  font-family:'Montserrat',sans-serif;font-size:.7rem;text-transform:uppercase;
+  letter-spacing:4px;color:var(--ouro);margin-bottom:20px;background:rgba(0,0,0,.3);
+}
+.dropcap::first-letter{
+  font-family:var(--fonte-titulo);font-size:4rem;float:left;line-height:.8;
+  padding-right:14px;color:var(--ouro);
+}
+.section-title{
+  font-family:var(--fonte-titulo);color:var(--ouro);font-size:1.9rem;margin-bottom:35px;
+  display:flex;align-items:center;justify-content:center;gap:15px;text-transform:uppercase;
+  letter-spacing:2px;text-align:center;width:100%;
+}
+.section-title::before,.section-title::after{
+  content:"";flex:1;height:1px;background:linear-gradient(to right,transparent,var(--ouro),transparent);
+}
+.btn-action{
+  display:inline-block;padding:15px 35px;background:rgba(5,1,8,.8);color:var(--ouro);
+  border:1px solid var(--ouro);text-decoration:none;font-family:'Montserrat',sans-serif;
+  text-transform:uppercase;letter-spacing:2px;font-size:.8rem;font-weight:bold;
+  transition:.4s;cursor:pointer;backdrop-filter:blur(5px);
+}
+.btn-action:hover{background:var(--ouro);color:var(--preto);box-shadow:0 0 20px rgba(197,160,89,.4);}
+.btn-ghost{
+  display:inline-block;padding:10px 22px;color:var(--ouro-claro);text-decoration:none;
+  font-family:'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:2px;font-size:.7rem;
+  border-bottom:1px solid var(--borda-ouro);transition:.3s;
+}
+.btn-ghost:hover{color:var(--branco-off);border-color:var(--ouro);}
+
+/* ---------- botões flutuantes ---------- */
+.whatsapp-float{
+  position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:rgba(5,1,8,.9);
+  color:var(--ouro);border:1px solid var(--ouro);border-radius:50px;text-align:center;font-size:30px;
+  box-shadow:0 4px 15px rgba(0,0,0,.8);z-index:1000;display:flex;align-items:center;justify-content:center;
+  text-decoration:none;transition:.4s;backdrop-filter:blur(5px);
+}
+.whatsapp-float:hover{background-color:var(--ouro);color:var(--preto);transform:scale(1.1);}
+.top-float{
+  position:fixed;width:52px;height:52px;bottom:110px;right:40px;background-color:rgba(5,1,8,.9);
+  color:var(--ouro);border:1px solid var(--ouro);border-radius:50px;text-align:center;
+  box-shadow:0 4px 15px rgba(0,0,0,.8);z-index:1000;display:flex;align-items:center;justify-content:center;
+  text-decoration:none;transition:.4s;backdrop-filter:blur(5px);font-size:20px;opacity:0;pointer-events:none;
+}
+.top-float.show{opacity:1;pointer-events:auto;}
+.top-float:hover{background-color:var(--ouro);color:var(--preto);}
+
+/* ---------- topo / nav ---------- */
+.site-nav{
+  position:sticky;top:0;z-index:900;display:flex;align-items:center;justify-content:space-between;
+  padding:18px 6%;background:rgba(5,1,8,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--borda-ouro);
+}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-logo{width:34px;height:34px;}
+.nav-logo svg{width:100%;height:100%;stroke:var(--ouro);stroke-width:2;fill:none;}
+.nav-brand-text{font-family:var(--fonte-titulo);color:var(--branco-off);font-size:.95rem;letter-spacing:1px;}
+.nav-brand-text span{display:block;font-family:'Montserrat',sans-serif;font-size:.6rem;letter-spacing:3px;color:var(--ouro-claro);text-transform:uppercase;}
+.nav-links{display:flex;gap:26px;}
+.nav-links a{
+  text-decoration:none;color:var(--cinza-texto);font-family:'Montserrat',sans-serif;font-size:.7rem;
+  letter-spacing:2px;text-transform:uppercase;transition:.3s;
+}
+.nav-links a:hover{color:var(--ouro);}
+.nav-toggle{display:none;background:none;border:1px solid var(--ouro);color:var(--ouro);width:38px;height:38px;cursor:pointer;}
+
+/* ---------- hero ---------- */
+.hero{
+  min-height:78vh;position:relative;display:flex;flex-direction:column;justify-content:center;
+  align-items:center;text-align:center;padding:80px 6%;gap:22px;
+  background:radial-gradient(ellipse at center, rgba(63,90,68,.25) 0%, transparent 65%), linear-gradient(to bottom, transparent, #000 95%);
+}
+.hero-leaf{width:90px;height:90px;opacity:.9;margin-bottom:6px;}
+.hero-leaf svg{width:100%;height:100%;}
+.hero-eyebrow{
+  color:var(--ouro-claro);font-family:'Montserrat',sans-serif;font-size:.85rem;letter-spacing:6px;
+  text-transform:uppercase;display:flex;align-items:center;gap:15px;
+}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';display:block;width:40px;height:1px;background-color:var(--ouro);}
+.hero-title{
+  font-family:var(--fonte-titulo);font-size:clamp(2.3rem,6vw,4.6rem);font-weight:400;letter-spacing:2px;
+  color:var(--branco-off);line-height:1.15;text-shadow:0 4px 15px rgba(0,0,0,.9);
+}
+.hero-sub{
+  max-width:680px;color:var(--cinza-texto);font-size:1.05rem;font-style:italic;
+}
+.hero-cta{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:10px;}
+
+/* ---------- intro / manifesto do estudo ---------- */
+.intro-section{padding:80px 8%;background-color:#000;text-align:center;}
+.intro-section p{max-width:820px;margin:0 auto 20px;font-size:1.1rem;color:var(--branco-off);text-align:justify;}
+.intro-section p:first-of-type{text-align:justify;}
+.intro-disclaimer{
+  max-width:820px;margin:35px auto 0;padding:22px 26px;border:1px solid var(--borda-ouro);
+  background:rgba(197,160,89,.04);font-family:'Montserrat',sans-serif;font-size:.78rem;
+  letter-spacing:.5px;color:var(--ouro-claro);text-align:left;line-height:1.9;
+}
+
+/* ---------- índice / topics ---------- */
+.toc-section{padding:90px 8%;background-color:#000;}
+.toc-grid{
+  max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px 60px;
+}
+.toc-link{
+  display:flex;align-items:baseline;gap:22px;text-decoration:none;padding:18px 0;
+  border-bottom:1px solid rgba(197,160,89,.15);transition:transform .35s ease;
+}
+.toc-link:hover{transform:translateX(10px);border-bottom-color:var(--ouro);}
+.toc-number{color:var(--ouro);font-family:var(--fonte-titulo);font-size:1.7rem;line-height:1;flex-shrink:0;}
+.toc-text{color:var(--branco-off);font-size:1.05rem;transition:color .3s;}
+.toc-text span{display:block;font-family:'Montserrat',sans-serif;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--cinza-texto);margin-top:4px;}
+.toc-link:hover .toc-text{color:var(--ouro-claro);}
+
+/* ---------- capítulos ---------- */
+.chapter{
+  padding:100px 8% 70px;background-color:#000;border-top:1px solid var(--borda-ouro);
+  max-width:900px;margin:0 auto;
+}
+.chapter-inner{max-width:760px;margin:0 auto;}
+.chapter-eyebrow{
+  font-family:'Montserrat',sans-serif;color:var(--ouro-claro);font-size:.75rem;letter-spacing:4px;
+  text-transform:uppercase;margin-bottom:16px;
+}
+.chapter h2.chapter-title{
+  font-family:var(--fonte-titulo);color:var(--ouro);font-size:clamp(1.7rem,3.5vw,2.5rem);
+  margin-bottom:6px;line-height:1.2;
+}
+.chapter h3.chapter-subtitle{
+  font-family:'Montserrat',sans-serif;font-weight:300;color:var(--cinza-texto);font-size:.95rem;
+  margin-bottom:40px;letter-spacing:.5px;font-style:italic;
+}
+.chapter p{color:var(--branco-off);font-size:1.05rem;margin-bottom:24px;text-align:justify;}
+.chapter h4.sub{
+  font-family:var(--fonte-titulo);color:var(--ouro-claro);font-size:1.2rem;margin:36px 0 16px;letter-spacing:.5px;
+}
+blockquote.quote-block{
+  margin:36px 0;padding:24px 30px;border-left:2px solid var(--ouro);background:rgba(197,160,89,.04);
+  font-style:italic;color:var(--ouro-claro);font-size:1rem;position:relative;
+}
+blockquote.quote-block cite{
+  display:block;margin-top:12px;font-style:normal;font-family:'Montserrat',sans-serif;
+  font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--cinza-texto);
+}
+.tattoo-box{
+  margin:40px 0;padding:26px 30px;border:1px solid var(--borda-ouro);background:rgba(255,255,255,.02);
+  display:flex;gap:18px;align-items:flex-start;
+}
+.tattoo-box .tattoo-icon{flex-shrink:0;width:34px;height:34px;margin-top:4px;}
+.tattoo-box .tattoo-icon svg{width:100%;height:100%;stroke:var(--ouro);fill:none;stroke-width:1.5;}
+.tattoo-box-text h5{
+  font-family:'Montserrat',sans-serif;font-size:.72rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--ouro);margin-bottom:10px;
+}
+.tattoo-box-text p{color:var(--cinza-texto);font-size:.95rem;text-align:left;margin-bottom:0;}
+
+.chapter-divider{
+  display:flex;align-items:center;justify-content:center;gap:14px;margin:60px 0 0;color:var(--ouro);
+}
+.chapter-divider .line{flex:1;height:1px;background:linear-gradient(to right,transparent,var(--borda-ouro),transparent);}
+.chapter-nav{
+  display:flex;justify-content:space-between;align-items:center;margin-top:50px;padding-top:30px;
+  border-top:1px solid var(--borda-ouro);font-family:'Montserrat',sans-serif;font-size:.75rem;
+  letter-spacing:1px;text-transform:uppercase;
+}
+.chapter-nav a{color:var(--ouro-claro);text-decoration:none;transition:.3s;}
+.chapter-nav a:hover{color:var(--branco-off);}
+
+/* ---------- fechamento ---------- */
+.closing-section{padding:100px 8%;text-align:center;background-color:#000;border-top:1px solid var(--borda-ouro);}
+.closing-section p{max-width:760px;margin:0 auto 22px;color:var(--branco-off);font-size:1.1rem;text-align:justify;font-style:italic;}
+.closing-leaf{width:60px;height:60px;margin:0 auto 30px;opacity:.85;}
+.closing-leaf svg{width:100%;height:100%;}
+
+/* ---------- fontes e referências ---------- */
+.refs-section{padding:100px 8%;background-color:#000;border-top:1px solid var(--borda-ouro);}
+.refs-intro{max-width:700px;margin:0 auto 50px;text-align:center;color:var(--cinza-texto);font-size:.95rem;font-style:italic;}
+.refs-grid{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:46px;}
+.refs-group h4{
+  font-family:var(--fonte-titulo);color:var(--ouro-claro);font-size:1.15rem;margin-bottom:20px;
+  letter-spacing:.5px;display:flex;align-items:center;gap:14px;
+}
+.refs-group h4::after{content:"";flex:1;height:1px;background:linear-gradient(to right,var(--borda-ouro),transparent);}
+.refs-list{list-style:none;display:flex;flex-direction:column;gap:16px;}
+.refs-list li{
+  padding-left:22px;position:relative;color:var(--branco-off);font-size:.92rem;line-height:1.7;
+}
+.refs-list li::before{content:"—";position:absolute;left:0;color:var(--ouro);}
+.refs-list li span.ref-note{display:block;color:var(--cinza-texto);font-size:.82rem;font-style:italic;margin-top:3px;}
+.refs-disclaimer{
+  max-width:820px;margin:50px auto 0;padding:20px 26px;border:1px solid var(--borda-ouro);
+  background:rgba(197,160,89,.04);font-family:'Montserrat',sans-serif;font-size:.75rem;
+  letter-spacing:.3px;color:var(--ouro-claro);text-align:left;line-height:1.85;
+}
+
+/* ---------- portais relacionados ---------- */
+.portals-section{padding:100px 8%;text-align:center;background:linear-gradient(to bottom,#000 0%,transparent 20%,transparent 80%,#000 100%);}
+.portals-header p{font-family:'Montserrat',sans-serif;color:var(--ouro-claro);font-size:.8rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:50px;}
+.portals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1100px;margin:0 auto;}
+.portal-card{
+  position:relative;padding:36px 26px;text-align:left;text-decoration:none;border:1px solid var(--borda-ouro);
+  transition:.4s;background:rgba(255,255,255,.015);
+}
+.portal-card:hover{border-color:var(--ouro);transform:translateY(-5px);box-shadow:0 10px 30px rgba(197,160,89,.12);}
+.portal-tag{color:var(--ouro);font-family:'Montserrat',sans-serif;font-size:.65rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:14px;display:block;}
+.portal-card h3{font-family:var(--fonte-titulo);font-size:1.3rem;color:var(--branco-off);margin-bottom:12px;line-height:1.25;}
+.portal-card p{color:var(--cinza-texto);font-size:.9rem;margin-bottom:20px;line-height:1.6;}
+.portal-btn{color:var(--ouro-claro);font-family:'Montserrat',sans-serif;font-size:.7rem;text-transform:uppercase;letter-spacing:2px;display:flex;align-items:center;gap:8px;font-weight:bold;}
+.portal-btn::after{content:'→';font-size:1.1rem;transition:transform .3s;}
+.portal-card:hover .portal-btn::after{transform:translateX(5px);}
+
+/* ---------- footer ---------- */
+.site-footer{
+  background-color:transparent;padding:60px 8% 40px;text-align:center;border-top:1px solid var(--borda-ouro);
+  display:flex;flex-direction:column;align-items:center;gap:20px;
+}
+.footer-logo{width:46px;height:46px;}
+.footer-logo svg{width:100%;height:100%;stroke:var(--ouro);stroke-width:2;fill:none;}
+.footer-disclaimer{color:var(--cinza-texto);font-size:.82rem;max-width:720px;line-height:1.85;}
+.footer-disclaimer strong{color:var(--ouro-claro);font-family:'Montserrat',sans-serif;font-size:.72rem;text-transform:uppercase;letter-spacing:1px;}
+.footer-links{display:flex;gap:26px;margin-top:12px;flex-wrap:wrap;justify-content:center;}
+.footer-links a{color:var(--ouro);text-decoration:none;font-family:'Montserrat',sans-serif;font-size:.72rem;text-transform:uppercase;letter-spacing:2px;transition:.3s;}
+.footer-links a:hover{color:var(--branco-off);}
+.footer-copy{margin-top:30px;font-family:'Montserrat',sans-serif;font-size:.62rem;color:#666;letter-spacing:1.5px;text-transform:uppercase;}
+
+/* ---------- responsivo ---------- */
+@media (max-width:900px){
+  .toc-grid{grid-template-columns:1fr;}
+  .portals-grid{grid-template-columns:1fr;}
+}
+@media (max-width:768px){
+  .nav-links{
+    position:fixed;top:70px;right:0;left:0;background:rgba(5,1,8,.97);flex-direction:column;
+    padding:24px 8%;gap:20px;border-bottom:1px solid var(--borda-ouro);transform:translateY(-130%);
+    transition:transform .35s ease;
+  }
+  .nav-links.open{transform:translateY(0);}
+  .nav-toggle{display:block;}
+  h1,.hero-title{font-size:2.1rem!important;}
+  .section-title,.chapter h2.chapter-title{font-size:1.5rem!important;}
+  .hero,.intro-section,.toc-section,.chapter,.closing-section,.portals-section,.site-footer{padding-left:6%;padding-right:6%;}
+  .chapter{padding-top:70px;}
+  .tattoo-box{flex-direction:column;}
+  .whatsapp-float{width:52px;height:52px;bottom:24px;right:24px;font-size:24px;}
+  .top-float{width:44px;height:44px;bottom:86px;right:24px;}
+}
+@media (max-width:600px){
+  .chapter-nav{flex-direction:column;gap:14px;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGO SVG reutilizável -->
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="brand-mark" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="45"/>
+    <polygon points="50,5 79,90 4,38 96,38 21,90"/>
+  </symbol>
+  <symbol id="leaf-mark" viewBox="0 0 100 100">
+    <path d="M50 10 C50 10 20 35 20 60 C20 78 33 90 50 90 C67 90 80 78 80 60 C80 35 50 10 50 10 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path d="M50 10 L50 90 M50 30 L30 45 M50 30 L70 45 M50 50 L26 60 M50 50 L74 60 M50 68 L34 78 M50 68 L66 78" stroke="currentColor" stroke-width="1.4" fill="none"/>
+  </symbol>
+</svg>
+
+<!-- FLUTUANTES -->
+<a href="https://wa.link/3ij5uv" class="whatsapp-float" target="_blank" aria-label="Falar no WhatsApp">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.438 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+<a href="#topo" class="top-float" id="topFloat" aria-label="Voltar ao topo">↑</a>
+
+<!-- NAV -->
+<nav class="site-nav" id="topo">
+  <a href="../index.html" class="nav-brand">
+    <span class="nav-logo"><svg viewBox="0 0 100 100"><use href="#brand-mark"/></svg></span>
+    <span class="nav-brand-text">Studio Esoteric Ink<span>Revista Mística</span></span>
+  </a>
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">☰</button>
+  <div class="nav-links" id="navLinks">
+    <a href="#indice">Índice</a>
+    <a href="#parte-1">Capítulos</a>
+    <a href="#referencias">Referências</a>
+    <a href="../revista-mistica/revista-mistica-blog.html">Revista Mística</a>
+    <a href="../biblioteca-do-oculto/biblioteca-do-oculto.html">Biblioteca do Oculto</a>
+    <a href="../portal-esoteric.html">Portal de Intenções</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-leaf" style="color:var(--ouro)"><svg viewBox="0 0 100 100"><use href="#leaf-mark"/></svg></div>
+  <div class="badge">Revista Mística · Estudo Ancestral</div>
+  <h1 class="hero-title">A Cannabis Sagrada</h1>
+  <div class="hero-eyebrow">Uma História Ancestral</div>
+  <p class="hero-sub">Uma jornada em oito capítulos pelas raízes espirituais, medicinais e culturais de uma das plantas mais antigas da relação humana com o sagrado — da Ásia Central aos altares, dos terreiros às tendas rastafári.</p>
+  <div class="hero-cta">
+    <a href="#indice" class="btn-action">Explorar os 8 Capítulos</a>
+    <a href="#nota-tattoo" class="btn-ghost">Elos com a Arte na Pele</a>
+  </div>
+</header>
+
+<!-- INTRO -->
+<section class="intro-section" id="nota-tattoo">
+  <div class="badge">Nota do Studio</div>
+  <p class="dropcap">Este compêndio nasce do mesmo impulso que orienta cada ritual na pele deste templo: o respeito por aquilo que atravessa gerações. A Cannabis, como a tatuagem, é uma das mais antigas tecnologias humanas de conexão — com o corpo, com o espírito, com os ancestrais. Ambas foram, em diferentes momentos da história, tratadas como marginais, perigosas ou primitivas por sistemas que temiam o que não controlavam; e ambas vêm, hoje, sendo restauradas ao lugar de dignidade que sempre mereceram. Ao longo dos oito capítulos a seguir, sempre que fizer sentido, apontaremos essas pontes entre a planta sagrada e a arte que praticamos aqui — sem jamais confundir uma coisa com a outra.</p>
+  <div class="intro-disclaimer">
+    <strong>Aviso importante:</strong> este material tem finalidade exclusivamente histórica, cultural e educativa. Não constitui incentivo ao uso ilícito de nenhuma substância, nem orientação médica. O uso, cultivo e porte da Cannabis seguem sujeitos à legislação vigente em cada país e região — no Brasil, à decisão do STF de 2024 e às normas da ANVISA para fins medicinais. Consulte sempre fontes oficiais e profissionais de saúde.
+  </div>
+</section>
+
+<!-- ÍNDICE -->
+<section class="toc-section" id="indice">
+  <h2 class="section-title">Os Oito Capítulos</h2>
+  <div class="toc-grid">
+    <a href="#parte-1" class="toc-link"><span class="toc-number">01</span><span class="toc-text">Raízes Ancestrais<span>Himalaia, China e Egito</span></span></a>
+    <a href="#parte-2" class="toc-link"><span class="toc-number">02</span><span class="toc-text">Shiva e a Planta da Felicidade<span>Hinduísmo e a Índia sagrada</span></span></a>
+    <a href="#parte-3" class="toc-link"><span class="toc-number">03</span><span class="toc-text">Kaneh Bosm<span>As escrituras hebraicas</span></span></a>
+    <a href="#parte-4" class="toc-link"><span class="toc-number">04</span><span class="toc-text">Diamba<span>Ancestralidade africana e o Brasil</span></span></a>
+    <a href="#parte-5" class="toc-link"><span class="toc-number">05</span><span class="toc-text">Ganja e Jah<span>O Rastafári</span></span></a>
+    <a href="#parte-6" class="toc-link"><span class="toc-number">06</span><span class="toc-text">Cura Milenar<span>Da medicina antiga à ciência</span></span></a>
+    <a href="#parte-7" class="toc-link"><span class="toc-number">07</span><span class="toc-text">A Guerra às Drogas<span>Racismo e criminalização</span></span></a>
+    <a href="#parte-8" class="toc-link"><span class="toc-number">08</span><span class="toc-text">O Caminho de Volta<span>Ciência, justiça e descriminalização</span></span></a>
+  </div>
+</section>
+
+<!-- ================= PARTE 1 ================= -->
+<article class="chapter" id="parte-1">
+  <div class="chapter-inner">
+    <div class="chapter-eyebrow">Parte 1 de 8</div>
+    <h2 class="chapter-title">Raízes Ancestrais</h2>
+    <h3 class="chapter-subtitle">Do planalto tibetano à Rota da Seda: os primeiros encontros entre o ser humano e a planta</h3>
+
+    <p class="dropcap">Antes de qualquer nome, antes de qualquer lei, havia apenas a planta e o vento. A Cannabis é uma das primeiras companheiras da humanidade — tão antiga que seus vestígios se confundem com os primeiros passos da agricultura e da espiritualidade humanas. Compreender sua origem é, de certa forma, revisitar o próprio nascimento da nossa relação com a terra, com a cura e com o sagrado.</p>
+
+    <h4 class="sub">Um berço nas alturas do Himalaia</h4>
+    <p>Estudos de pólen indicam que a Cannabis evoluiu há cerca de 28 milhões de anos no planalto tibetano oriental, uma região de altitude que, ao longo de milênios, viu a planta se espalhar e se diversificar por toda a Ásia Central. Foi ali, entre montanhas e vales cortados pelos ventos, que essa erva generosa aprendeu a prosperar em condições extremas — e aprendeu também a acompanhar os povos nômades que cruzavam aquele território em busca de rotas comerciais e espirituais.</p>
+    <p>Milhares de anos depois, na China oriental, comunidades neolíticas já reconheciam o valor da planta. Vestígios encontrados em sítios como Beitaishang e Qianzhongzitou, na província de Shandong, revelam fitólitos de Cannabis datados de 4.500 a 3.400 anos atrás, frequentemente associados a grãos como painço e arroz — sinal de que a planta já fazia parte do cotidiano agrícola, cultivada por suas sementes nutritivas, por sua fibra e, muito provavelmente, também por seus efeitos sobre corpo e mente.</p>
+
+    <blockquote class="quote-block">“A relação da humanidade com a Cannabis é muito mais antiga do que qualquer data comemorativa — ela remonta ao próprio aperfeiçoamento da agricultura.”</blockquote>
+
+    <h4 class="sub">O cemitério de Jirzankal: o primeiro fumo sagrado</h4>
+    <p>No planalto do Pamir, na fronteira entre a atual China e o Tadjiquistão, um cemitério de 2.500 anos guarda um dos registros mais tocantes da nossa história com a planta. Em Jirzankal, arqueólogos encontraram dez braseiros de madeira, cada um contendo pedras queimadas e resíduos de Cannabis com teores de THC muito mais elevados que os do cânhamo selvagem comum da época — evidência de que aquele povo já selecionava e talvez cultivasse variedades mais potentes, com propósito claramente ritual.</p>
+    <p>Reconstituindo a cena, é possível imaginar uma cerimônia fúnebre em homenagem aos mortos ou às divindades: uma harpa soando, o aroma de zimbro se misturando à fumaça densa e doce da Cannabis queimada sobre pedras aquecidas. Os pesquisadores acreditam que os participantes inalavam essa fumaça em um contexto de comunhão com o espiritual — talvez a mais antiga evidência direta e inequívoca do uso psicoativo humano da planta.</p>
+    <p>Essa descoberta também reabilitou, aos olhos da ciência, um relato antigo que por muito tempo foi tratado como lenda: o historiador grego Heródoto, já no século V a.C., descreveu os citas — povo nômade da Ásia Central — realizando cerimônias fúnebres em que sementes de Cannabis eram lançadas sobre pedras incandescentes dentro de tendas fechadas, provocando um vapor que levava os presentes ao êxtase. Por séculos, duvidou-se de Heródoto; a arqueologia, porém, tem lhe dado cada vez mais razão.</p>
+
+    <div class="tattoo-box">
+      <div class="tattoo-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6L3 9l6-1z"/></svg></div>
+      <div class="tattoo-box-text">
+        <h5>Elo com a Arte na Pele</h5>
+        <p>Curiosamente, esses mesmos citas descritos por Heródoto são conhecidos pela arqueologia por outro motivo: as múmias congeladas de Pazyryk, nas montanhas do Altai, exibem algumas das tatuagens figurativas mais antigas e bem preservadas já encontradas — animais míticos entrelaçados cobrindo braços e tronco. Fumo ritual e marcação corporal caminhavam lado a lado na cosmovisão desses povos nômades, como duas linguagens irmãs para o sagrado e para a memória do corpo.</p>
+      </div>
+    </div>
+
+    <h4 class="sub">Egito: sementes que atravessaram a eternidade</h4>
+    <p>No Egito Antigo, a Cannabis também deixou sua marca. Sementes de cânhamo foram encontradas em tumbas de cerca de 2000 a.C., e o Papiro de Ebers, um dos mais antigos textos médicos da humanidade (por volta de 1400 a.C.), já recomendava a planta para tratar problemas oftalmológicos e dores. Vestígios de pólen de Cannabis foram identificados até mesmo nos restos mortais de Ramsés II, sugerindo que a planta acompanhava também os rituais fúnebres da realeza, como uma ponte entre o mundo dos vivos e o dos que partiam.</p>
+
+    <h4 class="sub">Uma herança compartilhada por toda a humanidade</h4>
+    <p>O que esses vestígios revelam, mais do que datas e localizações, é uma verdade simples e bonita: em praticamente todos os cantos do mundo antigo onde a Cannabis cresceu, os seres humanos reconheceram nela algo que ia além da fibra e do alimento. Reconheceram um convite ao encontro — com os ancestrais, com os deuses, com os próprios limites da consciência. Essa é a herança que carregamos, muito antes de qualquer estigma: a de um vegetal que os povos antigos trataram, quase universalmente, como um presente.</p>
+
+    <div class="chapter-nav"><span></span><a href="#parte-2">Próximo capítulo: Shiva e a Índia Sagrada →</a></div>
+  </div>
+</article>
+
+<!-- ================= PARTE 2 ================= -->
+<article class="chapter" id="parte-2">
+  <div class="chapter-inner">
+    <div class="chapter-eyebrow">Parte 2 de 8</div>
+    <h2 class="chapter-title">Shiva e a Planta da Felicidade</h2>
+    <h3 class="chapter-subtitle">Cannabis, hinduísmo e a espiritualidade milenar da Índia</h3>
+
+    <p class="dropcap">Poucas culturas tecem uma relação tão íntima, contínua e reverente com a Cannabis quanto a Índia. Ali, a planta não é vista como intrusa ou ameaça: é uma convidada antiga, presente nos textos sagrados mais antigos da humanidade e associada a uma das divindades mais veneradas do hinduísmo. Para entender a espiritualidade da Cannabis, é quase obrigatório começar por essa terra.</p>
+
+    <h4 class="sub">A planta que mora nos Vedas</h4>
+    <p>Os Vedas — textos sagrados hindus que remontam a mais de 3.000 anos — já mencionavam a Cannabis, conhecida em sânscrito como bhanga, como uma das cinco plantas sagradas da Terra. O Atharva Veda descreve-a como fonte de felicidade, doadora de alegria e libertadora da ansiedade, afirmando que um espírito protetor habitava em suas folhas. Não é exagero dizer que, para os antigos hindus, a Cannabis era compreendida como uma bênção oferecida aos seres humanos para aliviar o peso da existência.</p>
+
+    <h4 class="sub">A lenda de Shiva: veneno, dor e compaixão</h4>
+    <p>A tradição mais conhecida liga a Cannabis a Shiva, o deus da transformação, da meditação e do ascetismo. Segundo o mito da Samudra Manthan — a agitação do oceano cósmico em busca do elixir da imortalidade —, um veneno mortal surgiu das águas antes do próprio elixir. Para proteger a criação, Shiva bebeu o veneno, e sua garganta ficou azul pela dor. Em algumas versões da história, sua esposa Parvati lhe ofereceu bhang para acalmar o sofrimento; em outras, a própria Cannabis nasceu do contato com uma gota daquele elixir sagrado, misturando em si dor e cura, veneno e alívio.</p>
+    <p>Outra tradição mais doméstica conta que Shiva, exausto após uma disputa familiar sob o sol escaldante, adormeceu à sombra de um arbusto frondoso. Ao acordar, provou suas folhas e sentiu-se revigorado — e assim a Cannabis se tornou seu alimento predileto. Seja qual for a versão, o efeito é o mesmo: a planta se torna símbolo de alívio, cuidado e transcendência, oferecida por compaixão a quem sofre.</p>
+
+    <blockquote class="quote-block">“Os Vedas veem a Cannabis como fonte de felicidade e alegria, cordialmente oferecida aos seres humanos para ajudá-los a perder o medo e se libertar da ansiedade.”</blockquote>
+
+    <h4 class="sub">Bhang, charas e os rituais de Shivaratri</h4>
+    <p>Até hoje, a Cannabis segue presente na vida espiritual indiana sob três formas principais: o bhang, uma bebida feita com folhas moídas, leite, nozes e especiarias; o charas, uma resina tradicionalmente associada aos sadhus — ascetas que fumam a planta em cachimbos chamados chillum como parte de sua prática contemplativa; e as flores secas, fumadas puras ou com tabaco. No festival de Mahashivratri, celebrado em honra a Shiva, e também durante o Holi, o festival das cores, o bhang é compartilhado como oferenda e como bebida de celebração comunitária, unindo devoção e alegria coletiva.</p>
+    <p>A medicina tradicional ayurvédica reconhece a planta sob os nomes de vijaya ("aquela que conquista") e siddhi ("realização", "poder sutil"), utilizando-a há séculos para o apetite, a digestão e o alívio de dores. É significativo que, entre os hindus mais devotos — que evitam completamente o álcool — o uso ritual da Cannabis não carregue o mesmo estigma; pelo contrário, é integrado com naturalidade à busca por uma vida mais pura e conectada ao sagrado.</p>
+
+    <div class="tattoo-box">
+      <div class="tattoo-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M5 8c3-3 11-3 14 0M4 14c4-4 12-4 16 0"/></svg></div>
+      <div class="tattoo-box-text">
+        <h5>Elo com a Arte na Pele</h5>
+        <p>A imagética de Shiva — o terceiro olho, o tridente (trishula), a lua crescente e a serpente ao pescoço — figura entre os pedidos mais recorrentes em estúdios de tatuagem com viés espiritual, assim como os sadhus, que tradicionalmente marcam o corpo com cinzas rituais (vibhuti) em vez de tinta. É um lembrete de que, em muitas tradições, decorar ou consagrar o corpo — seja com fumaça sagrada, com cinza ou com agulha — é sempre um gesto de devoção, nunca de vaidade vazia.</p>
+      </div>
+    </div>
+
+    <h4 class="sub">Do Tibete à estepe: um fio espiritual mais amplo</h4>
+    <p>Essa reverência não fica restrita à Índia. No Tibete, a Cannabis foi historicamente associada ao budismo tântrico, sendo usada como incenso e auxílio à meditação profunda, um caminho para estados de consciência mais sutis. Mais ao norte, entre os povos nômades da Ásia Central — os citas descritos por Heródoto e confirmados pela arqueologia de Jirzankal — a planta acompanhava os rituais fúnebres, servindo de ponte entre os vivos e os ancestrais que partiam.</p>
+    <p>O que esses relatos, tão distantes entre si no espaço, revelam em comum é uma intuição compartilhada: a de que certas plantas carregam a capacidade de aproximar o ser humano do divino, de dissolver por um instante a fronteira entre o corpo e o espírito. A Cannabis, para esses povos, nunca foi apenas uma substância — era uma linguagem para o sagrado.</p>
+
+    <div class="chapter-nav"><a href="#parte-1">← Capítulo anterior</a><a href="#parte-3">Próximo capítulo: Kaneh Bosm →</a></div>
+  </div>
+</article>
+
+<!-- ================= PARTE 3 ================= -->
+<article class="chapter" id="parte-3">
+  <div class="chapter-inner">
+    <div class="chapter-eyebrow">Parte 3 de 8</div>
+    <h2 class="chapter-title">Kaneh Bosm</h2>
+    <h3 class="chapter-subtitle">O possível rastro da Cannabis nas escrituras hebraicas e no óleo da unção</h3>
+
+    <p class="dropcap">Entre os temas mais delicados e fascinantes da história espiritual da Cannabis está sua possível presença nas tradições judaico-cristãs. Trata-se de um território de pesquisa ainda debatido entre estudiosos, mas que merece ser conhecido com seriedade, curiosidade e respeito — pois toca em símbolos centrais de fé para bilhões de pessoas.</p>
+
+    <h4 class="sub">Uma palavra escondida em tradução</h4>
+    <p>No hebraico do Antigo Testamento, aparece por cinco vezes um termo — קְנֵה־בֹשֶׂם, transliterado como kaneh bosm ou kaneh-bosem — traduzido na maioria das versões ocidentais como "cana aromática" ou "cálamo". A palavra surge em Êxodo, no Cântico dos Cânticos, em Isaías, em Jeremias e em Ezequiel. O pesquisador Sula Benet, e posteriormente outros etimologistas da Universidade Hebraica de Jerusalém, propuseram que a raiz "kan" (cana, cânhamo) somada a "bosm" (aromático) apontaria diretamente para a Cannabis — um vegetal cujo nome ecoa em diversas línguas antigas: cana em sânscrito, qunnabu em assírio, kannab em árabe.</p>
+    <p>Segundo essa linha de investigação, o equívoco de tradução teria surgido já na Septuaginta, a versão grega da Bíblia hebraica produzida no século III a.C., quando kaneh bosm foi vertido para "cálamo" — uma planta comum, de baixo valor, que não corresponde às qualidades aromáticas e ao alto custo atribuídos ao ingrediente original nas escrituras.</p>
+
+    <h4 class="sub">O óleo sagrado da unção</h4>
+    <p>O texto de Êxodo 30:22-25 descreve a receita de um óleo sagrado, usado por Moisés para consagrar o Tabernáculo, a Arca da Aliança, os sacerdotes e os objetos rituais: mirra, canela aromática, kaneh bosm e cássia, misturados a azeite de oliva. Esse óleo era reservado exclusivamente para a consagração — vetado, sob pena severa, para qualquer uso comum. É desse ato de ungir que deriva a própria palavra "Cristo", do grego christos, e "Messias", do hebraico mashiach: literalmente, "o ungido", aquele sobre quem esse óleo sagrado foi derramado.</p>
+
+    <blockquote class="quote-block">“Se assumirmos que o óleo descrito em Êxodo continha Cannabis em quantidade significativa, ele certamente seria potente o suficiente para ter um papel nos relatos de cura da época.”<cite>— adaptado de discussões do historiador Chris Bennett</cite></blockquote>
+
+    <h4 class="sub">O que dizem os altares de Tel Arad</h4>
+    <p>Em 2020, uma pesquisa sobre resíduos encontrados em dois altares de um santuário de 2.700 anos em Tel Arad, no deserto de Israel, identificou compostos de Cannabis — incluindo THC, CBD e CBN — em um dos altares, junto de resíduos de incenso de olíbano no outro. A descoberta, publicada por pesquisadores israelenses e amplamente noticiada, reacendeu o debate: será que a queima ritual de Cannabis fazia parte do culto no antigo Reino de Judá, talvez inclusive no Primeiro Templo de Jerusalém?</p>
+    <p>É importante caminhar aqui com honestidade acadêmica: a hipótese do kaneh bosm como Cannabis é debatida, e nem todos os estudiosos bíblicos a aceitam. Mas o achado arqueológico de Tel Arad é factual e inquestionável — mostra, no mínimo, que substâncias psicoativas queimadas em contexto de devoção não eram estranhas ao mundo espiritual do antigo Oriente Médio.</p>
+
+    <div class="tattoo-box">
+      <div class="tattoo-icon"><svg viewBox="0 0 24 24"><path d="M12 2C9 6 6 10 6 14a6 6 0 0012 0c0-4-3-8-6-12z"/></svg></div>
+      <div class="tattoo-box-text">
+        <h5>Elo com a Arte na Pele</h5>
+        <p>Símbolos ligados a essa tradição — a Árvore da Vida cabalística, o Selo de Salomão, letras do alefe-bet hebraico — seguem entre os desenhos mais pedidos em tatuagens de cunho espiritual, muitas vezes escolhidos justamente para marcar um momento de cura ou consagração pessoal, ecoando o próprio gesto simbólico da unção: usar algo sagrado para selar uma transformação no corpo.</p>
+      </div>
+    </div>
+
+    <h4 class="sub">Uma reflexão, não uma certeza</h4>
+    <p>Mais do que afirmar respostas definitivas sobre o que Jesus, Moisés ou os profetas efetivamente usaram, o valor desse capítulo da história está em nos convidar a olhar para as escrituras sagradas com mais amplitude — reconhecendo que, em um mundo antigo profundamente conectado com plantas de poder, a fronteira entre o medicinal, o aromático e o espiritual raramente era tão rígida quanto imaginamos hoje. Se a hipótese do kaneh bosm estiver correta, ela nos lembra que a busca humana pelo sagrado sempre caminhou de mãos dadas com a natureza — nunca em oposição a ela.</p>
+
+    <div class="chapter-nav"><a href="#parte-2">← Capítulo anterior</a><a href="#parte-4">Próximo capítulo: Diamba →</a></div>
+  </div>
+</article>
+
+<!-- ================= PARTE 4 ================= -->
+<article class="chapter" id="parte-4">
+  <div class="chapter-inner">
+    <div class="chapter-eyebrow">Parte 4 de 8</div>
+    <h2 class="chapter-title">Diamba</h2>
+    <h3 class="chapter-subtitle">Ancestralidade africana, a travessia do Atlântico e a primeira proibição do mundo</h3>
+
+    <p class="dropcap">Antes de atravessar o Atlântico, a Cannabis já percorria a África Central e Oriental havia séculos, levada por rotas de comércio árabes e depois incorporada a práticas locais em regiões como o atual Congo e Angola, onde era conhecida por nomes como diamba (ou liamba). Foi sob esse nome — e não "maconha", termo que só se popularizaria depois — que a planta chegou ao Brasil, trazida na memória e nos poucos pertences de pessoas sequestradas e escravizadas da África Central durante o tráfico transatlântico.</p>
+
+    <h4 class="sub">Uma planta que atravessou junto com a fé</h4>
+    <p>Nos engenhos e quilombos, a diamba seguiu cumprindo parte do papel que já ocupava na África: alívio para o corpo exaurido pelo trabalho forçado, e também elemento presente em práticas espirituais de matriz africana que se reorganizavam no Brasil, sincretizadas com elementos indígenas e católicos. É importante caminhar aqui com o mesmo cuidado do capítulo anterior: a presença da planta em terreiros e práticas populares é bem documentada por historiadores, ainda que seu papel formal dentro das religiões afro-brasileiras varie muito conforme a tradição, a região e a casa de culto — não sendo um elemento litúrgico universal, mas parte do repertório popular que acompanhava a vida (e a fé) de comunidades negras.</p>
+
+    <h4 class="sub">1830: a pioneira e triste proibição brasileira</h4>
+    <p>É um dado pouco lembrado, mas historicamente relevante: o Brasil foi um dos primeiros territórios do mundo a formalizar a proibição da Cannabis. Já em 1830, a Câmara Municipal do Rio de Janeiro aprovou uma postura proibindo o "pito do pango" — forma de fumar a diamba — com penas mais severas para pessoas escravizadas do que para libertos, um retrato direto de como, desde o início, a criminalização da planta no Brasil nasceu entrelaçada ao controle social sobre a população negra, décadas antes da abolição e mais de cem anos antes da onda proibicionista internacional que veremos no capítulo 7.</p>
+
+    <blockquote class="quote-block">A proibição do pito do pango em 1830 antecipa, em mais de um século, o mesmo padrão que se repetiria mundo afora: leis sobre a planta que, na prática, funcionavam como leis sobre quem podia usá-la.</blockquote>
+
+    <div class="tattoo-box">
+      <div class="tattoo-icon"><svg viewBox="0 0 24 24"><path d="M4 20c4-10 6-14 8-16 2 2 4 6 8 16M8 12h8"/></svg></div>
+      <div class="tattoo-box-text">
+        <h5>Elo com a Arte na Pele</h5>
+        <p>Símbolos gráficos, os adinkras (como o Sankofa, "voltar para buscar o que ficou para trás") originários de Gana e hoje presentes em tatuagens afrodescendentes no Brasil, carregam um espírito muito próximo ao desta coleção: honrar a ancestralidade africana e resgatar tradições que a história tentou apagar. Assim como a diamba, esses símbolos atravessaram o oceano na memória de um povo — e hoje voltam a ocupar, com orgulho, a pele e a cultura brasileiras.</p>
+      </div>
+    </div>
+
+    <p>Compreender essa origem é essencial para o restante desta coleção: muito antes de qualquer debate científico ou legislativo moderno, a história da Cannabis no Brasil já nascia marcada por uma desigualdade racial que, como veremos, seguiria se repetindo — e que só muito recentemente começou a ser reconhecida e corrigida.</p>
+
+    <div class="chapter-nav"><a href="#parte-3">← Capítulo anterior</a><a href="#parte-5">Próximo capítulo: Ganja e Jah →</a></div>
+  </div>
+</article>
+
+<!-- ================= PARTE 5 ================= -->
+<article class="chapter" id="parte-5">
+  <div class="chapter-inner">
+    <div class="chapter-eyebrow">Parte 5 de 8</div>
+    <h2 class="chapter-title">Ganja e Jah</h2>
+    <h3 class="chapter-subtitle">O Rastafári e a Cannabis como sacramento de fé e resistência</h3>
+
+    <p class="dropcap">Poucas religiões carregam uma relação tão simbólica e mal compreendida com a Cannabis quanto o movimento Rastafári. Nascido na Jamaica na década de 1930, entre descendentes de africanos escravizados, o Rastafári transformou a ganja em elemento sagrado — não para o prazer recreativo, mas como caminho de meditação, comunhão e afirmação de dignidade negra diante de séculos de opressão colonial.</p>
+
+    <h4 class="sub">Um messias vindo da Etiópia</h4>
+    <p>As raízes do Rastafári remontam ao pan-africanismo de Marcus Garvey, que nos anos 1920 pregava o orgulho negro, a valorização da herança africana e o retorno simbólico ou literal à África. Garvey teria profetizado a chegada de um rei negro que redimiria seu povo. Quando, em 1930, Ras Tafari Makonnen foi coroado Haile Selassie I, imperador da Etiópia — o único país africano jamais colonizado por potências europeias —, muitos jamaicanos pobres viram ali o cumprimento dessa profecia. Selassie passou a ser reverenciado como Jah, a encarnação viva do divino, o "Leão de Judá" mencionado no livro do Apocalipse.</p>
+    <p>Liderados por figuras como Leonard Howell, considerado o primeiro rasta, os primeiros seguidores do movimento passaram a pregar nas ruas da Jamaica uma mensagem de redenção negra, rejeição ao domínio britânico e retorno espiritual à África — chamada de Sião, a terra prometida. Em resposta, Howell foi preso por sedição já em 1934, abrindo um longo capítulo de perseguição ao movimento que se estenderia por décadas.</p>
+
+    <blockquote class="quote-block">“A ganja é uma planta sagrada que permite aos seguidores rastafarianos compreender a palavra de Jah, o criador.”</blockquote>
+
+    <h4 class="sub">Babilônia e o sacramento da ganja</h4>
+    <p>Na cosmovisão rasta, "Babilônia" não é apenas uma referência bíblica ao cativeiro dos hebreus — é a metáfora viva para todo sistema de opressão: o colonialismo, o racismo estrutural, o materialismo ocidental. Diante dessa Babilônia, os rastas buscam uma vida "ital" — pura, natural, vegetariana, livre de álcool e de excessos —, e é nesse contexto que a ganja ganha seu lugar central: não como fuga, mas como ferramenta de clareza mental e conexão espiritual.</p>
+    <p>O consumo ritual costuma acontecer nos chamados reasonings — encontros de diálogo filosófico e reflexão coletiva sobre a vida, a fé e a justiça — e no Nyabinghi, cerimônia de tambores e cânticos que aprofunda a experiência de comunhão com Jah. Antes de fumar, é comum que o rasta faça uma breve oração, tratando o gesto com a mesma seriedade reverente que outras tradições dedicam à eucaristia ou ao incenso ritual.</p>
+
+    <div class="tattoo-box">
+      <div class="tattoo-icon"><svg viewBox="0 0 24 24"><path d="M6 4l12 8-12 8V4z"/></svg></div>
+      <div class="tattoo-box-text">
+        <h5>Elo com a Arte na Pele</h5>
+        <p>O Leão de Judá, as cores vermelho-dourado-verde da Etiópia e retratos de Bob Marley figuram entre os temas mais tradicionais da tatuagem reggae e rastafári — um estilo que carrega, na pele, a mesma mensagem de dignidade, resistência e orgulho que a música e a fé rasta espalharam pelo mundo. Marcar esses símbolos no corpo é, para muitos clientes, uma forma de honrar essa herança de resistência.</p>
+      </div>
+    </div>
+
+    <h4 class="sub">Reggae, Bob Marley e a mensagem ao mundo</h4>
+    <p>Foi sobretudo através da música reggae, e da voz mundialmente conhecida de Bob Marley, que a filosofia rastafári alcançou o planeta. Suas canções levavam adiante mensagens de amor, dignidade humana e libertação espiritual e psicológica — e, com elas, uma imagem da ganja completamente distinta do estereótipo criminoso que a cultura ocidental insistia em lhe atribuir. Para os rastas, a planta é parte de uma busca legítima por liberdade: liberdade da mente, do corpo e, em última instância, do próprio espírito diante das estruturas que historicamente subjugaram o povo negro.</p>
+    <p>Ainda hoje, o consumo sacramental da ganja pelos rastafáris é juridicamente reconhecido em alguns países como prática religiosa protegida — um reconhecimento tardio, mas importante, de que aquilo que por tanto tempo foi tratado como vício marginal é, para milhões de pessoas, uma expressão legítima e profunda de fé.</p>
+
+    <div class="chapter-nav"><a href="#parte-4">← Capítulo anterior</a><a href="#parte-6">Próximo capítulo: Cura Milenar →</a></div>
+  </div>
+</article>
+
+<!-- ================= PARTE 6 ================= -->
+<article class="chapter" id="parte-6">
+  <div class="chapter-inner">
+    <div class="chapter-eyebrow">Parte 6 de 8</div>
+    <h2 class="chapter-title">Cura Milenar</h2>
+    <h3 class="chapter-subtitle">A Cannabis na medicina, de Shennong ao sistema endocanabinoide</h3>
+
+    <p class="dropcap">Se há um fio condutor que atravessa toda a história da Cannabis, é o seu uso como remédio. Muito antes de qualquer debate sobre legalização, a planta já era reconhecida, em praticamente todas as civilizações que a cultivaram, como uma aliada valiosa da cura — e é essa tradição milenar que a ciência moderna vem, aos poucos, redescobrindo e validando.</p>
+
+    <h4 class="sub">Shennong, o pai da medicina chinesa</h4>
+    <p>Há mais de 4.700 anos, segundo a tradição chinesa, o lendário imperador Shen Nung — considerado o pai da medicina tradicional chinesa — já registrava o uso terapêutico da Cannabis para tratar gota, reumatismo, malária e problemas de memória. Séculos mais tarde, textos taoístas documentariam também seu uso como incenso em cerimônias de purificação, mostrando como, na China antiga, a fronteira entre medicina e espiritualidade era naturalmente fluida.</p>
+
+    <h4 class="sub">Do Egito à Pérsia, da Índia ao mundo islâmico</h4>
+    <p>No Egito, o Papiro de Ebers (cerca de 1400 a.C.) recomendava a planta para dores e inflamações oculares. Na Índia, o tratado ayurvédico Sushruta Samhita já discutia seu uso medicinal, e a medicina persa observava com precisão seus efeitos bifásicos — a euforia inicial seguida de relaxamento. No mundo islâmico medieval, o médico e filósofo persa Avicena, um dos nomes mais influentes da história da medicina, descreveu a Cannabis como tratamento eficaz para gota, edemas, infecções e dores de cabeça intensas em seu Cânone da Medicina — obra estudada na Europa até o século XIX. O sistema médico Unani, praticado por muçulmanos na Índia medieval, recorria a ela para doenças nervosas, convulsões e espasmos.</p>
+
+    <blockquote class="quote-block">“A menina agora está em gozo de saúde robusta e recuperou o aspecto feliz e saudável de antes.”<cite>— William O'Shaughnessy, sobre uma paciente tratada com tintura de Cannabis</cite></blockquote>
+
+    <h4 class="sub">O médico que trouxe a planta para o Ocidente</h4>
+    <p>A história da medicina ocidental moderna com a Cannabis tem um protagonista claro: William Brooke O'Shaughnessy, médico irlandês que serviu na Índia colonial britânica nas décadas de 1830 e 1840. Observando o uso medicinal local da planta pelos moradores, O'Shaughnessy passou a estudá-la clinicamente, obtendo resultados notáveis no controle de convulsões, espasmos musculares causados por tétano e raiva, além de dores intensas. Ao publicar suas descobertas e retornar à Inglaterra, ele foi decisivo para introduzir a Cannabis na farmacopeia europeia e, depois, na americana — a planta chegou a integrar oficialmente a Farmacopeia dos Estados Unidos entre 1851 e 1942, sendo prescrita para dor, insônia e convulsões.</p>
+
+    <h4 class="sub">O século XX: da proibição à revolução molecular</h4>
+    <p>O avanço científico foi brutalmente interrompido pela criminalização das décadas de 1930, que veremos em detalhe no próximo capítulo desta coleção. Ainda assim, a curiosidade científica resistiu. Em 1964, o químico israelense Raphael Mechoulam e sua equipe da Universidade Hebraica de Jerusalém isolaram e descreveram, pela primeira vez, a estrutura molecular completa do THC — o principal composto psicoativo da planta —, abrindo caminho para décadas de pesquisa sobre canabinoides.</p>
+    <p>Décadas depois, o próprio corpo humano revelaria seu segredo: em 1992, Mechoulam e colegas descobriram a anandamida, o primeiro endocanabinoide produzido naturalmente pelo nosso organismo, seguido pelo 2-AG. Essas descobertas revelaram a existência de um sistema fisiológico próprio — o sistema endocanabinoide, presente no cérebro e em praticamente todos os órgãos do corpo — dedicado a regular funções como dor, apetite, humor, memória e resposta imunológica. Em outras palavras: nosso corpo já está preparado, desde sempre, para dialogar com essa planta.</p>
+    <p>No Brasil, esse legado científico também tem raízes profundas: já em 1981, o psiquiatra Elisaldo Carlini conduziu, em plena ditadura, um dos primeiros ensaios do mundo com CBD para epilepsia — um trabalho pioneiro que a comunidade científica levaria décadas para valorizar plenamente.</p>
+
+    <div class="tattoo-box">
+      <div class="tattoo-icon"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 100 18 9 9 0 000-18zM8 12h8M12 8v8"/></svg></div>
+      <div class="tattoo-box-text">
+        <h5>Elo com a Arte na Pele</h5>
+        <p>É pouco lembrado, mas a própria pele humana participa dessa conversa: pesquisas em dermatologia identificaram receptores do sistema endocanabinoide (CB1 e CB2) nos queratinócitos e em outras células cutâneas, envolvidos na regulação de inflamação, dor e cicatrização — o mesmo tipo de processo biológico que qualquer tatuagem precisa atravessar durante sua cicatrização. Não é à toa que cosméticos com CBD vêm ganhando espaço em rotinas de cuidado pós-tatuagem: ciência e ritual, mais uma vez, se encontram na própria histologia da pele.</p>
+      </div>
+    </div>
+
+    <div class="chapter-nav"><a href="#parte-5">← Capítulo anterior</a><a href="#parte-7">Próximo capítulo: A Guerra às Drogas →</a></div>
+  </div>
+</article>
+
+<!-- ================= PARTE 7 ================= -->
+<article class="chapter" id="parte-7">
+  <div class="chapter-inner">
+    <div class="chapter-eyebrow">Parte 7 de 8</div>
+    <h2 class="chapter-title">A Guerra às Drogas</h2>
+    <h3 class="chapter-subtitle">Racismo, medo e a construção artificial de um inimigo</h3>
+
+    <p class="dropcap">Depois de milênios como aliada da humanidade — na cura, na fé, no cotidiano —, a Cannabis foi, em poucas décadas do século XX, transformada em símbolo de perigo e degeneração moral. Esse capítulo exige coragem para ser contado sem meias palavras: a criminalização global da planta não nasceu de evidência científica. Nasceu, em grande parte, do racismo e do medo de elites que viam nela — e nas pessoas que a usavam — uma ameaça à ordem social que desejavam preservar.</p>
+
+    <h4 class="sub">Uma palavra criada para causar medo</h4>
+    <p>Nos Estados Unidos, o uso recreativo da planta se difundiu no início do século XX através de trabalhadores migrantes mexicanos. Até então, ela era conhecida no país por seus nomes técnicos: hemp ou cannabis. Foi nesse contexto que autoridades e jornais passaram a adotar deliberadamente o termo em espanhol "marihuana" — não por acaso, mas justamente para associar a planta a sentimentos anti-mexicanos que já circulavam na sociedade da época. Manchetes sensacionalistas atribuíam à "droga assassina" crimes violentos, alimentando um pânico moral que pouco tinha a ver com farmacologia e muito com preconceito étnico.</p>
+
+    <h4 class="sub">Harry Anslinger e a fabricação de um inimigo</h4>
+    <p>Nenhum nome está mais associado a essa virada do que Harry J. Anslinger, primeiro diretor do recém-criado Federal Bureau of Narcotics dos Estados Unidos, cargo que ocuparia por 32 anos. Curiosamente, no início de sua carreira, Anslinger considerava exagerada a ideia de que a Cannabis levasse à violência. Tudo mudou quando a Lei Seca do álcool chegou ao fim: seu órgão, criado para combater o narcotráfico, precisava de uma nova justificativa para existir — e a encontrou na maconha.</p>
+    <p>Anslinger passou então a construir, de forma deliberada, uma narrativa de pânico. Reuniu uma coleção de histórias de crimes violentos que atribuía ao uso da planta — o chamado "arquivo do horror" —, incluindo casos como o do jovem Victor Licata, que assassinou a própria família e cujo histórico documentado de grave doença mental era convenientemente ignorado nos discursos de Anslinger perante o Congresso americano.</p>
+
+    <blockquote class="quote-block">“A maconha faz com que os pretos pensem que são tão bons quanto os homens brancos.”<cite>— declaração atribuída a Harry Anslinger, amplamente documentada por historiadores</cite></blockquote>
+
+    <p>Anslinger associou publicamente o uso da Cannabis a afro-americanos, latinos e músicos de jazz, empregando linguagem abertamente racista em depoimentos oficiais. Suas campanhas alertavam, entre outras coisas, para o medo racial de que a planta levasse mulheres brancas a se relacionar com homens negros — um temor que, mais do que qualquer preocupação sanitária real, revela a verdadeira raiz da cruzada proibicionista.</p>
+
+    <h4 class="sub">1937: a lei que apagou séculos de medicina</h4>
+    <p>Em 1937, os esforços de Anslinger culminaram na aprovação do Marihuana Tax Act, que na prática tornou o cultivo, a posse e o comércio da Cannabis inviáveis nos Estados Unidos. Vale destacar que a comunidade médica se opôs: o representante da Associação Médica Americana, Dr. William C. Woodward, testemunhou no Congresso defendendo que a planta tinha potencial terapêutico que merecia ser estudado, não banido — seu alerta foi ignorado. Da noite para o dia, médicos deixaram de prescrever a planta por medo de complicações legais, pesquisadores abandonaram um vegetal estudado havia mais de um século, e a indústria do cânhamo — que nada tinha a ver com uso psicoativo — foi asfixiada por uma tributação impraticável.</p>
+    <p>A partir dos Estados Unidos, essa cruzada proibicionista ganhou escala internacional, sendo incorporada a convenções da Liga das Nações e, depois, da ONU. O Brasil, como vimos, já havia sido pioneiro nesse movimento com sua lei de 1830 — e voltaria a ter papel ativo no cenário internacional das décadas seguintes, reforçando com discurso próprio o mesmo preconceito racial que havia moldado sua legislação original.</p>
+
+    <div class="tattoo-box">
+      <div class="tattoo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5 4 9 9 10 5-1 9-5 9-10V7z"/></svg></div>
+      <div class="tattoo-box-text">
+        <h5>Elo com a Arte na Pele</h5>
+        <p>É impossível não notar um paralelo: nas mesmas décadas em que a Cannabis era criminalizada nos EUA, a tatuagem também era empurrada para a marginalidade, associada a marinheiros, presidiários e "gente perigosa" — a ponto de cidades como Nova York chegarem a proibi-la por décadas no século XX. Ambas as práticas foram lidas, por elites da época, como sinal de desvio moral em vez de expressão cultural legítima; e ambas vêm, hoje, passando pelo mesmo processo lento de reabilitação social.</p>
+      </div>
+    </div>
+
+    <h4 class="sub">Um padrão que se repete até hoje</h4>
+    <p>A criminalização da Cannabis não distribuiu seus efeitos de forma igual pela sociedade: em praticamente todos os países que adotaram políticas proibicionistas severas, dados mostram que pessoas negras e pobres foram e continuam sendo desproporcionalmente presas e criminalizadas por condutas relacionadas à planta, mesmo quando os índices de uso entre diferentes grupos raciais são semelhantes. Reconhecer essa raiz histórica não é um detalhe acadêmico — é essencial para entender por que, hoje, tantos movimentos por justiça racial e reforma das políticas de drogas caminham lado a lado.</p>
+
+    <div class="chapter-nav"><a href="#parte-6">← Capítulo anterior</a><a href="#parte-8">Próximo capítulo: O Caminho de Volta →</a></div>
+  </div>
+</article>
+
+<!-- ================= PARTE 8 ================= -->
+<article class="chapter" id="parte-8">
+  <div class="chapter-inner">
+    <div class="chapter-eyebrow">Parte 8 de 8</div>
+    <h2 class="chapter-title">O Caminho de Volta</h2>
+    <h3 class="chapter-subtitle">Ciência, justiça racial e a descriminalização da Cannabis no mundo</h3>
+
+    <p class="dropcap">Depois de quase um século de proibição, o mundo começa, ainda que de forma desigual e cautelosa, a reencontrar seu caminho de volta até essa planta ancestral. Esse movimento não é apenas uma mudança de legislação — é, em muitos sentidos, um ato de reparação histórica e de reconciliação com uma tradição milenar de cura e espiritualidade que a Guerra às Drogas tentou apagar.</p>
+
+    <h4 class="sub">Uruguai e Canadá: os pioneiros da regulação</h4>
+    <p>Em 2013, o Uruguai se tornou o primeiro país do mundo a regular integralmente a cadeia de produção, distribuição e venda da Cannabis, sob controle estatal — uma resposta direta ao fracasso do proibicionismo em conter o mercado ilegal e a violência associada a ele. O Canadá seguiu caminho semelhante em 2018, permitindo a venda legal tanto em lojas estatais quanto privadas, sob regulamentação rigorosa voltada à proteção da saúde pública e à prevenção do acesso por menores de idade.</p>
+    <p>Nos Estados Unidos — o mesmo país que exportou o proibicionismo ao mundo através de Harry Anslinger — diversos estados aboliram suas próprias leis estaduais contra o uso adulto da planta, com dados mostrando que o consumo entre jovens permaneceu estável mesmo após a legalização, desmontando um dos principais argumentos históricos do movimento proibicionista.</p>
+
+    <blockquote class="quote-block">“Não é possível entender o impacto da política de drogas no encarceramento em massa sem entender o papel do racismo na sociedade brasileira.”</blockquote>
+
+    <h4 class="sub">O Brasil e a decisão histórica de 2024</h4>
+    <p>Em junho de 2024, após nove anos de julgamento, o Supremo Tribunal Federal concluiu que portar Cannabis para uso pessoal não configura mais crime no Brasil — estabelecendo o parâmetro de até 40 gramas ou seis plantas fêmeas como critério para diferenciar usuário de traficante. A conduta segue sendo tratada como ilícito administrativo, não penal: uma mudança de esfera, da prisão para a saúde pública. Ministros do próprio STF destacaram, durante o julgamento, que o critério racial historicamente aplicado pela polícia — tratando o jovem negro e pobre como traficante e o jovem branco e rico como simples usuário — foi um dos fatores centrais que motivaram a revisão da lei.</p>
+    <p>Um estudo do Ipea estimou que a descriminalização pode impactar entre 1% e 2,4% da população carcerária brasileira, representando uma economia anual de centenas de milhões de reais aos cofres públicos — recursos que poderiam ser redirecionados para saúde, educação e programas sociais, em vez de sustentar um sistema prisional que historicamente penalizou de forma desproporcional a população negra e periférica.</p>
+
+    <h4 class="sub">Ciência, medicina e o mercado que se abre</h4>
+    <p>Paralelamente ao avanço jurídico, a ciência segue confirmando o que tantas tradições ancestrais já sabiam: a Cannabis tem valor terapêutico comprovado para epilepsia refratária, dor crônica, espasticidade em esclerose múltipla e diversas outras condições. No Brasil, associações de pacientes têm sido fundamentais para ampliar o acesso a tratamentos, enquanto um mercado de cultivo, educação e produtos correlatos já movimenta centenas de milhões de reais em atividades plenamente lícitas.</p>
+
+    <div class="tattoo-box">
+      <div class="tattoo-icon"><svg viewBox="0 0 24 24"><use href="#leaf-mark"/></svg></div>
+      <div class="tattoo-box-text">
+        <h5>Elo com a Arte na Pele</h5>
+        <p>Assim como a folha de Cannabis deixou de ser apenas símbolo de contravenção para se tornar, hoje, um dos motivos botânicos mais pedidos em estúdios de tatuagem — presente em trabalhos que celebram cura, espiritualidade ou simplesmente a beleza da planta —, a própria tatuagem percorreu um caminho parecido: de prática marginalizada a linguagem artística e ritual plenamente reconhecida. Duas heranças antigas, restauradas ao seu lugar de dignidade.</p>
+      </div>
+    </div>
+
+    <h4 class="sub">Um capítulo ainda em construção</h4>
+    <p>É importante reconhecer, com honestidade, que esse caminho segue incompleto e é objeto de debate legítimo. Ainda há divergências — inclusive dentro do Congresso Nacional brasileiro — sobre o ritmo e o modelo ideal de regulação: alguns defendem avançar rapidamente para a legalização plena e regulada, à semelhança do Uruguai; outros pedem cautela, priorizando estudos sobre saúde pública, prevenção ao uso entre adolescentes e o desenho de um mercado que não repita, sob nova forma, as desigualdades do passado. São preocupações razoáveis, e o debate sobre elas é parte saudável de qualquer mudança de política pública tão significativa.</p>
+    <p>O que a longa jornada contada nesta coleção nos convida a lembrar, no entanto, é que a Cannabis acompanha a humanidade há milênios como fonte de alimento, fibra, remédio e conexão espiritual — muito antes de ser, por um século apenas, tratada como inimiga. Restaurar essa planta ao seu lugar de dignidade não é abraçar um vício: é reconciliar-se com uma parte antiga e sagrada da própria história humana, corrigindo, ao mesmo tempo, uma injustiça racial que custou liberdade e dignidade a milhões de pessoas ao redor do mundo.</p>
+
+    <div class="chapter-nav"><a href="#parte-7">← Capítulo anterior</a><a href="#indice">Voltar ao índice ↑</a></div>
+  </div>
+</article>
+
+<!-- FECHAMENTO -->
+<section class="closing-section">
+  <div class="closing-leaf" style="color:var(--ouro)"><svg viewBox="0 0 100 100"><use href="#leaf-mark"/></svg></div>
+  <p>Que esta jornada — da Ásia Central às tendas rastafári, dos altares de Tel Arad aos tribunais de hoje — sirva de lembrete de que toda planta sagrada, mais cedo ou mais tarde, encontra seu caminho de volta à luz.</p>
+  <a href="#topo" class="btn-action">Voltar ao Início</a>
+</section>
+
+<!-- FONTES E REFERÊNCIAS -->
+<section class="refs-section" id="referencias">
+  <h2 class="section-title">Fontes e Referências</h2>
+  <p class="refs-intro">Este estudo reúne achados arqueológicos, textos religiosos, pesquisa científica e registros históricos. Abaixo estão os principais nomes, obras e estudos que sustentam o conteúdo de cada capítulo — um ponto de partida para quem desejar aprofundar a leitura.</p>
+
+  <div class="refs-grid">
+
+    <div class="refs-group">
+      <h4>Arqueologia e Antiguidade</h4>
+      <ul class="refs-list">
+        <li>Heródoto, <em>Histórias</em>, Livro IV (século V a.C.) — relato sobre os rituais funerários dos citas.</li>
+        <li>Jiang, H. et al., estudo sobre os braseiros do cemitério de Jirzankal, Platô do Pamir, publicado na revista <em>Science Advances</em> (2019).<span class="ref-note">Primeira evidência química direta do uso psicoativo ritual da Cannabis na Antiguidade.</span></li>
+        <li>Papiro de Ebers (cerca de 1400 a.C.), um dos mais antigos textos médicos egípcios conhecidos.</li>
+        <li>Achados de fitólitos de Cannabis em sítios neolíticos de Shandong, China (pesquisas em arqueobotânica publicadas ao longo da última década).</li>
+      </ul>
+    </div>
+
+    <div class="refs-group">
+      <h4>Textos Sagrados e Tradições Religiosas</h4>
+      <ul class="refs-list">
+        <li>Atharva Veda e demais Vedas — referências à bhanga como uma das cinco plantas sagradas.</li>
+        <li>Benet, Sula, <em>"Early Diffusion and Folk Uses of Hemp"</em>, em <em>Cannabis and Culture</em> (1975) — origem da hipótese do kaneh bosm.</li>
+        <li>Bennett, Chris, <em>Cannabis and the Soma Solution</em> e demais obras sobre Cannabis nas tradições abraâmicas.</li>
+        <li>Arie, Eran et al., estudo sobre resíduos químicos nos altares de Tel Arad, publicado no <em>Tel Aviv Journal of the Institute of Archaeology</em> (2020).</li>
+        <li>Barrett, Leonard E., <em>The Rastafarians</em> (1977) — referência clássica sobre a origem e a cosmovisão do movimento.</li>
+      </ul>
+    </div>
+
+    <div class="refs-group">
+      <h4>Medicina e Ciência</h4>
+      <ul class="refs-list">
+        <li>Ibn Sina (Avicena), <em>O Cânone da Medicina</em> (século XI).</li>
+        <li>O'Shaughnessy, William B., <em>"On the Preparations of the Indian Hemp, or Gunjah"</em>, Transactions of the Medical and Physical Society of Bengal (1839-1840).</li>
+        <li>Gaoni, Y. &amp; Mechoulam, R., "Isolation, Structure and Partial Synthesis of an Active Constituent of Hashish", <em>Journal of the American Chemical Society</em> (1964).</li>
+        <li>Devane, W. A., Mechoulam, R. et al., descoberta da anandamida, <em>Science</em> (1992).</li>
+        <li>Cunha, J. M., Carlini, E. A. et al., estudo pioneiro brasileiro com CBD para epilepsia, <em>Pharmacology</em> (1980).</li>
+      </ul>
+    </div>
+
+    <div class="refs-group">
+      <h4>Criminalização, Racismo e Justiça</h4>
+      <ul class="refs-list">
+        <li>Registros e depoimentos de Harry J. Anslinger perante o Congresso dos Estados Unidos, na campanha que resultou no <em>Marihuana Tax Act</em> (1937).</li>
+        <li>Musto, David F., <em>The American Disease: Origins of Narcotic Control</em> (1973) — referência histórica sobre a criminalização nos EUA.</li>
+        <li>Postura Municipal da Câmara do Rio de Janeiro de 1830, proibindo o "pito do pango" — um dos primeiros registros legais de proibição da Cannabis no mundo.</li>
+        <li>Supremo Tribunal Federal (Brasil), julgamento do Recurso Extraordinário 635.659, concluído em junho de 2024 — descriminalização do porte para uso pessoal.</li>
+        <li>Instituto de Pesquisa Econômica Aplicada (Ipea), estudos sobre o impacto da descriminalização na população carcerária brasileira.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="refs-disclaimer">
+    <strong>Nota sobre as fontes:</strong> algumas citações — sobretudo as atribuídas a discursos históricos e tradições orais — chegaram até nós por meio de fontes secundárias e são, em alguns casos, objeto de debate acadêmico (como indicado ao longo do texto, especialmente no capítulo sobre o Kaneh Bosm). Sempre que possível, busque as obras originais ou artigos revisados por pares para aprofundamento.
+  </div>
+</section>
+
+<!-- PORTAIS RELACIONADOS -->
+<section class="portals-section">
+  <div class="portals-header">
+    <h2 class="section-title">Continue Explorando</h2>
+    <p>Outros portais do Studio Esoteric Ink</p>
+  </div>
+  <div class="portals-grid">
+    <a href="../revista-mistica/revista-mistica-blog.html" class="portal-card">
+      <span class="portal-tag">Blog Cerimonial</span>
+      <h3>Revista Mística</h3>
+      <p>Mais artigos aprofundados sobre a modificação corporal e sua intersecção com a espiritualidade e a técnica.</p>
+      <span class="portal-btn">Explorar</span>
+    </a>
+    <a href="../biblioteca-do-oculto/biblioteca-do-oculto.html" class="portal-card">
+      <span class="portal-tag">Índice Simbólico A-Z</span>
+      <h3>Biblioteca Mística</h3>
+      <p>Um compêndio esotérico de arquétipos, entidades e geometrias sagradas para fundamentar sua próxima arte.</p>
+      <span class="portal-btn">Acessar</span>
+    </a>
+    <a href="../portal-esoteric.html" class="portal-card">
+      <span class="portal-tag">Agende sua Sessão</span>
+      <h3>Portal de Intenções</h3>
+      <p>Pronto para transformar história e simbolismo em arte permanente? Inicie sua consulta com a Nana.</p>
+      <span class="portal-btn">Agendar</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-logo"><svg viewBox="0 0 100 100"><use href="#brand-mark"/></svg></div>
+  <p class="footer-disclaimer">
+    Conteúdo produzido com finalidade <strong>histórica, cultural e educativa</strong>. Não incentiva o uso ilícito de nenhuma substância e não substitui orientação médica ou jurídica profissional. <br>
+    O Studio Esoteric Ink opera sob rigorosos protocolos de <strong>biossegurança e assepsia</strong>, utilizando apenas materiais descartáveis de uso único e pigmentos aprovados pela ANVISA.
+  </p>
+  <div class="footer-links">
+    <a href="../index.html">Página Inicial</a>
+    <a href="../manifesto.html">Manifesto</a>
+    <a href="../base-de-conhecimento/pag-guia-de-cuidados-e-biosseguranca.html">Guia de Cuidados</a>
+    <a href="../portal-esoteric.html">Agendar Consulta</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 Nana Borges Tattoo — Studio Esoteric Ink. Todos os direitos reservados.</div>
+</footer>
+
+<script>
+  const navToggle=document.getElementById('navToggle');
+  const navLinks=document.getElementById('navLinks');
+  navToggle.addEventListener('click',()=>navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+
+  const topFloat=document.getElementById('topFloat');
+  window.addEventListener('scroll',()=>{
+    if(window.scrollY>500){topFloat.classList.add('show');}else{topFloat.classList.remove('show');}
+  });
+</script>
+
+</body>
+</html>

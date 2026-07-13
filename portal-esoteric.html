@@ -35,8 +35,32 @@
             line-height: 1.8;
             background-image: radial-gradient(circle at top right, var(--roxo-escuro) 0%, transparent 40%);
             -webkit-font-smoothing: antialiased;
-            padding: 80px 5%;
+            padding: 0; /* Ajustado para a navbar colar no topo */
         }
+
+        /* ================= NOVOS ELEMENTOS: NAVBAR E BOTÃO TOPO ================= */
+        .site-nav {
+            position: sticky; top: 0; z-index: 900; display: flex; align-items: center; justify-content: space-between;
+            padding: 18px 5%; background: rgba(5, 1, 8, 0.85); backdrop-filter: blur(8px); border-bottom: 1px solid var(--borda-ouro);
+        }
+        .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+        .nav-logo { width: 34px; height: 34px; }
+        .nav-logo svg { width: 100%; height: 100%; stroke: var(--ouro); stroke-width: 2; fill: none; }
+        .nav-brand-text { font-family: var(--fonte-titulo); color: var(--branco-off); font-size: 0.95rem; letter-spacing: 1px; }
+        .nav-brand-text span { display: block; font-family: var(--fonte-ui); font-size: 0.6rem; letter-spacing: 3px; color: var(--ouro-claro); text-transform: uppercase; }
+        .nav-links { display: flex; gap: 26px; }
+        .nav-links a { text-decoration: none; color: var(--cinza-texto); font-family: var(--fonte-ui); font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a:hover { color: var(--ouro); }
+        .nav-toggle { display: none; background: none; border: 1px solid var(--ouro); color: var(--ouro); width: 38px; height: 38px; cursor: pointer; }
+
+        .top-float {
+            position: fixed; width: 52px; height: 52px; bottom: 150px; right: 40px; background-color: rgba(5, 1, 8, 0.9);
+            color: var(--ouro); border: 1px solid var(--ouro); border-radius: 50px; text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8); z-index: 1000; display: flex; align-items: center; justify-content: center;
+            text-decoration: none; transition: 0.4s; backdrop-filter: blur(5px); font-size: 20px; opacity: 0; pointer-events: none;
+        }
+        .top-float.show { opacity: 1; pointer-events: auto; }
+        .top-float:hover { background-color: var(--ouro); color: var(--preto); }
 
         /* ================= Estrutura Principal (DNA Visual) ================= */
         .portal-container {
@@ -45,7 +69,7 @@
             border: 1px solid var(--borda-ouro);
             padding: 80px 60px;
             max-width: 850px;
-            margin: 0 auto;
+            margin: 80px auto; /* Substitui o padding do body para manter o layout */
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
         }
 
@@ -182,7 +206,7 @@
             flex-shrink: 0;
             width: 18px;
             height: 18px;
-            accent-color: var(--ouro); /* Colore o check/radio nativo */
+            accent-color: var(--ouro);
             cursor: pointer;
         }
 
@@ -318,12 +342,11 @@
             position: relative;
         }
 
-        /* Setinha do balão apontando para baixo */
         .balao-auxilio::after {
             content: "";
             position: absolute;
             bottom: -6px;
-            right: 35px; /* Alinha com o botão abaixo */
+            right: 35px;
             width: 10px;
             height: 10px;
             background: rgba(5, 1, 8, 0.9);
@@ -379,16 +402,50 @@
 
         /* ================= Responsividade ================= */
         @media (max-width: 768px) {
-            body { padding: 40px 5%; }
-            .portal-container { padding: 40px 25px; }
+            .portal-container { margin: 40px auto; padding: 40px 25px; width: 90%; }
             .portal-header h1 { font-size: 2.2rem; }
             .section-title { font-size: 1.1rem; }
             .wrapper-calculadora { bottom: 20px; right: 20px; }
             .balao-auxilio { right: 0; }
+            
+            /* Ajustes da Navbar e Botão Topo no Mobile */
+            .nav-links {
+                position: fixed; top: 70px; right: 0; left: 0; background: rgba(5, 1, 8, 0.97); flex-direction: column;
+                padding: 24px 5%; gap: 20px; border-bottom: 1px solid var(--borda-ouro); transform: translateY(-130%);
+                transition: transform 0.35s ease;
+            }
+            .nav-links.open { transform: translateY(0); }
+            .nav-toggle { display: block; }
+            .top-float { width: 44px; height: 44px; bottom: 130px; right: 20px; }
         }
     </style>
 </head>
 <body>
+
+    <!-- LOGO SVG reutilizável -->
+    <svg width="0" height="0" style="position:absolute">
+      <symbol id="brand-mark" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45"/>
+        <polygon points="50,5 79,90 4,38 96,38 21,90"/>
+      </symbol>
+    </svg>
+
+    <!-- NAV -->
+    <nav class="site-nav" id="topo">
+      <a href="index.html" class="nav-brand">
+        <span class="nav-logo"><svg viewBox="0 0 100 100"><use href="#brand-mark"/></svg></span>
+        <span class="nav-brand-text">Studio Esoteric Ink<span>Portal de Intenções</span></span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="./index.html">Início</a>
+        <a href="./revista-mistica/revista-mistica-blog.html">Revista Mística</a>
+        <a href="./biblioteca-do-oculto/biblioteca-do-oculto.html">Biblioteca do Oculto</a>
+      </div>
+    </nav>
+
+    <!-- BOTÃO VOLTAR AO TOPO -->
+    <a href="#topo" class="top-float" id="topFloat" aria-label="Voltar ao topo">↑</a>
 
     <div class="portal-container">
         <div class="portal-header">
@@ -543,18 +600,29 @@
     </div>
 
     <script>
+        // --- SCRIPT DA NAVBAR E BOTÃO TOPO ---
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        if(navToggle && navLinks) {
+            navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+            navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+        }
+
+        const topFloat = document.getElementById('topFloat');
+        if(topFloat) {
+            window.addEventListener('scroll', () => {
+                if(window.scrollY > 500) { topFloat.classList.add('show'); } 
+                else { topFloat.classList.remove('show'); }
+            });
+        }
+
+        // --- SCRIPT DO FORMULÁRIO (MANTIDO INTACTO) ---
         document.querySelector('form[name="formulario-intencoes"]').addEventListener('submit', function(e) {
-            // Nota: Se quiser manter o envio nativo do Netlify rodando em paralelo no background, 
-            // você pode remover o e.preventDefault(), mas para o comportamento fluido de redirecionamento 
-            // imediato do WhatsApp, o preventDefault() garante a execução estável do link.
             e.preventDefault();
 
-            // Número do Estúdio (Substitua pelos dígitos do seu WhatsApp se necessário. Ex: 5511999999999)
             const numeroWhatsapp = "5511994998057"; 
-
             const form = e.target;
             
-            // Coleta de dados simples
             const identidade = form.elements['Identidade'].value;
             const idade = form.elements['Idade'].value;
             const whatsappCliente = form.elements['WhatsApp'].value;
@@ -565,7 +633,6 @@
             const estiloTecnica = form.elements['Estilo_Tecnica'].value;
             const observacoes = form.elements['Observacoes'].value || "Nenhuma";
 
-            // Formatação estilizada da mensagem para o WhatsApp
             let textoMensagem = `✨ *NOVA INTENÇÃO DE ARTE - ESOTERIC INK* ✨\n\n`;
             textoMensagem += `👤 *I. IDENTIDADE & CONEXÃO*\n`;
             textoMensagem += `• *Nome/Pronomes:* ${identidade}\n`;
@@ -585,13 +652,9 @@
             textoMensagem += `• ${observacoes}\n\n`;
             textoMensagem += `--- _*Nota:* Arquivos de imagens/referências anexados diretamente pelo portal._`;
 
-            // Codifica o texto para URL válida
             const textoUrl = encodeURIComponent(textoMensagem);
-            
-            // Monta o link final da API do WhatsApp
             const urlWhatsapp = `https://api.whatsapp.com/send?phone=${5511994998057}&text=${textoUrl}`;
             
-            // Redireciona para o WhatsApp aberto
             window.open(urlWhatsapp, '_blank');
         });
     </script>

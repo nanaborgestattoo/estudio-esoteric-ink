@@ -68,7 +68,7 @@
             color: var(--ouro);
         }
 
-        /* --- BOTÃO VOLTAR --- */
+        /* --- BOTÃO VOLTAR AO STUDIO --- */
         .back-nav { 
             position: absolute; 
             top: 30px; 
@@ -97,11 +97,20 @@
             border-color: var(--ouro);
         }
 
+        /* --- BOTÃO VOLTAR AO TOPO (FLUTUANTE) --- */
+        .top-float {
+            position: fixed; width: 52px; height: 52px; bottom: 40px; right: 40px; background-color: rgba(5, 1, 8, 0.9);
+            color: var(--ouro); border: 1px solid var(--ouro); border-radius: 50px; text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8); z-index: 1000; display: flex; align-items: center; justify-content: center;
+            text-decoration: none; transition: 0.4s; backdrop-filter: blur(5px); font-size: 20px; opacity: 0; pointer-events: none;
+        }
+        .top-float.show { opacity: 1; pointer-events: auto; }
+        .top-float:hover { background-color: var(--ouro); color: var(--preto); }
+
         /* ================= Cabeçalho / Convite ================= */
         header {
             text-align: center;
             padding: 150px 5% 80px;
-            /* Gradiente escuro mesclando perfeitamente a imagem ao fundo preto do site */
             background: linear-gradient(to bottom, rgba(5, 1, 8, 0.4), var(--preto)), url('../imagem/1biblioteca_mistica.webp');
             background-size: cover;
             background-position: center;
@@ -167,7 +176,6 @@
         
         .letter-section { 
             margin-bottom: 100px; 
-            /* scroll-margin-top garante que ao clicar na letra ela não fique escondida atrás do menu fixo */
             scroll-margin-top: 100px; 
         }
 
@@ -274,7 +282,6 @@
             gap: 20px;
         }
         
-        /* Estilo do selinho no rodapé preservado, mas adaptado ao DNA */
         .selo-rodape {
             display: inline-block;
             border: 1px solid var(--ouro);
@@ -292,10 +299,16 @@
             .back-nav { top: 20px; left: 20px; }
             .btn-voltar { padding: 8px 15px; font-size: 0.65rem; }
             header p { text-align: left; padding: 0 10px; }
+            
+            /* Ajuste do botão flutuante no mobile */
+            .top-float { width: 44px; height: 44px; bottom: 80px; right: 20px; z-index: 9999; }
         }
     </style>
 </head>
-<body>
+<body id="topo">
+
+    <!-- BOTÃO VOLTAR AO TOPO -->
+    <a href="#topo" class="top-float" id="topFloat" aria-label="Voltar ao topo">↑</a>
 
     <div class="back-nav">
         <a href="../index.html" class="btn-voltar">← Voltar ao Studio</a>
@@ -411,10 +424,10 @@
             </div>
         </section>
 
-     <section id="letra-E" class="letter-section">
+        <!-- ================= LETRA E ================= -->
+        <section id="letra-E" class="letter-section">
             <h2 class="letter-title">E</h2>
             <div class="articles-grid">
-                
                 <article class="article-card">
                     <div>
                         <span class="badge">Artefatos de Guerra e Lei</span>
@@ -423,7 +436,6 @@
                     </div>
                     <a href="./espadas-orixas.html" class="read-more">Ler os pergaminhos</a>
                 </article>
-
                 <article class="article-card">
                     <div>
                         <span class="badge">Artefato Sagrado</span>
@@ -432,7 +444,6 @@
                     </div>
                     <a href="./espelho-de-oxum.html" class="read-more">Ler os pergaminhos</a>
                 </article>
-
             </div>
         </section>
 
@@ -528,8 +539,8 @@
             </div>
         </section>
                         
-                        <!-- ================= LETRA J ================= -->
-        <section id="letra-H" class="letter-section">
+        <!-- ================= LETRA J ================= -->
+        <section id="letra-J" class="letter-section">
             <h2 class="letter-title">J</h2>
             <div class="articles-grid">
                 <article class="article-card">
@@ -550,4 +561,27 @@
                 </article>
             </div>
         </section>
+    </main>
 
+    <!-- SCRIPT DO BOTÃO VOLTAR AO TOPO -->
+    <script>
+        const topFloat = document.getElementById('topFloat');
+        if(topFloat) {
+            // 1. Faz o botão aparecer após rolar 500px
+            window.addEventListener('scroll', () => {
+                if(window.scrollY > 500) { topFloat.classList.add('show'); } 
+                else { topFloat.classList.remove('show'); }
+            });
+
+            // 2. Força a rolagem suave para o topo ao clicar
+            topFloat.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+    </script>
+</body>
+</html>
