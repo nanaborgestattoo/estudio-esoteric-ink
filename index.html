@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -7,7 +8,8 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Adicionada a fonte 'Press Start 2P' no final do carregamento do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&family=Press+Start+2P&display=swap" rel="stylesheet">
 
     <style>
         /* ================= Paleta e Variáveis Oficiais ================= */
@@ -613,7 +615,7 @@
             margin: 0 auto; 
         }
 
-        /* --- REVIEWS SECTION (FUNDO ORIGINAL DA PÁGINA) --- */
+        /* --- REVIEWS SECTION (REVELA O FUNDO DO BODY) --- */
         .reviews-section {
             padding: 120px 10%;
             text-align: center;
@@ -1023,6 +1025,124 @@
                 z-index: 9999; 
             }
         }
+
+        /* ========================================================================= */
+        /*    NOMEADO: BOTÃO DE NAVE FLUTUANTE (TOP RIGHT) - DESIGN MÍSTICO          */
+        /* ========================================================================= */
+        .game-float {
+            position: fixed;
+            width: 52px;
+            height: 52px;
+            top: 40px;
+            right: 40px;
+            background-color: rgba(5, 1, 8, 0.9);
+            color: var(--ouro);
+            border: 1px solid var(--ouro);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+            z-index: 9999; /* Fica acima da barra normal do site, abaixo apenas do modal ativo */
+            transition: all 0.4s ease;
+            backdrop-filter: blur(5px);
+            cursor: pointer;
+            outline: none;
+        }
+
+        .game-float:hover {
+            background-color: var(--ouro);
+            color: var(--preto);
+            transform: scale(1.1) rotate(-15deg); /* Leve inclinação de voo */
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .game-float {
+                width: 44px;
+                height: 44px;
+                top: 20px;
+                right: 20px;
+            }
+        }
+
+        /* ========================================================================= */
+        /*    SESSÃO DE ESTILOS DO JOGO - COMPLETAMENTE ISOLADA NO MODAL (#star-race-modal) */
+        /* ========================================================================= */
+        #star-race-modal {
+            display: none; /* Oculto por padrão */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(5, 1, 8, 0.96);
+            z-index: 99999; /* Acima de absolutamente todos os elementos da página */
+            justify-content: center;
+            align-items: center;
+        }
+
+        #star-race-modal.active {
+            display: flex;
+        }
+
+        #star-race-wrapper {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            max-width: 506px;
+            max-height: 900px;
+            background-color: #0B0E23;
+            box-shadow: 0 0 35px rgba(76, 224, 210, 0.35);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #star-race-modal canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+        }
+
+        /* Botões de Comando do Jogo (Isolados com prefixos exclusivos) */
+        .game-control-btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            pointer-events: auto;
+        }
+
+        .game-btn {
+            width: 70px;
+            height: 60px;
+            background-color: rgba(76, 224, 210, 0.15);
+            border: 2px solid #4CE0D2;
+            border-radius: 8px;
+            color: #4CE0D2;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            outline: none;
+            cursor: pointer;
+            transition: background 0.1s, transform 0.05s;
+            touch-action: manipulation;
+        }
+
+        .game-btn:active {
+            background-color: rgba(76, 224, 210, 0.4);
+            transform: scale(0.92);
+        }
+
+        .game-btn-action {
+            width: 120px;
+            font-size: 10px;
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.5);
+        }
     </style>
 </head>
 <body>
@@ -1030,7 +1150,18 @@
     <!-- BOTÃO VOLTAR AO TOPO -->
     <a href="#" class="top-float" id="topFloat" aria-label="Voltar ao topo">↑</a>
 
-    <!-- BOTÕES FLUTUANTES -->
+    <!-- BOTÃO JOGAR (NAVE FLUTUANTE ESOTÉRICA - TOP RIGHT) -->
+    <button id="open-game-btn" class="game-float" aria-label="Jogar Corrida Estelar">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Representação em arte geométrica esotérica de uma nave/foguete -->
+            <path d="M12 2s3 4.5 3 9-3 11-3 11-3-6.5-3-11 3-9 3-9z"></path>
+            <path d="M9 17H3c0-3 3-5 3-5"></path>
+            <path d="M15 17h6c0-3-3-5-3-5"></path>
+            <circle cx="12" cy="11" r="1.5" fill="currentColor"></circle>
+        </svg>
+    </button>
+
+    <!-- BOTÕES FLUTUANTES ORIGINAIS DA PÁGINA -->
     <a href="./calculadora.html" class="calc-float">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="4" y="2" width="16" height="20" rx="2"></rect>
@@ -1073,6 +1204,7 @@
             <h1 class="hero-title">Nana Borges Tattoo</h1>
 
             <div class="hero-subtitle">Studio Esoteric Ink</div>
+            <!-- Botão de "Corrida Estelar" removido daqui para retornar ao layout original -->
             <a href="./portal-esoteric.html" class="btn-action">Portal de Intenções</a>
         </div>
 
@@ -1329,43 +1461,7 @@
 
                     <div class="review-card">
                         <div class="stars">★★★★★</div>
-                        <p class="review-text">"A melhor tatuadora da região, super talentosa, profissional, atenciosa, e tem um excelente atendimento! Além de ser um ser humano excepcional ❤️ grande Nana, vcs não vão se arrepender em escolher essa mulher incrível pra fazer uma bela tattoo!"</p>
-                        <div class="review-author">
-                            <div class="author-initial">G</div>
-                            <span class="author-name">Gustavo.</span>
-                        </div>
-                    </div>
-
-                    <div class="review-card">
-                        <div class="stars">★★★★★</div>
-                        <p class="review-text">"Tatuadora muito boa, o traço é fino e perfeito para o tipo de tatuagem que eu queria, além de ter a mão leve, parece que as tatuagens nem doem "</p>
-                        <div class="review-author">
-                            <div class="author-initial">K</div>
-                            <span class="author-name">King Panda.</span>
-                        </div>
-                    </div>
-                   
-                    <div class="review-card">
-                        <div class="stars">★★★★★</div>
-                        <p class="review-text">"Profissional maravilhosa, trabalho lindooooo e o ambiente incrível 💜 "</p>
-                        <div class="review-author">
-                            <div class="author-initial">G</div>
-                            <span class="author-name">Gabriela Luciano.</span>
-                        </div>
-                    </div>
-                    
-                    <div class="review-card">
-                        <div class="stars">★★★★★</div>
-                        <p class="review-text">"Eu amo o trabalho do Studio Esoteric, já fiz 4 tatuagens lá e tô com a próxima agendada. Nana é muito talentosa, tem uma mão bem levinha e desenhos incríveis. Recomendo demais! "</p>
-                        <div class="review-author">
-                            <div class="author-initial">C</div>
-                            <span class="author-name">Camila Pazini.</span>
-                        </div>
-                    </div>
-                    
-                    <div class="review-card">
-                        <div class="stars">★★★★★</div>
-                        <p class="review-text">"A melhor de todaaaas, simplesmente perfeita, eu amooo ♥️♥️"</p>
+                        <p class="review-text">"A melhor de todas, simplesmente perfeita, eu amooo ♥️♥️"</p>
                         <div class="review-author">
                             <div class="author-initial">L</div>
                             <span class="author-name">Luana Araújo.</span>
@@ -1401,7 +1497,7 @@
                     
                     <div class="review-card">
                         <div class="stars">★★★★★</div>
-                        <p class="review-text">"Atendimento maravilhoso. Sou fã de carteirinha 😍😍"</p>
+                        <p class="review-text">"Atendimento maravilhoso. Sou fã de carteirinha 😍+😍"</p>
                         <div class="review-author">
                             <div class="author-initial">G</div>
                             <span class="author-name">Gabriela Nascimento.</span>
@@ -1428,7 +1524,7 @@
         </div>
     </section>
 
-    <!-- EXTRAS CAROUSEL SECTION (NOVA SESSÃO INSERIDA AQUI) -->
+    <!-- EXTRAS CAROUSEL SECTION -->
     <section class="extras-section">
         <div class="extras-header">
             <h2 class="section-title">PARCERIAS E COLLABS</h2>
@@ -1481,42 +1577,38 @@
                         </div>
                     </a>
 
-                    <!-- Bloco 5 -->
-                    <a href="./para-colaboradores.html" class="extra-card">
-                        <div class="extra-bg" style="background-image: url('./imagem/anuncie-aqui-retrato.png'); background-color: #1d0d35;"></div>
-                        <div class="extra-overlay"></div>
-                        <div class="extra-content">
-                            <h4>Parcerias e Collabs</h4>
-                            <span class="extra-btn">Explorar</span>
-                        </div>
-                    </a>
-
-                    <!-- Bloco 6 -->
-                    <a href="./para-colaboradores.html" class="extra-card">
-                        <div class="extra-bg" style="background-image: url('./imagem/anuncie-aqui-retrato.png'); background-color: #1d0d35;"></div>
-                        <div class="extra-overlay"></div>
-                        <div class="extra-content">
-                            <h4>Parcerias e Collabs</h4>
-                            <span class="extra-btn">Acessar</span>
-                        </div>
-                    </a>
-
-                    <!-- Bloco 7 -->
-                    <a href="./para-colaboradores.html" class="extra-card">
-                        <div class="extra-bg" style="background-image: url('./imagem/anuncie-aqui-retrato.png'); background-color: #1d0d35;"></div>
-                        <div class="extra-overlay"></div>
-                        <div class="extra-content">
-                            <h4>Parcerias e Collabs</h4>
-                            <span class="extra-btn">Assistir</span>
-                        </div>
-                    </a>
-
                 </div>
             </div>
 
             <button class="carousel-btn" id="extras-next">&#10095;</button>
         </div>
     </section>
+
+    <!-- MODAL OVERLAY PARA O JOGO (TOTALMENTE ISOLADO) -->
+    <div id="star-race-modal">
+        <div id="star-race-wrapper">
+            <!-- Botão de Fechar o Jogo -->
+            <button id="close-game-btn" style="position: absolute; top: 13px; left: 15px; width: 40px; height: 40px; background-color: rgba(255, 92, 92, 0.15); border: 2px solid #FF5C5C; border-radius: 8px; color: #FF5C5C; font-size: 16px; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 110; outline: none; font-family: monospace; font-weight: bold;">✕</button>
+            
+            <!-- Botão de Mudo -->
+            <button id="game-btn-mute" style="position: absolute; top: 13px; right: 15px; width: 40px; height: 40px; background-color: rgba(76, 224, 210, 0.15); border: 2px solid #4CE0D2; border-radius: 8px; color: #4CE0D2; font-size: 16px; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 110; outline: none;">🔊</button>
+            
+            <!-- Canvas do Jogo -->
+            <canvas id="gameCanvas"></canvas>
+
+            <!-- Controles Virtuais do Jogo -->
+            <div id="mobile-controls" style="position: absolute; bottom: 0; left: 0; width: 100%; height: 25%; background: linear-gradient(to top, rgba(11, 14, 35, 0.95), rgba(11, 14, 35, 0.2)); display: flex; justify-content: space-between; align-items: center; padding: 15px 20px 25px 20px; pointer-events: none; z-index: 10;">
+                <div class="game-control-btn-group">
+                    <button id="game-btn-up" class="game-btn">▲</button>
+                    <button id="game-btn-down" class="game-btn">▼</button>
+                </div>
+                <div class="game-control-btn-group">
+                    <button id="game-btn-jump" class="game-btn game-btn-action">SALTAR</button>
+                    <button id="game-btn-slide" class="game-btn game-btn-action">DESLIZAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- SCRIPTS -->
     <script>
@@ -1642,6 +1734,1180 @@
                 });
             });
         }
+    </script>
+
+    <!-- ========================================================================= */
+    /*    SCRIPT DO JOGO "CORRIDA ESTELAR" TOTALMENTE ENCAPSULADO VIA IIFE        */
+    /* ========================================================================= */ -->
+    <script>
+        (function() {
+            const canvas = document.getElementById('gameCanvas');
+            const ctx = canvas.getContext('2d');
+
+            const V_WIDTH = 450;
+            const V_HEIGHT = 800;
+
+            function resize() {
+                canvas.width = V_WIDTH;
+                canvas.height = V_HEIGHT;
+            }
+            resize();
+
+            // Configuração de Pistas
+            const LANES = [
+                V_HEIGHT * 0.25,
+                V_HEIGHT * 0.45,
+                V_HEIGHT * 0.65
+            ];
+
+            // Definição das 7 fases (Constelações)
+            const CONSTELLATIONS = [
+                { name: "Cruzeiro do Sul", types: ["METEOR"], targetDist: 600, speedMult: 1.0 },
+                { name: "Ursa Menor", types: ["METEOR", "STAR"], targetDist: 800, speedMult: 1.25 },
+                { name: "Órion", types: ["METEOR", "STAR", "ALIEN"], targetDist: 1000, speedMult: 1.45 },
+                { name: "Touro", types: ["METEOR", "STAR", "ALIEN", "PLANET"], targetDist: 1200, speedMult: 1.65 },
+                { name: "Escorpião", types: ["METEOR", "STAR", "ALIEN", "PLANET", "COW"], targetDist: 1400, speedMult: 1.85 },
+                { name: "Perseu", types: ["METEOR", "STAR", "ALIEN", "PLANET", "COW", "CAT"], targetDist: 1650, speedMult: 2.05 },
+                { name: "Andrômeda", types: ["METEOR", "STAR", "ALIEN", "PLANET", "COW", "CAT", "LEAF"], targetDist: 2000, speedMult: 2.30 }
+            ];
+
+            // Layout de Estrelas das Constelações
+            const STAR_PATTERNS = {
+                "Cruzeiro do Sul": [
+                    {x: 0, y: -80}, {x: -40, y: 0}, {x: 40, y: -10}, {x: 0, y: 80}, {x: 15, y: 20}
+                ],
+                "Ursa Menor": [
+                    {x: -100, y: 50}, {x: -70, y: 40}, {x: -40, y: 25}, {x: -10, y: 20},
+                    {x: 30, y: 20}, {x: 50, y: -10}, {x: 20, y: -25}
+                ],
+                "Órion": [
+                    {x: -30, y: -80}, {x: 30, y: -80}, {x: -20, y: -30}, {x: 20, y: -30},
+                    {x: -15, y: 0}, {x: 0, y: 0}, {x: 15, y: 0},
+                    {x: -25, y: 40}, {x: 25, y: 40}, {x: -35, y: 80}, {x: 35, y: 80}
+                ],
+                "Touro": [
+                    {x: -80, y: -60}, {x: -40, y: -30}, {x: -10, y: -10}, {x: 20, y: 10},
+                    {x: 50, y: 30}, {x: 80, y: -10}, {x: 60, y: -50}, {x: 10, y: -40}
+                ],
+                "Escorpião": [
+                    {x: -80, y: -40}, {x: -50, y: -50}, {x: -20, y: -40}, {x: 0, y: -10},
+                    {x: 10, y: 20}, {x: 5, y: 50}, {x: -15, y: 70}, {x: -40, y: 65},
+                    {x: -60, y: 45}, {x: -55, y: 25}, {x: -35, y: 15}
+                ],
+                "Perseu": [
+                    {x: -70, y: -60}, {x: -40, y: -40}, {x: -15, y: -10}, {x: 10, y: 20},
+                    {x: -20, y: 50}, {x: -50, y: 60}, {x: 40, y: -10}, {x: 65, y: -40}
+                ],
+                "Andrômeda": [
+                    {x: -100, y: -40}, {x: -60, y: -20}, {x: -20, y: -5}, {x: 20, y: 10},
+                    {x: 60, y: 25}, {x: 100, y: 40}, {x: -30, y: 40}, {x: 10, y: 60}, {x: 50, y: 75}
+                ]
+            };
+
+            // Estado de Jogo interno do loop
+            let isModalActive = false;
+            let gameState = 'INTRO';
+            let currentLevelIndex = 0;
+            let score = 0;
+            let highscore = parseInt(localStorage.getItem('corrida_estelar_recorde') || '0');
+            let distanceCovered = 0;
+            let lives = 3;
+            let baseSpeed = 150;
+
+            let transitionTimer = 0;
+            let explosionParticles = [];
+
+            /**
+             * SINTETIZADOR WEB AUDIO API INDEPENDENTE
+             */
+            class SoundSynth {
+                constructor() {
+                    this.ctx = null;
+                    this.isMuted = false;
+                    this.bpm = 135;
+                    this.stepTime = 60 / this.bpm / 2;
+                    this.currentStep = 0;
+                    this.musicTimer = 0;
+
+                    this.bassline = [
+                        55, 55, 65.4, 65.4, 73.4, 73.4, 82.4, 82.4,
+                        55, 55, 98, 98, 82.4, 82.4, 73.4, 65.4
+                    ];
+
+                    this.melody = [
+                        220, 0, 261.6, 293.7, 329.6, 0, 392, 329.6,
+                        440, 0, 392, 329.6, 293.7, 261.6, 220, 0
+                    ];
+                }
+
+                init() {
+                    if (this.ctx) return;
+                    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                    if (AudioContextClass) {
+                        this.ctx = new AudioContextClass();
+                    }
+                }
+
+                toggleMute() {
+                    this.isMuted = !this.isMuted;
+                    const btn = document.getElementById('game-btn-mute');
+                    if (btn) {
+                        btn.textContent = this.isMuted ? '🔇' : '🔊';
+                    }
+                }
+
+                playSFX(type) {
+                    if (this.isMuted || !this.ctx || !isModalActive) return;
+
+                    if (this.ctx.state === 'suspended') {
+                        this.ctx.resume();
+                    }
+
+                    const t = this.ctx.currentTime;
+
+                    switch(type) {
+                        case 'jump': {
+                            let osc = this.ctx.createOscillator();
+                            let gain = this.ctx.createGain();
+                            osc.connect(gain);
+                            gain.connect(this.ctx.destination);
+                            osc.type = 'triangle';
+                            osc.frequency.setValueAtTime(140, t);
+                            osc.frequency.exponentialRampToValueAtTime(650, t + 0.14);
+                            gain.gain.setValueAtTime(0.12, t);
+                            gain.gain.linearRampToValueAtTime(0, t + 0.14);
+                            osc.start(t);
+                            osc.stop(t + 0.14);
+                            break;
+                        }
+                        case 'slide': {
+                            let osc = this.ctx.createOscillator();
+                            let gain = this.ctx.createGain();
+                            osc.connect(gain);
+                            gain.connect(this.ctx.destination);
+                            osc.type = 'triangle';
+                            osc.frequency.setValueAtTime(280, t);
+                            osc.frequency.linearRampToValueAtTime(70, t + 0.18);
+                            gain.gain.setValueAtTime(0.18, t);
+                            gain.gain.linearRampToValueAtTime(0, t + 0.18);
+                            osc.start(t);
+                            osc.stop(t + 0.18);
+                            break;
+                        }
+                        case 'hit': {
+                            let bufferSize = this.ctx.sampleRate * 0.22;
+                            let buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+                            let data = buffer.getChannelData(0);
+                            for (let i = 0; i < bufferSize; i++) {
+                                data[i] = Math.random() * 2 - 1;
+                            }
+                            let noise = this.ctx.createBufferSource();
+                            noise.buffer = buffer;
+                            let filter = this.ctx.createBiquadFilter();
+                            filter.type = 'lowpass';
+                            filter.frequency.setValueAtTime(600, t);
+                            filter.frequency.exponentialRampToValueAtTime(80, t + 0.22);
+                            let gain = this.ctx.createGain();
+                            gain.gain.setValueAtTime(0.22, t);
+                            gain.gain.linearRampToValueAtTime(0, t + 0.22);
+                            noise.connect(filter);
+                            filter.connect(gain);
+                            gain.connect(this.ctx.destination);
+                            noise.start(t);
+                            noise.stop(t + 0.22);
+                            break;
+                        }
+                        case 'collect': {
+                            let osc = this.ctx.createOscillator();
+                            let gain = this.ctx.createGain();
+                            osc.connect(gain);
+                            gain.connect(this.ctx.destination);
+                            osc.type = 'sine';
+                            osc.frequency.setValueAtTime(400, t);
+                            osc.frequency.setValueAtTime(600, t + 0.08);
+                            osc.frequency.setValueAtTime(900, t + 0.16);
+                            gain.gain.setValueAtTime(0.10, t);
+                            gain.gain.linearRampToValueAtTime(0, t + 0.3);
+                            osc.start(t);
+                            osc.stop(t + 0.3);
+                            break;
+                        }
+                        case 'cow': {
+                            let osc1 = this.ctx.createOscillator();
+                            let osc2 = this.ctx.createOscillator();
+                            let gain = this.ctx.createGain();
+                            let filter = this.ctx.createBiquadFilter();
+                            osc1.type = 'sawtooth';
+                            osc2.type = 'triangle';
+                            osc1.frequency.setValueAtTime(110, t);
+                            osc1.frequency.linearRampToValueAtTime(90, t + 0.45);
+                            osc2.frequency.setValueAtTime(112, t);
+                            osc2.frequency.linearRampToValueAtTime(92, t + 0.45);
+                            filter.type = 'lowpass';
+                            filter.frequency.setValueAtTime(350, t);
+                            filter.Q.setValueAtTime(6, t);
+                            gain.gain.setValueAtTime(0.08, t);
+                            gain.gain.linearRampToValueAtTime(0, t + 0.45);
+                            osc1.connect(filter);
+                            osc2.connect(filter);
+                            filter.connect(gain);
+                            gain.connect(this.ctx.destination);
+                            osc1.start(t);
+                            osc2.start(t);
+                            osc1.stop(t + 0.45);
+                            osc2.stop(t + 0.45);
+                            break;
+                        }
+                        case 'cat': {
+                            let osc = this.ctx.createOscillator();
+                            let gain = this.ctx.createGain();
+                            osc.connect(gain);
+                            gain.connect(this.ctx.destination);
+                            osc.type = 'triangle';
+                            osc.frequency.setValueAtTime(500, t);
+                            osc.frequency.linearRampToValueAtTime(750, t + 0.1);
+                            osc.frequency.linearRampToValueAtTime(450, t + 0.25);
+                            gain.gain.setValueAtTime(0.06, t);
+                            gain.gain.linearRampToValueAtTime(0, t + 0.25);
+                            osc.start(t);
+                            osc.stop(t + 0.25);
+                            break;
+                        }
+                        case 'level': {
+                            let osc = this.ctx.createOscillator();
+                            let gain = this.ctx.createGain();
+                            osc.connect(gain);
+                            gain.connect(this.ctx.destination);
+                            osc.type = 'square';
+                            osc.frequency.setValueAtTime(261.6, t);
+                            osc.frequency.setValueAtTime(329.6, t + 0.1);
+                            osc.frequency.setValueAtTime(392.0, t + 0.2);
+                            osc.frequency.setValueAtTime(523.3, t + 0.3);
+                            gain.gain.setValueAtTime(0.08, t);
+                            gain.gain.linearRampToValueAtTime(0, t + 0.65);
+                            osc.start(t);
+                            osc.stop(t + 0.65);
+                            break;
+                        }
+                    }
+                }
+
+                updateMusic(dt) {
+                    if (this.isMuted || !this.ctx || gameState !== 'PLAY' || !isModalActive) return;
+
+                    if (this.ctx.state === 'suspended') return;
+
+                    this.musicTimer += dt;
+                    if (this.musicTimer >= this.stepTime) {
+                        this.musicTimer -= this.stepTime;
+                        this.playMusicStep();
+                        this.currentStep = (this.currentStep + 1) % 16;
+                    }
+                }
+
+                playMusicStep() {
+                    const t = this.ctx.currentTime;
+                    const bassFreq = this.bassline[this.currentStep];
+                    if (bassFreq > 0) {
+                        let osc = this.ctx.createOscillator();
+                        let gain = this.ctx.createGain();
+                        osc.connect(gain);
+                        gain.connect(this.ctx.destination);
+                        osc.type = 'triangle';
+                        osc.frequency.setValueAtTime(bassFreq, t);
+                        gain.gain.setValueAtTime(0.09, t);
+                        gain.gain.linearRampToValueAtTime(0, t + this.stepTime * 0.85);
+                        osc.start(t);
+                        osc.stop(t + this.stepTime * 0.85);
+                    }
+                    
+                    const melFreq = this.melody[this.currentStep];
+                    if (melFreq > 0 && (currentLevelIndex >= 1 || this.currentStep % 2 === 0)) {
+                        let osc = this.ctx.createOscillator();
+                        let gain = this.ctx.createGain();
+                        osc.connect(gain);
+                        gain.connect(this.ctx.destination);
+                        osc.type = 'sine';
+                        let pitchMultiplier = 1 + (currentLevelIndex * 0.04);
+                        osc.frequency.setValueAtTime(melFreq * pitchMultiplier, t);
+                        gain.gain.setValueAtTime(0.03, t);
+                        gain.gain.linearRampToValueAtTime(0, t + this.stepTime * 1.4);
+                        osc.start(t);
+                        osc.stop(t + this.stepTime * 1.4);
+                    }
+                }
+            }
+
+            const sound = new SoundSynth();
+
+            // Ativa mudo no clique do botão virtual
+            document.getElementById('game-btn-mute').addEventListener('click', (e) => {
+                e.stopPropagation();
+                sound.init();
+                sound.toggleMute();
+            });
+
+            // Player Ship
+            class PlayerShip {
+                constructor() {
+                    this.x = 65;
+                    this.currentLane = 1;
+                    this.y = LANES[this.currentLane];
+                    this.targetY = LANES[this.currentLane];
+                    this.laneSpeed = 16.0;
+                    this.isJumping = false;
+                    this.jumpY = 0;
+                    this.jumpVy = 0;
+                    this.gravity = 1500;
+                    this.jumpStrength = -470;
+                    this.isSliding = false;
+                    this.slideTimer = 0;
+                    this.slideDuration = 0.55;
+                    this.width = 42;
+                    this.height = 24;
+                    this.isInvincible = false;
+                    this.invincibilityTimer = 0;
+                    this.particles = [];
+                    this.trailStars = [];
+                }
+
+                reset() {
+                    this.currentLane = 1;
+                    this.y = LANES[1];
+                    this.targetY = LANES[1];
+                    this.jumpY = 0;
+                    this.jumpVy = 0;
+                    this.isJumping = false;
+                    this.isSliding = false;
+                    this.slideTimer = 0;
+                    this.isInvincible = false;
+                    this.invincibilityTimer = 0;
+                    this.particles = [];
+                    this.trailStars = [];
+                }
+
+                update(dt) {
+                    this.y += (this.targetY - this.y) * this.laneSpeed * dt;
+
+                    if (this.isJumping) {
+                        this.jumpY += this.jumpVy * dt;
+                        this.jumpVy += this.gravity * dt;
+                        if (this.jumpY >= 0) {
+                            this.jumpY = 0;
+                            this.jumpVy = 0;
+                            this.isJumping = false;
+                        }
+                    }
+
+                    if (this.isSliding) {
+                        this.slideTimer -= dt;
+                        if (this.slideTimer <= 0) {
+                            this.isSliding = false;
+                        }
+                    }
+
+                    if (this.isInvincible) {
+                        this.invincibilityTimer -= dt;
+                        if (this.invincibilityTimer <= 0) {
+                            this.isInvincible = false;
+                        }
+                    }
+
+                    this.emitEngineParticles(dt);
+
+                    for (let i = this.particles.length - 1; i >= 0; i--) {
+                        let p = this.particles[i];
+                        p.x -= p.vx * dt + (baseSpeed * dt);
+                        p.y += p.vy * dt;
+                        p.life -= dt;
+                        if (p.life <= 0) this.particles.splice(i, 1);
+                    }
+
+                    this.updateTrail(dt);
+                }
+
+                moveLane(dir) {
+                    let nextLane = this.currentLane + dir;
+                    if (nextLane >= 0 && nextLane < LANES.length) {
+                        this.currentLane = nextLane;
+                        this.targetY = LANES[this.currentLane];
+                    }
+                }
+
+                jump() {
+                    if (!this.isJumping && !this.isSliding && gameState === 'PLAY' && isModalActive) {
+                        this.isJumping = true;
+                        this.jumpVy = this.jumpStrength;
+                        sound.playSFX('jump');
+                    }
+                }
+
+                slide() {
+                    if (!this.isJumping && !this.isSliding && gameState === 'PLAY' && isModalActive) {
+                        this.isSliding = true;
+                        this.slideTimer = this.slideDuration;
+                        sound.playSFX('slide');
+                    }
+                }
+
+                hit() {
+                    if (!this.isInvincible) {
+                        lives--;
+                        this.isInvincible = true;
+                        this.invincibilityTimer = 1.5;
+                        sound.playSFX('hit');
+                        return true;
+                    }
+                    return false;
+                }
+
+                emitEngineParticles(dt) {
+                    if (this.particles.length < 35 && gameState === 'PLAY' && isModalActive) {
+                        const py = this.y + this.jumpY;
+                        this.particles.push({
+                            x: this.x - 8,
+                            y: py + (Math.random() * 6 - 3),
+                            vx: Math.random() * 80 + 120,
+                            vy: Math.random() * 30 - 15,
+                            life: Math.random() * 0.25 + 0.1,
+                            color: Math.random() > 0.4 ? '#FF5C5C' : '#FFB347'
+                        });
+                    }
+                }
+
+                updateTrail(dt) {
+                    if (gameState === 'PLAY' && Math.random() < 0.08) {
+                        this.trailStars.push({
+                            x: this.x,
+                            y: this.y + this.jumpY,
+                            life: 1.2
+                        });
+                    }
+
+                    for (let i = this.trailStars.length - 1; i >= 0; i--) {
+                        let s = this.trailStars[i];
+                        s.x -= (baseSpeed * CONSTELLATIONS[currentLevelIndex].speedMult) * dt;
+                        s.life -= dt;
+                        if (s.life <= 0) {
+                            this.trailStars.splice(i, 1);
+                        }
+                    }
+                }
+
+                getHitbox() {
+                    let currentY = this.y + this.jumpY;
+                    if (this.isSliding) {
+                        return { x: this.x - 12, y: currentY + 4, width: 28, height: 8 };
+                    } else if (this.isJumping) {
+                        return { x: this.x - 12, y: currentY - 10, width: 26, height: 20 };
+                    } else {
+                        return { x: this.x - 12, y: currentY - 12, width: 28, height: 24 };
+                    }
+                }
+
+                draw(ctx) {
+                    if (this.isInvincible && Math.floor(performance.now() / 100) % 2 === 0) {
+                        return;
+                    }
+
+                    const currentY = this.y + this.jumpY;
+
+                    ctx.strokeStyle = 'rgba(76, 224, 210, 0.45)';
+                    ctx.lineWidth = 1.5;
+                    ctx.beginPath();
+                    if (this.trailStars.length > 0) {
+                        ctx.moveTo(this.trailStars[0].x, this.trailStars[0].y);
+                        for (let i = 1; i < this.trailStars.length; i++) {
+                            ctx.lineTo(this.trailStars[i].x, this.trailStars[i].y);
+                        }
+                        ctx.lineTo(this.x, currentY);
+                        ctx.stroke();
+                    }
+
+                    this.trailStars.forEach(s => {
+                        ctx.fillStyle = '#4CE0D2';
+                        ctx.fillRect(s.x - 2, s.y - 2, 4, 4);
+                    });
+
+                    this.particles.forEach(p => {
+                        ctx.fillStyle = p.color;
+                        ctx.fillRect(p.x, p.y, 3, 3);
+                    });
+
+                    ctx.save();
+                    ctx.translate(this.x, currentY);
+
+                    if (this.isSliding) {
+                        ctx.scale(1.25, 0.5);
+                    }
+
+                    const P = 2.5;
+
+                    ctx.fillStyle = '#F5F5FF';
+                    ctx.fillRect(-6*P, -2*P, 10*P, 4*P);
+                    ctx.fillRect(-2*P, -3*P, 5*P, 6*P);
+
+                    ctx.fillStyle = '#4CE0D2';
+                    ctx.fillRect(4*P, -1*P, 2*P, 2*P);
+                    ctx.fillRect(6*P, 0, P, P);
+
+                    ctx.fillStyle = '#B8348C';
+                    ctx.fillRect(-5*P, -4*P, 3*P, P);
+                    ctx.fillRect(-5*P, 3*P, 3*P, P);
+
+                    ctx.fillStyle = '#FFB347';
+                    ctx.fillRect(-7*P, -1*P, P, 2*P);
+
+                    ctx.restore();
+                }
+            }
+
+            // Classe Geral de Obstáculos
+            class Obstacle {
+                constructor(type, lane) {
+                    this.type = type;
+                    this.lane = lane;
+                    this.x = V_WIDTH + 60;
+                    this.y = LANES[this.lane];
+                    this.speed = baseSpeed * CONSTELLATIONS[currentLevelIndex].speedMult;
+                    this.angle = 0;
+                    this.width = 30;
+                    this.height = 30;
+
+                    if (this.type === 'METEOR') {
+                        this.y += 12;
+                        this.width = 28;
+                        this.height = 24;
+                    } else if (this.type === 'STAR') {
+                        this.y -= 15;
+                        this.width = 26;
+                        this.height = 20;
+                        this.speed *= 1.45;
+                    } else if (this.type === 'ALIEN') {
+                        this.width = 32;
+                        this.height = 24;
+                    } else if (this.type === 'PLANET') {
+                        this.width = 48;
+                        this.height = 48;
+                    } else if (this.type === 'COW') {
+                        this.y += 10;
+                        this.width = 34;
+                        this.height = 26;
+                    } else if (this.type === 'CAT') {
+                        this.y -= 15;
+                        this.width = 28;
+                        this.height = 26;
+                    } else if (this.type === 'LEAF') {
+                        this.width = 24;
+                        this.height = 24;
+                    }
+                }
+
+                update(dt) {
+                    this.x -= this.speed * dt;
+                    this.angle += 3 * dt;
+                }
+
+                getHitbox() {
+                    return {
+                        x: this.x - this.width / 2,
+                        y: this.y - this.height / 2,
+                        width: this.width,
+                        height: this.height
+                    };
+                }
+
+                draw(ctx) {
+                    ctx.save();
+                    ctx.translate(this.x, this.y);
+                    const P = 2;
+
+                    if (this.type === 'METEOR') {
+                        ctx.rotate(this.angle);
+                        ctx.fillStyle = '#6E6F80';
+                        ctx.fillRect(-6*P, -6*P, 12*P, 12*P);
+                        ctx.fillRect(-8*P, -3*P, 16*P, 6*P);
+                        ctx.fillRect(-3*P, -8*P, 6*P, 16*P);
+                        ctx.fillStyle = '#434454';
+                        ctx.fillRect(-4*P, -2*P, 2*P, 2*P);
+                        ctx.fillRect(2*P, 1*P, 3*P, 2*P);
+                    } else if (this.type === 'STAR') {
+                        ctx.restore();
+                        ctx.save();
+                        ctx.translate(this.x, this.y);
+                        let grad = ctx.createLinearGradient(0, 0, 80, 0);
+                        grad.addColorStop(0, '#4CE0D2');
+                        grad.addColorStop(1, 'rgba(76, 224, 210, 0)');
+                        ctx.fillStyle = grad;
+                        ctx.fillRect(0, -P, 70, 2*P);
+                        ctx.fillStyle = '#F5F5FF';
+                        ctx.fillRect(-3*P, -3*P, 6*P, 6*P);
+                        ctx.fillRect(-5*P, -P, 10*P, 2*P);
+                        ctx.fillRect(-P, -5*P, 2*P, 10*P);
+                    } else if (this.type === 'ALIEN') {
+                        ctx.fillStyle = '#4CE0D2';
+                        ctx.fillRect(-3*P, -5*P, 6*P, 3*P);
+                        ctx.fillStyle = '#8E91A6';
+                        ctx.fillRect(-8*P, -2*P, 16*P, 4*P);
+                        ctx.fillRect(-10*P, 0, 20*P, 2*P);
+                        let colorLight = Math.floor(performance.now() / 150) % 2 === 0 ? '#FF5C5C' : '#FFB347';
+                        ctx.fillStyle = colorLight;
+                        ctx.fillRect(-6*P, P, 2*P, P);
+                        ctx.fillRect(0, P, 2*P, P);
+                        ctx.fillRect(4*P, P, 2*P, P);
+                    } else if (this.type === 'PLANET') {
+                        ctx.strokeStyle = '#B8348C';
+                        ctx.lineWidth = 4;
+                        ctx.beginPath();
+                        ctx.moveTo(-16*P, 8*P);
+                        ctx.lineTo(16*P, -8*P);
+                        ctx.stroke();
+                        ctx.fillStyle = '#FFB347';
+                        ctx.beginPath();
+                        ctx.arc(0, 0, 7*P, 0, Math.PI*2);
+                        ctx.fill();
+                        ctx.fillStyle = '#FF5C5C';
+                        ctx.fillRect(-6*P, -2*P, 12*P, 2*P);
+                        ctx.fillRect(-5*P, 2*P, 10*P, 2*P);
+                    } else if (this.type === 'COW') {
+                        ctx.fillStyle = '#FFFFFF';
+                        ctx.fillRect(-8*P, -4*P, 14*P, 8*P);
+                        ctx.fillStyle = '#111';
+                        ctx.fillRect(-5*P, -3*P, 3*P, 3*P);
+                        ctx.fillRect(1*P, 0, 3*P, 3*P);
+                        ctx.fillStyle = '#F5F5FF';
+                        ctx.fillRect(6*P, -5*P, 3*P, 4*P);
+                        ctx.fillStyle = '#FF5C5C';
+                        ctx.fillRect(-1*P, 4*P, 2*P, 2*P);
+                        ctx.strokeStyle = 'rgba(76, 224, 210, 0.6)';
+                        ctx.lineWidth = 1.5;
+                        ctx.beginPath();
+                        ctx.arc(7*P, -3*P, 6*P, 0, Math.PI*2);
+                        ctx.stroke();
+                    } else if (this.type === 'CAT') {
+                        ctx.strokeStyle = 'rgba(76, 224, 210, 0.6)';
+                        ctx.lineWidth = 1.5;
+                        ctx.beginPath();
+                        ctx.arc(0, 0, 8*P, 0, Math.PI*2);
+                        ctx.stroke();
+                        ctx.fillStyle = '#FFB347';
+                        ctx.fillRect(-4*P, -3*P, 8*P, 7*P);
+                        ctx.fillRect(-3*P, -5*P, 2*P, 2*P);
+                        ctx.fillRect(1*P, -5*P, 2*P, 2*P);
+                        ctx.fillStyle = '#111';
+                        ctx.fillRect(-2*P, -2*P, P, P);
+                        ctx.fillRect(1*P, -2*P, P, P);
+                    } else if (this.type === 'LEAF') {
+                        ctx.rotate(this.angle * 0.5);
+                        ctx.fillStyle = '#4CE0D2';
+                        for (let r = 0; r < 5; r++) {
+                            ctx.save();
+                            ctx.rotate((r - 2) * 0.4);
+                            ctx.fillRect(-P, -6*P, 2*P, 7*P);
+                            ctx.restore();
+                        }
+                        ctx.fillRect(-0.5*P, 0, P, 4*P);
+                    }
+                    ctx.restore();
+                }
+            }
+
+            // Parallax
+            class SpaceBackground {
+                constructor() {
+                    this.starsFar = [];
+                    this.starsNear = [];
+                    this.nebulae = [];
+                    for (let i = 0; i < 40; i++) {
+                        this.starsFar.push({ x: Math.random() * V_WIDTH, y: Math.random() * V_HEIGHT, size: 2, speed: 10 + Math.random() * 15 });
+                        this.starsNear.push({ x: Math.random() * V_WIDTH, y: Math.random() * V_HEIGHT, size: 4, speed: 45 + Math.random() * 30 });
+                    }
+                    for (let i = 0; i < 3; i++) {
+                        this.nebulae.push({
+                            x: Math.random() * V_WIDTH,
+                            y: Math.random() * V_HEIGHT,
+                            radius: 80 + Math.random() * 70,
+                            speed: 5 + Math.random() * 8
+                        });
+                    }
+                }
+
+                update(dt) {
+                    let speedMult = CONSTELLATIONS[currentLevelIndex].speedMult;
+                    this.starsFar.forEach(s => {
+                        s.x -= s.speed * speedMult * dt;
+                        if (s.x < -10) s.x = V_WIDTH + 10;
+                    });
+                    this.starsNear.forEach(s => {
+                        s.x -= s.speed * speedMult * dt;
+                        if (s.x < -10) {
+                            s.x = V_WIDTH + 10;
+                            s.y = Math.random() * V_HEIGHT;
+                        }
+                    });
+                    this.nebulae.forEach(n => {
+                        n.x -= n.speed * speedMult * dt;
+                        if (n.x < -n.radius * 2) {
+                            n.x = V_WIDTH + n.radius * 2;
+                            n.y = Math.random() * V_HEIGHT;
+                        }
+                    });
+                }
+
+                draw(ctx) {
+                    ctx.fillStyle = '#0B0E23';
+                    ctx.fillRect(0, 0, V_WIDTH, V_HEIGHT);
+                    this.nebulae.forEach(n => {
+                        let grad = ctx.createRadialGradient(n.x, n.y, 5, n.x, n.y, n.radius);
+                        grad.addColorStop(0, 'rgba(184, 52, 140, 0.08)');
+                        grad.addColorStop(1, 'rgba(184, 52, 140, 0)');
+                        ctx.fillStyle = grad;
+                        ctx.beginPath();
+                        ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
+                        ctx.fill();
+                    });
+                    ctx.fillStyle = 'rgba(245, 245, 255, 0.4)';
+                    this.starsFar.forEach(s => {
+                        ctx.fillRect(s.x, s.y, s.size, s.size);
+                    });
+                    ctx.fillStyle = '#F5F5FF';
+                    this.starsNear.forEach(s => {
+                        ctx.fillRect(s.x, s.y, s.size, s.size);
+                    });
+                }
+            }
+
+            const bg = new SpaceBackground();
+            const player = new PlayerShip();
+            let obstacles = [];
+            let obstacleSpawnTimer = 0;
+
+            function resetGame() {
+                currentLevelIndex = 0;
+                score = 0;
+                distanceCovered = 0;
+                lives = 3;
+                obstacles = [];
+                obstacleSpawnTimer = 0;
+                player.reset();
+            }
+
+            function checkCollision(rect1, rect2) {
+                return rect1.x < rect2.x + rect2.width &&
+                       rect1.x + rect1.width > rect2.x &&
+                       rect1.y < rect2.y + rect2.height &&
+                       rect1.y + rect1.height > rect2.y;
+            }
+
+            function triggerBigBang() {
+                sound.playSFX('level');
+                explosionParticles = [];
+                for (let i = 0; i < 80; i++) {
+                    let angle = Math.random() * Math.PI * 2;
+                    let speed = Math.random() * 220 + 100;
+                    explosionParticles.push({
+                        x: V_WIDTH / 2,
+                        y: V_HEIGHT * 0.4,
+                        vx: Math.cos(angle) * speed,
+                        vy: Math.sin(angle) * speed,
+                        size: Math.random() * 4 + 2,
+                        color: ['#4CE0D2', '#B8348C', '#FFB347', '#F5F5FF'][Math.floor(Math.random() * 4)],
+                        life: 1.5
+                    });
+                }
+            }
+
+            function updateBigBang(dt) {
+                explosionParticles.forEach(p => {
+                    p.x += p.vx * dt;
+                    p.y += p.vy * dt;
+                    p.life -= dt;
+                });
+                explosionParticles = explosionParticles.filter(p => p.life > 0);
+            }
+
+            function drawBigBang(ctx) {
+                explosionParticles.forEach(p => {
+                    ctx.fillStyle = p.color;
+                    ctx.globalAlpha = p.life;
+                    ctx.fillRect(p.x - p.size/2, p.y - p.size/2, p.size, p.size);
+                });
+                ctx.globalAlpha = 1.0;
+            }
+
+            function handleActionStart() {
+                sound.init();
+                if (gameState === 'INTRO') {
+                    resetGame();
+                    gameState = 'PLAY';
+                } else if (gameState === 'GAMEOVER' || gameState === 'VICTORY') {
+                    gameState = 'INTRO';
+                }
+            }
+
+            // Entrada de Teclado
+            window.addEventListener('keydown', e => {
+                if (!isModalActive) return;
+                if (e.repeat) return;
+                
+                if (gameState !== 'PLAY' && (e.code === 'Space' || e.code === 'Enter')) {
+                    handleActionStart();
+                    return;
+                }
+
+                switch(e.code) {
+                    case 'ArrowUp':
+                    case 'KeyW':
+                        player.moveLane(-1);
+                        break;
+                    case 'ArrowDown':
+                    case 'KeyS':
+                        player.moveLane(1);
+                        break;
+                    case 'Space':
+                        player.jump();
+                        break;
+                    case 'ShiftLeft':
+                    case 'ShiftRight':
+                    case 'KeyC':
+                        player.slide();
+                        break;
+                }
+            });
+
+            // Toques Virtuais
+            document.getElementById('game-btn-up').addEventListener('pointerdown', (e) => {
+                e.preventDefault();
+                if (gameState === 'PLAY') player.moveLane(-1);
+                else handleActionStart();
+            });
+            document.getElementById('game-btn-down').addEventListener('pointerdown', (e) => {
+                e.preventDefault();
+                if (gameState === 'PLAY') player.moveLane(1);
+                else handleActionStart();
+            });
+            document.getElementById('game-btn-jump').addEventListener('pointerdown', (e) => {
+                e.preventDefault();
+                if (gameState === 'PLAY') player.jump();
+                else handleActionStart();
+            });
+            document.getElementById('game-btn-slide').addEventListener('pointerdown', (e) => {
+                e.preventDefault();
+                if (gameState === 'PLAY') player.slide();
+                else handleActionStart();
+            });
+
+            canvas.addEventListener('pointerdown', (e) => {
+                e.preventDefault();
+                handleActionStart();
+            });
+
+            /**
+             * LOOP GERAL DO JOGO (Executa apenas se o modal estiver ativo)
+             */
+            let lastTime = performance.now();
+
+            function gameLoop(timestamp) {
+                let dt = (timestamp - lastTime) / 1000.0;
+                lastTime = timestamp;
+
+                if (dt > 0.1) dt = 0.1;
+
+                if (isModalActive) {
+                    sound.updateMusic(dt);
+
+                    if (gameState === 'INTRO') {
+                        bg.update(dt);
+                        ctx.clearRect(0, 0, V_WIDTH, V_HEIGHT);
+                        bg.draw(ctx);
+                        
+                        player.y = LANES[1] + Math.sin(performance.now() / 200) * 10;
+                        player.draw(ctx);
+
+                        ctx.fillStyle = '#4CE0D2';
+                        ctx.font = "20px 'Press Start 2P'";
+                        ctx.textAlign = 'center';
+                        ctx.fillText("CORRIDA ESTELAR", V_WIDTH / 2, V_HEIGHT * 0.3);
+
+                        ctx.fillStyle = '#FFB347';
+                        ctx.font = "10px 'Press Start 2P'";
+                        ctx.fillText("AS 7 CONSTELAÇÕES", V_WIDTH / 2, V_HEIGHT * 0.36);
+
+                        ctx.fillStyle = '#F5F5FF';
+                        ctx.font = "11px 'Space Mono'";
+                        ctx.fillText("Desvie, salte e deslize pelo espaço", V_WIDTH / 2, V_HEIGHT * 0.52);
+                        ctx.fillText("Desvie de Planetas e Discos Voadores", V_WIDTH / 2, V_HEIGHT * 0.55);
+                        ctx.fillText("Salte Meteoros e Deslize sob as Estrelas", V_WIDTH / 2, V_HEIGHT * 0.58);
+
+                        ctx.fillStyle = '#4CE0D2';
+                        ctx.font = "12px 'Press Start 2P'";
+                        if (Math.floor(performance.now() / 400) % 2 === 0) {
+                            ctx.fillText("TOQUE PARA INICIAR", V_WIDTH / 2, V_HEIGHT * 0.7);
+                        }
+
+                        ctx.fillStyle = 'rgba(245, 245, 255, 0.5)';
+                        ctx.font = "10px 'Space Mono'";
+                        ctx.fillText(`RECORD LOCAL: ${highscore} METROS`, V_WIDTH / 2, V_HEIGHT * 0.76);
+
+                    } else if (gameState === 'PLAY') {
+                        bg.update(dt);
+                        player.update(dt);
+
+                        let level = CONSTELLATIONS[currentLevelIndex];
+                        distanceCovered += baseSpeed * level.speedMult * dt * 0.1;
+                        score = Math.floor(distanceCovered);
+
+                        if (distanceCovered >= level.targetDist) {
+                            gameState = 'TRANSITION';
+                            transitionTimer = 3.5;
+                            triggerBigBang();
+                        }
+
+                        obstacleSpawnTimer -= dt;
+                        if (obstacleSpawnTimer <= 0) {
+                            let type = level.types[Math.floor(Math.random() * level.types.length)];
+                            let lane = Math.floor(Math.random() * 3);
+                            obstacles.push(new Obstacle(type, lane));
+
+                            if (type === 'COW') sound.playSFX('cow');
+                            if (type === 'CAT') sound.playSFX('cat');
+                            obstacleSpawnTimer = (1.4 + Math.random() * 1.3) / level.speedMult;
+                        }
+
+                        let playerBox = player.getHitbox();
+
+                        for (let i = obstacles.length - 1; i >= 0; i--) {
+                            let obs = obstacles[i];
+                            obs.update(dt);
+
+                            if (obs.lane === player.currentLane) {
+                                let obsBox = obs.getHitbox();
+                                let collisionDetected = false;
+
+                                if (obs.type === 'METEOR' || obs.type === 'COW') {
+                                    if (!player.isJumping || player.jumpY > -35) {
+                                        collisionDetected = true;
+                                    }
+                                } else if (obs.type === 'STAR' || obs.type === 'CAT') {
+                                    if (!player.isSliding) {
+                                        collisionDetected = true;
+                                    }
+                                } else if (obs.type === 'ALIEN' || obs.type === 'PLANET') {
+                                    collisionDetected = true;
+                                } else if (obs.type === 'LEAF') {
+                                    if (checkCollision(playerBox, obsBox)) {
+                                        distanceCovered += 150;
+                                        sound.playSFX('collect');
+                                        obstacles.splice(i, 1);
+                                        continue;
+                                    }
+                                }
+
+                                if (collisionDetected && checkCollision(playerBox, obsBox)) {
+                                    let tookDamage = player.hit();
+                                    if (tookDamage) {
+                                        obstacles.splice(i, 1);
+                                        if (lives <= 0) {
+                                            gameState = 'GAMEOVER';
+                                            if (score > highscore) {
+                                                highscore = score;
+                                                localStorage.setItem('corrida_estelar_recorde', highscore.toString());
+                                            }
+                                        }
+                                        continue;
+                                    }
+                                }
+                            }
+
+                            if (obs.x < -60) {
+                                obstacles.splice(i, 1);
+                            }
+                        }
+
+                        ctx.clearRect(0, 0, V_WIDTH, V_HEIGHT);
+                        bg.draw(ctx);
+                        obstacles.forEach(o => o.draw(ctx));
+                        player.draw(ctx);
+                        drawHUD();
+
+                    } else if (gameState === 'TRANSITION') {
+                        bg.update(dt);
+                        player.update(dt);
+                        updateBigBang(dt);
+                        transitionTimer -= dt;
+
+                        ctx.clearRect(0, 0, V_WIDTH, V_HEIGHT);
+                        bg.draw(ctx);
+                        player.draw(ctx);
+                        drawBigBang(ctx);
+
+                        let level = CONSTELLATIONS[currentLevelIndex];
+
+                        ctx.fillStyle = '#4CE0D2';
+                        ctx.font = "14px 'Press Start 2P'";
+                        ctx.textAlign = 'center';
+                        ctx.fillText(`CONSTELAÇÃO CONCLUÍDA!`, V_WIDTH / 2, V_HEIGHT * 0.2);
+                        
+                        ctx.fillStyle = '#F5F5FF';
+                        ctx.font = "20px 'Press Start 2P'";
+                        ctx.fillText(level.name, V_WIDTH / 2, V_HEIGHT * 0.26);
+
+                        ctx.save();
+                        ctx.translate(V_WIDTH / 2, V_HEIGHT * 0.45);
+                        let pattern = STAR_PATTERNS[level.name] || [];
+                        ctx.strokeStyle = 'rgba(76, 224, 210, 0.6)';
+                        ctx.lineWidth = 2;
+                        ctx.beginPath();
+                        if (pattern.length > 0) {
+                            ctx.moveTo(pattern[0].x, pattern[0].y);
+                            for (let i = 1; i < pattern.length; i++) {
+                                ctx.lineTo(pattern[i].x, pattern[i].y);
+                            }
+                            ctx.stroke();
+                        }
+
+                        pattern.forEach(st => {
+                            let starPulse = 3 + Math.sin(performance.now() / 100) * 2;
+                            ctx.fillStyle = '#F5F5FF';
+                            ctx.fillRect(st.x - starPulse/2, st.y - starPulse/2, starPulse, starPulse);
+                        });
+                        ctx.restore();
+
+                        if (transitionTimer < 1.5) {
+                            let nextIndex = currentLevelIndex + 1;
+                            if (nextIndex < CONSTELLATIONS.length) {
+                                ctx.fillStyle = '#FFB347';
+                                ctx.font = "11px 'Press Start 2P'";
+                                ctx.fillText(`PRÓXIMO: ${CONSTELLATIONS[nextIndex].name}`, V_WIDTH / 2, V_HEIGHT * 0.7);
+                            }
+                        }
+
+                        if (transitionTimer <= 0) {
+                            currentLevelIndex++;
+                            if (currentLevelIndex >= CONSTELLATIONS.length) {
+                                gameState = 'VICTORY';
+                            } else {
+                                distanceCovered = 0;
+                                obstacles = [];
+                                player.reset();
+                                gameState = 'PLAY';
+                            }
+                        }
+
+                    } else if (gameState === 'GAMEOVER') {
+                        ctx.fillStyle = 'rgba(11, 14, 35, 0.1)';
+                        ctx.fillRect(0, 0, V_WIDTH, V_HEIGHT);
+
+                        ctx.fillStyle = '#FF5C5C';
+                        ctx.font = "22px 'Press Start 2P'";
+                        ctx.textAlign = 'center';
+                        ctx.fillText("FIM DE JOGO", V_WIDTH / 2, V_HEIGHT * 0.35);
+
+                        ctx.fillStyle = '#F5F5FF';
+                        ctx.font = "12px 'Press Start 2P'";
+                        ctx.fillText(`RECORDOU: ${score} METROS`, V_WIDTH / 2, V_HEIGHT * 0.45);
+                        ctx.fillStyle = '#FFB347';
+                        ctx.fillText(`MELHOR MARCA: ${highscore}m`, V_WIDTH / 2, V_HEIGHT * 0.5);
+
+                        ctx.fillStyle = '#4CE0D2';
+                        ctx.font = "10px 'Press Start 2P'";
+                        ctx.fillText("TOQUE NA TELA PARA REINICIAR", V_WIDTH / 2, V_HEIGHT * 0.68);
+
+                    } else if (gameState === 'VICTORY') {
+                        ctx.fillStyle = '#0B0E23';
+                        ctx.fillRect(0, 0, V_WIDTH, V_HEIGHT);
+
+                        ctx.save();
+                        ctx.translate(V_WIDTH / 2, V_HEIGHT * 0.4);
+                        let andromeda = STAR_PATTERNS["Andrômeda"];
+                        ctx.strokeStyle = 'rgba(76, 224, 210, 0.7)';
+                        ctx.lineWidth = 2.5;
+                        ctx.beginPath();
+                        ctx.moveTo(andromeda[0].x, andromeda[0].y);
+                        andromeda.forEach(st => ctx.lineTo(st.x, st.y));
+                        ctx.stroke();
+
+                        andromeda.forEach(st => {
+                            ctx.fillStyle = '#F5F5FF';
+                            ctx.fillRect(st.x-4, st.y-4, 8, 8);
+                        });
+                        ctx.restore();
+
+                        ctx.fillStyle = '#4CE0D2';
+                        ctx.font = "20px 'Press Start 2P'";
+                        ctx.textAlign = 'center';
+                        ctx.fillText("VITÓRIA ESTELAR!", V_WIDTH / 2, V_HEIGHT * 0.15);
+
+                        ctx.fillStyle = '#F5F5FF';
+                        ctx.font = "10px 'Press Start 2P'";
+                        ctx.fillText("VOCÊ DOMINOU AS 7 CONSTELAÇÕES!", V_WIDTH / 2, V_HEIGHT * 0.22);
+
+                        ctx.fillStyle = '#FFB347';
+                        ctx.fillText(`PONTUAÇÃO FINAL: ${score}M`, V_WIDTH / 2, V_HEIGHT * 0.7);
+
+                        ctx.fillStyle = 'rgba(245, 245, 255, 0.8)';
+                        ctx.font = "11px 'Space Mono'";
+                        ctx.fillText("Toque na tela para voltar ao menu", V_WIDTH / 2, V_HEIGHT * 0.8);
+                    }
+                }
+
+                requestAnimationFrame(gameLoop);
+            }
+
+            function drawHUD() {
+                let level = CONSTELLATIONS[currentLevelIndex];
+                ctx.fillStyle = 'rgba(11, 14, 35, 0.8)';
+                ctx.fillRect(0, 0, V_WIDTH, 65);
+
+                ctx.fillStyle = '#4CE0D2';
+                ctx.font = "10px 'Press Start 2P'";
+                ctx.textAlign = 'left';
+                ctx.fillText(`${currentLevelIndex + 1}. ${level.name}`, 15, 25);
+
+                ctx.fillStyle = '#F5F5FF';
+                ctx.font = "11px 'Press Start 2P'";
+                ctx.textAlign = 'right';
+                ctx.fillText(`${score}m / ${level.targetDist}m`, V_WIDTH - 65, 25);
+
+                ctx.textAlign = 'left';
+                ctx.fillStyle = '#FF5C5C';
+                for (let i = 0; i < 3; i++) {
+                    if (i < lives) {
+                        ctx.fillRect(15 + i * 20, 38, 12, 10);
+                    } else {
+                        ctx.strokeStyle = 'rgba(255, 92, 92, 0.3)';
+                        ctx.strokeRect(15 + i * 20, 38, 12, 10);
+                    }
+                }
+
+                let progressRatio = Math.min(distanceCovered / level.targetDist, 1.0);
+                ctx.fillStyle = '#B8348C';
+                ctx.fillRect(0, 0, V_WIDTH * progressRatio, 3);
+            }
+
+            // GESTÃO DOS BOTÕES DE ATIVAÇÃO / FECHAMENTO DO JOGO
+            document.getElementById('open-game-btn').addEventListener('click', (e) => {
+                e.preventDefault();
+                isModalActive = true;
+                document.getElementById('star-race-modal').classList.add('active');
+                sound.init();
+                if (sound.isMuted) sound.toggleMute();
+                gameState = 'INTRO';
+            });
+
+            document.getElementById('close-game-btn').addEventListener('click', (e) => {
+                e.stopPropagation();
+                isModalActive = false;
+                document.getElementById('star-race-modal').classList.remove('active');
+                if (sound.ctx) {
+                    sound.isMuted = true;
+                    const btn = document.getElementById('game-btn-mute');
+                    if (btn) btn.textContent = '🔇';
+                }
+            });
+
+            requestAnimationFrame(gameLoop);
+        })();
     </script>
 
     <!-- FOOTER -->
